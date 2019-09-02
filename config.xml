@@ -89,4 +89,6 @@
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <engine name="android" spec="^7.0.0" />
     <engine name="ios" spec="4.5.5" />
+    <widget id="io.ionic.facebook.login" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" />
+    <manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="io.ionic.facebook.login" xmlns:android="http://schemas.android.com/apk/res/android" />
 </widget>
