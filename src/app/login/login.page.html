@@ -5,6 +5,8 @@
 </ion-header>
 
 <ion-content padding class="form-content">
+    <ion-button class="submit-btn" expand="block" type="submit" (ngSubmit)="facebookLogin()">
+  <!--
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Email</ion-label>
@@ -17,6 +19,7 @@
         </div>
       </ng-container>
     </div>
+
     <ion-item>
       <ion-label position="floating" color="primary">Password</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
@@ -31,8 +34,9 @@
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Log In</ion-button>
     <label class="error-message">{{errorMessage}}</label>
   </form>
-  
+
   <p class="go-to-register">
     No account yet? <a (click)="goRegisterPage()">Create an account.</a>
   </p>
+  -->
 </ion-content>
