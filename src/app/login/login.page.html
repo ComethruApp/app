@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content padding class="form-content">
-    <ion-button class="submit-btn" expand="block" type="submit" (ngSubmit)="facebookLogin()">
-  <!--
+    <button class="submit-btn" expand="block" type="submit" (ngSubmit)="facebookLogin()">
+
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Email</ion-label>
@@ -38,5 +38,4 @@
   <p class="go-to-register">
     No account yet? <a (click)="goRegisterPage()">Create an account.</a>
   </p>
-  -->
 </ion-content>

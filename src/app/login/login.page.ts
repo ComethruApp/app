@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import firebase from 'firebase';
-import { Facebook } from '@ionic-native/facebook';
+import * as firebase from 'firebase/app';
 
 @Component({
     selector: 'app-login',
@@ -11,40 +10,14 @@ import { Facebook } from '@ionic-native/facebook';
     styleUrls: ['./login.page.scss'],
 })
 
-
 export class LoginPage implements OnInit {
+    errorMessage: string = '';
 /*
-  validations_form: FormGroup;
-  errorMessage: string = '';
-
-  validation_messages = {
-   'email': [
-     { type: 'required', message: 'Email is required.' },
-     { type: 'pattern', message: 'Please enter a valid email.' }
-   ],
-   'password': [
-     { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-   ]
- };
-
   constructor(
-    private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
   ) { }
 
   ngOnInit() {
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
-      ])),
-    });
   }
 
   tryLogin(value){
@@ -57,11 +30,15 @@ export class LoginPage implements OnInit {
     })
   }
 
-  goRegisterPage(){
-    this.router.navigate(["/register"]);
-  }
 */
-    constructor(public facebook: Facebook){}
+    constructor(
+        private authService: AuthService,
+        public facebook: Facebook,
+        private router: Router
+    ) {}
+
+    ngOnInit() {}
+
     facebookLogin(): Promise<any> {
       return this.facebook.login(['email'])
         .then( response => {
@@ -74,6 +51,12 @@ export class LoginPage implements OnInit {
             });
 
         }).catch((error) => { console.log(error) });
+
+                .then( success => {
+                  console.log("Firebase success: " + JSON.stringify(success));
+                });
+
+            }).catch((error) => { console.log(error) });
     }
 }
 
