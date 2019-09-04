@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { Facebook } from '@ionic-native/facebook/ngx';
 import { FirebaseService } from './firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -8,11 +7,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthService {
+
   constructor(
     private firebaseService: FirebaseService,
-    public afAuth: AngularFireAuth,
-    private facebook: Facebook,
+    public afAuth: AngularFireAuth
   ){}
+
+  doRegister(value){
+   return new Promise<any>((resolve, reject) => {
+     firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+     .then(
+       res => resolve(res),
+       err => reject(err))
+   })
+  }
+
+  doLogin(value){
+   return new Promise<any>((resolve, reject) => {
+     firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+     .then(
+       res => resolve(res),
+       err => reject(err))
+   })
+  }
 
   doLogout(){
     return new Promise((resolve, reject) => {
@@ -27,3 +44,4 @@ export class AuthService {
     })
   }
 }
+
