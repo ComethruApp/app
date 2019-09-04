@@ -27,11 +27,11 @@ export class FirebaseService {
     })
   }
 
-  getTask(taskId){
+  getEvent(eventId){
     return new Promise<any>((resolve, reject) => {
       this.afAuth.user.subscribe(currentUser => {
         if(currentUser){
-          this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/tasks/' + taskId).valueChanges()
+          this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/events/' + eventId).valueChanges()
           .subscribe(snapshots => {
             resolve(snapshots);
           }, err => {
@@ -47,10 +47,10 @@ export class FirebaseService {
     this.snapshotChangesSubscription.unsubscribe();
   }
 
-  updateTask(taskKey, value){
+  updateEvent(eventKey, value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).set(value)
+      this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).set(value)
       .then(
         res => resolve(res),
         err => reject(err)
@@ -58,10 +58,10 @@ export class FirebaseService {
     })
   }
 
-  deleteTask(taskKey){
+  deleteEvent(eventKey){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
+      this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).delete()
       .then(
         res => resolve(res),
         err => reject(err)
@@ -69,10 +69,10 @@ export class FirebaseService {
     })
   }
 
-  createTask(value){
+  createEvent(value){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').add({
+      this.afs.collection('people').doc(currentUser.uid).collection('events').add({
         title: value.title,
         description: value.description,
         image: value.image

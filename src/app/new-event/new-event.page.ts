@@ -8,11 +8,11 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 
 @Component({
-  selector: 'app-new-task',
-  templateUrl: './new-task.page.html',
-  styleUrls: ['./new-task.page.scss'],
+  selector: 'app-new-event',
+  templateUrl: './new-event.page.html',
+  styleUrls: ['./new-event.page.scss'],
 })
-export class NewTaskPage implements OnInit {
+export class NewEventPage implements OnInit {
 
   validations_form: FormGroup;
   image: any;
@@ -45,7 +45,7 @@ export class NewTaskPage implements OnInit {
       description: value.description,
       image: this.image
     }
-    this.firebaseService.createTask(data)
+    this.firebaseService.createEvent(data)
     .then(
       res => {
         this.router.navigate(["/home"]);

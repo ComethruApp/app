@@ -3,12 +3,12 @@ import { CommonModule, Location } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { NewTaskPage } from './new-task.page';
+import { NewEventPage } from './new-event.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewTaskPage
+    component: NewEventPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   providers: [Location],
-  declarations: [NewTaskPage]
+  declarations: [NewEventPage]
 })
-export class NewTaskPageModule {}
+export class NewEventPageModule {}

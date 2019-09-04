@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/new-task']">
+      <ion-button [routerLink]="['/new-event']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Tasks List</ion-title>
+    <ion-title>Events List</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +22,7 @@
     </ion-list>
   </div>
   <div *ngIf="items.length == 0" class="empty-list">
-    Please create your first task.
+    No upcoming events found... post one!
   </div>
 </ion-content>
 <ion-footer (click)="logout()">
