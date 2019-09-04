@@ -14,18 +14,6 @@ export class AuthService {
     private facebook: Facebook,
   ){}
 
-  /*
-  doRegister(value){
-   return new Promise<any>((resolve, reject) => {
-     firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-     .then(
-       res => resolve(res),
-       err => reject(err))
-   })
-  }
-  */
-
-
   doLogout(){
     return new Promise((resolve, reject) => {
       this.afAuth.auth.signOut()
