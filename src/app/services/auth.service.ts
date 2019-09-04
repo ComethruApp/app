@@ -8,11 +8,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(
     private firebaseService: FirebaseService,
     public afAuth: AngularFireAuth,
-    public facebook: Facebook,
+    private facebook: Facebook,
   ){}
 
   /*
@@ -26,16 +25,6 @@ export class AuthService {
   }
   */
 
-  doLogin(value){
-      return new Promise((resolve, reject) => {
-          this.facebook.login(['email']).then(response => {
-              const facebookCredential = firebase.auth.FacebookAuthProvider
-                .credential(response.authResponse.accessToken);
-
-              firebase.auth().signInWithCredential(facebookCredential);
-          });
-      }
-  }
 
   doLogout(){
     return new Promise((resolve, reject) => {

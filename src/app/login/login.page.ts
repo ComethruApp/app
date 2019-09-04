@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 @Component({
     selector: 'app-login',
@@ -11,6 +12,8 @@ import * as firebase from 'firebase/app';
 })
 
 export class LoginPage implements OnInit {
+    FB_APP_ID: number = 567699137099186;
+
     errorMessage: string = '';
 /*
   constructor(
@@ -33,30 +36,23 @@ export class LoginPage implements OnInit {
 */
     constructor(
         private authService: AuthService,
+        private router: Router,
         public facebook: Facebook,
-        private router: Router
     ) {}
 
-    ngOnInit() {}
+    ngOnInit(): void {}
 
     facebookLogin(): Promise<any> {
-      return this.facebook.login(['email'])
-        .then( response => {
+      return this.facebook.login(['email', 'public_profile']).then(response => {
           const facebookCredential = firebase.auth.FacebookAuthProvider
             .credential(response.authResponse.accessToken);
 
-          firebase.auth().signInWithCredential(facebookCredential)
-            .then( success => {
-              console.log("Firebase success: " + JSON.stringify(success));
-            });
-
-        }).catch((error) => { console.log(error) });
-
-                .then( success => {
-                  console.log("Firebase success: " + JSON.stringify(success));
-                });
-
-            }).catch((error) => { console.log(error) });
+          firebase.auth().signInWithCredential(facebookCredential);
+      }).then(success => {
+          console.log("Firebase success: " + JSON.stringify(success));
+      }).catch((error) => {
+          console.log(error)
+      });
     }
 }
 
