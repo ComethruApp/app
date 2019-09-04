@@ -21,7 +21,6 @@ export class LoginPage implements OnInit {
    ],
    'password': [
      { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' },
    ]
  };
 
@@ -39,7 +38,6 @@ export class LoginPage implements OnInit {
         Validators.pattern('^[a-zA-Z0-9_.+-]+@yale.edu$'),
       ])),
       password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
         Validators.required
       ])),
     });
