@@ -13,6 +13,7 @@ const routes: Routes = [
     component: TabsPage,
     children:[
         { path: 'home', loadChildren: '../home/home.module#HomePageModule' },
+        { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'new-event', loadChildren: '../new-event/new-event.module#NewEventPageModule' },
         { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
