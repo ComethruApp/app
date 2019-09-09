@@ -9,7 +9,7 @@ import { MapPage } from './map.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'map',
     component: MapPage
   }
 ];
