@@ -32,7 +32,7 @@
             <ion-input type="text" formControlName="description"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-toggle checked [(ngModel)]="public" formControlName="open"></ion-toggle>
+            <ion-toggle checked slot="start" [(ngModel)]="open" name="open" formControlName="open"></ion-toggle>
             <ion-label>Open event?</ion-label>
         </ion-item>
         <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>

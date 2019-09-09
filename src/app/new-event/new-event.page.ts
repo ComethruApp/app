@@ -35,11 +35,13 @@ export class NewEventPage implements OnInit {
         //this.image = "./assets/imgs/default_image.jpg";
         this.validations_form = this.formBuilder.group({
             title: new FormControl('', Validators.required),
-            description: new FormControl('', Validators.required)
+            description: new FormControl('', Validators.required),
+            open: new FormControl(''),
         });
     }
 
     onSubmit(value){
+        console.log(value);
         let data = {
             title: value.title,
             description: value.description,
