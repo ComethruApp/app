@@ -5,15 +5,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePage } from './home.page';
-import { HomeResolver } from './home.resolver';
+import { FeedPage } from './home.page';
+import { FeedResolver } from './home.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
+    component: FeedPage,
     resolve: {
-      data: HomeResolver
+      data: FeedResolver
     }
   }
 ];
@@ -26,9 +26,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage],
+  declarations: [FeedPage],
   providers: [
-    HomeResolver
+    FeedResolver
   ]
 })
-export class HomePageModule {}
+export class FeedPageModule {}

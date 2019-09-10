@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 
 @Injectable()
-export class HomeResolver implements Resolve<any> {
+export class FeedResolver implements Resolve<any> {
 
   constructor(private firebaseService: FirebaseService) {}
 
