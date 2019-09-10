@@ -50,7 +50,7 @@ export class NewEventPage implements OnInit {
         }
         this.firebaseService.createEvent(data).then(
             res => {
-                this.router.navigate(["/home"]);
+                this.router.navigate(["/tabs"]);
             }
         )
     }
