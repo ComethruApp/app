@@ -4,9 +4,9 @@ import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-feed',
+  templateUrl: './feed.page.html',
+  styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
 

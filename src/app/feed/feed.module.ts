@@ -5,8 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FeedPage } from './home.page';
-import { FeedResolver } from './home.resolver';
+import { FeedPage } from './feed.page';
+import { FeedResolver } from './feed.resolver';
 
 const routes: Routes = [
   {
