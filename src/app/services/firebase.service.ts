@@ -5,114 +5,102 @@ import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FirebaseService {
 
-  private snapshotChangesSubscription: any;
+    private snapshotChangesSubscription: any;
 
-  constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth
-  ){}
+    constructor(
+        public afs: AngularFirestore,
+        public afAuth: AngularFireAuth
+    ){}
 
-  getEvents(){
-    return new Promise<any>((resolve, reject) => {
-      this.afAuth.user.subscribe(currentUser => {
-        if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('tasks').snapshotChanges();
-          resolve(this.snapshotChangesSubscription);
-        }
-      })
-    })
-  }
-
-  getEvent(eventId){
-    return new Promise<any>((resolve, reject) => {
-      this.afAuth.user.subscribe(currentUser => {
-        if(currentUser){
-          this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/events/' + eventId).valueChanges()
-          .subscribe(snapshots => {
-            resolve(snapshots);
-          }, err => {
-            reject(err)
-          })
-        }
-      })
-    });
-  }
-
-  unsubscribeOnLogOut(){
-    //remember to unsubscribe from the snapshotChanges
-    this.snapshotChangesSubscription.unsubscribe();
-  }
-
-  updateEvent(eventKey, value){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).set(value)
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
-
-  deleteEvent(eventKey){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).delete()
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
-
-  createEvent(value){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('events').add({
-        title: value.title,
-        description: value.description,
-        //image: value.image
-        open: value.open,
-      })
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
-
-  encodeImageUri(imageUri, callback) {
-    var c = document.createElement('canvas');
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.onload = function () {
-      var aux:any = this;
-      c.width = aux.width;
-      c.height = aux.height;
-      ctx.drawImage(img, 0, 0);
-      var dataURL = c.toDataURL("image/jpeg");
-      callback(dataURL);
-    };
-    img.src = imageUri;
-  };
-
-  uploadImage(imageURI, randomId){
-    return new Promise<any>((resolve, reject) => {
-      let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child(randomId);
-      this.encodeImageUri(imageURI, function(image64){
-        imageRef.putString(image64, 'data_url')
-        .then(snapshot => {
-          snapshot.ref.getDownloadURL()
-          .then(res => resolve(res))
-        }, err => {
-          reject(err);
+    getEvents(){
+        return new Promise<any>((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if(currentUser){
+                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('tasks').snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            })
         })
-      })
-    })
-  }
+    }
+
+    getEvent(eventId){
+        return new Promise<any>((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if(currentUser){
+                    this.snapshotChangesSubscription = this.afs.doc<any>('people/' + currentUser.uid + '/events/' + eventId).valueChanges()
+                    .subscribe(snapshots => {
+                        resolve(snapshots);
+                    }, err => {
+                        reject(err)
+                    })
+                }
+            })
+        });
+    }
+
+    unsubscribeOnLogOut(){
+        //remember to unsubscribe from the snapshotChanges
+        this.snapshotChangesSubscription.unsubscribe();
+    }
+
+    updateEvent(eventKey, value){
+        return new Promise<any>((resolve, reject) => {
+            let currentUser = firebase.auth().currentUser;
+            this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).set(value)
+            .then(
+                res => resolve(res),
+                    err => reject(err)
+            )
+        })
+    }
+
+    deleteEvent(eventKey){
+        return new Promise<any>((resolve, reject) => {
+            let currentUser = firebase.auth().currentUser;
+            this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).delete()
+            .then(
+                res => resolve(res),
+                    err => reject(err)
+            )
+        })
+    }
+
+    createEvent(value){
+        return new Promise<any>((resolve, reject) => {
+            let currentUser = firebase.auth().currentUser;
+            this.afs.collection('people').doc(currentUser.uid).collection('events').add({
+                title: value.title,
+                description: value.description,
+                //image: value.image
+                open: value.open,
+            })
+            .then(
+                res => resolve(res),
+                    err => reject(err)
+            )
+        })
+    }
+
+    getProfile(uid) {
+        return new Promise<any>((resolve, reject) => {
+            this.snapshotChangesSubscription = this.afs.collection('people').doc(uid).snapshotChanges();
+            resolve(this.snapshotChangesSubscription);
+        })
+    }
+
+    getMe() {
+        // TODO: use getProfile
+        return new Promise<any>((resolve, reject) => {
+            this.afAuth.user.subscribe(currentUser => {
+                if(currentUser){
+                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            })
+        })
+    }
 }
