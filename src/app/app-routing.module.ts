@@ -6,11 +6,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  /*
   { path: 'details/:id', loadChildren: './details/details.module#DetailsPageModule' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'feed', loadChildren: './feed/feed.module#FeedPageModule' },
   { path: 'new-event', loadChildren: './new-event/new-event.module#NewEventPageModule' },
-  */
   // { path: 'new-event-modal', loadChildren: './new-event-modal/new-event-modal.module#NewEventModalPageModule' },
 ];
 

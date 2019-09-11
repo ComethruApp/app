@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children:[
         { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/feed',
+    redirectTo: '/home',
     pathMatch: 'full',
   }
 ];
