@@ -12,4 +12,12 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.router.navigate(["/login"]);
+    }, err => {
+      console.log(err);
+    })
+  }
 }

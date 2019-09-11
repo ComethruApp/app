@@ -42,14 +42,4 @@ export class FeedPage implements OnInit {
   async presentLoading(loading) {
     return await loading.present();
   }
-
-  logout(){
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate(["/login"]);
-    }, err => {
-      console.log(err);
-    })
-  }
-
 }
