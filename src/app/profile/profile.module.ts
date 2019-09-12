@@ -6,11 +6,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
+import { ProfileResolver } from './profile.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: ProfilePage,
+    resolve: {
+      data: ProfileResolver,
+    },
   }
 ];
 
@@ -21,6 +25,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
+  providers: [ProfileResolver],
 })
 export class ProfilePageModule {}

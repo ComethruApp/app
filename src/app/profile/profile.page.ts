@@ -21,6 +21,9 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.route && this.route.data) {
+      this.getData();
+    }
   }
 
   async getData(){
@@ -33,6 +36,7 @@ export class ProfilePage implements OnInit {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.items = data;
+        console.log(this.items);
       })
     })
   }

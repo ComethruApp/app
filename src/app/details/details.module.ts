@@ -13,8 +13,8 @@ const routes: Routes = [
     path: '',
     component: DetailsPage,
     resolve: {
-      data: DetailsResolver
-    }
+      data: DetailsResolver,
+    },
   }
 ];
 
@@ -27,6 +27,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [DetailsPage],
-  providers:[DetailsResolver]
+  providers:[DetailsResolver],
 })
 export class DetailsPageModule {}

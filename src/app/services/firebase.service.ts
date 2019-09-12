@@ -93,7 +93,7 @@ export class FirebaseService {
     }
 
     getMe() {
-        // TODO: use getProfile
+        // TODO: use getProfile in here
         return new Promise<any>((resolve, reject) => {
             this.afAuth.user.subscribe(currentUser => {
                 if(currentUser){
