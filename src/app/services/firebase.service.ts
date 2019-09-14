@@ -51,10 +51,10 @@ export class FirebaseService {
         return new Promise<any>((resolve, reject) => {
             let currentUser = firebase.auth().currentUser;
             this.afs.collection('people').doc(currentUser.uid).collection('events').doc(eventKey).set(value)
-            .then(
-                res => resolve(res),
-                    err => reject(err)
-            )
+                .then(
+                    res => resolve(res),
+                    err => reject(err),
+                )
         })
     }
 
@@ -77,10 +77,21 @@ export class FirebaseService {
                 description: value.description,
                 //image: value.image
                 open: value.open,
-            })
-            .then(
+            }).then(
                 res => resolve(res),
-                    err => reject(err)
+                err => reject(err)
+            )
+        })
+    }
+
+    createProfile(uid, name) {
+        return new Promise<any>((resolve, reject) => {
+            let currentUser = firebase.auth().currentUser;
+            this.afs.collection('profiles').doc(currentUser.uid).set({
+                name: '',
+            }).then(
+                res => resolve(res),
+                err => reject(err),
             )
         })
     }

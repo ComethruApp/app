@@ -15,6 +15,9 @@ export class RegisterPage implements OnInit {
   successMessage: string = '';
 
   validation_messages = {
+   'name': [
+     { type: 'required', message: 'Name required.' },
+   ],
    'email': [
      { type: 'required', message: 'Email is required.' },
      { type: 'pattern', message: 'Enter a valid email.' },
@@ -34,6 +37,9 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
+      name: new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
