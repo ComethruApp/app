@@ -108,15 +108,13 @@ export class FirebaseService {
     }
 
     getMe() {
-        // TODO: use getProfile in here
         return new Promise<any>((resolve, reject) => {
-            let currentUser = firebase.auth().currentUser;
-            this.snapshotChangesSubscription = this.afs.doc<any>('profiles/' + currentUser.uid).valueChanges()
-                .subscribe(snapshots => {
-                    resolve(snapshots);
-                }, err => {
-                    reject(err)
-                })
-        })
+            this.afAuth.user.subscribe(currentUser => {
+                if(currentUser){
+                    this.snapshotChangesSubscription = this.afs.collection('profiles').doc(currentUser.uid).snapshotChanges();
+                    resolve(this.snapshotChangesSubscription);
+                }
+            })
+        });
     }
 }

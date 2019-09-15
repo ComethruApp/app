@@ -35,7 +35,8 @@ export class ProfilePage implements OnInit {
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
         loading.dismiss();
-        this.data = data;
+        // TODO: This`is probably not the right way to do this!!
+        this.data = data.payload.data();
       })
     })
   }
