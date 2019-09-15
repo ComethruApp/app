@@ -84,11 +84,11 @@ export class FirebaseService {
         })
     }
 
-    createProfile(uid, name) {
+    createProfile(name) {
         return new Promise<any>((resolve, reject) => {
             let currentUser = firebase.auth().currentUser;
             this.afs.collection('profiles').doc(currentUser.uid).set({
-                name: '',
+                name: name,
             }).then(
                 res => resolve(res),
                 err => reject(err),
@@ -98,20 +98,26 @@ export class FirebaseService {
 
     getProfile(uid) {
         return new Promise<any>((resolve, reject) => {
-            this.snapshotChangesSubscription = this.afs.collection('people').doc(uid).snapshotChanges();
-            resolve(this.snapshotChangesSubscription);
+            this.snapshotChangesSubscription = this.afs.collection('profiles').doc(uid).valueChanges()
+                    .subscribe(snapshots => {
+                        resolve(snapshots);
+                    }, err => {
+                        reject(err)
+                    })
         })
     }
 
     getMe() {
         // TODO: use getProfile in here
         return new Promise<any>((resolve, reject) => {
-            this.afAuth.user.subscribe(currentUser => {
-                if(currentUser){
-                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).snapshotChanges();
-                    resolve(this.snapshotChangesSubscription);
-                }
-            })
+            let currentUser = firebase.auth().currentUser;
+            console.log(currentUser);
+            this.snapshotChangesSubscription = this.afs.doc<any>('profiles/' + currentUser.uid).valueChanges()
+                .subscribe(snapshots => {
+                    resolve(snapshots);
+                }, err => {
+                    reject(err)
+                })
         })
     }
 }

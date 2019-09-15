@@ -43,7 +43,9 @@ export class DetailsPage implements OnInit {
     })
     this.validations_form = this.formBuilder.group({
       title: new FormControl(this.item.title, Validators.required),
-      description: new FormControl(this.item.description, Validators.required)
+      description: new FormControl(this.item.description, Validators.required),
+      location: new FormControl(this.item.location, Validators.required),
+      open: new FormControl(this.item.open),
     });
   }
 
@@ -51,8 +53,10 @@ export class DetailsPage implements OnInit {
     let data = {
       title: value.title,
       description: value.description,
+      location: value.location,
+      open: value.open,
     }
-    this.firebaseService.updateEvent(this.item.id,data)
+    this.firebaseService.updateEvent(this.item.id, data)
     .then(
       res => {
         this.router.navigate(["/tabs"]);

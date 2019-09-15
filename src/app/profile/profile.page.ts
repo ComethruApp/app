@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  items: Array<any>;
+  data: Array<any>;
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -35,8 +35,8 @@ export class ProfilePage implements OnInit {
     this.route.data.subscribe(routeData => {
       routeData['data'].subscribe(data => {
         loading.dismiss();
-        this.items = data;
-        console.log(this.items);
+        this.data = data;
+        console.log(this.data.get());
       })
     })
   }
