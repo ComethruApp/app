@@ -18,7 +18,9 @@
       <ion-input type="text" formControlName="description"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="floating"
+        <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"></ion-toggle>
+        <ion-label>Open event?</ion-label>
+    </ion-item>
     <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
   </form>
   <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>

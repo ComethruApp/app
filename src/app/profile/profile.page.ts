@@ -36,7 +36,6 @@ export class ProfilePage implements OnInit {
       routeData['data'].subscribe(data => {
         loading.dismiss();
         this.data = data;
-        console.log(this.data.get());
       })
     })
   }

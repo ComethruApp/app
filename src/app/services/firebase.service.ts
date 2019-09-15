@@ -20,7 +20,7 @@ export class FirebaseService {
         return new Promise<any>((resolve, reject) => {
             this.afAuth.user.subscribe(currentUser => {
                 if(currentUser){
-                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('tasks').snapshotChanges();
+                    this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('events').snapshotChanges();
                     resolve(this.snapshotChangesSubscription);
                 }
             })
@@ -75,7 +75,7 @@ export class FirebaseService {
             this.afs.collection('people').doc(currentUser.uid).collection('events').add({
                 title: value.title,
                 description: value.description,
-                //image: value.image
+                location: value.location,
                 open: value.open,
             }).then(
                 res => resolve(res),
@@ -111,7 +111,6 @@ export class FirebaseService {
         // TODO: use getProfile in here
         return new Promise<any>((resolve, reject) => {
             let currentUser = firebase.auth().currentUser;
-            console.log(currentUser);
             this.snapshotChangesSubscription = this.afs.doc<any>('profiles/' + currentUser.uid).valueChanges()
                 .subscribe(snapshots => {
                     resolve(snapshots);

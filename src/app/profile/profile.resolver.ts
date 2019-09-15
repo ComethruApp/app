@@ -8,7 +8,6 @@ export class ProfileResolver implements Resolve<any> {
   constructor(public firebaseService: FirebaseService,) { }
 
   resolve(route: ActivatedRouteSnapshot) {
-
     return new Promise((resolve, reject) => {
       this.firebaseService.getMe()
       .then(data => {
