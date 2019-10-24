@@ -31,19 +31,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase), // imports firebase/app
-    AngularFirestoreModule, // imports firebase/firestore
-    AngularFireAuthModule, // imports firebase/auth
-    AngularFireStorageModule, // imports firebase/storage
+
+    AuthModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ImagePicker,
     WebView,
-    { provide: FirestoreSettingsToken, useValue: {} },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
