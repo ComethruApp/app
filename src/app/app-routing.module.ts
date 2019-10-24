@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
   /*
   { path: 'details/:id', loadChildren: './pages/details/details.module#DetailsPageModule' },
   { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
