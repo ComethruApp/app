@@ -1,23 +1,20 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>register</ion-title>
+        <ion-title>Create your account!</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <form #form="ngForm" (ngSubmit)="register(form)">
         <ion-grid>
-            <ion-row color="primary" justify-content-center>
-                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                    <div text-center>
-                        <h3>Create your account!</h3>
-                    </div>
+            <ion-row color="primary" class="ion-justify-content-center">
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
                     <div padding>
                         <ion-item>
                             <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
                         </ion-item>
                         <ion-item>
-                            <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+                            <ion-input name="email" type="email" placeholder="name@yale.edu" ngModel required></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
