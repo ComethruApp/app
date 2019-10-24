@@ -17,7 +17,7 @@ export class AuthService {
     constructor(private httpClient: HttpClient, private storage: Storage) { }
 
     register(user: User): Observable<AuthResponse> {
-        return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
+        return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/auth/register`, user).pipe(
             tap(async (res: AuthResponse ) => {
 
                 if (res.user) {
@@ -31,7 +31,7 @@ export class AuthService {
     }
 
     login(user: User): Observable<AuthResponse> {
-        return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/login`, user).pipe(
+        return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/auth/login`, user).pipe(
             tap(async (res: AuthResponse) => {
 
                 if (res.user) {
