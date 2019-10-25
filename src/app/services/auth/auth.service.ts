@@ -23,6 +23,7 @@ export class AuthService {
                 if (res.user) {
                     await this.storage.set("TOKEN", res.user.token);
                     await this.storage.set("EXPIRES_IN", res.user.expires_in);
+                    await this.storage.set("USER_ID", res.user.id);
                     this.authSubject.next(true);
                 }
             })
@@ -36,6 +37,7 @@ export class AuthService {
                 if (res.user) {
                     await this.storage.set("TOKEN", res.user.token);
                     await this.storage.set("EXPIRES_IN", res.user.expires_in);
+                    await this.storage.set("USER_ID", res.user.id);
                     this.authSubject.next(true);
                 }
             })

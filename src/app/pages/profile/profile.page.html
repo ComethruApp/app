@@ -1,14 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{user.name}}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{user.name}}</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+    <ion-img src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=1024"></ion-img>
+    <ion-toolbar color="danger">
+        <ion-title>Log out</ion-title>
+    </ion-toolbar>
 </ion-content>
 
 <ion-footer (click)="logout()">
-  <ion-toolbar color="danger">
-    <ion-title>Log out</ion-title>
-  </ion-toolbar>
 </ion-footer>
