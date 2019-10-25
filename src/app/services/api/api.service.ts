@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -24,7 +26,7 @@ export class APIService {
     ) { }
 
     private get(path: string): Observable<Object> {
-        let storageObservable = from(this.storage.get('authToken'));
+        let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
             return this.httpClient
@@ -72,6 +74,7 @@ export class APIService {
     public getMe(): Observable<User> {
         return this.get('/users/me')
         .map(response => {
+            console.log(response);
             return new User(response);
         })
         .catch((err) => {
