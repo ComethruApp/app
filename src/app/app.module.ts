@@ -14,6 +14,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 import { AuthModule } from './services/auth/auth.module';
+import { APIService } from './services/api/api.service';
 
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SplashScreen,
     ImagePicker,
     WebView,
+
+    APIService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
