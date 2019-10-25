@@ -1,17 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import { Storage } from '@ionic/storage';
+
 import { User } from './models';
+
+import { AuthService } from '../auth/auth.service';
+import { from } from 'rxjs';
+import 'rxjs/add/operator/mergeMap'
 
 @Injectable({
     providedIn: 'root'
 })
 export class APIService {
     root: string = "http://localhost:5000/api";
-    constructor(private httpClient : HttpClient) { }
+    token: string = null;
+    constructor(
+        private httpClient: HttpClient,
+        private storage: Storage,
+    ) { }
+
+    private get(path: string): Observable<Object> {
+        let storageObservable = from(this.storage.get('authToken'));
+
+        return storageObservable.mergeMap(token => {
+            return this.httpClient
+                .get(this.root + path, {
+                    params: new HttpParams().set('token', token),
+                });
+        });
+    }
 
     // Sending a GET request to /users
     // TODO broken
@@ -49,8 +70,7 @@ export class APIService {
     }
 
     public getMe(): Observable<User> {
-        return this.httpClient
-        .get(this.root + '/users/me')
+        return this.get('/users/me')
         .map(response => {
             return new User(response);
         })
