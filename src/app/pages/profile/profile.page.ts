@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { APIService } from '../../services/api/api.service';
+import { User } from '../../services/api/models';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
