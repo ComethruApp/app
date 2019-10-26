@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.erikboesen.nightu" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>NightU</name>
+<widget id="com.erikboesen.comethru" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Comethru</name>
     <description>What's the move?</description>
     <author email="me@erikboesen.com" href="https://erikboesen.com/">Erik Boesen</author>
     <content src="index.html" />
@@ -89,6 +89,6 @@
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <engine name="android" spec="^7.0.0" />
     <engine name="ios" spec="4.5.5" />
-    <widget id="com.erikboesen.nightu" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" />
-    <manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="com.erikboesen.nightu" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <widget id="com.erikboesen.comethru" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" />
+    <manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="com.erikboesen.comethru" xmlns:android="http://schemas.android.com/apk/res/android" />
 </widget>
