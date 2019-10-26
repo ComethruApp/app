@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
     <form #form="ngForm" (ngSubmit)="submit(form)">
         <ion-item>
             <ion-label position="floating">Title</ion-label>
@@ -25,6 +25,8 @@
             <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"></ion-toggle>
             <ion-label>Open event?</ion-label>
         </ion-item>
-        <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>
+        <div>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+        </div>
     </form>
 </ion-content>
