@@ -29,7 +29,7 @@ export class FormEventPage implements OnInit {
 
     resetFields(){
         this.validations_form = this.formBuilder.group({
-            title: new FormControl('', Validators.required),
+            name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
             open: new FormControl(true),
