@@ -6,15 +6,11 @@ import { Routes, RouterModule} from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EventPage } from './event.page';
-import { EventResolver } from './event.resolver';
 
 const routes: Routes = [
     {
         path: '',
         component: EventPage,
-        resolve: {
-            data: EventResolver,
-        },
     }
 ];
 
@@ -27,6 +23,5 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations: [EventPage],
-    providers:[EventResolver],
 })
 export class EventPageModule {}

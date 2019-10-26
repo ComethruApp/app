@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../../services/firebase.service';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { LoadingController, ToastController, AlertController } from '@ionic/angular';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from '../../services/api/models';
+import { APIService } from '../../services/api/api.service';
 
 @Component({
     selector: 'app-event',
@@ -12,22 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./event.page.scss'],
 })
 export class EventPage implements OnInit {
-
-    validations_form: FormGroup;
-    image: any;
-    item: any;
-    load: boolean = false;
+    event: Event;
 
     constructor(
-        private imagePicker: ImagePicker,
-        public toastCtrl: ToastController,
         public loadingCtrl: LoadingController,
-        private formBuilder: FormBuilder,
-        private firebaseService: FirebaseService,
-        private webview: WebView,
-        private alertCtrl: AlertController,
+        public alertCtrl: AlertController,
+        private apiService: APIService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
     ) { }
 
     ngOnInit() {
@@ -35,39 +25,21 @@ export class EventPage implements OnInit {
     }
 
     getData(){
-        this.route.data.subscribe(routeData => {
-            let data = routeData['data'];
-            if (data) {
-                this.item = data;
-            }
-        })
-        this.validations_form = this.formBuilder.group({
-            title: new FormControl(this.item.title, Validators.required),
-            description: new FormControl(this.item.description, Validators.required),
-            location: new FormControl(this.item.location, Validators.required),
-            open: new FormControl(this.item.open),
+        const loading = await this.loadingCtrl.create({
+            message: 'Loading...'
         });
-    }
+        this.presentLoading(loading);
 
-    onSubmit(value){
-        let data = {
-            title: value.title,
-            description: value.description,
-            location: value.location,
-            open: value.open,
-        }
-        this.firebaseService.updateEvent(this.item.id, data)
-        .then(
-            res => {
-                this.router.navigate(["/tabs"]);
-            }
-        )
+        this.apiService.getEvent().subscribe(event => {
+            loading.dismiss();
+            this.event = event;
+        });
     }
 
     async delete() {
         const alert = await this.alertCtrl.create({
             header: 'Confirm',
-            message: 'Do you want to delete ' + this.item.title + '?',
+            message: 'Do you want to delete ' + this.event.name + '?',
             buttons: [
                 {
                     text: 'No',
@@ -78,13 +50,7 @@ export class EventPage implements OnInit {
                 {
                     text: 'Yes',
                     handler: () => {
-                        this.firebaseService.deleteEvent(this.item.id)
-                        .then(
-                            res => {
-                                this.router.navigate(["/tabs"]);
-                            },
-                            err => console.log(err)
-                        )
+                        // TODO
                     }
                 }
             ]

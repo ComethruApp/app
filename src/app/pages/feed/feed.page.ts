@@ -26,7 +26,7 @@ export class FeedPage implements OnInit {
 
   async getData(){
     const loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'Loading...'
     });
     this.presentLoading(loading);
 
