@@ -37,7 +37,7 @@ export class FeedPage implements OnInit {
     }
 
     goToEvent(eventId) {
-
+        this.router.navigate(['/event/' + eventId]);
     }
 
     async presentLoading(loading) {
