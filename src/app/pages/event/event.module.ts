@@ -9,24 +9,24 @@ import { EventPage } from './event.page';
 import { EventResolver } from './event.resolver';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: EventPage,
-    resolve: {
-      data: EventResolver,
-    },
-  }
+    {
+        path: '',
+        component: EventPage,
+        resolve: {
+            data: EventResolver,
+        },
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [EventPage],
-  providers:[EventResolver],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [EventPage],
+    providers:[EventResolver],
 })
 export class EventPageModule {}
