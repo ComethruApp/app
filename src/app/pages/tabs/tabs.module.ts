@@ -14,7 +14,7 @@ const routes: Routes = [
     children:[
     //    { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
     //    { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
-    //   { path: 'new-event', loadChildren: '../new-event/new-event.module#NewEventPageModule' },
+        { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
         { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
   },
