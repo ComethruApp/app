@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  { path: 'event', loadChildren: './pages/event/event.module#EventPageModule' },
   //{ path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   //{ path: 'form-event', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   /*
