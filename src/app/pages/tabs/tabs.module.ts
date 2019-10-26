@@ -12,7 +12,8 @@ const routes: Routes = [
     path: '',
     component: TabsPage,
     children:[
-    //    { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
+        { path: '', redirectTo: 'profile', pathMatch: 'full' },
+        { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
     //    { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
         { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/feed',
     pathMatch: 'full',
   }
 ];

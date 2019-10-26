@@ -1,54 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 import { LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet, ActivationStart } from '@angular/router';
 
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile.page.html',
+    styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  private user: User = null;
+    @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
-  constructor(
-    public loadingCtrl: LoadingController,
-    private apiService: APIService,
-    private authService: AuthService,
-    private router: Router,
-  ) { }
+    private user: User = null;
 
-  ngOnInit() {
-    this.getData();
-  }
+    constructor(
+        public loadingCtrl: LoadingController,
+        private apiService: APIService,
+        private authService: AuthService,
+        private router: Router,
+    ) { }
 
-  async getData(){
-    const loading = await this.loadingCtrl.create({
-      message: 'Loading...'
-    });
-    this.presentLoading(loading);
+    ngOnInit() {
+        this.router.events.subscribe(e => {
+            if (e instanceof ActivationStart && e.snapshot.outlet === "profile")
+                this.outlet.deactivate();
+        });
+        this.getData();
+    }
 
-    // TODO: shouldn't just be me!
-    this.apiService.getMe().subscribe((user: User) => {
-        loading.dismiss();
-        this.user = user;
-    });
-  }
+    async getData(){
+        const loading = await this.loadingCtrl.create({
+            message: 'Loading...'
+        });
+        this.presentLoading(loading);
 
-  async presentLoading(loading) {
-    return await loading.present();
-  }
+        // TODO: shouldn't just be me!
+        this.apiService.getMe().subscribe((user: User) => {
+            loading.dismiss();
+            this.user = user;
+        });
+    }
 
-  logout(){
-    this.authService.logout()
-    .then(res => {
-        // TODO: redirect to splash page instead
-      this.router.navigate(["/login"]);
-    }, err => {
-      console.log(err);
-    })
-  }
+    async presentLoading(loading) {
+        return await loading.present();
+    }
+
+    logout(){
+        this.authService.logout()
+        .then(res => {
+            // TODO: redirect to splash page instead
+            this.router.navigate(["/login"]);
+        }, err => {
+            console.log(err);
+        })
+    }
 }
