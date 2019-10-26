@@ -36,6 +36,18 @@ export class APIService {
         });
     }
 
+    private post(path: string, data: any): Observable<Object> {
+        let storageObservable = from(this.storage.get('TOKEN'));
+
+        return storageObservable.mergeMap(token => {
+            return this.httpClient
+                .post(this.root + path, data, {
+                    params: new HttpParams().set('token', token),
+                });
+        });
+    }
+
+
     // Sending a GET request to /users
     // TODO broken
     /*
@@ -47,7 +59,7 @@ export class APIService {
        })
        .catch((err)=>{
        console.error(err);
-       });
+        });
        }
      */
 
@@ -60,13 +72,11 @@ export class APIService {
 
     // Sending a GET request to /users/:id
     public getUserById(userId: number): Observable<User> {
-        return this.httpClient
-        .get(this.root + '/users/' + userId)
+        return this.get('/users/me')
         .map(response => {
             return new User(response);
         })
         .catch((err) => {
-            console.error(err);
             return Observable.throw(err.statusText);
         });
     }
@@ -74,11 +84,9 @@ export class APIService {
     public getMe(): Observable<User> {
         return this.get('/users/me')
         .map(response => {
-            console.log(response);
             return new User(response);
         })
         .catch((err) => {
-            console.error(err);
             return Observable.throw(err.statusText);
         });
     }
@@ -88,9 +96,35 @@ export class APIService {
 
     }
 
+    /*
     // Sending a DELETE request to /users/:id
     public deleteUserById(userId: number) {
 
     }
+   */
 
+  /*
+    public getEvents(): Observable<Event>[] {
+    }
+   */
+
+    public getEvent(eventId: number): Observable<Event> {
+        return this.get('/events/' + eventId)
+        .map(response => {
+            return new Event(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public createEvent(event: Event): Observable<Event> {
+        return this.post('/events', event)
+        .map(response => {
+            return new Event(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
 }
