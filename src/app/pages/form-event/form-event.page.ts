@@ -37,7 +37,10 @@ export class FormEventPage implements OnInit {
 
     submit(form) {
         // TODO: also support update!
-        this.apiService.createEvent(form.value).subscribe((res)=>{
+        let data = form.value;
+        data.location_lat = 41.3163 + (Math.random() * 0.0001 - 0.00005);
+        data.location_lon = -72.9223 + (Math.random() * 0.0001 - 0.00005);
+        this.apiService.createEvent(data).subscribe((res)=>{
             this.router.navigateByUrl('tabs');
         });
     }
