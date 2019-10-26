@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { Storage } from '@ionic/storage';
 
-import { User } from './models';
+import { User, Event_ } from './models';
 
 import { AuthService } from '../auth/auth.service';
 import { from } from 'rxjs';
@@ -103,31 +103,31 @@ export class APIService {
     }
    */
 
-    public getEvents(): Observable<Event[]> {
+    public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
-            return response.map((event) => new Event(event));
-            return new Event(response);
+            return response.map((event) => new Event_(event));
+            return new Event_(response);
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
         });
     }
 
-    public getEvent(eventId: number): Observable<Event> {
+    public getEvent(eventId: number): Observable<Event_> {
         return this.get('/events/' + eventId)
         .map(response => {
-            return new Event(response);
+            return new Event_(response);
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
         });
     }
 
-    public createEvent(event: Event): Observable<Event> {
+    public createEvent(event: Event_): Observable<Event_> {
         return this.post('/events', event)
         .map(response => {
-            return new Event(response);
+            return new Event_(response);
         })
         .catch((err) => {
             return Observable.throw(err.statusText);

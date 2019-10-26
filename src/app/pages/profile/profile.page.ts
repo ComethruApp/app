@@ -12,8 +12,6 @@ import { Router, RouterOutlet, ActivationStart } from '@angular/router';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-    @ViewChild(RouterOutlet) outlet: RouterOutlet;
-
     private user: User = null;
 
     constructor(
@@ -24,10 +22,6 @@ export class ProfilePage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.router.events.subscribe(e => {
-            if (e instanceof ActivationStart && e.snapshot.outlet === "profile")
-                this.outlet.deactivate();
-        });
         this.getData();
     }
 

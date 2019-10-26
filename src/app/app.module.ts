@@ -18,13 +18,14 @@ import { APIService } from './services/api/api.service';
 
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { NewTaskModalPage } from './new-task-modal/new-task-modal.page';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  // declarations: [AppComponent, NewTaskModalPage],
-  // entryComponents: [NewTaskModalPage],
+  declarations: [
+      AppComponent,
+  ],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

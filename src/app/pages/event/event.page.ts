@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Event } from '../../services/api/models';
+import { Event_ } from '../../services/api/models';
 import { APIService } from '../../services/api/api.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { APIService } from '../../services/api/api.service';
     styleUrls: ['./event.page.scss'],
 })
 export class EventPage implements OnInit {
-    event: Event;
+    private id: number;
+    private event: Event_ = null;
 
     constructor(
         public loadingCtrl: LoadingController,
@@ -21,16 +22,17 @@ export class EventPage implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.id = parseInt(this.route.snapshot.paramMap.get('id'));
         this.getData();
     }
 
-    getData(){
+    async getData(){
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
         this.presentLoading(loading);
 
-        this.apiService.getEvent().subscribe(event => {
+        this.apiService.getEvent(this.id).subscribe(event => {
             loading.dismiss();
             this.event = event;
         });

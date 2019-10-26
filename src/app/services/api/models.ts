@@ -10,7 +10,7 @@ export class User {
     }
 }
 
-export class Event {
+export class Event_ {
     id: number;
     name: string;
     description: string;

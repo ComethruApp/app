@@ -17,10 +17,10 @@ const routes: Routes = [
     component: TabsPage,
     children:[
         { path: '', redirectTo: 'feed', pathMatch: 'full' },
-        { path: 'feed', component: FeedPageModule },
-        //{ path: 'map', component: MapPageModule },
-        { path: 'form-event', component: FormEventPageModule },
-        { path: 'profile', component: ProfilePageModule },
+        { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
+        //{ path: 'map', loadChildren: '../map/map.module#MapPageModule' },
+        { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
+        { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
   },
   {
