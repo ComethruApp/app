@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>form_event</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs"></ion-back-button>
+        </ion-buttons>
+    <ion-title>New Event</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Location</ion-label>
+            <ion-input type="text" formControlName="location"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"></ion-toggle>
+            <ion-label>Open event?</ion-label>
+        </ion-item>
+        <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!validations_form.valid">Create</ion-button>
+    </form>
 </ion-content>
