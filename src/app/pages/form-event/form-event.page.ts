@@ -31,6 +31,7 @@ export class FormEventPage implements OnInit {
             open: new FormControl(true),
             time_start: new FormControl(),
             time_end: new FormControl(),
+            venmo: new FormControl(''),
         });
     }
 

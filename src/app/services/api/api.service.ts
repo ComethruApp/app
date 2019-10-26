@@ -72,7 +72,7 @@ export class APIService {
 
     // Sending a GET request to /users/:id
     public getUserById(userId: number): Observable<User> {
-        return this.get('/users/me')
+        return this.get('/users/' + userId)
         .map(response => {
             return new User(response);
         })
