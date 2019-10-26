@@ -8,6 +8,7 @@ const routes: Routes = [
 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'map', loadChildren: './pages/map/map.module#MapPageModule' },
   //{ path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   //{ path: 'form-event', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   /*

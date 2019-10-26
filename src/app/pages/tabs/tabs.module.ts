@@ -18,7 +18,7 @@ const routes: Routes = [
     children:[
         { path: '', redirectTo: 'feed', pathMatch: 'full' },
         { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
-        //{ path: 'map', loadChildren: '../map/map.module#MapPageModule' },
+        { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
         { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
