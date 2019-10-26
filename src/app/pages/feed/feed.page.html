@@ -11,13 +11,19 @@
 
 <ion-content *ngIf="events" class="list-mini-content" padding>
   <div *ngIf="events.length > 0" class="list">
-    <ion-list>
-      <ion-item class="ion-no-padding" *ngFor="let event of events" (click)="goToEvent(event.id)">
-        <h2>{{ event.name }}</h2>
-        <ion-text>@ {{ event.location_name }}</ion-text>
-        <ion-text>{{ event.time_start }}</ion-text>
-      </ion-item>
-    </ion-list>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let event of events" (click)="goToEvent(event.id)">
+        <ion-col>
+            <div>
+                <h2>{{ event.name }}</h2>
+                <p>@ {{ event.location_name }}</p>
+            </div>
+        </ion-col>
+        <ion-col>
+            <div>{{ event.time_start }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   <div *ngIf="events.length == 0" class="empty-list">
     No events found... post one!
