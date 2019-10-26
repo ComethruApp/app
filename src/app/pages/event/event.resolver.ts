@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router
 import { FirebaseService } from '../../services/firebase.service';
 
 @Injectable()
-export class DetailsResolver implements Resolve<any> {
+export class EventResolver implements Resolve<any> {
 
   constructor(public firebaseService: FirebaseService,) { }
 

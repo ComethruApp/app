@@ -7,11 +7,11 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.page.html',
-  styleUrls: ['./details.page.scss'],
+  selector: 'app-event',
+  templateUrl: './event.page.html',
+  styleUrls: ['./event.page.scss'],
 })
-export class DetailsPage implements OnInit {
+export class EventPage implements OnInit {
 
   validations_form: FormGroup;
   image: any;
