@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { APIService } from '../../services/api/api.service';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -9,14 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-
-  items: Array<any>;
+  events: Event[];
 
   constructor(
     public loadingCtrl: LoadingController,
-    private authService: AuthService,
+    private apiService: APIService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -31,11 +30,9 @@ export class FeedPage implements OnInit {
     });
     this.presentLoading(loading);
 
-    this.route.data.subscribe(routeData => {
-      routeData['data'].subscribe(data => {
+    this.apiService.getEvents().subscribe(events => {
         loading.dismiss();
-        this.items = data;
-      })
+        this.events = events;
     })
   }
 

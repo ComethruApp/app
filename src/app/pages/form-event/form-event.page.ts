@@ -11,7 +11,7 @@ import { APIService } from '../../services/api/api.service';
 export class FormEventPage implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
-    form: FormGroup;
+    validations_form: FormGroup;
 
     constructor(
         private apiService: APIService,
@@ -28,11 +28,13 @@ export class FormEventPage implements OnInit {
     }
 
     resetFields(){
-        this.form = this.formBuilder.group({
+        this.validations_form = this.formBuilder.group({
             title: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
             open: new FormControl(true),
+            time_start: new FormControl(),
+            time_end: new FormControl(),
         });
     }
 

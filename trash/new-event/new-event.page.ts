@@ -38,15 +38,8 @@ export class NewEventPage implements OnInit {
         });
     }
 
-    onSubmit(value){
-        console.log(value);
-        let data = {
-            title: value.title,
-            description: value.description,
-            location: value.location,
-            open: value.open,
-        }
-        this.firebaseService.createEvent(data).then(
+    submit(form){
+        this.apiService.createEvent().then(
             res => {
                 this.router.navigate(["/tabs"]);
             }

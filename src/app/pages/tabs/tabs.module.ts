@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: TabsPage,
     children:[
-        { path: '', redirectTo: 'profile', pathMatch: 'full' },
+        { path: '', redirectTo: 'feed', pathMatch: 'full' },
         { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
     //    { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },

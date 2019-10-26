@@ -25,7 +25,7 @@ export class APIService {
         private storage: Storage,
     ) { }
 
-    private get(path: string): Observable<Object> {
+    private get(path: string): Observable<any> {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
@@ -36,7 +36,7 @@ export class APIService {
         });
     }
 
-    private post(path: string, data: any): Observable<Object> {
+    private post(path: string, data: any): Observable<any> {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
@@ -103,10 +103,16 @@ export class APIService {
     }
    */
 
-  /*
-    public getEvents(): Observable<Event>[] {
+    public getEvents(): Observable<Event[]> {
+        return this.get('/events')
+        .map(response => {
+            return response.map((event) => new Event(event));
+            return new Event(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
     }
-   */
 
     public getEvent(eventId: number): Observable<Event> {
         return this.get('/events/' + eventId)

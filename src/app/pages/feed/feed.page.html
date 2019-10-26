@@ -1,27 +1,26 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/new-event']">
+      <ion-button [routerLink]="['/tabs/form-event']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Events List</ion-title>
+    <ion-title>Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="items" class="list-mini-content" padding>
-  <div *ngIf="items.length > 0" class="list-mini">
+<ion-content *ngIf="events" class="list-mini-content" padding>
+  <div *ngIf="events.length > 0" class="list-mini">
     <ion-list>
-      <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
-        <ion-thumbnail slot="start">
-          <img [src]="item.payload.doc.data().image">
-        </ion-thumbnail>
-        <ion-label>{{item.payload.doc.data().title}}</ion-label>
+      <ion-item *ngFor="let event of events" [routerLink]="['/event', event.id]">
+        <ion-label>{{ event.name }}</ion-label>
+        <ion-label>@ {{ event.location_name }}</ion-label>
+        <ion-label>Starts at {{ event.time_start }}</ion-label>
         <ion-button fill="clear" slot="end">Details</ion-button>
       </ion-item>
     </ion-list>
   </div>
-  <div *ngIf="items.length == 0" class="empty-list">
-    No upcoming events found... post one!
+  <div *ngIf="events.length == 0" class="empty-list">
+    No events found... post one!
   </div>
 </ion-content>
