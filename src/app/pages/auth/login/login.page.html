@@ -10,10 +10,10 @@
             <ion-row color="primary" class="ion-justify-content-center">
                 <ion-col size-md="6" size-lg="5" size-xs="12">
                     <div>
-                        <ion-item>
+                        <ion-item lines="none">
                             <ion-input name="email" type="email" placeholder="you@yale.edu" ngModel required></ion-input>
                         </ion-item>
-                        <ion-item>
+                        <ion-item lines="none">
                             <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
                         </ion-item>
                     </div>
@@ -21,9 +21,6 @@
                         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
                     </div>
                 </ion-col>
-            </ion-row>
-
-            <ion-row>
                 <div class="ion-text-center">
                     Don't have an account? <a routerLink='/register'>Tap here to sign up!</a>
                 </div>

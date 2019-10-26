@@ -20,10 +20,6 @@ export class FormEventPage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.router.events.subscribe(e => {
-            if (e instanceof ActivationStart && e.snapshot.outlet === "form-events")
-                this.outlet.deactivate();
-        });
         this.resetFields();
     }
 
@@ -31,7 +27,7 @@ export class FormEventPage implements OnInit {
         this.validations_form = this.formBuilder.group({
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
-            location: new FormControl('', Validators.required),
+            location_name: new FormControl('', Validators.required),
             open: new FormControl(true),
             time_start: new FormControl(),
             time_end: new FormControl(),
