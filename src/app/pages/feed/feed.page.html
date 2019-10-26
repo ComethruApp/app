@@ -12,7 +12,7 @@
 <ion-content *ngIf="events" class="list-mini-content" padding>
   <div *ngIf="events.length > 0" class="list">
     <ion-list>
-      <ion-item class="ion-no-lines" *ngFor="let event of events" [routerLink]="['/event', event.id]">
+      <ion-item class="ion-no-lines" *ngFor="let event of events" (onclick)="goToEvent(event.id)">
         <ion-text>{{ event.name }}</ion-text>
         <ion-text>@ {{ event.location_name }}</ion-text>
         <ion-text>Starts at {{ event.time_start }}</ion-text>
