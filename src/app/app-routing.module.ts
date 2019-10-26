@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { RegisterPageModule } from './pages/auth/register/register.module';
+import { LoginPageModule } from './pages/auth/login/login.module';
+import { TabsPageModule } from './pages/tabs/tabs.module';
+import { EventPageModule } from './pages/event/event.module';
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
-  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
+  { path: 'register', component: RegisterPageModule },
+  { path: 'login', component: LoginPageModule },
 
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
-  { path: 'event', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'tabs', component: TabsPageModule },
+  { path: 'event/:id', component: EventPageModule },
   //{ path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   //{ path: 'form-event', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   /*
