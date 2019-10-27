@@ -32,3 +32,17 @@ ion-input{
 :-moz-placeholder { /* Firefox 18- */
   color: red;
 }
+
+ion-item {
+    --background: #37474F;
+    --color: #fff;
+    margin-bottom: 5px;
+}
+
+ion-button{
+    --background: #1D306D;
+}
+
+a{
+    color: #fff;
+}
