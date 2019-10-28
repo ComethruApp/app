@@ -10,9 +10,6 @@ import { Facebook } from '@ionic-native/facebook'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
-
 import { AuthModule } from './services/auth/auth.module';
 import { APIService } from './services/api/api.service';
 
@@ -35,8 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
-    ImagePicker,
-    WebView,
 
     APIService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
