@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../../../services/auth/auth.service';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-register',
@@ -9,9 +10,23 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-    constructor(private authService: AuthService, private router: Router) { }
+    validations_form: FormGroup;
+
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private formBuilder: FormBuilder,
+    ) { }
 
     ngOnInit() {
+        this.resetFields();
+    }
+
+    resetFields(){
+        this.validations_form = this.formBuilder.group({
+            email: new FormControl('', Validators.email),
+            password: new FormControl('', Validators.required),
+        });
     }
 
     register(form) {
