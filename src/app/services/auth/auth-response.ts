@@ -7,3 +7,8 @@ export interface AuthResponse {
         expires_in: number,
     },
 }
+
+export interface RegisterResponse {
+    status: string,
+    message: string,
+}

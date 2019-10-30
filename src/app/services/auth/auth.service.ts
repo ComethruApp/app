@@ -5,7 +5,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Storage } from '@ionic/storage';
 import { User } from './user';
-import { AuthResponse } from './auth-response';
+import { AuthResponse, RegisterResponse } from './auth-response';
+
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
@@ -14,21 +16,14 @@ export class AuthService {
     AUTH_SERVER_ADDRESS: string = 'http://localhost:5000';
     authSubject = new BehaviorSubject(false);
 
-    constructor(private httpClient: HttpClient, private storage: Storage) { }
+    constructor(
+        private httpClient: HttpClient,
+        private storage: Storage,
+        public alertController: AlertController,
+    ) { }
 
-    register(user: User): Observable<AuthResponse> {
-        return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/auth/register`, user).pipe(
-            tap(async (res: AuthResponse ) => {
-
-                if (res.user) {
-                    await this.storage.set("TOKEN", res.user.token);
-                    await this.storage.set("EXPIRES_IN", res.user.expires_in);
-                    await this.storage.set("USER_ID", res.user.id);
-                    this.authSubject.next(true);
-                }
-            })
-
-        );
+    register(user: User): Observable<RegisterResponse> {
+        return this.httpClient.post<RegisterResponse>(`${this.AUTH_SERVER_ADDRESS}/auth/register`, user);
     }
 
     login(user: User): Observable<AuthResponse> {
