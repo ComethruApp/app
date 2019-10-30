@@ -12,7 +12,7 @@ import { Router, RouterOutlet, ActivationStart } from '@angular/router';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-    private user: User = null;
+    private user: User;
 
     constructor(
         public loadingCtrl: LoadingController,

@@ -8,9 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-    <h1>{{ event.name }}</h1>
-    <h2>{{ event.location_name }} at {{ event.time_start }}</h2>
-    <p>{{ event.description }}</p>
-    <p *ngIf="event.venmo">Venmo donations: @{{ event.venmo }}</p>
-    <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
+    <div *ngIf="event">
+        <h1>{{ event.name }}</h1>
+        <h2>{{ event.location_name }} at {{ event.time_start }}</h2>
+        <p>{{ event.description }}</p>
+        <p *ngIf="event.venmo">Venmo donations: @{{ event.venmo }}</p>
+        <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
+    </div>
 </ion-content>

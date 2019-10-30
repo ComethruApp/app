@@ -11,7 +11,7 @@ import { APIService } from '../../services/api/api.service';
 })
 export class EventPage implements OnInit {
     private id: number;
-    private event: Event_ = null;
+    private event: Event_;
 
     constructor(
         public loadingCtrl: LoadingController,

@@ -1,14 +1,16 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>{{user.name}}</ion-title>
+        <ion-title *ngIf="user">{{ user.name }}</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-img class="avatar" src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=512"></ion-img>
-    <ion-toolbar color="danger">
-        <ion-title>Log out</ion-title>
-    </ion-toolbar>
+<ion-content class="ion-padding">
+    <div *ngIf="user">
+        <ion-img class="avatar" src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=512"></ion-img>
+        <ion-toolbar color="danger">
+            <ion-title>Log out</ion-title>
+        </ion-toolbar>
+    </div>
 </ion-content>
 
 <ion-footer (click)="logout()">
