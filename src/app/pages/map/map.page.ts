@@ -31,8 +31,8 @@ export class MapPage implements OnInit {
             darkBackground = '#1e282c',
             lighterBackground = '#515a5f',
             accent = '#00356b';
+        console.log('Loading');
         this.geolocation.getCurrentPosition().then((resp) => {
-            console.log('Loading');
             let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
             let mapOptions = {
                 center: latLng,
@@ -43,8 +43,7 @@ export class MapPage implements OnInit {
                 streetViewControl: false,
                 rotateControl: false,
                 fullscreenControl: false,
-                /*
-                backgroundColor: background,*/
+                backgroundColor: background,
                 styles: [
                     {
                         featureType: 'water',
@@ -135,7 +134,7 @@ export class MapPage implements OnInit {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             this.map.addListener('tilesloaded', () => {
-                console.log('accuracy',this.map);
+                console.log('accuracy', this.map);
                 this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
             });
 
