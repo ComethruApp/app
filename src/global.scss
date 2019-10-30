@@ -50,3 +50,17 @@ a{
 ion-content.auth {
     --padding-top: 120px;
 }
+
+@keyframes load {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    width: 40px;
+    animation: 1s load infinite;
+    margin: 0 auto;
+}
