@@ -1,10 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>map</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Map</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhIvIGzWouzdeW2hRF61F7ZRkqUxH_rJI"></script>
+    <div class="map-wrapper">
+        <div id="map_center">
+            <img src="../../assets/icon/center_marker.png" />
+        </div>
+        <div #map id="map"></div>
+    </div>
+    <div id="address">
+        <span>{{address}}</span>
+    </div>
 </ion-content>
