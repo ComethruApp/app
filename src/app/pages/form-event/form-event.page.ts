@@ -41,6 +41,7 @@ export class FormEventPage implements OnInit {
         data.location_lat = 41.3163 + (Math.random() * 0.0001 - 0.00005);
         data.location_lon = -72.9223 + (Math.random() * 0.0001 - 0.00005);
         this.apiService.createEvent(data).subscribe((res)=>{
+            this.resetFields();
             this.router.navigateByUrl('tabs');
         });
     }

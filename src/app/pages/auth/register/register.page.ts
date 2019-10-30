@@ -43,6 +43,7 @@ export class RegisterPage implements OnInit {
 
     register(form) {
         this.authService.register(form.value).subscribe(response => {
+            this.resetFields();
             this.alertController.create({
                 header: 'Account created!',
                 message: response.message,

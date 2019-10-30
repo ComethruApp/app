@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
     login(form){
         let data = form.value;
         this.authService.login(data).subscribe((res)=>{
+            this.resetFields();
             this.router.navigateByUrl('tabs');
         });
     }
