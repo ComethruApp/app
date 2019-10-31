@@ -20,9 +20,6 @@ export class MapPage implements OnInit {
     address: string;
     loading: any; // TODO: what type?
     events: Event_[];
-    // Will be google.maps.InfoWindow
-    popup: any;
-    popupOpen: boolean = false;
 
     constructor(
         private router: Router,
