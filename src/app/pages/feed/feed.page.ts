@@ -3,6 +3,7 @@ import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-feed',
@@ -34,6 +35,10 @@ export class FeedPage implements OnInit {
             console.log(events);
             this.events = events;
         });
+    }
+
+    formatDate(date) {
+        return moment(date).format('dddd MMMM Do, h:mma')
     }
 
     goToEvent(eventId) {
