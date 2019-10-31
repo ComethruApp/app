@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { LoadingController } from '@ionic/angular';
+import { APIService } from '../../services/api/api.service';
+import { Event_ } from '../../services/api/models';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var google;
 
@@ -13,15 +17,27 @@ export class MapPage implements OnInit {
 
     @ViewChild('map') mapElement: ElementRef;
     map: any;
-    address :string;
+    address: string;
+    loading: any; // TODO: what type?
+    events: Event_[];
+    // Will be google.maps.InfoWindow
+    popup: any;
+    popupOpen: boolean = false;
 
     constructor(
+        private router: Router,
         private geolocation: Geolocation,
         private nativeGeocoder: NativeGeocoder,
+        private loadingCtrl: LoadingController,
+        private apiService: APIService,
     ) { }
 
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.loading = await this.loadingCtrl.create({
+            message: 'Loading...'
+        });
+        this.presentLoading(this.loading);
         this.loadMap();
     }
 
@@ -31,7 +47,6 @@ export class MapPage implements OnInit {
             darkBackground = '#1e282c',
             lighterBackground = '#515a5f',
             accent = '#00356b';
-        console.log('Loading');
         this.geolocation.getCurrentPosition().then((resp) => {
             let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
             let mapOptions = {
@@ -137,10 +152,37 @@ export class MapPage implements OnInit {
                 console.log('accuracy', this.map);
                 this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
             });
+            this.getData();
 
         }).catch((error) => {
             console.log('Error getting location', error);
         });
+    }
+
+    async getData(){
+        this.apiService.getEvents().subscribe(events => {
+            this.loading.dismiss();
+            this.events = events;
+            for (let event of this.events) {
+                let marker = new google.maps.Marker({
+                    position: {
+                        lat: event.location_lat,
+                        // Note the change in naming
+                        lng: event.location_lon,
+                    },
+                    title: event.name,
+                    id: event.id,
+                });
+                google.maps.event.addListener(marker, 'click', () => {
+                    this.router.navigate(['/event/' + event.id]);
+                });
+                marker.setMap(this.map);
+            }
+        });
+    }
+
+    async presentLoading(loading) {
+        return await loading.present();
     }
 
     getAddressFromCoords(latitude, longitude) {
