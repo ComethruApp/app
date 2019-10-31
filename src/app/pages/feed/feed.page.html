@@ -13,7 +13,7 @@
     <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
     <div *ngIf="events.length > 0" class="list">
         <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let event of events" (click)="goToEvent(event.id)">
+            <ion-row class="ion-align-items-center ion-no-padding list-party" *ngFor="let event of events" (click)="goToEvent(event.id)">
                 <ion-col>
                     <div>
                         <h2>{{ event.name }}</h2>

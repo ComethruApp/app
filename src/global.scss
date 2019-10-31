@@ -61,6 +61,10 @@ ion-content.auth {
 }
 .loader {
     width: 40px;
-    animation: 1s load infinite;
+    animation: 4s load infinite linear;
     margin: 0 auto;
+}
+
+.list-party {
+    border-bottom: solid 1px white;
 }
