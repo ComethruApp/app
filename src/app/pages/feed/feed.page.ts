@@ -21,20 +21,21 @@ export class FeedPage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.getData();
-    }
-
-    async getData(){
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
         this.presentLoading(loading);
+        this.getData().then(() => loading.dismiss());
+    }
 
+    async getData() {
         this.apiService.getEvents().subscribe(events => {
-            loading.dismiss();
-            console.log(events);
             this.events = events;
         });
+    }
+
+    doRefresh(event) {
+        this.getData().then(() => event.target.complete());
     }
 
     formatDate(date) {

@@ -10,6 +10,11 @@
 </ion-header>
 
 <ion-content *ngIf="events" class="list-mini-content" padding>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+                                                                                          refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
     <div *ngIf="events.length > 0" class="list">
         <ion-grid class="ion-no-padding">
