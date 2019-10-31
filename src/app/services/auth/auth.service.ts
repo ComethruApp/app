@@ -13,7 +13,7 @@ import { AlertController } from '@ionic/angular';
     providedIn: 'root'
 })
 export class AuthService {
-    AUTH_SERVER_ADDRESS: string = 'http://localhost:5000';
+    AUTH_SERVER_ADDRESS: string = 'https://comethru.herokuapp.com';
     authSubject = new BehaviorSubject(false);
 
     constructor(

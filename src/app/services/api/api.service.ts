@@ -18,7 +18,7 @@ import 'rxjs/add/operator/mergeMap'
     providedIn: 'root'
 })
 export class APIService {
-    root: string = "http://localhost:5000/api";
+    root: string = "https://comethru.herokuapp.com/api";
     token: string = null;
     constructor(
         private httpClient: HttpClient,
