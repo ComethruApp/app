@@ -48,6 +48,14 @@ export class APIService {
         });
     }
 
+    private delete(path: string): Observable<any> {
+        let storageObservable = from(this.storage.get('TOKEN'));
+
+        return storageObservable.mergeMap(token => {
+            return this.httpClient.delete(this.ROOT + path, this.ops(token));
+        });
+    }
+
 
     // Sending a GET request to /users
     // TODO broken
@@ -129,6 +137,16 @@ export class APIService {
         return this.post('/events', event)
         .map(response => {
             return new Event_(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public deleteEvent(eventId): Observable<Object> {
+        return this.delete('/events/' + eventId)
+        .map(response => {
+            return response;
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
