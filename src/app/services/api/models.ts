@@ -18,6 +18,7 @@ export class Event_ {
     lat: number;
     lng: number;
     time: number;
+    hosts: User[];
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
