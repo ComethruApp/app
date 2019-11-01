@@ -14,12 +14,10 @@ export class Event_ {
     id: number;
     name: string;
     description: string;
-    location_name: string;
-    location_lat: number;
-    location_lon: number;
-    time_start: number;
-    time_end: number;
-    venmo: string;
+    location: string;
+    lat: number;
+    lng: number;
+    time: number;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

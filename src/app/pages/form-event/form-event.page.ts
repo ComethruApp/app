@@ -31,11 +31,9 @@ export class FormEventPage implements OnInit {
         this.validations_form = this.formBuilder.group({
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
-            location_name: new FormControl('', Validators.required),
+            location: new FormControl('', Validators.required),
             open: new FormControl(true),
-            time_start: new FormControl(),
-            time_end: new FormControl(),
-            venmo: new FormControl(''),
+            time: new FormControl(),
         });
     }
 
@@ -43,8 +41,8 @@ export class FormEventPage implements OnInit {
         // TODO: also support update!
         let data = form.value;
         this.geolocation.getCurrentPosition().then((resp) => {
-            data.location_lat = resp.coords.latitude;
-            data.location_lon = resp.coords.longitude;
+            data.lat = resp.coords.latitude;
+            data.lng = resp.coords.longitude;
             this.apiService.createEvent(data).subscribe((res)=>{
                 this.resetFields();
                 this.router.navigateByUrl('tabs');

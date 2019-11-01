@@ -163,9 +163,8 @@ export class MapPage implements OnInit {
             for (let event of this.events) {
                 let marker = new google.maps.Marker({
                     position: {
-                        lat: event.location_lat,
-                        // Note the change in naming
-                        lng: event.location_lon,
+                        lat: event.lat,
+                        lng: event.lng,
                     },
                     title: event.name,
                     id: event.id,
