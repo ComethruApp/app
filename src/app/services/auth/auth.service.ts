@@ -8,12 +8,13 @@ import { User } from './user';
 import { AuthResponse, RegisterResponse } from './auth-response';
 
 import { AlertController } from '@ionic/angular';
+import * as Constants from '../../constants';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    AUTH_SERVER_ADDRESS: string = 'https://comethru.herokuapp.com';
+    AUTH_SERVER_ADDRESS: string = Constants.HOST + '/auth';
     authSubject = new BehaviorSubject(false);
 
     constructor(
@@ -23,11 +24,11 @@ export class AuthService {
     ) { }
 
     register(user: User): Observable<RegisterResponse> {
-        return this.httpClient.post<RegisterResponse>(`${this.AUTH_SERVER_ADDRESS}/auth/register`, user);
+        return this.httpClient.post<RegisterResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user);
     }
 
     login(user: User): Observable<AuthResponse> {
-        return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/auth/login`, user).pipe(
+        return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/login`, user).pipe(
             tap(async (res: AuthResponse) => {
                 if (res.user) {
                     await this.storage.set("TOKEN", res.user.token);
