@@ -53,7 +53,9 @@ export class EventPage implements OnInit {
                 {
                     text: 'Yes',
                     handler: () => {
-                        // TODO
+                        this.apiService.deleteEvent(this.id).subscribe(response => {
+                            this.router.navigateByUrl('tabs');
+                        });
                     }
                 }
             ]
