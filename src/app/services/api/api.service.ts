@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import * as Constants from '../../constants';
 import 'rxjs/add/observable/throw';
 
 import 'rxjs/add/operator/catch';
@@ -18,21 +19,24 @@ import 'rxjs/add/operator/mergeMap'
     providedIn: 'root'
 })
 export class APIService {
-    root: string = "https://comethru.herokuapp.com/api";
-    token: string = null;
+    root: string = Constants.HOST + "/api";
+
     constructor(
         private httpClient: HttpClient,
         private storage: Storage,
     ) { }
 
+    private options(token: string): Object {
+        return {
+            headers: new HttpHeaders().set('Authorization', 'Bearer ' + token),
+        };
+    }
+
     private get(path: string): Observable<any> {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
-            return this.httpClient
-                .get(this.root + path, {
-                    params: new HttpParams().set('token', token),
-                });
+            return this.httpClient.get(this.root + path, this.options(token));
         });
     }
 
@@ -40,10 +44,7 @@ export class APIService {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
-            return this.httpClient
-                .post(this.root + path, data, {
-                    params: new HttpParams().set('token', token),
-                });
+            return this.httpClient.post(this.root + path, data, this.options(token));
         });
     }
 
