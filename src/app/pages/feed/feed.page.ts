@@ -20,7 +20,7 @@ export class FeedPage implements OnInit {
         private route: ActivatedRoute,
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
