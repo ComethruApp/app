@@ -146,7 +146,7 @@ export class MapPage implements OnInit {
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             this.map.addListener('tilesloaded', () => {
-                console.log('accuracy', this.map);
+                console.log('Map loaded!');
                 this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
             });
             this.getData();

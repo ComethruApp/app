@@ -35,7 +35,6 @@ export class RegisterPage implements OnInit {
                 Validators.minLength(5),
             ])),
             confirm_password: new FormControl('', Validators.required),
-
         }, (formGroup: FormGroup) => {
              return PasswordValidator.areEqual(formGroup);
         });
@@ -48,6 +47,7 @@ export class RegisterPage implements OnInit {
                 header: 'Account created!',
                 message: response.message,
                 buttons: ['OK'],
+                cssClass: 'custom-alert',
             }).then(alert => {
                 alert.present();
                 this.router.navigateByUrl('login');
@@ -57,14 +57,10 @@ export class RegisterPage implements OnInit {
                 header: 'Error',
                 message: response.error.message,
                 buttons: ['OK'],
+                cssClass: 'custom-alert',
             }).then(alert => {
                 alert.present();
             });
         });
-
-
-            /*subscribe((res) => {
-        });*/
     }
-
 }

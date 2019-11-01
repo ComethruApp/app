@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Router, RouterOutlet, ActivationStart } from "@angular/router";
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { APIService } from '../../services/api/api.service';
@@ -15,6 +17,8 @@ export class FormEventPage implements OnInit {
 
     constructor(
         private apiService: APIService,
+        private geolocation: Geolocation,
+        private nativeGeocoder: NativeGeocoder,
         private router: Router,
         private formBuilder: FormBuilder,
     ) { }
@@ -38,11 +42,13 @@ export class FormEventPage implements OnInit {
     submit(form) {
         // TODO: also support update!
         let data = form.value;
-        data.location_lat = 41.3163 + (Math.random() * 0.0001 - 0.00005);
-        data.location_lon = -72.9223 + (Math.random() * 0.0001 - 0.00005);
-        this.apiService.createEvent(data).subscribe((res)=>{
-            this.resetFields();
-            this.router.navigateByUrl('tabs');
+        this.geolocation.getCurrentPosition().then((resp) => {
+            data.location_lat = resp.coords.latitude;
+            data.location_lon = resp.coords.longitude;
+            this.apiService.createEvent(data).subscribe((res)=>{
+                this.resetFields();
+                this.router.navigateByUrl('tabs');
+            });
         });
     }
 }
