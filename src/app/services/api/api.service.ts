@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as Constants from '../../constants';
 import 'rxjs/add/observable/throw';
@@ -19,16 +19,16 @@ import 'rxjs/add/operator/mergeMap'
     providedIn: 'root'
 })
 export class APIService {
-    root: string = Constants.HOST + "/api";
+    ROOT: string = Constants.HOST + "/api";
 
     constructor(
         private httpClient: HttpClient,
         private storage: Storage,
     ) { }
 
-    private options(token: string): Object {
+    private ops(token: string): Object {
         return {
-            headers: new HttpHeaders().set('Authorization', 'Bearer ' + token),
+            params: new HttpParams().set('token', token),
         };
     }
 
@@ -36,7 +36,7 @@ export class APIService {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
-            return this.httpClient.get(this.root + path, this.options(token));
+            return this.httpClient.get(this.ROOT + path, this.ops(token));
         });
     }
 
@@ -44,7 +44,7 @@ export class APIService {
         let storageObservable = from(this.storage.get('TOKEN'));
 
         return storageObservable.mergeMap(token => {
-            return this.httpClient.post(this.root + path, data, this.options(token));
+            return this.httpClient.post(this.ROOT + path, data, this.ops(token));
         });
     }
 
@@ -54,7 +54,7 @@ export class APIService {
     /*
        public getUsers(){
        return this.httpClient
-       .get(this.root + '/users')
+       .get(this.ROOT + '/users')
        .map(users => {
        return users.map((user) => new User(user));
        })
