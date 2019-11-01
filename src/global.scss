@@ -21,16 +21,16 @@ ion-input{
     --placeholder-opacity: 1;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: red;
+    color: red;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: red;
+    color: red;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: red;
+    color: red;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: red;
+    color: red;
 }
 
 ion-item {

@@ -17,6 +17,7 @@
         "@angular/platform-browser": "^7.2.2",
         "@angular/platform-browser-dynamic": "^7.2.2",
         "@angular/router": "^7.2.2",
+        "@ionic-native/background-geolocation": "^5.16.0",
         "@ionic-native/core": "^5.0.0",
         "@ionic-native/facebook": "^5.13.0",
         "@ionic-native/geolocation": "^5.0.0",
@@ -27,6 +28,7 @@
         "@ionic/angular": "^4.11.2",
         "@ionic/pro": "2.0.3",
         "@ionic/storage": "^2.2.0",
+        "@mauron85/cordova-plugin-background-geolocation": "^3.1.0",
         "@types/jest": "^24.0.19",
         "cordova-android": "^7.0.0",
         "cordova-ios": "4.5.5",
@@ -89,7 +91,17 @@
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "For tracking event locations"
             },
-            "cordova-plugin-nativegeocoder": {}
+            "cordova-plugin-nativegeocoder": {},
+            "cordova-plugin-background-geolocation": {
+                "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+                "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+                "ICON": "@mipmap/icon",
+                "SMALL_ICON": "@mipmap/icon",
+                "ACCOUNT_NAME": "@string/app_name",
+                "ACCOUNT_LABEL": "@string/app_name",
+                "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+                "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+            }
         },
         "platforms": [
             "android",
