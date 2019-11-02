@@ -1,6 +1,38 @@
 .submit-button {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 .delete-button {
-  // margin-top: 20px;
+    // margin-top: 20px;
+}
+
+#ocean{
+    position: relative;
+    width: 120px;
+    min-height: 100%;
+    background: #666;
+}
+
+.wave {
+    background: #a8e3ff;
+    display: inline-block;
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    animation-name:             wave;
+    animation-duration:         3s;
+    animation-iteration-count:  infinite;
+    transition-timing-function: ease-in-out;
+}
+
+
+@keyframes wave {
+    0%{
+        height: 60%;
+    }
+    50%{
+        height: 40%;
+    }
+    100%{
+        height: 60%;
+    }
 }

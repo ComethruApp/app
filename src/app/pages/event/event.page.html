@@ -12,6 +12,18 @@
         <h1>{{ event.name }}</h1>
         <h2>{{ event.location }} at {{ event.time }}</h2>
         <p>{{ event.description }}</p>
+        {{ event.rating }}
+        {{ event.people }}
+
+        <div #ocean>
+            <div class="wave"
+                 *ngFor="let i of waves"
+                 [style.left]="i * 3 + 'px'"
+                 [style.animationDelay]="(i/100)+'s'"></div>
+        </div>
+    <script>
+    </script>
+
         <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
     </div>
 </ion-content>
