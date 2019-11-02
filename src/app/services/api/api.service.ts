@@ -100,6 +100,16 @@ export class APIService {
         });
     }
 
+    public searchUsers(query: string): Observable<User[]> {
+        return this.get('/users/search/' + query)
+        .map(response => {
+            return response.map((user) => new User(user));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     // Sending a PUT request to /users/:id
     public updateUser(user: User){
 
@@ -112,11 +122,11 @@ export class APIService {
     }
    */
 
+
     public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
             return response.map((event) => new Event_(event));
-            return new Event_(response);
         })
         .catch((err) => {
             return Observable.throw(err.statusText);

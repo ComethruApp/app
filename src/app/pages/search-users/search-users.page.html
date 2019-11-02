@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>search_users</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Find Friends</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content class="ion-padding">
+    <ion-item lines="none">
+        <ion-input type="text" autocomplete="off" autocorrect="off" (input)="getData($event.target.value)"></ion-input>
+    </ion-item>
+    <div *ngIf="users && users.length > 0" class="list">
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users" (click)="goToEvent(user.id)">
+                <ion-col>
+                    <div>
+                        <h2>{{ user.name }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </ion-col>
+                <ion-col>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>

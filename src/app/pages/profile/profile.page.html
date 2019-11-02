@@ -7,7 +7,9 @@
 <ion-content class="ion-padding">
     <div *ngIf="user">
         <ion-img class="avatar" src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=512"></ion-img>
-        <ion-toolbar color="danger">
+        <ion-button expand="block" size="large" (click)="findFriends()">Find friends</ion-button>
+        <ion-button color="danger" expand="block" size="large" (click)="logout()">Logout</ion-button>
+        <ion-toolbar>
             <ion-title>Log out</ion-title>
         </ion-toolbar>
     </div>
