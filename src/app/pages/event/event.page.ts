@@ -65,7 +65,7 @@ export class EventPage implements OnInit {
     }
 
     formatDay(date) {
-        return moment(date).format('Do');
+        return moment(date).format('dddd');
     }
     formatDate(date) {
         return moment(date).format('h:mma')

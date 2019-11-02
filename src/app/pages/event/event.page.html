@@ -12,17 +12,19 @@
         <h1>{{ event.name }}</h1>
         <div class="tags">
             <div class="tag">{{ event.location }}</div>
-            <div>{{ formatDay(event.time) }}</div>
-            <div>{{ formatDate(event.time) }}</div>
+            <div class="tag">{{ formatDay(event.time) }}</div>
+            <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
         <p class="description">{{ event.description }}</p>
         <p>Rating: {{ event.rating }}%</p>
 
-        <div class="ocean">
-            <div class="ocean-label"><span>{{ event.people }}</span><br>people</div>
-            <div class="water" [style.transform]="'translateY(' + (75 - 1.5 * event.people) + 'px)'">
-                <span class="wave"></span>
-                <span class="deep-water"></span>
+        <div class="status">
+            <div class="ocean">
+                <div class="ocean-label"><span>{{ event.people }}</span><br>people</div>
+                <div class="water" [style.transform]="'translateY(' + (75 - 1.5 * event.people) + 'px)'">
+                    <span class="wave"></span>
+                    <span class="deep-water"></span>
+                </div>
             </div>
         </div>
         <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>

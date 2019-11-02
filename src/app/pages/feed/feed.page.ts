@@ -39,10 +39,10 @@ export class FeedPage implements OnInit {
     }
 
     formatDay(date) {
-        return moment(date).format('Do');
+        return moment(date).format('dddd');
     }
     formatDate(date) {
-        return moment(date).format('h:mma')
+        return moment(date).format('dddd MMMM Do, h:mma')
     }
 
     goToEvent(eventId) {
