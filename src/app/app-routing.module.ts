@@ -9,14 +9,7 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'map', loadChildren: './pages/map/map.module#MapPageModule' },
-  //{ path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  //{ path: 'form-event', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
-  /*
-  { path: 'details/:id', loadChildren: './pages/details/details.module#DetailsPageModule' },
-  { path: 'feed', loadChildren: './pages/feed/feed.module#FeedPageModule' },
-  { path: 'new-event', loadChildren: './pages/new-event/new-event.module#NewEventPageModule' },
-    */
-  // { path: 'new-event-modal', loadChildren: './new-event-modal/new-event-modal.module#NewEventModalPageModule' },
+  { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
 ];
 
 @NgModule({
