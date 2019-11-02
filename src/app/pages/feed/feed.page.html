@@ -18,9 +18,11 @@
             <ion-row class="ion-align-items-center ion-no-padding list-party" *ngFor="let event of events" (click)="goToEvent(event.id)">
                 <ion-col>
                     <div>
-                        <h1>{{ event.name }}</h1>
-                        <p>@ {{ event.location }}</p>
-                        <p>Hosted by {{ event.hosts[0].name }}</p>
+                        <h2>{{ event.name }}</h2>
+                        <div class="tags">
+                            <div class="tag">@ {{ event.location }}</div>
+                            <div class="tag">Hosted by {{ event.hosts[0].name }}</div>
+                        </div>
                     </div>
                 </ion-col>
                 <ion-col>

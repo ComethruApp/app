@@ -10,13 +10,17 @@
 <ion-content padding>
     <div *ngIf="event">
         <h1>{{ event.name }}</h1>
-        <h2>{{ event.location }} at {{ event.time }}</h2>
-        <p>{{ event.description }}</p>
-        {{ event.rating }}
-        {{ event.people }}
+        <div class="tags">
+            <div class="tag">{{ event.location }}</div>
+            <div>{{ formatDay(event.time) }}</div>
+            <div>{{ formatDate(event.time) }}</div>
+        </div>
+        <p class="description">{{ event.description }}</p>
+        <p>Rating: {{ event.rating }}%</p>
 
-        <div class="wave-fill">
-            <div class="water">
+        <div class="ocean">
+            <div class="ocean-label"><span>{{ event.people }}</span><br>people</div>
+            <div class="water" [style.transform]="'translateY(' + (75 - 1.5 * event.people) + 'px)'">
                 <span class="wave"></span>
                 <span class="deep-water"></span>
             </div>

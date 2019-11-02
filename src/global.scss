@@ -68,3 +68,63 @@ ion-content.auth {
 .list-party {
     border-bottom: solid 1px white;
 }
+h1 {
+    font-size: 80px;
+    line-height: 1.1;
+}
+
+.description {
+    white-space: pre-wrap;
+}
+
+.ocean {
+    height: 150px;
+    width: 150px;
+    background: #1e282c;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.ocean .water span {
+    display: block;
+    width: 100%;
+}
+.ocean-label {
+    position: relative;
+    top: 40px;
+    text-align: center;
+    z-index: 10;
+}
+.ocean-label span {
+    font-size: 50px;
+    line-height: 0.9;
+}
+.water {
+    z-index: -1;
+}
+.wave {
+    background: url("assets/imgs/wave.png");
+    height: 22px;
+    background-size: contain;
+    animation: wave 10s linear infinite;
+}
+.deep-water {
+    background: rgb(4, 103, 246);
+    height: 200px;
+}
+
+@keyframes wave {
+    from {
+        background-position: 0px 0px;
+    }
+    to {
+        background-position: 1000px 0px;
+    }
+}
+
+.tags {
+    .tag {
+        display: inline-block;
+        background: rgb(4, 103, 246);
+        padding: 5px 3px;
+    }
+}

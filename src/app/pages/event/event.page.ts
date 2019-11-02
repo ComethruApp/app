@@ -3,6 +3,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Event_ } from '../../services/api/models';
 import { APIService } from '../../services/api/api.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-event',
@@ -12,7 +13,6 @@ import { APIService } from '../../services/api/api.service';
 export class EventPage implements OnInit {
     private id: number;
     private event: Event_;
-    private waves = Array(128).fill().map((x,i)=>i);
 
     constructor(
         public loadingCtrl: LoadingController,
@@ -25,7 +25,6 @@ export class EventPage implements OnInit {
     ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
         this.getData();
-        this.wave();
     }
 
     async getData(){
@@ -37,7 +36,7 @@ export class EventPage implements OnInit {
         this.apiService.getEvent(this.id).subscribe(event => {
             loading.dismiss();
             this.event = event;
-            console.log(event);
+            console.log(event.description);
         });
     }
 
@@ -65,23 +64,13 @@ export class EventPage implements OnInit {
         await alert.present();
     }
 
-    wave() {
-        /*
-        var waveWidth = 10,
-            waveCount = Math.floor(window.innerWidth/waveWidth),
-            docFrag = document.createDocumentFragment();
-
-        for(var i = 0; i < waveCount; i++){
-          var wave = document.createElement("div");
-          wave.className += " wave";
-          docFrag.appendChild(wave);
-          wave.style.left = i * waveWidth + "px";
-          wave.style.webkitAnimationDelay = (i/100) + "s";
-        }
-
-        this.ocean.nativeElement.appendChild(docFrag);
-       */
+    formatDay(date) {
+        return moment(date).format('Do');
     }
+    formatDate(date) {
+        return moment(date).format('h:mma')
+    }
+
 
     async presentLoading(loading) {
         return await loading.present();

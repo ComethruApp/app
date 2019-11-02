@@ -38,8 +38,11 @@ export class FeedPage implements OnInit {
         this.getData().then(() => event.target.complete());
     }
 
+    formatDay(date) {
+        return moment(date).format('Do');
+    }
     formatDate(date) {
-        return moment(date).format('dddd MMMM Do, h:mma')
+        return moment(date).format('h:mma')
     }
 
     goToEvent(eventId) {
