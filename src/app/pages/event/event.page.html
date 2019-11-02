@@ -15,15 +15,12 @@
         {{ event.rating }}
         {{ event.people }}
 
-        <div #ocean>
-            <div class="wave"
-                 *ngFor="let i of waves"
-                 [style.left]="i * 3 + 'px'"
-                 [style.animationDelay]="(i/100)+'s'"></div>
+        <div class="wave-fill">
+            <div class="water">
+                <span class="wave"></span>
+                <span class="deep-water"></span>
+            </div>
         </div>
-    <script>
-    </script>
-
         <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
     </div>
 </ion-content>
