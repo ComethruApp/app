@@ -38,9 +38,12 @@ ion-item {
     --color: #fff;
     margin-bottom: 5px;
 }
+h2 {
+    margin-top: 0;
+}
 
 ion-button{
-    --background: #1D306D;
+    --background: #0467f6;
 }
 
 a{
@@ -65,12 +68,12 @@ ion-content.auth {
     margin: 0 auto;
 }
 
-.list-party {
-    border-bottom: solid 1px white;
+.list-event {
 }
 h1 {
     font-size: 80px;
-    line-height: 1.1;
+    line-height: 1;
+    margin-top: 0;
 }
 
 .description {
@@ -87,6 +90,10 @@ h1 {
     background: #1e282c;
     overflow: hidden;
     border-radius: 100%;
+}
+.ocean.small {
+    width: 120px;
+    height: 120px;
 }
 .ocean .water span {
     display: block;
@@ -109,10 +116,11 @@ h1 {
     background: url("assets/imgs/wave.png");
     height: 22px;
     background-size: contain;
+    background-repeat: repeat-x;
     animation: wave 10s linear infinite;
 }
 .deep-water {
-    background: rgb(4, 103, 246);
+    background: #0467f6;
     height: 200px;
 }
 
@@ -128,7 +136,7 @@ h1 {
 .tags {
     .tag {
         display: inline-block;
-        background: rgb(4, 103, 246);
+        background: #0467f6;
         padding: 3px 5px;
         margin-right: 3px;
         margin-bottom: 3px;

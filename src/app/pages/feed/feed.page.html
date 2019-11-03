@@ -15,18 +15,25 @@
     </ion-refresher>
     <div *ngIf="events.length > 0" class="list">
         <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center ion-no-padding list-party" *ngFor="let event of events" (click)="goToEvent(event.id)">
+            <ion-row class="ion-align-items-center ion-no-padding list-event" *ngFor="let event of events" (click)="goToEvent(event.id)">
                 <ion-col>
-                    <div>
-                        <h2>{{ event.name }}</h2>
-                        <div class="tags">
-                            <div class="tag">@ {{ event.location }}</div>
-                            <div class="tag">Hosted by {{ event.hosts[0].name }}</div>
+                    <div class="ocean small">
+                        <div class="ocean-label"><span>{{ event.people }}</span><br>people</div>
+                        <div class="water" [style.transform]="'translateY(' + (40 - 1.5 * event.people) + 'px)'">
+                            <span class="wave"></span>
+                            <span class="deep-water"></span>
                         </div>
                     </div>
                 </ion-col>
                 <ion-col>
-                    <div>{{ formatDate(event.time) }}</div>
+                    <div>
+                        <h2 class="tag">{{ event.name }}</h2>
+                        <div class="tags">
+                            <div>@ {{ event.location }}</div>
+                            <div>Hosted by {{ event.hosts[0].name }}</div>
+                        </div>
+                        <div>{{ formatDate(event.time) }}</div>
+                    </div>
                 </ion-col>
             </ion-row>
         </ion-grid>
