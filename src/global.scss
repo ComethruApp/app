@@ -100,13 +100,13 @@ h1 {
     display: block;
     width: 100%;
 }
-.ocean-label {
+.status-label {
     position: relative;
     top: 40px;
     text-align: center;
     z-index: 10;
 }
-.ocean-label span {
+.status-label span {
     font-size: 50px;
     line-height: 0.9;
 }
@@ -123,6 +123,7 @@ h1 {
 .deep-water {
     background: #0467f6;
     height: 200px;
+    transition: 1s transform;
 }
 
 @keyframes wave {
@@ -136,21 +137,26 @@ h1 {
 
 .moon {
     display: inline-block;
-    background: #fffde7;
+    background: #ffffff;
     height: 150px;
     width: 150px;
     margin-left: 10px;
     border-radius: 100%;
-    overflow: none;
+    overflow: hidden;
 }
 .moon .darkness {
     position: relative;
+    top: 0;
     background: #1e282c;
     height: 150px;
     width: 150px;
     border-radius: 100%;
 }
-
+.moon .status-label {
+    top: -110px;
+    position: relative;
+    mix-blend-mode: difference;
+}
 .tags {
     .tag {
         display: inline-block;
