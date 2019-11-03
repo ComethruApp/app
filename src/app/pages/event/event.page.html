@@ -19,7 +19,6 @@
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
         <p class="description">{{ event.description }}</p>
-        <p>Rating: {{ event.rating }}%</p>
 
         <div class="status">
             <div class="ocean">
@@ -28,6 +27,9 @@
                     <span class="wave"></span>
                     <span class="deep-water"></span>
                 </div>
+            </div>
+            <div class="moon">
+                <div class="darkness" [style.transform]="'translateX(' + (150 / 100 * event.rating) + 'px)'"></div>
             </div>
         </div>
         <ion-button class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>

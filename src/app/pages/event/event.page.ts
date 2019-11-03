@@ -36,7 +36,6 @@ export class EventPage implements OnInit {
         this.apiService.getEvent(this.id).subscribe(event => {
             loading.dismiss();
             this.event = event;
-            console.log(event.description);
         });
     }
 

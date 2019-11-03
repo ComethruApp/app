@@ -162,4 +162,14 @@ export class APIService {
             return Observable.throw(err.statusText);
         });
     }
+
+    public updateLocation(lat, lng) {
+        this.post('/location/' + lat + '/' + lng)
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
 }

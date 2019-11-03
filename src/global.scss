@@ -90,6 +90,7 @@ h1 {
     background: #1e282c;
     overflow: hidden;
     border-radius: 100%;
+    display: inline-block;
 }
 .ocean.small {
     width: 120px;
@@ -131,6 +132,23 @@ h1 {
     to {
         background-position: 1000px 0px;
     }
+}
+
+.moon {
+    display: inline-block;
+    background: #fffde7;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 100%;
+    overflow: none;
+}
+.moon .darkness {
+    position: relative;
+    background: #1e282c;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
 }
 
 .tags {
