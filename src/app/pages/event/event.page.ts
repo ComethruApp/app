@@ -40,6 +40,10 @@ export class EventPage implements OnInit {
         });
     }
 
+    doRefresh(event) {
+        this.getData().then(() => event.target.complete());
+    }
+
     async delete() {
         const alert = await this.alertCtrl.create({
             header: 'Confirm',

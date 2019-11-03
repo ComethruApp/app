@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
+    </ion-refresher>
     <div *ngIf="event">
         <h1>{{ event.name }}</h1>
         <div class="tags">
