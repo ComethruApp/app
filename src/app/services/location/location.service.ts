@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation';
+import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation/ngx';
 import { APIService } from '../api/api.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class LocationService {
         private apiService: APIService,
     ) { }
 
-    ngOnInit() {
+    startBackgroundGeolocation() {
         const config: BackgroundGeolocationConfig = {
             desiredAccuracy: 10,
             stationaryRadius: 20,
@@ -35,6 +35,6 @@ export class LocationService {
         this.backgroundGeolocation.start();
 
         // If you wish to turn OFF background-tracking, call the #stop method.
-        this.backgroundGeolocation.stop();
+        //this.backgroundGeolocation.stop();
     }
 }

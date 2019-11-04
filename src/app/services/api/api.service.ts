@@ -163,8 +163,8 @@ export class APIService {
         });
     }
 
-    public updateLocation(lat, lng) {
-        this.post('/location/' + lat + '/' + lng)
+    public updateLocation(loc) {
+        this.post('/location', loc)
         .map(response => {
             return response;
         })

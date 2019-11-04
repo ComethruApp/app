@@ -90,16 +90,7 @@
                 "GEOLOCATION_USAGE_DESCRIPTION": "For tracking event locations"
             },
             "cordova-plugin-nativegeocoder": {},
-            "cordova-plugin-background-geolocation": {
-                "GOOGLE_PLAY_SERVICES_VERSION": "11+",
-                "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
-                "ICON": "@mipmap/icon",
-                "SMALL_ICON": "@mipmap/icon",
-                "ACCOUNT_NAME": "@string/app_name",
-                "ACCOUNT_LABEL": "@string/app_name",
-                "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-                "CONTENT_AUTHORITY": "$PACKAGE_NAME"
-            },
+            "cordova-plugin-background-geolocation": {},
             "cordova-plugin-navigationbar-color": {}
         },
         "platforms": [
