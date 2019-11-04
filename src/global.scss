@@ -157,6 +157,19 @@ h1 {
     position: relative;
     mix-blend-mode: difference;
 }
+.moon.small,
+.moon.small .darkness {
+    width: 75px;
+    height: 75px;
+}
+.moon.small {
+    margin-left: 0;
+    overflow: visible;
+}
+.moon.small .darkness {
+    background-color: #263238;
+}
+
 .tags {
     .tag {
         display: inline-block;
