@@ -16,7 +16,7 @@ export class AppComponent {
         private platform: Platform,
         private statusBar: StatusBar,
         private router: Router,
-        public auth: AuthService,
+        public authService: AuthService,
     ) {
         this.initializeApp();
     }
@@ -25,6 +25,13 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.platform.ready().then(() => {
                 this.statusBar.backgroundColorByHexString('#263238');
+                this.authService.isLoggedIn().then(loggedIn => {
+                    if (loggedIn) {
+                        this.router.navigate(['/tabs']);
+                    } else {
+                        this.router.navigate(['/register']);
+                    }
+                });
             });
         });
     }

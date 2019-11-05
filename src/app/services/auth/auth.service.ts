@@ -47,6 +47,14 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return this.authSubject.asObservable();
+        // We could probably be checking something more useful than whether the token is null.
+        // The main issue I can see with this is that even if the token is invalid it'll still evaluate to true.
+        // Maybe we should just assume that an error will be thrown later if the token is invalid to let the user know
+        // to log in again?
+        // TODO improve this/think it over more
+        return this.storage.get("TOKEN").then(token => {
+            return token != null;
+        });
+        //return this.authSubject.asObservable();
     }
 }
