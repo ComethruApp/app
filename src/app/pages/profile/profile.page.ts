@@ -50,13 +50,7 @@ export class ProfilePage implements OnInit {
         this.router.navigate(["/friend-requests"]);
     }
 
-    logout(){
-        this.authService.logout()
-        .then(res => {
-            // TODO: redirect to splash page instead
-            this.router.navigate(["/login"]);
-        }, err => {
-            console.log(err);
-        })
+    openSettings() {
+        this.router.navigate(["/settings"]);
     }
 }

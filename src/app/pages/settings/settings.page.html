@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Settings</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content class="ion-padding">
+    <div>
+        <ion-button expand="block" size="large" (click)="logout()" color="danger">Logout</ion-button>
+    </div>
 </ion-content>
