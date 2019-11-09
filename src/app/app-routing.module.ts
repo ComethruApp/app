@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'map', loadChildren: './pages/map/map.module#MapPageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
+  { path: 'friend-requests', loadChildren: './pages/friend-requests/friend-requests.module#FriendRequestsPageModule' },
 ];
 
 @NgModule({
