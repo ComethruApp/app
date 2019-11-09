@@ -172,4 +172,14 @@ export class APIService {
             return Observable.throw(err.statusText);
         });
     }
+
+    public requestFriend(userId): Observable<Object> {
+        return this.post('/friend/request/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
 }

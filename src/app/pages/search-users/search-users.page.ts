@@ -18,8 +18,18 @@ export class SearchUsersPage implements OnInit {
     }
 
     async getData(query) {
-        this.apiService.searchUsers(query).subscribe(users => {
-            this.users = users;
+        if (query) {
+            this.apiService.searchUsers(query).subscribe(users => {
+                this.users = users;
+            });
+        } else {
+            this.users = [];
+        }
+    }
+
+    async requestFriend(userId) {
+        this.apiService.requestFriend(userId).subscribe(response => {
+            console.log(response);
         });
     }
 }
