@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
-  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule', canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule', canActivate: [AuthGuard] },
 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
