@@ -1,9 +1,49 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>friend-requests</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Friend requests</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content class="ion-padding">
+    <div *ngIf="requests && requests.length > 0" class="list">
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of requests">
+                <ion-col size="8">
+                    <div>
+                        <h2>{{ user.name }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-button expand="block" (click)="acceptRequest(user.id)">Accept</ion-button>
+                    <ion-button expand="block" (click)="rejectRequest(user.id)" color="danger">Reject</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div *ngIf="requests && requests.length == 0" class="empty-list">
+        You have no incoming requests.
+    </div>
+    <div *ngIf="friends && friends.length > 0" class="list">
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of friends">
+                <ion-col size="8">
+                    <div>
+                        <h2>{{ user.name }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-button expand="block" (click)="unfriend(user.id)" color="danger">Unfriend</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div *ngIf="friends && friends.length == 0" class="empty-list">
+        You have no friends yet... make some?
+        <ion-button size="large" (click)="searchUsers()">Find friends!</ion-button>
+    </div>
 </ion-content>

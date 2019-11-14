@@ -174,9 +174,29 @@ export class APIService {
     }
 
     public requestFriend(userId): Observable<Object> {
-        return this.post('/friend/request/' + userId, {})
+        return this.post('/friends/request/' + userId, {})
         .map(response => {
             return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public getFriendRequests(): Observable<User[]> {
+        return this.get('/friends/requests')
+        .map(response => {
+            return response.map((user) => new User(user));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public getFriends(): Observable<User[]> {
+        return this.get('/friends')
+        .map(response => {
+            return response.map((user) => new User(user));
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
