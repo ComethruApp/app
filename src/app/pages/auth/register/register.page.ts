@@ -3,8 +3,8 @@ import { Router } from "@angular/router";
 import { AuthService } from '../../../services/auth/auth.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { PasswordValidator } from '../../../validators/password.validator';
-import { tap } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
     selector: 'app-register',
@@ -20,6 +20,7 @@ export class RegisterPage implements OnInit {
         private router: Router,
         private formBuilder: FormBuilder,
         public alertController: AlertController,
+        public loadingCtrl: LoadingController,
     ) { }
 
     ngOnInit() {
@@ -40,9 +41,15 @@ export class RegisterPage implements OnInit {
         });
     }
 
-    register(form) {
+    async register(form) {
+        const loading = await this.loadingCtrl.create({
+            message: 'Registering...'
+        });
+        this.presentLoading(loading);
         this.authService.register(form.value).subscribe(response => {
             this.resetFields();
+            loading.dismiss();
+
             this.alertController.create({
                 header: 'Account created!',
                 message: response.message,
@@ -52,6 +59,7 @@ export class RegisterPage implements OnInit {
                 this.router.navigateByUrl('login');
             });
         }, response => {
+            loading.dismiss();
             this.alertController.create({
                 header: 'Error',
                 message: response.error.message,
@@ -60,5 +68,9 @@ export class RegisterPage implements OnInit {
                 alert.present();
             });
         });
+    }
+
+    async presentLoading(loading) {
+        return await loading.present();
     }
 }
