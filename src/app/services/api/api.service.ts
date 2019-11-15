@@ -183,6 +183,36 @@ export class APIService {
         });
     }
 
+    public acceptRequest(userId): Observable<Object> {
+        return this.post('/friends/accept/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public rejectRequest(userId): Observable<Object> {
+        return this.post('/friends/reject/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public unfriend(userId): Observable<Object> {
+        return this.post('/friends/remove/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getFriendRequests(): Observable<User[]> {
         return this.get('/friends/requests')
         .map(response => {
