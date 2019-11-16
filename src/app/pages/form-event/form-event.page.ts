@@ -95,7 +95,7 @@ export class FormEventPage implements OnInit {
             data.lng = resp.coords.longitude;
             (this.editing ? this.apiService.updateEvent : this.apiService.createEvent)(data).subscribe((res)=>{
                 this.resetFields();
-                this.router.back();
+                this.router.navigate(['event/' + this.id]);
             });
         });
     }

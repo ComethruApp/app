@@ -56,30 +56,14 @@ export class APIService {
         });
     }
 
+    private put(path: string, data: any): Observable<any> {
+        let storageObservable = from(this.storage.get('TOKEN'));
 
-    // Sending a GET request to /users
-    // TODO broken
-    /*
-       public getUsers(){
-       return this.httpClient
-       .get(this.ROOT + '/users')
-       .map(users => {
-       return users.map((user) => new User(user));
-       })
-       .catch((err)=>{
-       console.error(err);
+        return storageObservable.mergeMap(token => {
+            return this.httpClient.put(this.ROOT + path, data, this.ops(token));
         });
-       }
-     */
+    }
 
-    // Sending a POST request to /users
-    /*
-       public createUser(user: User) {
-
-       }
-     */
-
-    // Sending a GET request to /users/:id
     public getUserById(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => {
@@ -110,7 +94,6 @@ export class APIService {
         });
     }
 
-    // Sending a PUT request to /users/:id
     public updateUser(user: User){
 
     }
