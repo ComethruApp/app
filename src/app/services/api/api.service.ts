@@ -153,6 +153,16 @@ export class APIService {
         });
     }
 
+    public updateEvent(event: Event_): Observable<Event_> {
+        return this.put('/events/', event)
+        .map(response => {
+            return new Event_(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public deleteEvent(eventId): Observable<Object> {
         return this.delete('/events/' + eventId)
         .map(response => {

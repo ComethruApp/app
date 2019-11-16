@@ -16,7 +16,6 @@ export class EventPage implements OnInit {
 
     constructor(
         public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController,
         private apiService: APIService,
         private route: ActivatedRoute,
         private router: Router,
@@ -43,30 +42,6 @@ export class EventPage implements OnInit {
         this.getData().then(() => event.target.complete());
     }
 
-    async delete() {
-        const alert = await this.alertCtrl.create({
-            header: 'Confirm',
-            message: 'Do you want to delete ' + this.event.name + '?',
-            buttons: [
-                {
-                    text: 'No',
-                    role: 'cancel',
-                    cssClass: 'secondary',
-                    handler: () => {}
-                },
-                {
-                    text: 'Yes',
-                    handler: () => {
-                        this.apiService.deleteEvent(this.id).subscribe(response => {
-                            this.router.navigateByUrl('tabs');
-                        });
-                    }
-                }
-            ]
-        });
-        await alert.present();
-    }
-
     formatDay(date) {
         return moment(date).format('dddd');
     }
@@ -74,7 +49,9 @@ export class EventPage implements OnInit {
         return moment(date).format('h:mma')
     }
 
-
+    edit() {
+        this.router.navigate(['/form-event/' + this.id]);
+    }
     async presentLoading(loading) {
         return await loading.present();
     }

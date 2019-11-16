@@ -10,13 +10,16 @@
 <ion-content class="ion-padding">
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
         <ion-item lines="none">
-            <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="off" autocorrect="on"></ion-input>
+            <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="off" autocorrect="on"
+                       [value]="event ? event.name : ''"></ion-input>
         </ion-item>
         <ion-item lines="none">
-            <ion-textarea placeholder="Description" formControlName="description" autocomplete="off" autocorrect="on"></ion-textarea>
+            <ion-textarea placeholder="Description" formControlName="description" autocomplete="off" autocorrect="on"
+                       [value]="event ? event.description : ''"></ion-textarea>
         </ion-item>
         <ion-item lines="none">
-            <ion-input placeholder="Location" type="text" formControlName="location" autocomplete="off" autocorrect="on"></ion-input>
+            <ion-input placeholder="Location" type="text" formControlName="location" autocomplete="off" autocorrect="on"
+                       [value]="event ? event.location : ''"></ion-input>
         </ion-item>
         <ion-item lines="none">
             <ion-label>Start time</ion-label>
@@ -27,20 +30,15 @@
                 minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
 
                 required
-                >
+                [value]="event ? event.time : ''">
             </ion-datetime>
         </ion-item>
         <ion-item lines="none" class="ion-no-padding">
-            <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"></ion-toggle>
-            <ion-label>Open event?</ion-label>
+            <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"
+                       [value]="event ? event.name : ''"></ion-toggle>
+            <ion-label>Public event?</ion-label>
         </ion-item>
-        <!--
-            <ion-item lines="none">
-            @<ion-input placeholder="Donation Venmo" type="text" fromControlName="venmo" autocomplete="off"></ion-input>
-            </ion-item>
-        -->
-        <div>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Go live</ion-button>
-        </div>
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>
+        <ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>
     </form>
 </ion-content>

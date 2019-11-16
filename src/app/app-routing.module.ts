@@ -8,8 +8,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule', canActivate: [AuthGuard] },
 
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  { path: 'form-event/:id', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
-  { path: 'map', loadChildren: './pages/map/map.module#MapPageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'friend-requests', loadChildren: './pages/friend-requests/friend-requests.module#FriendRequestsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
