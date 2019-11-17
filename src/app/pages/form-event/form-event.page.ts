@@ -93,7 +93,7 @@ export class FormEventPage implements OnInit {
         this.geolocation.getCurrentPosition().then((resp) => {
             data.lat = resp.coords.latitude;
             data.lng = resp.coords.longitude;
-            (this.editing ? this.apiService.updateEvent : this.apiService.createEvent)(data).subscribe((res)=>{
+            (this.editing ? this.apiService.updateEvent(this.id, data) : this.apiService.createEvent(data)).subscribe((res)=>{
                 this.resetFields();
                 this.router.navigate(['event/' + this.id]);
             });

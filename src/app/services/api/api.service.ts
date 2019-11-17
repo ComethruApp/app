@@ -98,14 +98,6 @@ export class APIService {
 
     }
 
-    /*
-    // Sending a DELETE request to /users/:id
-    public deleteUserById(userId: number) {
-
-    }
-   */
-
-
     public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
@@ -136,8 +128,8 @@ export class APIService {
         });
     }
 
-    public updateEvent(event: Event_): Observable<Event_> {
-        return this.put('/events/', event)
+    public updateEvent(eventId: number, event: Event_): Observable<Event_> {
+        return this.put('/events/' + eventId, event)
         .map(response => {
             return new Event_(response);
         })
