@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'friend-requests', loadChildren: './pages/friend-requests/friend-requests.module#FriendRequestsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
+  { path: 'invites', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
 ];
 
 @NgModule({

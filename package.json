@@ -29,7 +29,6 @@
         "@ionic/pro": "2.0.3",
         "@ionic/storage": "^2.2.0",
         "@mauron85/cordova-plugin-background-geolocation": "^3.1.0",
-        "@types/jest": "^24.0.19",
         "cordova-android": "^7.0.0",
         "cordova-ios": "4.5.5",
         "cordova-plugin-device": "^2.0.2",

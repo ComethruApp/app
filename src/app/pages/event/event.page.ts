@@ -49,6 +49,10 @@ export class EventPage implements OnInit {
         return moment(date).format('h:mma')
     }
 
+    openInvites() {
+        this.router.navigate(['/invite/' + this.id]);
+    }
+
     edit() {
         this.router.navigate(['/form-event/' + this.id]);
     }
