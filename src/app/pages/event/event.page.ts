@@ -50,7 +50,7 @@ export class EventPage implements OnInit {
     }
 
     openInvites() {
-        this.router.navigate(['/invite/' + this.id]);
+        this.router.navigate(['/invites/' + this.id]);
     }
 
     edit() {

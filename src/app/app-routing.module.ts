@@ -10,10 +10,10 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'form-event/:id', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'friend-requests', loadChildren: './pages/friend-requests/friend-requests.module#FriendRequestsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
-  { path: 'invites', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
 ];
 
 @NgModule({
