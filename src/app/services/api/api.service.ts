@@ -149,9 +149,29 @@ export class APIService {
     }
 
     public getEventInvitees(eventId: number): Observable<User[]> {
-        return this.get('/events/' + eventId + '/invitees')
+        return this.get('/events/' + eventId + '/invites')
         .map(response => {
             return response.map((user) => new User(user));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public sendInvite(eventId: number, userId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/invites/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public rescindInvite(eventId: number, userId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/invites/' + userId, {})
+        .map(response => {
+            return response;
         })
         .catch((err) => {
             return Observable.throw(err.statusText);

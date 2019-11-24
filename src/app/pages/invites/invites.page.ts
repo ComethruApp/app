@@ -11,8 +11,9 @@ import { User, Event_ } from '../../services/api/models';
 })
 export class InvitesPage implements OnInit {
     private id: number;
-    private searchedUsers: User[];
-    private invitees: User[];
+    private searchedUsers: User[] = null;
+    private hasSearched: boolean = false;
+    private invitees: User[] = null;
     private event: Event_ = null;
 
     constructor(
@@ -39,20 +40,30 @@ export class InvitesPage implements OnInit {
     }
 
     async searchUsers(query) {
-        if (query) {
+        if (query && query.length > 1) {
             this.apiService.searchUsers(query).subscribe(searchedUsers => {
+                this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });
         } else {
+            // TODO stop repeating
+            this.hasSearched = (query.length > 1);
             this.searchedUsers = [];
         }
     }
 
     async sendInvite(userId) {
-        this.apiService.requestFriend(userId).subscribe(response => {
+        this.apiService.sendInvite(this.id, userId).subscribe(response => {
             console.log(response);
         });
     }
+
+    async rescindInvite(userId) {
+        this.apiService.rescindInvite(this.id, userId).subscribe(response => {
+            console.log(response);
+        });
+    }
+
     async presentLoading(loading) {
         return await loading.present();
     }
