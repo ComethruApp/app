@@ -33,6 +33,8 @@ ion-input{
     color: red;
 }
 
+// TODO: sort this file
+
 ion-item {
     --background: #37474F;
     --color: #fff;
@@ -42,7 +44,7 @@ h2 {
     margin-top: 0;
 }
 
-ion-button{
+ion-button {
     --background: #0467f6;
 }
 
@@ -187,4 +189,8 @@ h1 {
     text-align: center;
     margin-top: 40px;
     color: var(--ion-color-medium);
+}
+
+.verified {
+    width: 15px;
 }
