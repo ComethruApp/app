@@ -46,9 +46,9 @@
                         <h2>{{ user.name }}</h2>
                         <p>{{ user.email }}</p>
                     </div>
-                    <ion-col size="4">
-                        <ion-button expand="block" (click)="rescindInvite(user.id)">RESCIND</ion-button>
-                    </ion-col>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-button expand="block" (click)="rescindInvite(user.id)">Remove</ion-button>
                 </ion-col>
             </ion-row>
         </ion-grid>
