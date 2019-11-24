@@ -8,5 +8,38 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
+    <ion-item lines="none">
+        <ion-input type="text" autocomplete="off" autocorrect="off" autofocus="true"
+                   placeholder="Search for users..."
+                   (input)="searchUsers($event.target.value)"></ion-input>
+    </ion-item>
+    <div *ngIf="searchedUsers && searchedUsers.length > 0" class="list">
+        <h2>Search results</h2>
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of searchedUsers">
+                <ion-col size="8">
+                    <div>
+                        <h2>{{ user.name }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-button expand="block" (click)="sendInvite(user.id)">Invite</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div *ngIf="searchedUsers && searchedUsers.length > 0" class="list">
+        <h2>People invited</h2>
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of searchedUsers">
+                <ion-col size="8">
+                    <div>
+                        <h2>{{ user.name }}</h2>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>

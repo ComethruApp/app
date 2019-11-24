@@ -19,7 +19,7 @@ import 'rxjs/add/operator/mergeMap'
     providedIn: 'root'
 })
 export class APIService {
-    ROOT: string = Constants.HOST + "/api";
+    ROOT: string = Constants.HOST + '/api';
 
     constructor(
         private httpClient: HttpClient,
@@ -138,10 +138,20 @@ export class APIService {
         });
     }
 
-    public deleteEvent(eventId): Observable<Object> {
+    public deleteEvent(eventId: number): Observable<Object> {
         return this.delete('/events/' + eventId)
         .map(response => {
             return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public getEventInvitees(eventId: number): Observable<User[]> {
+        return this.get('/events/' + eventId + '/invitees')
+        .map(response => {
+            return response.map((user) => new User(user));
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
@@ -158,7 +168,7 @@ export class APIService {
         });
     }
 
-    public requestFriend(userId): Observable<Object> {
+    public requestFriend(userId: number): Observable<Object> {
         return this.post('/friends/request/' + userId, {})
         .map(response => {
             return response;
@@ -168,7 +178,7 @@ export class APIService {
         });
     }
 
-    public acceptRequest(userId): Observable<Object> {
+    public acceptRequest(userId: number): Observable<Object> {
         return this.post('/friends/accept/' + userId, {})
         .map(response => {
             return response;
@@ -178,7 +188,7 @@ export class APIService {
         });
     }
 
-    public rejectRequest(userId): Observable<Object> {
+    public rejectRequest(userId: number): Observable<Object> {
         return this.post('/friends/reject/' + userId, {})
         .map(response => {
             return response;
@@ -188,7 +198,7 @@ export class APIService {
         });
     }
 
-    public unfriend(userId): Observable<Object> {
+    public unfriend(userId: number): Observable<Object> {
         return this.post('/friends/remove/' + userId, {})
         .map(response => {
             return response;
