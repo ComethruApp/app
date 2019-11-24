@@ -5,8 +5,6 @@ import * as moment from 'moment';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
-import { LoaderService } from '../../services/loader/loader.service';
-
 
 @Component({
     selector: 'app-event',
@@ -30,6 +28,9 @@ export class EventPage implements OnInit {
     }
 
     async getData(){
+        const loading = await this.loadingCtrl.create({
+            message: 'Loading...'
+        });
         this.presentLoading(loading);
 
         this.api.getEvent(this.id).subscribe(event => {

@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
-import { LoaderService } from '../../services/loader/loader.service';
 
 declare var google;
 
@@ -20,19 +20,23 @@ export class MapPage implements OnInit {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     address: string;
+    loading: any; // TODO: what type?
     events: Event_[];
 
     constructor(
         private router: Router,
         private geolocation: Geolocation,
         private nativeGeocoder: NativeGeocoder,
+        private loadingCtrl: LoadingController,
         private api: APIService,
-        private loader: LoaderService,
     ) { }
 
 
     async ngOnInit() {
-        this.loader.present();
+        this.loading = await this.loadingCtrl.create({
+            message: 'Loading...'
+        });
+        this.presentLoading(this.loading);
         this.loadMap();
     }
 
@@ -156,7 +160,7 @@ export class MapPage implements OnInit {
 
     async getData(){
         this.api.getEvents().subscribe(events => {
-            this.loader.dismiss();
+            this.loading.dismiss();
             this.events = events;
             for (let event of this.events) {
                 let marker = new google.maps.Marker({
@@ -173,6 +177,10 @@ export class MapPage implements OnInit {
                 marker.setMap(this.map);
             }
         });
+    }
+
+    async presentLoading(loading) {
+        return await loading.present();
     }
 
     getAddressFromCoords(latitude, longitude) {

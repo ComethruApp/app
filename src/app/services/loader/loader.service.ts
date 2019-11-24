@@ -5,23 +5,21 @@ import { LoadingController, AlertController } from '@ionic/angular';
     providedIn: 'root'
 })
 export class LoaderService {
-    loader: any = null; // TODO: what type?
-
     constructor(
         private loadingCtrl: LoadingController,
     ) { }
 
-    ngOnInit() {
-        this.loader = this.loadingCtrl.create({
+    async getLoader() {
+        return await this.loadingCtrl.create({
             message: 'Loading...'
         });
     }
 
-    async present() {
-        return await this.loader.present();
+    async present(loader) {
+        console.log(loader);
+        return await loader.present();
     }
 
-    async dismiss() {
-        this.loader.dismiss();
+    async dismiss(loader) {
     }
 }
