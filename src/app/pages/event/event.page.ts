@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Event_ } from '../../services/api/models';
-import { APIService } from '../../services/api/api.service';
 import * as moment from 'moment';
+
+import { APIService } from '../../services/api/api.service';
+import { Event_ } from '../../services/api/models';
+import { LoaderService } from '../../services/loader/loader.service';
+
 
 @Component({
     selector: 'app-event',
@@ -16,7 +19,7 @@ export class EventPage implements OnInit {
 
     constructor(
         public loadingCtrl: LoadingController,
-        private apiService: APIService,
+        private api: APIService,
         private route: ActivatedRoute,
         private router: Router,
     ) { }
@@ -27,12 +30,9 @@ export class EventPage implements OnInit {
     }
 
     async getData(){
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
         this.presentLoading(loading);
 
-        this.apiService.getEvent(this.id).subscribe(event => {
+        this.api.getEvent(this.id).subscribe(event => {
             loading.dismiss();
             this.event = event;
         });

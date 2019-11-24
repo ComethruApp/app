@@ -18,7 +18,7 @@ export class InvitesPage implements OnInit {
 
     constructor(
         public loadingCtrl: LoadingController,
-        private apiService: APIService,
+        private api: APIService,
         private route: ActivatedRoute,
     ) { }
 
@@ -33,7 +33,7 @@ export class InvitesPage implements OnInit {
         });
         this.presentLoading(loading);
 
-        this.apiService.getEventInvitees(this.id).subscribe(invitees => {
+        this.api.getEventInvitees(this.id).subscribe(invitees => {
             loading.dismiss();
             this.invitees = invitees;
         });
@@ -41,7 +41,7 @@ export class InvitesPage implements OnInit {
 
     async searchUsers(query) {
         if (query && query.length > 1) {
-            this.apiService.searchUsers(query).subscribe(searchedUsers => {
+            this.api.searchUsers(query).subscribe(searchedUsers => {
                 this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });
@@ -53,13 +53,13 @@ export class InvitesPage implements OnInit {
     }
 
     async sendInvite(userId) {
-        this.apiService.sendInvite(this.id, userId).subscribe(response => {
+        this.api.sendInvite(this.id, userId).subscribe(response => {
             console.log(response);
         });
     }
 
     async rescindInvite(userId) {
-        this.apiService.rescindInvite(this.id, userId).subscribe(response => {
+        this.api.rescindInvite(this.id, userId).subscribe(response => {
             console.log(response);
         });
     }

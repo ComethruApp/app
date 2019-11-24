@@ -14,7 +14,7 @@ export class FriendRequestsPage implements OnInit {
 
     constructor(
         private router: Router,
-        private apiService: APIService,
+        private api: APIService,
     ) { }
 
     ngOnInit() {
@@ -22,10 +22,10 @@ export class FriendRequestsPage implements OnInit {
     }
 
     async getData() {
-        this.apiService.getFriendRequests().subscribe(requests => {
+        this.api.getFriendRequests().subscribe(requests => {
             this.requests = requests;
         });
-        this.apiService.getFriends().subscribe(friends => {
+        this.api.getFriends().subscribe(friends => {
             this.friends = friends;
         });
     }
@@ -35,18 +35,18 @@ export class FriendRequestsPage implements OnInit {
     }
 
     acceptRequest(userId) {
-        this.apiService.acceptRequest(userId).subscribe(response => {
+        this.api.acceptRequest(userId).subscribe(response => {
             // TODO; change button
         });
     }
     rejectRequest(userId) {
-        this.apiService.rejectRequest(userId).subscribe(response => {
+        this.api.rejectRequest(userId).subscribe(response => {
             // TODO; change button
         });
     }
 
     unfriend(userId) {
-        this.apiService.unfriend(userId).subscribe(response => {
+        this.api.unfriend(userId).subscribe(response => {
 
         });
     }

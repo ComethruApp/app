@@ -11,7 +11,7 @@ export class SearchUsersPage implements OnInit {
     users: User[];
 
     constructor(
-        private apiService: APIService,
+        private api: APIService,
     ) { }
 
     ngOnInit() {
@@ -19,7 +19,7 @@ export class SearchUsersPage implements OnInit {
 
     async getData(query) {
         if (query) {
-            this.apiService.searchUsers(query).subscribe(users => {
+            this.api.searchUsers(query).subscribe(users => {
                 this.users = users;
             });
         } else {
@@ -28,7 +28,7 @@ export class SearchUsersPage implements OnInit {
     }
 
     async requestFriend(userId) {
-        this.apiService.requestFriend(userId).subscribe(response => {
+        this.api.requestFriend(userId).subscribe(response => {
             console.log(response);
         });
     }

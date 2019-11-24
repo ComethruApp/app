@@ -9,7 +9,7 @@ export class LocationService {
 
     constructor(
         private backgroundGeolocation: BackgroundGeolocation,
-        private apiService: APIService,
+        private api: APIService,
     ) { }
 
     startBackgroundGeolocation() {

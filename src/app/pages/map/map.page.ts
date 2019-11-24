@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
-import { LoadingController } from '@ionic/angular';
+
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
-import { Router, ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../services/loader/loader.service';
 
 declare var google;
 
@@ -18,23 +20,19 @@ export class MapPage implements OnInit {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     address: string;
-    loading: any; // TODO: what type?
     events: Event_[];
 
     constructor(
         private router: Router,
         private geolocation: Geolocation,
         private nativeGeocoder: NativeGeocoder,
-        private loadingCtrl: LoadingController,
-        private apiService: APIService,
+        private api: APIService,
+        private loader: LoaderService,
     ) { }
 
 
     async ngOnInit() {
-        this.loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(this.loading);
+        this.loader.present();
         this.loadMap();
     }
 
@@ -157,8 +155,8 @@ export class MapPage implements OnInit {
     }
 
     async getData(){
-        this.apiService.getEvents().subscribe(events => {
-            this.loading.dismiss();
+        this.api.getEvents().subscribe(events => {
+            this.loader.dismiss();
             this.events = events;
             for (let event of this.events) {
                 let marker = new google.maps.Marker({
@@ -175,10 +173,6 @@ export class MapPage implements OnInit {
                 marker.setMap(this.map);
             }
         });
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 
     getAddressFromCoords(latitude, longitude) {

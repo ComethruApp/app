@@ -22,7 +22,7 @@ export class FormEventPage implements OnInit {
 
 
     constructor(
-        private apiService: APIService,
+        private api: APIService,
         private geolocation: Geolocation,
         private nativeGeocoder: NativeGeocoder,
         private route: ActivatedRoute,
@@ -47,7 +47,7 @@ export class FormEventPage implements OnInit {
         });
         this.presentLoading(loading);
 
-        this.apiService.getEvent(this.id).subscribe(event => {
+        this.api.getEvent(this.id).subscribe(event => {
             loading.dismiss();
             this.event = event;
         });
@@ -77,7 +77,7 @@ export class FormEventPage implements OnInit {
                 {
                     text: 'Yes',
                     handler: () => {
-                        this.apiService.deleteEvent(this.id).subscribe(response => {
+                        this.api.deleteEvent(this.id).subscribe(response => {
                             this.router.navigateByUrl('tabs');
                         });
                     }
@@ -93,7 +93,7 @@ export class FormEventPage implements OnInit {
         this.geolocation.getCurrentPosition().then((resp) => {
             data.lat = resp.coords.latitude;
             data.lng = resp.coords.longitude;
-            (this.editing ? this.apiService.updateEvent(this.id, data) : this.apiService.createEvent(data)).subscribe((newEvent)=>{
+            (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
                 this.resetFields();
                 this.router.navigate(['event/' + newEvent.id]);
             });
