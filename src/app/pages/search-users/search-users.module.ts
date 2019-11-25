@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { SearchUsersPage } from './search-users.page';
 
+import { ComponentsModule } from '../../components/components.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [SearchUsersPage]
