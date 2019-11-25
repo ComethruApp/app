@@ -12,48 +12,36 @@
 
 :host {
     --padding-start: 0 !important;
-}
-.header-md::after {
-    display: none;
-}
-ion-input{
-    --placeholder-color: red;
-    --placeholder-opacity: 1;
-}
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: red;
-}
-::-moz-placeholder { /* Firefox 19+ */
-    color: red;
-}
-:-ms-input-placeholder { /* IE 10+ */
-    color: red;
-}
-:-moz-placeholder { /* Firefox 18- */
-    color: red;
-}
 
-// TODO: sort this file
+}
+// Remove shadow under header
+.header-md::after { display: none; }
+// Remove shadow above tabs
+// TODO: there is still a faint line
+.footer-md::before { display: none; }
 
 ion-item {
     --background: #2c3640;
     --color: #fff;
     margin-bottom: 5px;
 }
-h2 {
-    margin-top: 0;
-}
 
 ion-button {
     --background: #0467f6;
 }
 
-a{
-    color: #fff;
+h2 {
+    margin-top: 0;
+}
+a {
+    color: inherit;
 }
 
 ion-content.auth {
-    --padding-top: 120px;
+    height: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 @keyframes load {
@@ -169,7 +157,7 @@ h1 {
     overflow: visible;
 }
 .moon.small .darkness {
-    background-color: #263238;
+    background-color: #15202b;
 }
 
 .tags {
