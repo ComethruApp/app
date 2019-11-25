@@ -1,0 +1,10 @@
+Show follower buttons on profile page if it isn't ours
+Hide buttons on event page that aren't relevant
+Update buttons in lists and on user pages upon click, instead of after reload
+Make rescinding invites work
+Add preferences page
+Add ticket page
+Update color scheme
+Clean up homepage styling (and other places)
+
+[Various GitHub issues]

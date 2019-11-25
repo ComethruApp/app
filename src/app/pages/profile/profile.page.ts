@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterOutlet, ActivationStart } from '@angular/router';
+import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
