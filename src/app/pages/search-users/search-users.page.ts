@@ -26,10 +26,4 @@ export class SearchUsersPage implements OnInit {
             this.users = [];
         }
     }
-
-    async requestFriend(userId) {
-        this.api.requestFriend(userId).subscribe(response => {
-            console.log(response);
-        });
-    }
 }

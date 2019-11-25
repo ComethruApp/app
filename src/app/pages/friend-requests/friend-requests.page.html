@@ -12,8 +12,9 @@
         <app-user-list [users]="requests" emptyMessage="You have no incoming requests."></app-user-list>
     </div>
     <app-user-list [users]="friends"></app-user-list>
+    <!-- TODO: find some way to do this with an emptyMessage parameter to app-user-list -->
     <div *ngIf="friends && friends.length == 0" class="empty-list">
-        You have no friends yet... make some?
+        You have no friends yet... make some?<br>
         <ion-button size="large" (click)="searchUsers()">Find friends!</ion-button>
     </div>
 </ion-content>

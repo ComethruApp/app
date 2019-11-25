@@ -33,21 +33,4 @@ export class FriendRequestsPage implements OnInit {
     searchUsers() {
         this.router.navigate(["/search-users"]);
     }
-
-    acceptRequest(userId) {
-        this.api.acceptRequest(userId).subscribe(response => {
-            // TODO; change button
-        });
-    }
-    rejectRequest(userId) {
-        this.api.rejectRequest(userId).subscribe(response => {
-            // TODO; change button
-        });
-    }
-
-    unfriend(userId) {
-        this.api.unfriend(userId).subscribe(response => {
-
-        });
-    }
 }

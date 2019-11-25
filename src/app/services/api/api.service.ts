@@ -199,6 +199,16 @@ export class APIService {
         });
     }
 
+    public cancelRequest(userId: number): Observable<Object> {
+        return this.post('/friends/cancel/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public acceptRequest(userId: number): Observable<Object> {
         return this.post('/friends/accept/' + userId, {})
         .map(response => {
