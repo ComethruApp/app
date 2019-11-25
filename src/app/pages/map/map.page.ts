@@ -31,7 +31,6 @@ export class MapPage implements OnInit {
         private api: APIService,
     ) { }
 
-
     async ngOnInit() {
         this.loading = await this.loadingCtrl.create({
             message: 'Loading...'
@@ -41,10 +40,10 @@ export class MapPage implements OnInit {
     }
 
     loadMap() {
-        let background = '#263238',
-            lightBackground = '#3b464b',
-            darkBackground = '#1e282c',
-            lighterBackground = '#515a5f',
+        let background = '#15202B',
+            darkBackground = '#0e161e',
+            lightBackground = '#2c3640',
+            lighterBackground = '#434c55',
             accent = '#00356b';
         this.geolocation.getCurrentPosition().then((resp) => {
             let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
