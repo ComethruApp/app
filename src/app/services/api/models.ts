@@ -4,6 +4,10 @@ export class User {
     email: string;
     verified: boolean;
     avatar: string;
+    is_me: boolean;
+    has_sent_friend_request: boolean;
+    has_received_friend_request: boolean;
+    is_friend: boolean;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
