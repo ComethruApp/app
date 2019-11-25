@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterOutlet, ActivationStart } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
-import { AuthService } from '../../services/auth/auth.service';
 import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 
@@ -12,27 +12,31 @@ import { User } from '../../services/api/models';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+    private id: number;
     private user: User;
+    private isMe: boolean;
 
     constructor(
-        public loadingCtrl: LoadingController,
-        private api: APIService,
-        private authService: AuthService,
+        private loadingCtrl: LoadingController,
         private router: Router,
+        private route: ActivatedRoute,
+
+        private api: APIService,
     ) { }
 
     ngOnInit() {
+        this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
+        this.isMe = (!this.id);
         this.getData();
     }
 
-    async getData(){
+    async getData() {
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
         this.presentLoading(loading);
 
-        // TODO: shouldn't just be me!
-        this.api.getMe().subscribe((user: User) => {
+        (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
             loading.dismiss();
             this.user = user;
         });

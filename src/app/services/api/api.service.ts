@@ -64,7 +64,7 @@ export class APIService {
         });
     }
 
-    public getUserById(userId: number): Observable<User> {
+    public getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => {
             return new User(response);
@@ -74,6 +74,7 @@ export class APIService {
         });
     }
 
+    // TODO: consider combining with getUser and using the /users/me endpoint when userId is null
     public getMe(): Observable<User> {
         return this.get('/users/me')
         .map(response => {

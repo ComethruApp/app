@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
+
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
-import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
 
@@ -22,14 +24,16 @@ export class FormEventPage implements OnInit {
 
 
     constructor(
-        private api: APIService,
-        private geolocation: Geolocation,
-        private nativeGeocoder: NativeGeocoder,
         private route: ActivatedRoute,
         private router: Router,
         private formBuilder: FormBuilder,
         private alertCtrl: AlertController,
         private loadingCtrl: LoadingController,
+
+        private geolocation: Geolocation,
+        private nativeGeocoder: NativeGeocoder,
+
+        private api: APIService,
     ) { }
 
     ngOnInit() {
