@@ -170,7 +170,7 @@ export class APIService {
     }
 
     public rescindInvite(eventId: number, userId: number): Observable<Object> {
-        return this.delete('/events/' + eventId + '/invites/' + userId, {})
+        return this.delete('/events/' + eventId + '/invites/' + userId)
         .map(response => {
             return response;
         })
