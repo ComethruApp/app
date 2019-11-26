@@ -45,6 +45,10 @@
                        [value]="event ? event.transitive_invites : false"></ion-toggle>
             <ion-label>Allow invited guests to invite others?</ion-label>
         </ion-item>
+        <ion-item lines="none">
+            <ion-input placeholder="Capacity" type="number" formControlName="capacity" autocomplete="off"
+                       [value]="event ? event.capacity : null"></ion-input>
+        </ion-item>
         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>
         <ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>
     </form>
