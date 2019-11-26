@@ -50,8 +50,8 @@ export class ProfilePage implements OnInit {
         this.router.navigate(["/search-users"]);
     }
 
-    friendRequests() {
-        this.router.navigate(["/friend-requests"]);
+    friends() {
+        this.router.navigate(["/friends"]);
     }
 
     openSettings() {
