@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
@@ -18,6 +18,7 @@ export class ProfilePage implements OnInit {
 
     constructor(
         private loadingCtrl: LoadingController,
+        private alertCtrl: AlertController,
         private router: Router,
         private route: ActivatedRoute,
 
@@ -47,14 +48,39 @@ export class ProfilePage implements OnInit {
     }
 
     searchUsers() {
-        this.router.navigate(["/search-users"]);
+        this.router.navigate(['/search-users']);
     }
 
     friends() {
-        this.router.navigate(["/friends"]);
+        this.router.navigate(['/friends']);
     }
 
     openSettings() {
-        this.router.navigate(["/settings"]);
+        this.router.navigate(['/settings']);
     }
+
+    async block() {
+        const alert = await this.alertCtrl.create({
+            header: 'Confirm',
+            message: 'Are you sure you want to block ' + this.user.name + '?',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {}
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this.api.blockUser(this.user.id).subscribe(response => {
+                            this.router.navigateByUrl('tabs');
+                        });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
+
 }

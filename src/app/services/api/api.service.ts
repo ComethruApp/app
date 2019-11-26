@@ -99,6 +99,16 @@ export class APIService {
 
     }
 
+    public blockUser(userId: number): Observable<Object> {
+        return this.post('/users/' + userId + '/block', {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
