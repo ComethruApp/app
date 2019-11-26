@@ -1,6 +1,6 @@
 <ion-content class="ion-padding">
     <div *ngIf="user">
-        <ion-img class="avatar" src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=512&d=https%3A%2F%2Fcomethru.io%2Fimages%2Funknown.png"></ion-img>
+        <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
         <div *ngIf="isMe">
             <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>

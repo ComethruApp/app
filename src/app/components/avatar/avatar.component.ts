@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-avatar',
-  templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+    selector: 'app-avatar',
+    templateUrl: './avatar.component.html',
+    styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent implements OnInit {
+    @Input() hash: string;
+    @Input() large: boolean = false;
+    private size: number;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.size = this.large ? 512 : 128;
+    }
 
 }
