@@ -13,28 +13,5 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
     </ion-refresher>
-    <div *ngIf="events.length > 0" class="list">
-        <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center ion-no-padding list-event" *ngFor="let event of events" (click)="goToEvent(event.id)">
-                <ion-col size="9">
-                    <h2><strong><em>{{ event.name }}</em></strong></h2>
-                    <div class="tags">
-                        <div class="tag">@ {{ event.location }}</div>
-                    </div>
-                </ion-col>
-                <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="2.5">
-                    <div class="moon small">
-                        <div class="darkness" [style.transform]="'translateX(' + (75 / 100 * event.rating) + 'px)'"></div>
-                    </div>
-                </ion-col>
-                <ion-col *ngIf="!event.happening_now" size="3" class="time">
-                    <div class="hour">{{ formatTime(event.time) }}</div>
-                    <div class="ampm">{{ formatAMPM(event.time) }}</div>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>
-    <div *ngIf="events.length == 0" class="empty-list">
-        No events found... post one!
-    </div>
+    <app-event-list [events]="events" emptyMessage="No events happening right now."></app-event-list>
 </ion-content>
