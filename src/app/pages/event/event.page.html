@@ -37,7 +37,9 @@
                 <div class="status-label" >Rating:<br><span>{{ event.rating }}%</span></div>
             </div>
         </div>
-        <ion-button class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
-        <ion-button class="button" expand="block" size="large" (click)="edit()">Edit</ion-button>
+        <div>
+            <ion-button *ngIf="event.mine || event.transitive_invites" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
+            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">Edit</ion-button>
+        </div>
     </div>
 </ion-content>
