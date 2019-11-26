@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'profile/:id', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
-  { path: 'friend-requests', loadChildren: './pages/friend-requests/friend-requests.module#FriendRequestsPageModule' },
+  { path: 'friends', loadChildren: './pages/friends/friends.module#FriendsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
 ];
 

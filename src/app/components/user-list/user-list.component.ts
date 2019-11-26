@@ -15,6 +15,8 @@ export class UserListComponent implements OnInit {
         private api: APIService,
     ) { }
 
+    ngOnInit() { }
+
     // TODO: this indexing method feels really unclean. Works for now, but would be nice to clean it up later.
     requestFriend(i) {
         this.api.requestFriend(this.users[i].id).subscribe(response => {

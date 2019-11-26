@@ -4,11 +4,11 @@ import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 
 @Component({
-    selector: 'app-friend-requests',
-    templateUrl: './friend-requests.page.html',
-    styleUrls: ['./friend-requests.page.scss'],
+    selector: 'app-friends',
+    templateUrl: './friends.page.html',
+    styleUrls: ['./friends.page.scss'],
 })
-export class FriendRequestsPage implements OnInit {
+export class FriendsPage implements OnInit {
     requests: User[] = null;
     friends: User[] = null;
 
