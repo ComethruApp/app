@@ -9,7 +9,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="events" class="list-mini-content" padding>
+<ion-content *ngIf="events" class="list-mini-content" class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
     </ion-refresher>
