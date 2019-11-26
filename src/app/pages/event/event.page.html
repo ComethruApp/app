@@ -12,17 +12,17 @@
         <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
     </ion-refresher>
     <div *ngIf="event">
-        <h1>{{ event.name }}</h1>
+        <h1><strong><em>{{ event.name }}</em></strong></h1>
         <div class="tags">
             <div class="tag">{{ event.location }}</div>
             <div class="tag">{{ formatDay(event.time) }}</div>
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
-        <div>
-            Hosted by {{ event.hosts[0].name }}
-            <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
-        </div>
         <p class="description">{{ event.description }}</p>
+        <p>
+            <em>Hosted by {{ event.hosts[0].name }}.</em>
+            <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
+        </p>
 
         <div class="status">
             <div class="ocean">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div>
-            <ion-button *ngIf="event.mine || event.transitive_invites" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
+            <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">Edit</ion-button>
         </div>
     </div>

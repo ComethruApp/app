@@ -9,6 +9,7 @@ export class User {
     has_received_friend_request: boolean;
     is_friend: boolean;
 
+    // TODO don't repeat
     constructor(values: Object = {}) {
         Object.assign(this, values);
     }
@@ -27,6 +28,7 @@ export class Event_ {
     mine: boolean;
     open: boolean;
     transitive_invites: boolean;
+    invited_me: boolean;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
