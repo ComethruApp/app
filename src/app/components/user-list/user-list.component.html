@@ -1,7 +1,7 @@
 <div *ngIf="users && users.length > 0" class="list">
     <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
-            <ion-col size="8">
+            <ion-col size="8" (click)="openProfile(user.id)">
                 <div>
                     <h2>{{ user.name }}</h2>
                     <p>{{ user.email }}</p>
