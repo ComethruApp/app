@@ -23,6 +23,7 @@ export class Event_ {
     lng: number;
     time: number;
     hosts: User[];
+    happening_now: boolean;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

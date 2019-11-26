@@ -164,13 +164,15 @@ h1 {
 
 .tags {
     .tag {
-        display: inline-block;
-        background: #0467f6;
-        padding: 3px 5px;
-        margin-right: 3px;
-        margin-bottom: 3px;
-        font-size: 20px;
     }
+}
+.tag {
+    display: inline-block;
+    background: #0467f6;
+    padding: 3px 5px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    font-size: 20px;
 }
 
 .empty-list {
@@ -183,4 +185,11 @@ h1 {
 
 .verified {
     width: 15px;
+}
+
+.time {
+    text-align: right;
+}
+.hour {
+    font-size: 40px;
 }

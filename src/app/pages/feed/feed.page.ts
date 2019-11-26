@@ -44,6 +44,12 @@ export class FeedPage implements OnInit {
     formatDate(date) {
         return moment(date).format('dddd MMMM Do, h:mma')
     }
+    formatTime(date) {
+        return moment(date).format('h:mm')
+    }
+    formatAMPM(date) {
+        return moment(date).format('a')
+    }
 
     goToEvent(eventId) {
         this.router.navigate(['/event/' + eventId]);
