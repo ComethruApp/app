@@ -33,6 +33,11 @@ ion-button {
     --border-radius: 0 !important;
 }
 
+h1, h2 {
+    font-weight: bold;
+    font-style: italic;
+    hyphens: auto;
+}
 h2 {
     font-size: 25px;
     margin-top: 0;

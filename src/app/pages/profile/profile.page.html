@@ -10,7 +10,7 @@
 <ion-content class="ion-padding">
     <div *ngIf="user">
         <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
-        <h1><strong><em>{{ user.name }}</em></strong></h1>
+        <h1>{{ user.name }}</h1>
         <div *ngIf="isMe">
             <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>
             <ion-button expand="block" size="large" (click)="friends()" color="secondary">Your Friends</ion-button>
