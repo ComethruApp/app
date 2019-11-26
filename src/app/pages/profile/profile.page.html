@@ -1,9 +1,13 @@
 <ion-content class="ion-padding">
     <div *ngIf="user">
         <ion-img class="avatar" src="http://www.gravatar.com/avatar/{{ user.avatar }}?size=512"></ion-img>
-        <h1 *ngIf="user">{{ user.name }}</h1>
-        <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>
-        <ion-button expand="block" size="large" (click)="friends()" color="secondary">Your Friends</ion-button>
-        <ion-button expand="block" size="large" (click)="openSettings()" color="tertiary">Settings</ion-button>
+        <h1>{{ user.name }}</h1>
+        <div *ngIf="isMe">
+            <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>
+            <ion-button expand="block" size="large" (click)="friends()" color="secondary">Your Friends</ion-button>
+            <ion-button expand="block" size="large" (click)="openSettings()" color="tertiary">Settings</ion-button>
+        </div>
+        <div *ngIf="!isMe">
+        </div>
     </div>
 </ion-content>
