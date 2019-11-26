@@ -26,10 +26,6 @@
                         <h2 class="tag">{{ event.name }}</h2>
                         <div class="tags">
                             <div>@ {{ event.location }}</div>
-                            <div>
-                                Hosted by {{ event.hosts[0].name }}
-                                <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
-                            </div>
                         </div>
                         <div>{{ formatDate(event.time) }}</div>
                     </div>

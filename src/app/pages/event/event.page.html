@@ -18,6 +18,10 @@
             <div class="tag">{{ formatDay(event.time) }}</div>
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
+        <div>
+            Hosted by {{ event.hosts[0].name }}
+            <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
+        </div>
         <p class="description">{{ event.description }}</p>
 
         <div class="status">
