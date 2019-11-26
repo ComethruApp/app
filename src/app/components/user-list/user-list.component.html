@@ -1,26 +1,14 @@
 <div *ngIf="users && users.length > 0" class="list">
     <ion-grid class="ion-no-padding">
-        <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users; index as i;">
+        <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
             <ion-col size="8">
                 <div>
                     <h2>{{ user.name }}</h2>
                     <p>{{ user.email }}</p>
                 </div>
             </ion-col>
-            <ion-col size="4" *ngIf="user.has_sent_friend_request">
-                <ion-button expand="block" (click)="acceptRequest(i)">Accept</ion-button>
-                <ion-button expand="block" (click)="rejectRequest(i)" color="danger">Reject</ion-button>
-            </ion-col>
-            <ion-col size="4" *ngIf="user.is_friend">
-                <ion-button expand="block" (click)="unfriend(i)" color="danger">Unfriend</ion-button>
-            </ion-col>
-            <ion-col size="4" *ngIf="user.has_received_friend_request">
-                <!-- TODO: maybe a different color? -->
-                <ion-button expand="block" (click)="cancelRequest(i)" color="warning">Cancel</ion-button>
-            </ion-col>
-            <ion-col size="4" *ngIf="!user.has_sent_friend_request && !user.has_received_friend_request && !user.is_friend">
-                <ion-button expand="block" (click)="requestFriend(i)">Friend</ion-button>
-                <!--<ion-button expand="block" color="secondary">Follow</ion-button>-->
+            <ion-col size="4">
+                <app-friend-buttons [user]="user"></app-friend-buttons>
             </ion-col>
         </ion-row>
     </ion-grid>
