@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { FriendButtonsComponent } from './friend-buttons/friend-buttons.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 @NgModule({
     declarations: [
         UserListComponent,
         FriendButtonsComponent,
         AvatarComponent,
+        EventListComponent,
     ],
     imports: [
         IonicModule,
@@ -19,6 +21,7 @@ import { AvatarComponent } from './avatar/avatar.component';
         UserListComponent,
         FriendButtonsComponent,
         AvatarComponent,
+        EventListComponent,
     ],
 })
 export class ComponentsModule {}
