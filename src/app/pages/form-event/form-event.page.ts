@@ -62,8 +62,9 @@ export class FormEventPage implements OnInit {
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
+            time: new FormControl('', Validators.required),
             open: new FormControl(true),
-            time: new FormControl(),
+            transitive_invites: new FormControl(false),
         });
     }
 

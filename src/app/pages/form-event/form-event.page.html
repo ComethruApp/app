@@ -36,8 +36,14 @@
         </ion-item>
         <ion-item lines="none" class="ion-no-padding">
             <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"
-                       [value]="event ? event.name : ''"></ion-toggle>
-            <ion-label>Public event?</ion-label>
+                       [value]="event ? event.open : true"></ion-toggle>
+            <ion-label>Open event?</ion-label>
+        </ion-item>
+        <!-- TODO only show this if event is private -->
+        <ion-item lines="none" class="ion-no-padding">
+            <ion-toggle checked [(ngModel)]="transitive_invites" name="transitive_invites" formControlName="transitive_invites"
+                       [value]="event ? event.transitive_invites : false"></ion-toggle>
+            <ion-label>Allow invited guests to invite others?</ion-label>
         </ion-item>
         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>
         <ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>

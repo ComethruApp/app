@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import * as moment from 'moment';
+
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
-import { LoadingController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
 
 @Component({
     selector: 'app-feed',
@@ -49,10 +50,6 @@ export class FeedPage implements OnInit {
     }
     formatAMPM(date) {
         return moment(date).format('a')
-    }
-
-    goToEvent(eventId) {
-        this.router.navigate(['/event/' + eventId]);
     }
 
     async presentLoading(loading) {

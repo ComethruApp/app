@@ -24,6 +24,9 @@ export class Event_ {
     time: number;
     hosts: User[];
     happening_now: boolean;
+    mine: boolean;
+    open: boolean;
+    transitive_invites: boolean;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
