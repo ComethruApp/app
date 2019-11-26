@@ -93,13 +93,17 @@ export class FormEventPage implements OnInit {
         await alert.present();
     }
 
-    submit(form) {
-        // TODO: also support update!
+    async submit(form) {
+        const loading = await this.loadingCtrl.create({
+            message: 'Loading...'
+        });
+        this.presentLoading(loading);
         let data = form.value;
         this.geolocation.getCurrentPosition().then((resp) => {
             data.lat = resp.coords.latitude;
             data.lng = resp.coords.longitude;
             (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
+                loading.dismiss();
                 this.resetFields();
                 this.router.navigate(['event/' + newEvent.id]);
             });
