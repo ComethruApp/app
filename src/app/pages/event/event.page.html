@@ -24,7 +24,7 @@
             <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
         </p>
 
-        <div class="status">
+        <div class="status" *ngIf="event.happening_now">
             <div class="ocean">
                 <div class="status-label"><span>{{ event.people }}</span><br>people</div>
                 <div class="water" [style.transform]="'translateY(' + (75 - 1.5 * event.people) + 'px)'">
