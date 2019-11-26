@@ -10,20 +10,20 @@ import { FriendsPage } from './friends.page';
 import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FriendsPage
-  }
+    {
+        path: '',
+        component: FriendsPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ComponentsModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [FriendsPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ComponentsModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [FriendsPage]
 })
 export class FriendsPageModule {}

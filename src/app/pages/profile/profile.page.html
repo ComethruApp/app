@@ -8,6 +8,7 @@
             <ion-button expand="block" size="large" (click)="openSettings()" color="tertiary">Settings</ion-button>
         </div>
         <div *ngIf="!isMe">
+            <app-friend-buttons [user]="user"></app-friend-buttons>
         </div>
     </div>
 </ion-content>

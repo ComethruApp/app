@@ -7,14 +7,15 @@ import { FriendButtonsComponent } from './friend-buttons/friend-buttons.componen
 @NgModule({
     declarations: [
         UserListComponent,
-        FriendButtonsComponent
+        FriendButtonsComponent,
     ],
     imports: [
         IonicModule,
         CommonModule,
     ],
     exports: [
-        UserListComponent
+        UserListComponent,
+        FriendButtonsComponent,
     ],
 })
 export class ComponentsModule {}
