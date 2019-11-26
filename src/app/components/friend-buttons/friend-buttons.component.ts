@@ -9,12 +9,16 @@ import { User } from '../../services/api/models';
 })
 export class FriendButtonsComponent implements OnInit {
     @Input() user: User;
+    @Input() large: boolean = false;
+    buttonSize: string;
 
     constructor(
         private api: APIService,
     ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.buttonSize = this.large ? 'large' : 'default';
+    }
 
     requestFriend() {
         this.api.requestFriend(this.user.id).subscribe(response => {

@@ -1,14 +1,14 @@
 <ng-template [ngIf]="user.has_sent_friend_request">
-    <ion-button expand="block" (click)="acceptRequest()">Accept</ion-button>
-    <ion-button expand="block" (click)="rejectRequest()" color="danger">Reject</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="acceptRequest()">{{ large ? 'Accept friend request' : 'Accept' }}</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="rejectRequest()" color="danger">{{ large ? 'Reject friend request' : 'Reject' }}</ion-button>
 </ng-template>
 <ng-template [ngIf]="user.is_friend">
-    <ion-button expand="block" (click)="unfriend()" color="danger">Unfriend</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="unfriend()" color="danger">Unfriend</ion-button>
 </ng-template>
 <ng-template [ngIf]="user.has_received_friend_request">
-    <ion-button expand="block" (click)="cancelRequest()" color="warning">Cancel</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="cancelRequest()" color="warning">{{ large ? 'Cancel request' : 'Cancel' }}</ion-button>
 </ng-template>
 <ng-template [ngIf]="!user.has_sent_friend_request && !user.has_received_friend_request && !user.is_friend">
-    <ion-button expand="block" (click)="requestFriend()">Friend</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="requestFriend()">Friend</ion-button>
     <!--<ion-button expand="block" color="secondary">Follow</ion-button>-->
 </ng-template>
