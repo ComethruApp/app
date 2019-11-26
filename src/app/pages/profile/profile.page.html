@@ -1,3 +1,12 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
     <div *ngIf="user">
         <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
