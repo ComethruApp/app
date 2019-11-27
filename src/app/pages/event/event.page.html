@@ -20,7 +20,7 @@
         </div>
         <p class="description">{{ event.description }}</p>
         <p>
-            <em>Hosted by {{ event.hosts[0].name }}.</em>
+        <em>Hosted by <a [routerLink]="'/profile/' + event.hosts[0].id">{{ event.hosts[0].name }}</a>.</em>
             <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
         </p>
 
