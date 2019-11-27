@@ -32,7 +32,6 @@ export class FeedPage implements OnInit {
     async getData() {
         this.api.getEvents().subscribe(events => {
             this.open = events;
-            console.log(this.open);
         });
         this.api.getInvites().subscribe(events => {
             this.closed = events;

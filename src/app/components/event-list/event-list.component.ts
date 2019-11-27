@@ -18,7 +18,6 @@ export class EventListComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        console.log(this.events);
     }
 
     goToEvent(eventId) {

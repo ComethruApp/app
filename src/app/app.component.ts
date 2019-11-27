@@ -16,7 +16,7 @@ export class AppComponent {
         private platform: Platform,
         private statusBar: StatusBar,
         private router: Router,
-        private alertCtrl: AlertController
+        private alertCtrl: AlertController,
         private api: APIService,
     ) {
         this.initializeApp();
@@ -30,20 +30,22 @@ export class AppComponent {
         });
         this.api.heartbeat().subscribe(beat => {
             if (beat.maintenance) {
-                const alert = await this.alertCtrl.create({
-                    header: 'Maintenance mode',
-                    message: 'The server is currently under scheduled maintenance. Check back soon!',
-                    buttons: [
-                        {
-                            text: 'Gotchu',
-                            handler: () => {
-
-                            }
-                        }
-                    ]
-                });
-                await alert.present();
+                this.warn('Maintenance mode',
+                          'The server is currently down for scheduled maintenance. Check back soon!');
+            }
+            let version = 0;
+            if (beat.min_version > version) {
+                this.warn('Outdated installation',
+                          'Please update Comethru through your app store! You\'ll need the newest version to continue.');
             }
         });
+    }
+
+    async warn(header: string, message: string) {
+        const alert = await this.alertCtrl.create({
+            header: header,
+            message: message,
+        });
+        await alert.present();
     }
 }
