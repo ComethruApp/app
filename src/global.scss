@@ -65,15 +65,18 @@ ion-tab-button.tab-selected ion-icon {
     transition: 0.4s;
 }
 
-h1, h2 {
+h1, h2, ion-title {
     font-weight: bold;
     font-style: italic;
+}
+h1, h2 {
     hyphens: auto;
     margin: 0;
     line-height: 1;
 }
 h1 {
     font-size: 80px;
+    margin-bottom: 10px;
 }
 h2 {
     font-size: 25px;
