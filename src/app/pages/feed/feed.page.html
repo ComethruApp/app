@@ -5,5 +5,8 @@
         <app-refresher></app-refresher>
     </ion-refresher>
     <app-event-list [events]="closed"></app-event-list>
-    <app-event-list [events]="open" emptyMessage="No open events happening right now."></app-event-list>
+    <app-event-list [events]="open"></app-event-list>
+    <div *ngIf="closed && open && closed.length == 0 && open.length == 0" class="empty-list">
+        Nothing's happening right now.
+    </div>
 </ion-content>
