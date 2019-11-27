@@ -17,16 +17,15 @@
 // Remove shadow under header
 .header-md::after { display: none; }
 // Remove shadow above tabs
-// TODO: there is still a faint line
 .footer-md::before { display: none; }
+ion-tab-bar { --border: none; }
 
 ion-item {
     --background: #2c3640;
     --color: #fff;
     margin-bottom: 5px;
 }
-ion-alert
-{
+ion-alert {
     //--ion-text-color    : white !important;
     //--ion-color-step-550: white !important;
 }
@@ -45,25 +44,21 @@ h1, h2 {
     font-weight: bold;
     font-style: italic;
     hyphens: auto;
+    margin: 0;
+    line-height: 1;
+}
+h1 {
+    font-size: 80px;
 }
 h2 {
     font-size: 25px;
-    margin-top: 0;
-    margin-bottom: 0;
 }
 a {
     color: inherit;
 }
 
-ion-content.auth {
-    height: 100%;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
-
 /* Labels on moon and ocean
- * TODO: integrate into scss files for those components */
+ * TODO: integrate into those components */
 .status-label {
     position: relative;
     top: 40px;
@@ -75,50 +70,11 @@ ion-content.auth {
     line-height: 0.9;
 }
 
-@keyframes load {
-    from {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-ion-refresher .loader {
-    width: 40px;
-    margin: 20px auto 0;
-    transform: rotate(0);
-}
-ion-refresher.refresher-pulling .loader,
-ion-refresher.refresher-ready .loader {
-    animation: 0.5s load infinite ease-out;
-    transition: 0.4s;
-}
-ion-refresher.refresher-completing .loader {
-    animation: 0.2s load infinite ease-out reverse;
-    margin-top: -50px;
-    transition: 1s;
-}
-
-.list-event {
-}
-h1 {
-    font-size: 80px;
-    line-height: 1;
-    margin-top: 0;
-}
-
 .description {
     white-space: pre-wrap;
 }
 
-.status {
-    margin-bottom: 20px;
-}
-
 .tags {
-    .tag {
-    }
 }
 .tag {
     display: inline-block;
@@ -139,11 +95,4 @@ h1 {
 
 .verified {
     width: 15px;
-}
-
-.time {
-    text-align: right;
-}
-.hour {
-    font-size: 40px;
 }
