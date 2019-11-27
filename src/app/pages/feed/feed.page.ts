@@ -11,11 +11,12 @@ import { Event_ } from '../../services/api/models';
     styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-    events: Event_[];
+    private closed: Event_[];
+    private open: Event_[];
 
     constructor(
-        public loadingCtrl: LoadingController,
-        private apiService: APIService,
+        private loadingCtrl: LoadingController,
+        private api: APIService,
         private router: Router,
         private route: ActivatedRoute,
     ) { }
@@ -29,8 +30,12 @@ export class FeedPage implements OnInit {
     }
 
     async getData() {
-        this.apiService.getEvents().subscribe(events => {
-            this.events = events;
+        this.api.getEvents().subscribe(events => {
+            this.open = events;
+            console.log(this.open);
+        });
+        this.api.getInvites().subscribe(events => {
+            this.closed = events;
         });
     }
 
