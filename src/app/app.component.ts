@@ -6,6 +6,7 @@ import { Platform } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { APIService } from './services/api/api.service';
+import { LocationService } from './services/location/location.service';
 
 @Component({
     selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
         private router: Router,
         private alertCtrl: AlertController,
         private api: APIService,
+        private locationService: LocationService,
     ) {
         this.initializeApp();
     }
@@ -39,6 +41,7 @@ export class AppComponent {
                           'Please update Comethru through your app store! You\'ll need the newest version to continue.');
             }
         });
+        this.locationService.startBackgroundGeolocation();
     }
 
     async warn(header: string, message: string) {
