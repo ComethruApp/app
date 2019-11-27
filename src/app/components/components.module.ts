@@ -9,7 +9,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { OceanComponent } from './ocean/ocean.component';
 import { MoonComponent } from './moon/moon.component';
 import { RefresherComponent } from './refresher/refresher.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +20,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         OceanComponent,
         MoonComponent,
         RefresherComponent,
-        ToolbarComponent,
+        HeaderComponent,
     ],
     imports: [
         IonicModule,
@@ -34,7 +34,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         OceanComponent,
         MoonComponent,
         RefresherComponent,
-        ToolbarComponent,
+        HeaderComponent,
     ],
 })
 export class ComponentsModule {}
