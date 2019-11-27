@@ -3,6 +3,7 @@
         <ion-row class="ion-align-items-center ion-no-padding list-event" *ngFor="let event of events" (click)="goToEvent(event.id)">
             <ion-col size="8">
                 <h2>{{ event.name }}</h2>
+                <div class="description-preview">{{ event.description }}</div>
                 <div class="tags">
                     <div class="tag">@ {{ event.location }}</div>
                 </div>
