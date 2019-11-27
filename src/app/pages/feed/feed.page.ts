@@ -40,16 +40,16 @@ export class FeedPage implements OnInit {
     }
 
     formatDay(date) {
-        return moment(date).format('dddd');
+        return moment(date).utc().format('dddd');
     }
     formatDate(date) {
-        return moment(date).format('dddd MMMM Do, h:mma')
+        return moment(date).utc().format('dddd MMMM Do, h:mma')
     }
     formatTime(date) {
-        return moment(date).format('h:mm')
+        return moment(date).utc().format('h:mm')
     }
     formatAMPM(date) {
-        return moment(date).format('a')
+        return moment(date).utc().format('a')
     }
 
     async presentLoading(loading) {
