@@ -11,13 +11,15 @@ import { Event_ } from '../../services/api/models';
 })
 export class EventListComponent implements OnInit {
     @Input() events: Event_[];
-    @Input() emptyMessage: string = "No events.";
+    @Input() emptyMessage: string;
 
     constructor(
         private router: Router,
     ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        console.log(this.events);
+    }
 
     goToEvent(eventId) {
         this.router.navigate(['/event/' + eventId]);

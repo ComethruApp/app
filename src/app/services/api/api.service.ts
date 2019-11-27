@@ -64,6 +64,16 @@ export class APIService {
         });
     }
 
+    public heartbeat(): Observable<Object> {
+        return this.get('/heartbeat')
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => {
