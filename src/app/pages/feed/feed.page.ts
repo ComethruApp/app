@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import * as moment from 'moment';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
@@ -37,19 +36,6 @@ export class FeedPage implements OnInit {
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
-    }
-
-    formatDay(date) {
-        return moment(date).utc().format('dddd');
-    }
-    formatDate(date) {
-        return moment(date).utc().format('dddd MMMM Do, h:mma')
-    }
-    formatTime(date) {
-        return moment(date).utc().format('h:mm')
-    }
-    formatAMPM(date) {
-        return moment(date).utc().format('a')
     }
 
     async presentLoading(loading) {
