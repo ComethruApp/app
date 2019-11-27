@@ -139,6 +139,16 @@ export class APIService {
         });
     }
 
+    public getInvites(): Observable<Event_[]> {
+        return this.get('/users/me/invites')
+        .map(response => {
+            return response.map((event) => new Event_(event));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getEvent(eventId: number): Observable<Event_> {
         return this.get('/events/' + eventId)
         .map(response => {
