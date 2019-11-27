@@ -22,19 +22,17 @@ export class EventPage implements OnInit {
         private router: Router,
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-        this.getData();
-    }
-
-    async getData(){
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
         this.presentLoading(loading);
+        this.getData().then(() => loading.dismiss());
+    }
 
+    async getData(){
         this.api.getEvent(this.id).subscribe(event => {
-            loading.dismiss();
             this.event = event;
         });
     }
