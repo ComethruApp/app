@@ -7,12 +7,10 @@
                     <div class="tag">@ {{ event.location }}</div>
                 </div>
             </ion-col>
-            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1">
+            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1.5">
             </ion-col>
-            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="3">
-                <div class="moon small">
-                    <div class="darkness" [style.transform]="'translateX(' + (75 / 100 * event.rating) + 'px)'"></div>
-                </div>
+            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="2.5">
+                <app-moon [rating]="event.rating"></app-moon>
             </ion-col>
             <ion-col *ngIf="!event.happening_now" size="4" class="time">
                 <div class="hour">{{ formatTime(event.time) }}</div>
