@@ -6,6 +6,7 @@ import { FriendButtonsComponent } from './friend-buttons/friend-buttons.componen
 import { AvatarComponent } from './avatar/avatar.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { OceanComponent } from './ocean/ocean.component';
+import { MoonComponent } from './moon/moon.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { OceanComponent } from './ocean/ocean.component';
         AvatarComponent,
         EventListComponent,
         OceanComponent,
+        MoonComponent,
     ],
     imports: [
         IonicModule,
@@ -25,6 +27,7 @@ import { OceanComponent } from './ocean/ocean.component';
         AvatarComponent,
         EventListComponent,
         OceanComponent,
+        MoonComponent,
     ],
 })
 export class ComponentsModule {}

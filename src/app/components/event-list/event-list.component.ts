@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 import { Event_ } from '../../services/api/models';
 
@@ -20,5 +21,18 @@ export class EventListComponent implements OnInit {
 
     goToEvent(eventId) {
         this.router.navigate(['/event/' + eventId]);
+    }
+
+    formatDay(date) {
+        return moment(date).utc().format('dddd');
+    }
+    formatDate(date) {
+        return moment(date).utc().format('dddd MMMM Do, h:mma')
+    }
+    formatTime(date) {
+        return moment(date).utc().format('h:mm')
+    }
+    formatAMPM(date) {
+        return moment(date).utc().format('a')
     }
 }
