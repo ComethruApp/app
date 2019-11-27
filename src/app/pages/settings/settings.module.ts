@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { SettingsPage } from './settings.page';
 
+import { ComponentsModule } from '../../components/components.module';
+
 const routes: Routes = [
   {
     path: '',

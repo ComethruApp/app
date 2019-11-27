@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { FormEventPage } from './form-event.page';
 
+import { ComponentsModule } from '../../components/components.module';
+
 const routes: Routes = [
   {
     path: '',
