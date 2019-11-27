@@ -54,6 +54,19 @@ ion-content.auth {
     align-items: center !important;
 }
 
+/* Labels on moon and ocean
+ * TODO: integrate into scss files for those components */
+.status-label {
+    position: relative;
+    top: 40px;
+    text-align: center;
+    z-index: 10;
+}
+.status-label span {
+    font-size: 50px;
+    line-height: 0.9;
+}
+
 @keyframes load {
     from {
         transform: rotate(0);
@@ -82,92 +95,6 @@ h1 {
 
 .status {
     margin-bottom: 20px;
-}
-
-.ocean {
-    height: 150px;
-    width: 150px;
-    background: #1e282c;
-    overflow: hidden;
-    border-radius: 100%;
-    display: inline-block;
-}
-.ocean.small {
-    width: 120px;
-    height: 120px;
-}
-.ocean .water span {
-    display: block;
-    width: 100%;
-}
-.status-label {
-    position: relative;
-    top: 40px;
-    text-align: center;
-    z-index: 10;
-}
-.status-label span {
-    font-size: 50px;
-    line-height: 0.9;
-}
-.water {
-    z-index: -1;
-}
-.wave {
-    background: url("assets/imgs/wave.png");
-    height: 22px;
-    background-size: contain;
-    background-repeat: repeat-x;
-    animation: wave 10s linear infinite;
-}
-.deep-water {
-    background: #0467f6;
-    height: 200px;
-    transition: 1s transform;
-}
-
-@keyframes wave {
-    from {
-        background-position: 0px 0px;
-    }
-    to {
-        background-position: 1000px 0px;
-    }
-}
-
-.moon {
-    display: inline-block;
-    background: #ffffff;
-    height: 150px;
-    width: 150px;
-    margin-left: 10px;
-    border-radius: 100%;
-    overflow: hidden;
-}
-.moon .darkness {
-    position: relative;
-    top: 0;
-    background: #1e282c;
-    height: 150px;
-    width: 150px;
-    border-radius: 100%;
-}
-.moon .status-label {
-    top: -110px;
-    position: relative;
-    mix-blend-mode: difference;
-}
-.moon.small,
-.moon.small .darkness {
-    width: 75px;
-    height: 75px;
-}
-.moon.small {
-    margin-left: 0;
-    overflow: visible;
-}
-.moon.small .darkness {
-    background-color: #15202b;
 }
 
 .tags {

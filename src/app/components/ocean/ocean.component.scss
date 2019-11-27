@@ -1,0 +1,40 @@
+.ocean {
+    height: 150px;
+    width: 150px;
+    background: #1e282c;
+    overflow: hidden;
+    border-radius: 100%;
+    display: inline-block;
+    &.small {
+        width: 120px;
+        height: 120px;
+    }
+    .water span {
+        display: block;
+        width: 100%;
+    }
+    .water {
+        z-index: -1;
+    }
+    .wave {
+        background: url('/assets/imgs/wave.png');
+        height: 22px;
+        background-size: contain;
+        background-repeat: repeat-x;
+        animation: wave 10s linear infinite;
+    }
+    .deep-water {
+        background: #0467f6;
+        height: 200px;
+        transition: 1s transform;
+    }
+}
+
+@keyframes wave {
+    from {
+        background-position: 0px 0px;
+    }
+    to {
+        background-position: 1000px 0px;
+    }
+}

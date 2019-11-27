@@ -25,17 +25,8 @@
         </p>
 
         <div class="status" *ngIf="event.happening_now">
-            <div class="ocean">
-                <div class="status-label"><span>{{ event.people }}</span><br>people</div>
-                <div class="water" [style.transform]="'translateY(' + (75 - 1.5 * event.people) + 'px)'">
-                    <span class="wave"></span>
-                    <span class="deep-water"></span>
-                </div>
-            </div>
-            <div class="moon">
-                <div class="darkness" [style.transform]="'translateX(' + (150 / 100 * event.rating) + 'px)'"></div>
-                <div class="status-label" >Rating:<br><span>{{ event.rating }}%</span></div>
-            </div>
+            <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
+            <app-moon [rating]="event.rating" [large]="true"></app-moon>
         </div>
         <div>
             <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>

@@ -1,3 +1,7 @@
-<p>
-  ocean works!
-</p>
+<div class="ocean">
+    <div class="status-label"><span>{{ people }}</span><br>people</div>
+    <div class="water" [style.transform]="'translateY(' + (75 - (75 * (people / capacity))) + 'px)'">
+        <span class="wave"></span>
+        <span class="deep-water"></span>
+    </div>
+</div>

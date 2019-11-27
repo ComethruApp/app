@@ -44,7 +44,6 @@ export class ProfilePage implements OnInit {
         });
 
         (this.isMe ? this.api.getMyEvents() : this.api.getUserEvents(this.id)).subscribe((events: Event_[]) => {
-            console.log(events);
             this.events = events;
         });
     }
