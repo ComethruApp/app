@@ -5,6 +5,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { FriendButtonsComponent } from './friend-buttons/friend-buttons.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { OceanComponent } from './ocean/ocean.component';
 
 @NgModule({
     declarations: [
@@ -12,6 +13,7 @@ import { EventListComponent } from './event-list/event-list.component';
         FriendButtonsComponent,
         AvatarComponent,
         EventListComponent,
+        OceanComponent,
     ],
     imports: [
         IonicModule,
@@ -22,6 +24,7 @@ import { EventListComponent } from './event-list/event-list.component';
         FriendButtonsComponent,
         AvatarComponent,
         EventListComponent,
+        OceanComponent,
     ],
 })
 export class ComponentsModule {}
