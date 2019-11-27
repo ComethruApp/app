@@ -11,19 +11,16 @@
     <div *ngIf="user">
         <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
-        <div *ngIf="isMe">
+        <div *ngIf="isMe || user.is_me">
             <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>
             <ion-button expand="block" size="large" (click)="friends()" color="secondary">Your Friends</ion-button>
             <ion-button expand="block" size="large" (click)="openSettings()" color="tertiary">Settings</ion-button>
         </div>
-        <div *ngIf="!isMe">
-            <app-friend-buttons [user]="user" [large]="true"></app-friend-buttons>
-        </div>
 
-        <!-- TODO: that user's events, current event, etc. -->
+        <app-friend-buttons *ngIf="!(isMe || user.is_me)" [user]="user" [large]="true"></app-friend-buttons>
 
-        <div *ngIf="!isMe">
-            <a (click)="block()"><u>Block {{ user.name }}</u></a>
-        </div>
+        <app-event-list [events]="events" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
+
+        <a *ngIf="!(isMe || user.is_me)" (click)="block()"><u>Block {{ user.name }}</u></a>
     </div>
 </ion-content>

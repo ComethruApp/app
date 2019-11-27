@@ -3,7 +3,7 @@ import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/
 import { LoadingController, AlertController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
-import { User } from '../../services/api/models';
+import { User, Event_ } from '../../services/api/models';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
     private id: number;
     private user: User;
     private isMe: boolean;
+    private events: Event_[];
 
     constructor(
         private loadingCtrl: LoadingController,
@@ -40,6 +41,11 @@ export class ProfilePage implements OnInit {
         (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
             loading.dismiss();
             this.user = user;
+        });
+
+        (this.isMe ? this.api.getMyEvents() : this.api.getUserEvents(this.id)).subscribe((events: Event_[]) => {
+            console.log(events);
+            this.events = events;
         });
     }
 
