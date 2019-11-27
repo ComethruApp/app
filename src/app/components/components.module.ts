@@ -7,6 +7,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { OceanComponent } from './ocean/ocean.component';
 import { MoonComponent } from './moon/moon.component';
+import { RefresherComponent } from './refresher/refresher.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { MoonComponent } from './moon/moon.component';
         EventListComponent,
         OceanComponent,
         MoonComponent,
+        RefresherComponent,
     ],
     imports: [
         IonicModule,
@@ -28,6 +30,7 @@ import { MoonComponent } from './moon/moon.component';
         EventListComponent,
         OceanComponent,
         MoonComponent,
+        RefresherComponent,
     ],
 })
 export class ComponentsModule {}
