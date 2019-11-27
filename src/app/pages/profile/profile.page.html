@@ -9,9 +9,8 @@
         <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
         <div *ngIf="isMe || user.is_me">
-            <ion-button expand="block" size="large" (click)="searchUsers()">Find users</ion-button>
-            <ion-button expand="block" size="large" (click)="friends()" color="secondary">Your Friends</ion-button>
-            <ion-button expand="block" size="large" (click)="openSettings()" color="tertiary">Settings</ion-button>
+            <ion-button expand="block" size="large" (click)="friends()">Your Friends</ion-button>
+            <ion-button expand="block" size="large" (click)="openSettings()" color="secondary">Settings</ion-button>
         </div>
 
         <app-friend-buttons *ngIf="!(isMe || user.is_me)" [user]="user" [large]="true"></app-friend-buttons>

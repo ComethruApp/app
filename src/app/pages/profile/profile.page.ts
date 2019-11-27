@@ -56,10 +56,6 @@ export class ProfilePage implements OnInit {
         return await loading.present();
     }
 
-    searchUsers() {
-        this.router.navigate(['/search-users']);
-    }
-
     friends() {
         this.router.navigate(['/friends']);
     }
