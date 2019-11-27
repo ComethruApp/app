@@ -148,3 +148,10 @@ ion-refresher.refresher-completing .loader {
     margin-top: -50px;
     transition: 1s;
 }
+
+// Slow loader in feed when nothing's found
+.loader.large {
+    margin: 90px auto 20px;
+    width: 70vw;
+    animation: 20s load infinite linear;
+}

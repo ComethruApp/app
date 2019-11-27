@@ -7,6 +7,8 @@
     <app-event-list [events]="closed"></app-event-list>
     <app-event-list [events]="open"></app-event-list>
     <div *ngIf="closed && open && closed.length == 0 && open.length == 0" class="empty-list">
-        Nothing's happening right now.
+        <ion-img class="loader large" src="assets/imgs/logo/icon_grey.png"></ion-img>
+        Nothing's happening right now.<br>
+        What is this, Harvard?
     </div>
 </ion-content>
