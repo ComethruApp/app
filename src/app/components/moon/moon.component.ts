@@ -15,5 +15,4 @@ export class MoonComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }

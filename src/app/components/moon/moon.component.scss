@@ -16,9 +16,13 @@
     border-radius: 100%;
 }
 .moon .status-label {
+    height: 0;
     top: -110px;
     position: relative;
     mix-blend-mode: difference;
+}
+.moon.small .status-label {
+    top: -60px;
 }
 .moon.small,
 .moon.small .darkness {
