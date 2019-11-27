@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-refresher',
-  templateUrl: './refresher.component.html',
-  styleUrls: ['./refresher.component.scss']
+    selector: 'app-refresher',
+    templateUrl: './refresher.component.html',
+    styleUrls: ['./refresher.component.scss']
 })
 export class RefresherComponent implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+    }
 }

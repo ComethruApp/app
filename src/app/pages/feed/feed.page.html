@@ -11,7 +11,7 @@
 
 <ion-content *ngIf="closed && open" class="list-mini-content" class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-img class="loader" src="assets/imgs/logo/loader.png"></ion-img>
+        <app-refresher></app-refresher>
     </ion-refresher>
     <app-event-list [events]="closed"></app-event-list>
     <app-event-list [events]="open" emptyMessage="No open events happening right now."></app-event-list>
