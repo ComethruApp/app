@@ -1,4 +1,4 @@
-<app-header title="Happening Now" [newEvent]="true"></app-header>
+<app-header title="Happening Now"></app-header>
 
 <ion-content *ngIf="closed && open" class="list-mini-content" class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
