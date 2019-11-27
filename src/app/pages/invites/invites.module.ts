@@ -10,19 +10,20 @@ import { InvitesPage } from './invites.page';
 import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: InvitesPage
-  }
+    {
+        path: '',
+        component: InvitesPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [InvitesPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ComponentsModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [InvitesPage]
 })
 export class InvitesPageModule {}

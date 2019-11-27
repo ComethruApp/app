@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { FriendButtonsComponent } from './friend-buttons/friend-buttons.component';
@@ -25,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
     imports: [
         IonicModule,
         CommonModule,
+        RouterModule,
     ],
     exports: [
         UserListComponent,

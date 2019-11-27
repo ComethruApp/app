@@ -10,20 +10,20 @@ import { SearchUsersPage } from './search-users.page';
 import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SearchUsersPage
-  }
+    {
+        path: '',
+        component: SearchUsersPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ComponentsModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [SearchUsersPage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ComponentsModule,
+        RouterModule.forChild(routes)
+    ],
+    declarations: [SearchUsersPage]
 })
 export class SearchUsersPageModule {}
