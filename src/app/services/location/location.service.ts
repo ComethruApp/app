@@ -17,7 +17,7 @@ export class LocationService {
             desiredAccuracy: 10,
             stationaryRadius: 20,
             distanceFilter: 30,
-            debug: false, //  enable this hear sounds for background-geolocation life-cycle.
+            debug: true, //  enable this hear sounds for background-geolocation life-cycle.
             stopOnTerminate: false, // enable this to clear background location settings when the app terminates
         };
 
@@ -25,6 +25,7 @@ export class LocationService {
         .then(() => {
             this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) => {
                 console.log(location);
+                this.api.sendLocation(location.latitude, location.longitude);
 
                 this.backgroundGeolocation.finish(); // FOR IOS ONLY
             });

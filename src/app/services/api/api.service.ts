@@ -74,6 +74,16 @@ export class APIService {
         });
     }
 
+    public sendLocation(lat: number, lng: number): Observable<Object> {
+        return this.post('/location', {lat: lat, lng: lng})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => {
