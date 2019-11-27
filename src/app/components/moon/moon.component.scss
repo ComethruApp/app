@@ -1,0 +1,34 @@
+.moon {
+    display: inline-block;
+    background: #ffffff;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.moon .darkness {
+    position: relative;
+    top: 0;
+    background: #1e282c;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+.moon .status-label {
+    top: -110px;
+    position: relative;
+    mix-blend-mode: difference;
+}
+.moon.small,
+.moon.small .darkness {
+    width: 75px;
+    height: 75px;
+}
+.moon.small {
+    margin-left: 0;
+    overflow: visible;
+}
+.moon.small .darkness {
+    background-color: #15202b;
+}
