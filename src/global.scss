@@ -25,6 +25,15 @@ ion-item {
     --color: #fff;
     margin-bottom: 5px;
 }
+ion-item.toggle-container {
+    --background: #15202b;
+    --padding-start: 0;
+    --padding-end: 0;
+}
+ion-textarea {
+    height: 150px;
+}
+
 ion-alert {
     //--ion-text-color    : white !important;
     //--ion-color-step-550: white !important;
