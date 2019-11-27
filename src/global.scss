@@ -25,6 +25,14 @@ ion-item {
     --color: #fff;
     margin-bottom: 5px;
 }
+ion-alert
+{
+    //--ion-text-color    : white !important;
+    //--ion-color-step-550: white !important;
+}
+.alert-title.sc-ion-alert-md
+{
+}
 
 ion-button {
     --background: #0467f6;

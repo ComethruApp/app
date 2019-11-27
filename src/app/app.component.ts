@@ -29,12 +29,12 @@ export class AppComponent {
             });
         });
         this.api.heartbeat().subscribe(beat => {
-            if (beat.maintenance) {
+            if (beat['maintenance']) {
                 this.warn('Maintenance mode',
                           'The server is currently down for scheduled maintenance. Check back soon!');
             }
             let version = 0;
-            if (beat.min_version > version) {
+            if (beat['min_version'] > version) {
                 this.warn('Outdated installation',
                           'Please update Comethru through your app store! You\'ll need the newest version to continue.');
             }
