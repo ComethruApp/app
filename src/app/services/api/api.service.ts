@@ -109,6 +109,26 @@ export class APIService {
         });
     }
 
+    public getMyEvents(): Observable<Event_[]> {
+        return this.get('/users/me/events')
+        .map(response => {
+            return response.map((event) => new Event_(event));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public getUserEvents(userId: number): Observable<Event_[]> {
+        return this.get('/users/' + userId + '/events')
+        .map(response => {
+            return response.map((event) => new Event_(event));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
