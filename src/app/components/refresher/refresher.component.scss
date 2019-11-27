@@ -1,0 +1,24 @@
+@keyframes load {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+ion-refresher .loader {
+    width: 40px;
+    margin: 20px auto 0;
+    transform: rotate(0);
+}
+ion-refresher.refresher-pulling .loader,
+ion-refresher.refresher-ready .loader {
+    animation: 0.5s load infinite ease-out;
+    transition: 0.4s;
+}
+ion-refresher.refresher-completing .loader {
+    animation: 0.2s load infinite ease-out reverse;
+    margin-top: -50px;
+    transition: 1s;
+}
