@@ -1,4 +1,5 @@
-<app-header [title]="editing ? 'Edit Event' : 'New Event'" [back]="true"></app-header>
+<!-- Don't show from event creation tab -->
+<app-header *ngIf="editing" title="Edit Event" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
