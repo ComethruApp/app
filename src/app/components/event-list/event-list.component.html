@@ -1,4 +1,4 @@
-<div *ngIf="events.length > 0" class="list">
+<div *ngIf="events && events.length > 0" class="list">
     <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center ion-no-padding list-event" *ngFor="let event of events" (click)="goToEvent(event.id)">
             <ion-col size="9">
@@ -19,6 +19,6 @@
         </ion-row>
     </ion-grid>
 </div>
-<div *ngIf="events.length == 0" class="empty-list">
+<div *ngIf="!events || events.length == 0" class="empty-list">
     {{ emptyMessage }}
 </div>
