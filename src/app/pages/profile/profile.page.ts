@@ -49,6 +49,10 @@ export class ProfilePage implements OnInit {
         });
     }
 
+    doRefresh(event) {
+        this.getData().then(() => event.target.complete());
+    }
+
     async presentLoading(loading) {
         return await loading.present();
     }
