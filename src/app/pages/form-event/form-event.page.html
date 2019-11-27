@@ -1,12 +1,4 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs"></ion-back-button>
-        </ion-buttons>
-        <ion-title *ngIf="editing">Edit Event</ion-title>
-        <ion-title *ngIf="!editing">New Event</ion-title>
-    </ion-toolbar>
-</ion-header>
+<app-header [title]="editing ? 'Edit Event' : 'New Event'" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">

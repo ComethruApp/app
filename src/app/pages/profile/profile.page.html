@@ -1,11 +1,4 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="tabs"></ion-back-button>
-        </ion-buttons>
-        <ion-title>Profile</ion-title>
-    </ion-toolbar>
-</ion-header>
+<app-header title="Profile" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
