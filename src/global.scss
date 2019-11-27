@@ -33,6 +33,13 @@ ion-alert {
 {
 }
 
+.dark-toolbar {
+    --background: #15202b;
+}
+ion-title {
+    //text-align: center;
+}
+
 ion-button {
     --background: #0467f6;
     margin-left: 0;
