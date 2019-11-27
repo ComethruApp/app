@@ -128,9 +128,14 @@ a {
     }
 }
 
+ion-refresher {
+    // Fix uncolored content on bottom of spinner
+    padding-bottom: 200px;
+    background: var(--ion-color-primary-shade, #035CDD);
+}
 ion-refresher .loader {
     width: 40px;
-    margin: 20px auto 0;
+    margin: 30px auto 0;
     transform: rotate(0);
 }
 ion-refresher.refresher-pulling .loader,
