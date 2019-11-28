@@ -22,12 +22,13 @@
             <app-moon [rating]="event.rating" [large]="true"></app-moon>
         </div>
 
-        <ion-grid *ngIf="friendsHere">
+        <h3 *ngIf="event.happening_now && friendsHere">Friends here</h3>
+        <ion-grid *ngIf="event.happening_now && friendsHere">
             <ion-row *ngFor="let friend of friendsHere">
-                <ion-col size="3">
+                <ion-col size="2" class="ion-no-padding">
                     <app-avatar [hash]="friend.avatar"></app-avatar>
                 </ion-col>
-                <ion-col size="9">
+                <ion-col size="10">
                     <h2>{{ friend.name }}</h2>
                 </ion-col>
             </ion-row>
