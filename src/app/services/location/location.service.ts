@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation/ngx';
 import { APIService } from '../api/api.service';
 
@@ -9,6 +10,7 @@ export class LocationService {
 
     constructor(
         private backgroundGeolocation: BackgroundGeolocation,
+        private alertCtrl: AlertController,
         private api: APIService,
     ) { }
 
@@ -24,8 +26,11 @@ export class LocationService {
         this.backgroundGeolocation.configure(config)
         .then(() => {
             this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) => {
-                console.log(location);
-                this.api.sendLocation(location.latitude, location.longitude);
+                //this.warn('Location update', JSON.stringify(location));
+                //this.api.sendLocation(location.latitude, location.longitude);
+                this.api.sendLocation(location.latitude, location.longitude).subscribe(response => {
+                    this.warn('Location response', JSON.stringify(response));
+                });
 
                 this.backgroundGeolocation.finish(); // FOR IOS ONLY
             });
@@ -37,5 +42,13 @@ export class LocationService {
 
         // If you wish to turn OFF background-tracking, call the #stop method.
         //this.backgroundGeolocation.stop();
+    }
+
+    async warn(header: string, message: string) {
+        const alert = await this.alertCtrl.create({
+            header: header,
+            message: message,
+        });
+        await alert.present();
     }
 }
