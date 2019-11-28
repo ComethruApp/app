@@ -18,6 +18,6 @@
         </ion-row>
     </ion-grid>
 </div>
-<div *ngIf="events && events.length == 0" class="empty-list">
+<div *ngIf="events && events.length == 0 && emptyMessage" class="empty-list">
     {{ emptyMessage }}
 </div>
