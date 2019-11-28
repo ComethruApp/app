@@ -26,7 +26,7 @@ export class ProfilePage implements OnInit {
         private api: APIService,
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         this.isMe = (!this.id);
         this.getData();
