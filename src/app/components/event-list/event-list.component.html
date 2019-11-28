@@ -4,9 +4,7 @@
             <ion-col size="8" class="ion-no-padding">
                 <h2>{{ event.name }}</h2>
                 <div class="description-preview">{{ event.description }}</div>
-                <div class="tags">
-                    <div class="tag">@ {{ event.location }}</div>
-                </div>
+                <div class="tag">@ {{ event.location }}</div>
             </ion-col>
             <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1.5">
             </ion-col>
