@@ -30,16 +30,15 @@ export class ProfilePage implements OnInit {
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         this.isMe = (!this.id);
         this.getData();
-    }
-
-    async getData() {
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
         this.presentLoading(loading);
+        this.getData().then(() => loading.dismiss());
+    }
 
+    async getData() {
         (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
-            loading.dismiss();
             this.user = user;
         });
 
