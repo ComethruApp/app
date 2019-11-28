@@ -15,6 +15,12 @@
 
         <app-friend-buttons *ngIf="!(isMe || user.is_me)" [user]="user" [large]="true"></app-friend-buttons>
 
+        <div *ngIf="user && (user.is_me || user.is_friend) && currentEvent">
+            <h3>Current event</h3>
+            <app-event-list [events]="[currentEvent]" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
+        </div>
+
+        <h3>Events hosted</h3>
         <app-event-list [events]="events" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
 
         <a *ngIf="!(isMe || user.is_me)" (click)="block()"><u>Block {{ user.name }}</u></a>

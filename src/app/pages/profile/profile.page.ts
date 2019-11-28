@@ -15,6 +15,7 @@ export class ProfilePage implements OnInit {
     private id: number;
     private user: User;
     private isMe: boolean;
+    private currentEvent: Event_ = null;
     private events: Event_[];
 
     constructor(
@@ -29,7 +30,6 @@ export class ProfilePage implements OnInit {
     async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         this.isMe = (!this.id);
-        this.getData();
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
@@ -40,6 +40,12 @@ export class ProfilePage implements OnInit {
     async getData() {
         (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
             this.user = user;
+            if (this.isMe || user.is_friend) {
+                (this.isMe ? this.api.getMyCurrentEvent() : this.api.getUserCurrentEvent(this.id)).subscribe((currentEvent: Event_) => {
+                    this.currentEvent = currentEvent;
+                    console.log(currentEvent);
+                });
+            }
         });
 
         (this.isMe ? this.api.getMyEvents() : this.api.getUserEvents(this.id)).subscribe((events: Event_[]) => {
