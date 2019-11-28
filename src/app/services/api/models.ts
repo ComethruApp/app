@@ -29,6 +29,8 @@ export class Event_ {
     open: boolean;
     transitive_invites: boolean;
     invited_me: boolean;
+    people: number;
+    capacity: number;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
