@@ -1,5 +1,39 @@
-// Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/JosefinSans-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/JosefinSans-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../assets/fonts/JosefinSans-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: italic;
+    font-weight: 100;
+    src: url('../assets/fonts/JosefinSans-LightItalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: italic;
+    font-weight: bold;
+    src: url('../assets/fonts/JosefinSans-BoldItalic.ttf') format('truetype');
+}
 
 /** Ionic CSS Variables **/
 :root {
@@ -88,4 +122,6 @@
   --ion-item-color: 255, 255, 255;
 
   --ion-padding-start: 0;
+
+  --ion-font-family: 'Josefin Sans';
 }
