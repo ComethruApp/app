@@ -129,6 +129,26 @@ export class APIService {
         });
     }
 
+    public getMyCurrentEvent(): Observable<Event_> {
+        return this.get('/users/me/events/current')
+        .map(response => {
+            return new Event_(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public getUserCurrentEvent(userId: number): Observable<Event_> {
+        return this.get('/users/' + userId + '/events/current')
+        .map(response => {
+            return new Event_(response);
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getMyEvents(): Observable<Event_[]> {
         return this.get('/users/me/events')
         .map(response => {
