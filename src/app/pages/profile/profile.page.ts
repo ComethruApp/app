@@ -42,6 +42,10 @@ export class ProfilePage implements OnInit {
             this.user = user;
             if (this.isMe || user.is_friend) {
                 (this.isMe ? this.api.getMyCurrentEvent() : this.api.getUserCurrentEvent(this.id)).subscribe((currentEvent: Event_) => {
+                    // TODO: Fix this!!! We should get it as null in the first place!
+                    if (currentEvent === null || currentEvent.id === undefined) {
+                        currentEvent = null;
+                    }
                     this.currentEvent = currentEvent;
                 });
             }
