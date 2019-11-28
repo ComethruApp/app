@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 
 import { APIService } from '../../services/api/api.service';
-import { Event_ } from '../../services/api/models';
+import { User, Event_ } from '../../services/api/models';
 
 @Component({
     selector: 'app-event',
