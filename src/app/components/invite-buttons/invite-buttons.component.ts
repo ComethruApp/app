@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { APIService } from '../../services/api/api.service';
-import { User } from '../../services/api/models';
+import { User, Event_ } from '../../services/api/models';
 
 @Component({
     selector: 'app-invite-buttons',
@@ -8,7 +8,7 @@ import { User } from '../../services/api/models';
     styleUrls: ['./invite-buttons.component.scss']
 })
 export class InviteButtonsComponent implements OnInit {
-    @Input() event: Event;
+    @Input() event: Event_;
     @Input() user: User;
     @Input() invited: boolean;
 
@@ -20,7 +20,7 @@ export class InviteButtonsComponent implements OnInit {
     }
 
     invite() {
-        this.api.sendInvite(this.event.id, this.this.user.id).subscribe(response => {
+        this.api.sendInvite(this.event.id, this.user.id).subscribe(response => {
             this.invited = true;
         });
     }
