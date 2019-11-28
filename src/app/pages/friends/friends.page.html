@@ -2,7 +2,7 @@
 
 <ion-content class="ion-padding">
     <div *ngIf="requests && requests.length > 0" class="list">
-        <app-user-list [users]="requests" emptyMessage="You have no incoming requests."></app-user-list>
+        <app-user-list [users]="requests" [friend]="true" emptyMessage="You have no incoming requests."></app-user-list>
     </div>
     <app-user-list [users]="friends"></app-user-list>
     <!-- TODO: find some way to do this with an emptyMessage parameter to app-user-list -->

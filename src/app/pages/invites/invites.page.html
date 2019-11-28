@@ -10,43 +10,9 @@
                    (input)="searchUsers($event.target.value)"></ion-input>
     </ion-item>
     <div *ngIf="hasSearched">
-        <h2>Search results</h2>
-        <div *ngIf="searchedUsers && searchedUsers.length > 0" class="list">
-            <ion-grid class="ion-no-padding">
-                <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of searchedUsers">
-                    <ion-col size="8">
-                        <div>
-                            <h2>{{ user.name }}</h2>
-                            <p>{{ user.email }}</p>
-                        </div>
-                    </ion-col>
-                    <ion-col size="4">
-                        <ion-button expand="block" (click)="sendInvite(user.id)">Invite</ion-button>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-        <div *ngIf="!searchedUsers || searchedUsers.length == 0" class="empty-list">
-            No results found.
-        </div>
+        <h3>Search results</h3>
+        <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [event]="event"></app-user-list>
     </div>
-    <h2>People invited</h2>
-    <div *ngIf="invitees && invitees.length > 0" class="list">
-        <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of invitees">
-                <ion-col size="8">
-                    <div>
-                        <h2>{{ user.name }}</h2>
-                        <p>{{ user.email }}</p>
-                    </div>
-                </ion-col>
-                <ion-col size="4">
-                    <ion-button expand="block" (click)="rescindInvite(user.id)">Remove</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>
-    <div *ngIf="!invitees || invitees.length == 0" class="empty-list">
-        Nobody's invited yet.
-    </div>
+    <h3>People invited</h3>
+    <app-user-list [users]="invitees" [invite]="true" [invited]="true" [event]="event" emptyMessage="Nobody invited yet."></app-user-list>
 </ion-content>

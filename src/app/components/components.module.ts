@@ -11,6 +11,7 @@ import { OceanComponent } from './ocean/ocean.component';
 import { MoonComponent } from './moon/moon.component';
 import { RefresherComponent } from './refresher/refresher.component';
 import { HeaderComponent } from './header/header.component';
+import { InviteButtonsComponent } from './invite-buttons/invite-buttons.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { HeaderComponent } from './header/header.component';
         MoonComponent,
         RefresherComponent,
         HeaderComponent,
+        InviteButtonsComponent,
     ],
     imports: [
         IonicModule,
@@ -37,6 +39,7 @@ import { HeaderComponent } from './header/header.component';
         MoonComponent,
         RefresherComponent,
         HeaderComponent,
+        InviteButtonsComponent,
     ],
 })
 export class ComponentsModule {}

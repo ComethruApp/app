@@ -40,14 +40,13 @@ export class InvitesPage implements OnInit {
     }
 
     async searchUsers(query) {
-        if (query && query.length > 1) {
+        if (query) {
             this.api.searchUsers(query).subscribe(searchedUsers => {
                 this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });
         } else {
-            // TODO stop repeating
-            this.hasSearched = (query.length > 1);
+            this.hasSearched = false;
             this.searchedUsers = [];
         }
     }

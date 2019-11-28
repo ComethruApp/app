@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '../../services/api/models';
+import { User, Event_ } from '../../services/api/models';
 
 @Component({
     selector: 'app-user-list',
@@ -11,6 +11,12 @@ import { User } from '../../services/api/models';
 export class UserListComponent implements OnInit {
     @Input() users: User[];
     @Input() emptyMessage: string;
+    // Types of buttons to show next to users
+    @Input() friend: boolean = false;
+    @Input() invite: boolean = false;
+    // Are the users in this list already invited or not?
+    @Input() invited: boolean;
+    @Input() event: Event_ = null;
 
     constructor(
         private router: Router,

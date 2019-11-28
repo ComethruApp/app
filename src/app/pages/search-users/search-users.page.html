@@ -4,5 +4,5 @@
     <ion-item lines="none">
         <ion-input type="text" autocomplete="off" autocorrect="off" autofocus="true" placeholder="Search for a user..." (input)="getData($event.target.value)"></ion-input>
     </ion-item>
-    <app-user-list [users]="users" emptyMessage="No results found."></app-user-list>
+    <app-user-list [users]="users" [friend]="true" emptyMessage="No results found."></app-user-list>
 </ion-content>
