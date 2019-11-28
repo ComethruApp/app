@@ -13,6 +13,9 @@
 :host {
     --padding-start: 0 !important;
 }
+body {
+    font-size: 18px;
+}
 // Remove shadow under header
 .header-md::after { display: none; }
 // Remove shadow above tabs
@@ -112,7 +115,7 @@ a {
 .tag {
     display: inline-block;
     background: #007ef1;
-    padding: 3px 5px;
+    padding: 5px 5px 3px;
     margin-right: 3px;
     margin-bottom: 3px;
     font-size: 20px;
