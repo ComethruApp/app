@@ -12,11 +12,11 @@ import { User, Event_ } from '../../services/api/models';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-    private id: number;
-    private user: User;
-    private isMe: boolean;
-    private currentEvent: Event_ = null;
-    private events: Event_[];
+    id: number;
+    user: User;
+    isMe: boolean;
+    currentEvent: Event_ = null;
+    events: Event_[];
 
     constructor(
         private loadingCtrl: LoadingController,

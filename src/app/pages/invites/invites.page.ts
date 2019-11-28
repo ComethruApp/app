@@ -10,11 +10,11 @@ import { User, Event_ } from '../../services/api/models';
     styleUrls: ['./invites.page.scss'],
 })
 export class InvitesPage implements OnInit {
-    private id: number;
-    private searchedUsers: User[] = null;
-    private hasSearched: boolean = false;
-    private invitees: User[] = null;
-    private event: Event_ = null;
+    id: number;
+    searchedUsers: User[] = null;
+    hasSearched: boolean = false;
+    invitees: User[] = null;
+    event: Event_ = null;
 
     constructor(
         public loadingCtrl: LoadingController,

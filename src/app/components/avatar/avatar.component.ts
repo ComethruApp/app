@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AvatarComponent implements OnInit {
     @Input() hash: string;
     @Input() large: boolean = false;
-    private size: number;
+    size: number;
 
     constructor() { }
 

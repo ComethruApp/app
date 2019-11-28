@@ -18,9 +18,9 @@ export class FormEventPage implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
     validations_form: FormGroup;
-    private editing: boolean = false;
-    private id: number;
-    private event: Event_ = null;
+    editing: boolean = false;
+    id: number;
+    event: Event_ = null;
 
 
     constructor(

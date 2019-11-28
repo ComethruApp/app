@@ -7,12 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MoonComponent implements OnInit {
     @Input() rating: string;
-
     @Input() large: boolean = false;
-    private size: number;
+    darknessPosition: number;
 
     constructor() { }
 
     ngOnInit() {
+        this.darknessPosition = (this.large ? 150 : 75) / 5 * this.rating;
     }
 }

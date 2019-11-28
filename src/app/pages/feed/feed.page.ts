@@ -11,8 +11,8 @@ import { Event_ } from '../../services/api/models';
     styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-    private closed: Event_[] = null;
-    private open: Event_[] = null;
+    closed: Event_[] = null;
+    open: Event_[] = null;
 
     constructor(
         private loadingCtrl: LoadingController,

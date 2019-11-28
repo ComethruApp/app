@@ -38,14 +38,14 @@
 
         <ion-item lines="none" class="toggle-container">
             <ion-label>Open event?</ion-label>
-            <ion-toggle checked [(ngModel)]="open" name="open" formControlName="open"
+            <ion-toggle checked name="open" formControlName="open"
                        [value]="event ? event.open : true"></ion-toggle>
         </ion-item>
 
         <!-- TODO only show this if event is private -->
         <ion-item lines="none" class="toggle-container">
             <ion-label>Allow invited guests to invite others?</ion-label>
-            <ion-toggle checked [(ngModel)]="transitive_invites" name="transitive_invites" formControlName="transitive_invites"
+            <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
                        [value]="event ? event.transitive_invites : false"></ion-toggle>
         </ion-item>
         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>

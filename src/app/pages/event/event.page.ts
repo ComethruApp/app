@@ -12,9 +12,9 @@ import { User, Event_ } from '../../services/api/models';
     styleUrls: ['./event.page.scss'],
 })
 export class EventPage implements OnInit {
-    private id: number;
-    private event: Event_;
-    private friendsHere: User[] = null;
+    id: number;
+    event: Event_;
+    friendsHere: User[] = null;
 
     constructor(
         public loadingCtrl: LoadingController,
