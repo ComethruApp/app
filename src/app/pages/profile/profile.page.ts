@@ -43,7 +43,6 @@ export class ProfilePage implements OnInit {
             if (this.isMe || user.is_friend) {
                 (this.isMe ? this.api.getMyCurrentEvent() : this.api.getUserCurrentEvent(this.id)).subscribe((currentEvent: Event_) => {
                     this.currentEvent = currentEvent;
-                    console.log(currentEvent);
                 });
             }
         });
