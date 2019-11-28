@@ -21,6 +21,18 @@
             <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
             <app-moon [rating]="event.rating" [large]="true"></app-moon>
         </div>
+
+        <ion-grid *ngIf="friendsHere">
+            <ion-row *ngFor="let friend of friendsHere">
+                <ion-col size="3">
+                    <app-avatar [hash]="friend.avatar"></app-avatar>
+                </ion-col>
+                <ion-col size="9">
+                    <h2>{{ friend.name }}</h2>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
         <div>
             <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">Edit</ion-button>

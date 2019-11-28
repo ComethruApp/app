@@ -169,6 +169,16 @@ export class APIService {
         });
     }
 
+    public getFriendsAtEvent(eventId: number): Observable<User[]> {
+        return this.get('/events/' + eventId + '/friends')
+        .map(response => {
+            return response.map((event) => new User(event));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {

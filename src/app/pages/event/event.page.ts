@@ -14,12 +14,14 @@ import { Event_ } from '../../services/api/models';
 export class EventPage implements OnInit {
     private id: number;
     private event: Event_;
+    private friendsHere: User[] = null;
 
     constructor(
         public loadingCtrl: LoadingController,
-        private api: APIService,
         private route: ActivatedRoute,
         private router: Router,
+
+        private api: APIService,
     ) { }
 
     async ngOnInit() {
@@ -34,6 +36,9 @@ export class EventPage implements OnInit {
     async getData(){
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
+        });
+        this.api.getFriendsAtEvent(this.id).subscribe(friendsHere => {
+            this.friendsHere = friendsHere;
         });
     }
 
