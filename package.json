@@ -30,6 +30,8 @@
     "@ionic/storage": "^2.2.0",
     "@mauron85/cordova-plugin-background-geolocation": "^3.1.0",
     "cordova-android": "8.1.0",
+    "cordova-ios": "5.1.0",
+    "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-nativegeocoder": "^3.2.2",
     "cordova-plugin-navigationbar-color": "0.0.9",
@@ -91,7 +93,8 @@
       "cordova-plugin-navigationbar-color": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
