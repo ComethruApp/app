@@ -31,6 +31,7 @@ export class Event_ {
     invited_me: boolean;
     people: number;
     capacity: number;
+    rating: number;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
