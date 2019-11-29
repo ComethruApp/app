@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
@@ -17,7 +17,7 @@ declare var google;
 })
 export class MapPage implements OnInit {
 
-    @ViewChild('map') mapElement: ElementRef;
+    @ViewChild('map', {static: false}) mapElement: ElementRef;
     map: any;
     address: string;
     loading: any; // TODO: what type?
@@ -190,11 +190,13 @@ export class MapPage implements OnInit {
         };
 
         this.nativeGeocoder.reverseGeocode(latitude, longitude, options)
-        .then((result: NativeGeocoderReverseResult[]) => {
+        .then((result: NativeGeocoderResult[]) => {
             this.address = "";
             let responseAddress = [];
             for (let [key, value] of Object.entries(result[0])) {
-                if(value.length>0)
+                // TODO: this was breaking after an update, so look into this!
+                if (value)
+                //if(value.length>0)
                     responseAddress.push(value);
 
             }

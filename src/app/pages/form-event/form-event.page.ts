@@ -3,7 +3,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { APIService } from '../../services/api/api.service';
@@ -15,7 +15,7 @@ import { Event_ } from '../../services/api/models';
     styleUrls: ['./form-event.page.scss'],
 })
 export class FormEventPage implements OnInit {
-    @ViewChild(RouterOutlet) outlet: RouterOutlet;
+    @ViewChild(RouterOutlet, {static: false}) outlet: RouterOutlet;
 
     validations_form: FormGroup;
     editing: boolean = false;
