@@ -2,7 +2,8 @@
   "name": "Comethru",
   "version": "0.0.1",
   "author": "Erik Boesen",
-  "homepage": "https://erikboesen.com/",
+  "homepage": "https://comethru.io/",
+  "description": "What's happening on campus.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -73,7 +74,6 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project",
   "cordova": {
     "plugins": {
       "cordova-plugin-geolocation": {},
