@@ -8,6 +8,8 @@ export class User {
     has_sent_friend_request: boolean;
     has_received_friend_request: boolean;
     is_friend: boolean;
+    // Usually null
+    invited: boolean;
 
     // TODO don't repeat
     constructor(values: Object = {}) {

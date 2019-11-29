@@ -115,6 +115,17 @@ export class APIService {
         });
     }
 
+    // TODO this function should be merged with something else if possible... feels like a hack
+    public searchUsersForEvent(eventId: number, query: string): Observable<User[]> {
+        return this.get('/events/' + eventId + '/invites/search/' + query)
+        .map(response => {
+            return response.map((user) => new User(user));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public updateUser(user: User){
 
     }
