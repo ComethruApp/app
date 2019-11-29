@@ -47,8 +47,8 @@ ion-alert {
 .dark-toolbar {
     --background: #15202b;
 }
-ion-title {
-    //text-align: center;
+ion-title.md {
+    padding-left: 0;
 }
 
 ion-button {
@@ -74,6 +74,8 @@ h1 {
     font-weight: bold;
     font-size: 80px;
     margin-bottom: 5px;
+    // Correct for padding on left side of font
+    margin-left: -4px;
     line-height: 1;
 }
 h2 {
