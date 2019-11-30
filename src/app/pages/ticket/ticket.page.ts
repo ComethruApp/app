@@ -15,6 +15,7 @@ export class TicketPage implements OnInit {
     id: number;
     event: Event_ = null;
     user: User = null;
+    code: string;
 
     constructor(
         public loadingCtrl: LoadingController,
@@ -29,15 +30,24 @@ export class TicketPage implements OnInit {
             message: 'Loading...'
         });
         this.presentLoading(loading);
-        this.getData().then(() => loading.dismiss());
+        this.getData().then(() => {
+            // TODO: this is a trashy hashing algorithm and not remotely secure
+            // Need to think about better options for this.
+            loading.dismiss()
+        });
     }
 
-    async getData(){
+    hex(num): string {
+        return ((num << 1) ^ 0x2af).toString(16).toUpperCase().padStart(3, '0').slice(-3);
+    }
+
+    async getData() {
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
         });
         this.api.getMe().subscribe(user => {
             this.user = user;
+            this.code = this.hex(this.id) + '-' + this.hex(this.user.id);
         });
     }
 
