@@ -19,10 +19,10 @@
     <h3>{{ code }}</h3>
     <hr>
     <h1>{{ user.name }}</h1>
-    <h2>{{ event.username }}</h2>
     <hr>
     <p>Admit one to</p>
     <h3>{{ event.name }}</h3>
-    <p>@ {{ event.location }}</p>
-    <p>by {{ event.hosts[0].name }}</p>
+    <p>{{ event.location }}</p>
+    <!--<p>by {{ event.hosts[0].name }}</p>-->
+    <p><u (click)="back()">Close ticket</u></p>
 </ion-content>

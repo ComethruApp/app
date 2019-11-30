@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -18,7 +19,8 @@ export class TicketPage implements OnInit {
     code: string;
 
     constructor(
-        public loadingCtrl: LoadingController,
+        private loadingCtrl: LoadingController,
+        private location: Location,
         private route: ActivatedRoute,
 
         private api: APIService,
@@ -56,6 +58,10 @@ export class TicketPage implements OnInit {
     }
     formatDate(date) {
         return moment(date).utc().format('h:mma')
+    }
+
+    back() {
+        this.location.back();
     }
 
     async presentLoading(loading) {
