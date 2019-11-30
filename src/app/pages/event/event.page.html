@@ -12,8 +12,6 @@
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
 
-        <ion-button *ngIf="!event.open && event.invited_me" expand="block" size="large" color="warning" routerLink="/ticket/{{ id }}">View ticket</ion-button>
-
         <p class="description">{{ event.description }}</p>
         <p>
         <em>Hosted by <a [routerLink]="'/profile/' + event.hosts[0].id">{{ event.hosts[0].name }}</a>.</em>
@@ -24,6 +22,8 @@
             <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
             <app-moon [rating]="event.rating" [large]="true"></app-moon>
         </div>
+
+        <ion-button *ngIf="!event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
 
         <h3 *ngIf="event.happening_now && friendsHere && friendsHere.length > 0">Friends here</h3>
         <ion-grid *ngIf="event.happening_now && friendsHere && friendsHere.length > 0">
