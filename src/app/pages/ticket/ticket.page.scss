@@ -2,14 +2,42 @@
     --background: transparent;
     text-align: center;
 }
+h3 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
 p {
     padding: 0 50px;
 }
 .img-container {
+    margin-top: 60px;
     height: 0;
     overflow: show;
     position: relative;
     z-index: -1;
 }
 img {
+}
+ion-content {
+    border: solid 10px #555D66;
+    animation: 10s colors infinite linear;
+}
+@keyframes colors {
+    0% { border-color: #F44336; }
+    6% { border-color: #FF5722; }
+    12% { border-color: #FF9800; }
+    18% { border-color: #FFC107; }
+    24% { border-color: #FFEB3B; }
+    30% { border-color: #CDDC39; }
+    36% { border-color: #8BC34A; }
+    42% { border-color: #4CAF50; }
+    48% { border-color: #009688; }
+    54% { border-color: #00BCD4; }
+    60% { border-color: #03A9F4; }
+    66% { border-color: #2196F3; }
+    72% { border-color: #3F51B5; }
+    78% { border-color: #673AB7; }
+    84% { border-color: #9C27B0; }
+    90% { border-color: #E91E63; }
+    100% { border-color: #F44336; }
 }
