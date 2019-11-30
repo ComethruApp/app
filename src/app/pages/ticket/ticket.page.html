@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ticket</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- TODO header? -->
 
-<ion-content>
-
+<ion-content *ngIf="user && event">
+    <div class="img-container">
+        <ion-img class="loader large" src="assets/imgs/logo/icon_grey.png"></ion-img>
+    </div>
+    <h1>{{ user.name }}</h1>
+    <h2>{{ event.username }}</h2>
+    <p>@ {{ event.location }}</p>
+    <p>by {{ event.hosts[0].name }}</p>
 </ion-content>

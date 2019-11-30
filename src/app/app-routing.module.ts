@@ -12,13 +12,10 @@ const routes: Routes = [
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'profile/:id', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'ticket/:id', loadChildren: './pages/ticket/ticket.module#TicketPageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'friends', loadChildren: './pages/friends/friends.module#FriendsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
-  {
-    path: 'ticket',
-    loadChildren: () => import('./pages/ticket/ticket.module').then( m => m.TicketPageModule)
-  },
 ];
 
 @NgModule({

@@ -1,0 +1,15 @@
+* {
+    --background: transparent;
+    text-align: center;
+}
+p {
+    padding: 0 50px;
+}
+.img-container {
+    height: 0;
+    overflow: show;
+    position: relative;
+    z-index: -1;
+}
+img {
+}
