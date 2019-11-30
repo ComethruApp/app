@@ -16,7 +16,8 @@ p {
     position: relative;
     z-index: -1;
 }
-img {
+g {
+    animation: 10s fill-colors infinite linear;
 }
 ion-content {
     border: solid 10px #555D66;
@@ -40,4 +41,23 @@ ion-content {
     84% { border-color: #9C27B0; }
     90% { border-color: #E91E63; }
     100% { border-color: #F44336; }
+}
+@keyframes fill-colors {
+    0% { fill: #F44336; }
+    6% { fill: #FF5722; }
+    12% { fill: #FF9800; }
+    18% { fill: #FFC107; }
+    24% { fill: #FFEB3B; }
+    30% { fill: #CDDC39; }
+    36% { fill: #8BC34A; }
+    42% { fill: #4CAF50; }
+    48% { fill: #009688; }
+    54% { fill: #00BCD4; }
+    60% { fill: #03A9F4; }
+    66% { fill: #2196F3; }
+    72% { fill: #3F51B5; }
+    78% { fill: #673AB7; }
+    84% { fill: #9C27B0; }
+    90% { fill: #E91E63; }
+    100% { fill: #F44336; }
 }
