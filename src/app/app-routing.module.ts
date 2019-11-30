@@ -15,6 +15,10 @@ const routes: Routes = [
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'friends', loadChildren: './pages/friends/friends.module#FriendsPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
+  {
+    path: 'ticket',
+    loadChildren: () => import('./pages/ticket/ticket.module').then( m => m.TicketPageModule)
+  },
 ];
 
 @NgModule({
