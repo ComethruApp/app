@@ -41,7 +41,7 @@ export class InvitesPage implements OnInit {
 
     async searchUsers(query) {
         if (query) {
-            this.api.searchUsers(query).subscribe(searchedUsers => {
+            this.api.searchUsersForEvent(this.id, query).subscribe(searchedUsers => {
                 this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });

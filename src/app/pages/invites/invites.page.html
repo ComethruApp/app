@@ -11,8 +11,8 @@
     </ion-item>
     <div *ngIf="hasSearched">
         <h3>Search results</h3>
-        <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [event]="event"></app-user-list>
+        <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [eventId]="id"></app-user-list>
     </div>
     <h3>People invited</h3>
-    <app-user-list [users]="invitees" [invite]="true" [invited]="true" [event]="event" emptyMessage="Nobody invited yet."></app-user-list>
+    <app-user-list [users]="invitees" [invite]="true" [invited]="true" [eventId]="id" emptyMessage="Nobody invited yet."></app-user-list>
 </ion-content>

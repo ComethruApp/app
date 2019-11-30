@@ -16,7 +16,7 @@ export class UserListComponent implements OnInit {
     @Input() invite: boolean = false;
     // Are the users in this list already invited or not?
     @Input() invited: boolean;
-    @Input() event: Event_ = null;
+    @Input() eventId: number = null;
 
     constructor(
         private router: Router,

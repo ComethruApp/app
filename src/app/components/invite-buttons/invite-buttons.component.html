@@ -1,6 +1,2 @@
-<ng-template [ngIf]="invited">
-    <ion-button expand="block" (click)="invite()">Invite</ion-button>
-</ng-template>
-<ng-template [ngIf]="!invited">
-    <ion-button expand="block" (click)="disinvite()">Disinvite</ion-button>
-</ng-template>
+<ion-button *ngIf="!user.invited" expand="block" (click)="invite()">Invite</ion-button>
+<ion-button *ngIf="user.invited" expand="block" (click)="disinvite()">Disinvite</ion-button>
