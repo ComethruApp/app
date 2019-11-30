@@ -1,2 +1,2 @@
-<ion-button *ngIf="!user.invited" expand="block" (click)="invite()">Invite</ion-button>
-<ion-button *ngIf="user.invited" expand="block" (click)="disinvite()">Disinvite</ion-button>
+<ion-button *ngIf="!user.invited" expand="block" color="success" (click)="invite()">Invite</ion-button>
+<ion-button *ngIf="user.invited" expand="block" color="warning" (click)="disinvite()">Disinvite</ion-button>
