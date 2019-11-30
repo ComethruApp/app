@@ -2,15 +2,30 @@
     --background: transparent;
     text-align: center;
 }
+hr {
+    border: none;
+    height: 1px;
+    background: white;
+    width: 40px;
+    display: block;
+    margin: 20px auto 30px;
+}
+h1 {
+}
 h3 {
+    display: block;
+    margin: 0 auto;
     font-size: 50px;
-    margin-bottom: 30px;
+    max-width: 80%;
+    line-height: 1;
+    border-bottom: none;
 }
 p {
-    padding: 0 50px;
+    padding: 0 80px;
+    margin: 5px;
 }
 .img-container {
-    margin-top: 60px;
+    margin-top: 80px;
     height: 0;
     overflow: show;
     position: relative;
@@ -20,7 +35,7 @@ g {
     animation: 10s fill-colors infinite linear;
 }
 ion-content {
-    border: solid 10px #555D66;
+    border: solid 15px #555D66;
     animation: 10s colors infinite linear;
 }
 @keyframes colors {
