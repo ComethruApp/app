@@ -11,6 +11,9 @@
             <div class="tag">{{ formatDay(event.time) }}</div>
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
+
+        <ion-button *ngIf="!event.open && event.invited_me" expand="block" size="large" color="warning" routerLink="/ticket/{{ id }}">View ticket</ion-button>
+
         <p class="description">{{ event.description }}</p>
         <p>
         <em>Hosted by <a [routerLink]="'/profile/' + event.hosts[0].id">{{ event.hosts[0].name }}</a>.</em>
