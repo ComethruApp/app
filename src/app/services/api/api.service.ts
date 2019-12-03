@@ -250,6 +250,16 @@ export class APIService {
         });
     }
 
+    public endEvent(eventId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/end', {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getEventInvitees(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/invites')
         .map(response => {

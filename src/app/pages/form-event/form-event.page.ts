@@ -93,6 +93,30 @@ export class FormEventPage implements OnInit {
         await alert.present();
     }
 
+    async end() {
+        const alert = await this.alertCtrl.create({
+            header: 'Really end?',
+            message: 'Are you sure you want to end ' + this.event.name + '? This can\'t be undone.',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {}
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this.api.endEvent(this.id).subscribe(response => {
+                            this.router.navigateByUrl('tabs');
+                        });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
+
     async submit(form) {
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
