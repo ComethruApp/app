@@ -29,7 +29,7 @@
         <ion-grid *ngIf="event.happening_now && friendsHere && friendsHere.length > 0">
             <ion-row *ngFor="let friend of friendsHere" [routerLink]="'/profile/' + friend.id">
                 <ion-col size="2" class="ion-no-padding">
-                    <app-avatar [hash]="friend.avatar"></app-avatar>
+                    <app-avatar [avatar]="friend.avatar"></app-avatar>
                 </ion-col>
                 <ion-col size="10">
                     <h2>{{ friend.name }}</h2>

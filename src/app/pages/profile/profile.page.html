@@ -6,7 +6,7 @@
         <app-refresher></app-refresher>
     </ion-refresher>
     <div *ngIf="user">
-        <app-avatar [hash]="user.avatar" [large]="true"></app-avatar>
+        <app-avatar [avatar]="user.avatar" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
         <div *ngIf="isMe || user.is_me">
             <ion-button expand="block" size="large" (click)="friends()">Your Friends</ion-button>

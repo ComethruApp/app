@@ -6,14 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent implements OnInit {
-    @Input() hash: string;
+    @Input() avatar: string;
     @Input() large: boolean = false;
-    size: number;
 
     constructor() { }
 
     ngOnInit() {
-        this.size = this.large ? 512 : 128;
     }
-
 }

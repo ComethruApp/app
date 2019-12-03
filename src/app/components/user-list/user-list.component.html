@@ -2,7 +2,7 @@
     <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
             <ion-col size="2">
-                <app-avatar [hash]="user.avatar"></app-avatar>
+                <app-avatar [avatar]="user.avatar"></app-avatar>
             </ion-col>
             <ion-col size="7" (click)="openProfile(user.id)">
                 <div>
