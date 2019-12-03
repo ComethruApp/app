@@ -1,12 +1,11 @@
 <!--<app-header title="Happening Now"></app-header>-->
 
-<ion-content *ngIf="closed && open" class="list-mini-content" class="ion-padding">
+<ion-content *ngIf="events" class="list-mini-content" class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <app-refresher></app-refresher>
     </ion-refresher>
-    <app-event-list [events]="closed"></app-event-list>
-    <app-event-list [events]="open"></app-event-list>
-    <div *ngIf="closed && open && closed.length == 0 && open.length == 0" class="empty-list">
+    <app-event-list [events]="events"></app-event-list>
+    <div *ngIf="events && events.length == 0" class="empty-list">
         <ion-img class="loader large" src="assets/imgs/logo/icon_grey.png"></ion-img>
         Nothing's happening right now.<br>
         What is this, Harvard?

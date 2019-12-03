@@ -11,8 +11,7 @@ import { Event_ } from '../../services/api/models';
     styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-    closed: Event_[] = null;
-    open: Event_[] = null;
+    events: Event_[] = null;
 
     constructor(
         private loadingCtrl: LoadingController,
@@ -31,10 +30,7 @@ export class FeedPage implements OnInit {
 
     async getData() {
         this.api.getEvents().subscribe(events => {
-            this.open = events;
-        });
-        this.api.getInvites().subscribe(events => {
-            this.closed = events;
+            this.events = events;
         });
     }
 
