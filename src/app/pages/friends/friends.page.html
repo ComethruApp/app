@@ -4,7 +4,7 @@
     <div *ngIf="requests && requests.length > 0" class="list">
         <app-user-list [users]="requests" [friend]="true" emptyMessage="You have no incoming requests."></app-user-list>
     </div>
-    <app-user-list [users]="friends"></app-user-list>
+    <app-user-list [users]="friends" [friend]="true"></app-user-list>
     <!-- TODO: find some way to do this with an emptyMessage parameter to app-user-list -->
     <div *ngIf="friends && friends.length == 0" class="empty-list">
         You have no friends yet... make some?<br>
