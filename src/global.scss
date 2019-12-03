@@ -151,8 +151,8 @@ ion-refresher {
     background: var(--ion-color-primary-shade, #035CDD);
 }
 ion-refresher .loader {
-    width: 40px;
-    margin: 30px auto 0;
+    width: 50px;
+    margin: 35px auto 0;
     transform: rotate(0);
 }
 ion-refresher.refresher-pulling .loader,
