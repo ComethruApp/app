@@ -46,11 +46,11 @@ export class EventPage implements OnInit {
         this.getData().then(() => event.target.complete());
     }
 
-    formatDay(date) {
-        return moment(date).format('dddd');
+    formatTime(date) {
+        return moment(date).format('h:mma')
     }
     formatDate(date) {
-        return moment(date).format('h:mma')
+        return moment(date).format('dddd, M/D');
     }
 
     openInvites() {
