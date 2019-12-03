@@ -32,6 +32,8 @@
     "cordova-android": "8.1.0",
     "cordova-ios": "5.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
+    "cordova-plugin-background-geolocation": "^1.0.6",
+    "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-nativegeocoder": "^3.2.2",
     "cordova-plugin-navigationbar-color": "0.0.9",
@@ -79,7 +81,9 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-geolocation": {},
-      "cordova-plugin-nativegeocoder": {},
+      "cordova-plugin-nativegeocoder": {
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Anonymously finding your current event. :)"
+      },
       "cordova-plugin-background-geolocation": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-whitelist": {},
