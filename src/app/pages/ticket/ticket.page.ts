@@ -54,10 +54,10 @@ export class TicketPage implements OnInit {
     }
 
     formatDay(date) {
-        return moment(date).utc().format('dddd');
+        return moment(date).format('dddd');
     }
     formatDate(date) {
-        return moment(date).utc().format('h:mma')
+        return moment(date).format('h:mma')
     }
 
     back() {
