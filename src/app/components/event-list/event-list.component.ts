@@ -28,7 +28,7 @@ export class EventListComponent implements OnInit {
         return moment(date).format('dddd');
     }
     formatDate(date) {
-        return moment(date).format('dddd MMMM Do, h:mma')
+        return moment(date).format('M/D')
     }
     formatTime(date) {
         return moment(date).format('h:mm')

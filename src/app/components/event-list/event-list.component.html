@@ -13,7 +13,7 @@
             </ion-col>
             <ion-col *ngIf="!event.happening_now" size="4" class="time ion-no-padding ">
                 <div class="hour">{{ formatTime(event.time) }}</div>
-                <div class="ampm">{{ formatAMPM(event.time) }}</div>
+                <div class="ampm">{{ formatAMPM(event.time) }}, {{ formatDate(event.time) }}</div>
             </ion-col>
         </ion-row>
     </ion-grid>
