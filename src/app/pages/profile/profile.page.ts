@@ -64,10 +64,6 @@ export class ProfilePage implements OnInit {
         return await loading.present();
     }
 
-    friends() {
-        this.router.navigate(['/friends']);
-    }
-
     openSettings() {
         this.router.navigate(['/settings']);
     }
