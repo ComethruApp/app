@@ -1,48 +1,39 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation/ngx';
+import { Geolocation, GeolocationOptions, Geoposition } from '@ionic-native/geolocation/ngx';
 import { APIService } from '../api/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LocationService {
+    watch: any;
+    private debug: boolean = false;
 
     constructor(
-        private backgroundGeolocation: BackgroundGeolocation,
+        public geolocation: Geolocation,
         private alertCtrl: AlertController,
         private api: APIService,
     ) { }
 
-    startBackgroundGeolocation() {
-        const config: BackgroundGeolocationConfig = {
-            desiredAccuracy: 10,
-            stationaryRadius: 20,
-            distanceFilter: 30,
-            debug: false,
-            stopOnTerminate: false, // enable this to clear background location settings when the app terminates
-        };
-
-        this.backgroundGeolocation.configure(config)
-        .then(() => {
-            this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) => {
-                //this.warn('Location update', JSON.stringify(location));
-                this.api.sendLocation(location.latitude, location.longitude).subscribe(response => {
-                    if (config.debug) {
-                        this.warn('Location response', JSON.stringify(response));
-                    }
-                });
-
-                this.backgroundGeolocation.finish(); // FOR IOS ONLY
-            });
-
+    startTracking() {
+        this.watch = this.geolocation.watchPosition({
+            frequency: 15000,
+            enableHighAccuracy: true,
         });
+        this.watch.subscribe((position: Geoposition) => {
+            console.log('Got new position!', position.coords);
+            this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
+                if (this.debug) {
+                    this.warn('Location response', JSON.stringify(response));
+                }
+            });
+        });
+    }
 
-        // start recording location
-        this.backgroundGeolocation.start();
-
-        // If you wish to turn OFF background-tracking, call the #stop method.
-        //this.backgroundGeolocation.stop();
+    stopTracking() {
+  //      this.watch.unsubscribe();
+        console.log('Ended tracking.');
     }
 
     async warn(header: string, message: string) {

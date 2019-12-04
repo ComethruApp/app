@@ -41,7 +41,7 @@ export class AppComponent {
                           'Please update Comethru through your app store! You\'ll need the newest version to continue.');
             }
         });
-        this.locationService.startBackgroundGeolocation();
+        this.locationService.startTracking();
     }
 
     async warn(header: string, message: string) {
