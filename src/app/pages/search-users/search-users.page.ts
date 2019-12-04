@@ -8,22 +8,41 @@ import { User } from '../../services/api/models';
     styleUrls: ['./search-users.page.scss'],
 })
 export class SearchUsersPage implements OnInit {
-    users: User[];
+    searched: boolean = false;
+    searchResults: User[] = null;
+    requests: User[] = null;
+    friends: User[] = null;
 
     constructor(
         private api: APIService,
     ) { }
 
     ngOnInit() {
+        this.getData();
     }
 
-    async getData(query) {
+    async getData() {
+        this.api.getFriendRequests().subscribe(requests => {
+            this.requests = requests;
+        });
+        this.api.getFriends().subscribe(friends => {
+            this.friends = friends;
+        });
+    }
+
+    async search(query) {
+        console.log(query);
         if (query) {
+            console.log('It do');
             this.api.searchUsers(query).subscribe(users => {
-                this.users = users;
+                this.searchResults = users;
+                this.searched = true;
             });
         } else {
-            this.users = [];
+            console.log('It don\'t');
+            this.searchResults = [];
+            this.searched = false;
         }
+        console.log(this.searched);
     }
 }
