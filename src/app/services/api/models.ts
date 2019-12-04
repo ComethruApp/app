@@ -26,6 +26,7 @@ export class Event_ {
     lng: number;
     time: number;
     end_time: number;
+    ended: boolean;
     hosts: User[];
     happening_now: boolean;
     mine: boolean;
