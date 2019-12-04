@@ -16,7 +16,7 @@
     <preference name="SplashScreenDelay" value="0" />
     <plugin name="cordova-plugin-navigationbar-color" spec="0.0.8" />
     <preference name="NavigationBarBackgroundColor" value="#15202b" />
-    <preference name="android-minSdkVersion" value="28" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="29" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
