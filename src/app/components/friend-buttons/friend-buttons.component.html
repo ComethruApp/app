@@ -1,6 +1,6 @@
 <ng-template [ngIf]="user.has_sent_friend_request">
     <ion-button expand="block" [size]="buttonSize" (click)="acceptRequest()">{{ large ? 'Accept friend request' : 'Accept' }}</ion-button>
-    <ion-button expand="block" [size]="buttonSize" (click)="rejectRequest()" color="danger">{{ large ? 'Reject friend request' : 'Reject' }}</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="rejectRequest()" color="danger">Reject</ion-button>
 </ng-template>
 <ng-template [ngIf]="user.is_friend">
     <ion-button expand="block" [size]="buttonSize" (click)="unfriend()" color="danger">Unfriend</ion-button>

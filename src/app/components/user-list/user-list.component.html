@@ -1,7 +1,7 @@
 <div *ngIf="users && users.length > 0" class="list">
     <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
-            <ion-col size="2">
+            <ion-col size="2" class="ion-no-padding">
                 <app-avatar [avatar]="user.avatar"></app-avatar>
             </ion-col>
             <ion-col size="7" (click)="openProfile(user.id)">
@@ -10,7 +10,7 @@
                     {{ user.email }}
                 </div>
             </ion-col>
-            <ion-col size="3">
+            <ion-col size="3" class="ion-no-padding">
                 <app-friend-buttons *ngIf="friend" [user]="user"></app-friend-buttons>
                 <app-invite-buttons *ngIf="invite" [user]="user" [eventId]="eventId"></app-invite-buttons>
             </ion-col>
