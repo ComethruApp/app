@@ -11,16 +11,16 @@ export class LocationService {
     private debug: boolean = false;
 
     constructor(
-        public geolocation: Geolocation,
+        private geolocation: Geolocation,
         private alertCtrl: AlertController,
         private api: APIService,
     ) { }
 
     startTracking() {
-        this.watch = this.geolocation.watchPosition({
+        this.watch = this.geolocation.watchPosition(/*{
             frequency: 15000,
             enableHighAccuracy: true,
-        });
+        }*/);
         this.watch.subscribe((position: Geoposition) => {
             if (position != undefined) {
                 console.log('Got new position!', position);
