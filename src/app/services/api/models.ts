@@ -25,6 +25,7 @@ export class Event_ {
     lat: number;
     lng: number;
     time: number;
+    end_time: number;
     hosts: User[];
     happening_now: boolean;
     mine: boolean;

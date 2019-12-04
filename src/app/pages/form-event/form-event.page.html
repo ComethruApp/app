@@ -29,10 +29,20 @@
                 formControlName="time"
                 displayFormat="MMM DD, HH:mm"
                 monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
-                minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
 
                 required
                 [value]="event ? event.time : ''">
+            </ion-datetime>
+        </ion-item>
+
+        <ion-item lines="none">
+            <ion-label>End time (optional)</ion-label>
+            <ion-datetime
+                formControlName="end_time"
+                displayFormat="MMM DD, HH:mm"
+                monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+
+                [value]="event ? event.end_time : ''">
             </ion-datetime>
         </ion-item>
 
