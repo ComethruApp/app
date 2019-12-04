@@ -290,6 +290,26 @@ export class APIService {
         });
     }
 
+    public vote(eventId: number, positive: boolean): Observable<Object> {
+        return this.post('/events/' + eventId + '/vote', {positive: positive})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public unvote(eventId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/vote')
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public updateLocation(loc) {
         this.post('/location', loc)
         .map(response => {
