@@ -22,17 +22,19 @@ export class LocationService {
             enableHighAccuracy: true,
         });
         this.watch.subscribe((position: Geoposition) => {
-            console.log('Got new position!', position.coords);
-            this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
-                if (this.debug) {
-                    this.warn('Location response', JSON.stringify(response));
-                }
-            });
+            if (position != undefined) {
+                console.log('Got new position!', position);
+                this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
+                    if (this.debug) {
+                        this.warn('Location response', JSON.stringify(response));
+                    }
+                });
+            }
         });
     }
 
     stopTracking() {
-  //      this.watch.unsubscribe();
+        this.watch.unsubscribe();
         console.log('Ended tracking.');
     }
 
