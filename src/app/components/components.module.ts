@@ -12,6 +12,7 @@ import { MoonComponent } from './moon/moon.component';
 import { RefresherComponent } from './refresher/refresher.component';
 import { HeaderComponent } from './header/header.component';
 import { InviteButtonsComponent } from './invite-buttons/invite-buttons.component';
+import { VotesComponent } from './votes/votes.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { InviteButtonsComponent } from './invite-buttons/invite-buttons.componen
         RefresherComponent,
         HeaderComponent,
         InviteButtonsComponent,
+        VotesComponent,
     ],
     imports: [
         IonicModule,
@@ -40,6 +42,7 @@ import { InviteButtonsComponent } from './invite-buttons/invite-buttons.componen
         RefresherComponent,
         HeaderComponent,
         InviteButtonsComponent,
+        VotesComponent,
     ],
 })
 export class ComponentsModule {}
