@@ -58,8 +58,9 @@
             <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
                        [value]="event ? event.transitive_invites : false"></ion-toggle>
         </ion-item>
+
         <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>
-        <ion-button *ngIf="editing" class="end-button" expand="block" size="large" color="danger" (click)="end()">End</ion-button>
+        <ion-button *ngIf="editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">End</ion-button>
         <!--<ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>-->
     </form>
 </ion-content>
