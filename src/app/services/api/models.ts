@@ -17,6 +17,16 @@ export class User {
     }
 }
 
+export class Vote {
+    positive: boolean;
+    negative: boolean;
+    review: string;
+
+    constructor(values: Object = {}) {
+        Object.assign(this, values);
+    }
+}
+
 export class Event_ {
     id: number;
     name: string;
@@ -28,6 +38,7 @@ export class Event_ {
     end_time: number;
     ended: boolean;
     hosts: User[];
+    vote: Vote;
     happening_now: boolean;
     mine: boolean;
     open: boolean;

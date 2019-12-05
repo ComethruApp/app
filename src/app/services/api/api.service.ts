@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 import { Storage } from '@ionic/storage';
 
-import { User, Event_ } from './models';
+import { User, Event_, Vote } from './models';
 
 import { AuthService } from '../auth/auth.service';
 import { from } from 'rxjs';
@@ -290,8 +290,8 @@ export class APIService {
         });
     }
 
-    public vote(eventId: number, positive: boolean): Observable<Object> {
-        return this.post('/events/' + eventId + '/vote', {positive: positive})
+    public vote(eventId: number, positive: boolean, negative: boolean, review: string): Observable<Object> {
+        return this.post('/events/' + eventId + '/vote', {positive: positive, negative: negative, review: review})
         .map(response => {
             return response;
         })
