@@ -1,7 +1,8 @@
 <div class="moon {{ large ? '' : 'small' }}">
-    <div class="darkness" style.transform="translateX({{ darknessPosition }}px)"></div>
-    <div *ngIf="large" class="status-label">
-        Rating:<br>
-        <span>{{ rating }}</span>
+    <div class="darkness" style.transform="translateX({{ (this.large ? 150 : 75) / 5 * this.rating }}px)">
+        <div *ngIf="large" class="status-label">
+            Rating:<br>
+            <span>{{ rating.toFixed(1) }}</span>
+        </div>
     </div>
 </div>

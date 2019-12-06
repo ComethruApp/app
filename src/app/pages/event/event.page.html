@@ -22,10 +22,16 @@
             <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
         </div>
 
-        <div class="status" *ngIf="event.happening_now">
-            <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
-            <app-moon [rating]="event.rating" [large]="true"></app-moon>
-        </div>
+        <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
+            <ion-row class="ion-no-padding">
+                <ion-col class="ion-no-padding" size="4.5">
+                    <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
+                </ion-col>
+                <ion-col class="ion-no-padding" size="7.5">
+                    <app-moon [rating]="event.rating" [large]="true"></app-moon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
         <ion-button *ngIf="event.happening_now && !event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
 

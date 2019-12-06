@@ -13,6 +13,5 @@ export class MoonComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.darknessPosition = (this.large ? 150 : 75) / 5 * this.rating;
     }
 }

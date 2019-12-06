@@ -5,20 +5,19 @@
     width: 150px;
     margin-left: 10px;
     border-radius: 100%;
-    overflow: hidden;
 }
 .moon .darkness {
     position: relative;
-    top: 0;
-    background: #1e282c;
+    background: var(--ion-background-color);
     height: 150px;
     width: 150px;
     border-radius: 100%;
+    text-align: center;
+    transform: translateX(0px);
+    transition: 1s;
 }
 .moon .status-label {
-    top: -110px;
-    position: relative;
-    mix-blend-mode: difference;
+    width: 50%;
 }
 .moon.small,
 .moon.small .darkness {
