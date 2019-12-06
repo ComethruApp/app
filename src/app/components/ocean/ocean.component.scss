@@ -1,7 +1,7 @@
 .ocean {
     height: 150px;
     width: 150px;
-    background: #1e282c;
+    background: var(--ion-background-color-tint);
     overflow: hidden;
     border-radius: 100%;
     display: inline-block;
