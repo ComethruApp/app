@@ -24,10 +24,10 @@
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
-                <ion-col class="ion-no-padding" size="4.5">
+                <ion-col class="ion-no-padding" size="6">
                     <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
                 </ion-col>
-                <ion-col class="ion-no-padding" size="7.5">
+                <ion-col class="ion-no-padding" size="6">
                     <app-moon [rating]="event.rating" [large]="true"></app-moon>
                 </ion-col>
             </ion-row>
