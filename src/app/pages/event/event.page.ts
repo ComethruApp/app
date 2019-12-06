@@ -36,7 +36,6 @@ export class EventPage implements OnInit {
     async getData(){
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
-            console.log(this.event);
         });
         this.api.getFriendsAtEvent(this.id).subscribe(friendsHere => {
             this.friendsHere = friendsHere;
