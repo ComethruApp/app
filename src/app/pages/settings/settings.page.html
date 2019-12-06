@@ -1,7 +1,16 @@
 <app-header title="Settings" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
-    <div>
-        <ion-button expand="block" size="large" (click)="logout()" color="danger">Logout</ion-button>
-    </div>
+    <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
+
+        <!--
+        <ion-item lines="none" class="toggle-container">
+            <ion-label>Open event?</ion-label>
+            <ion-toggle checked name="USE_LOCATION" formControlName="USE_LOCATION"
+                       [value]="event ? event.open : true"></ion-toggle>
+        </ion-item>
+        -->
+
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Save</ion-button>
+    <ion-button expand="block" size="large" (click)="logout()" color="danger">Logout</ion-button>
 </ion-content>

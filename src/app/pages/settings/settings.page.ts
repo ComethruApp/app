@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { LocationService } from '../../services/location/location.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +13,7 @@ export class SettingsPage implements OnInit {
     constructor(
         private router: Router,
         private authService: AuthService,
+        private locationService: LocationService,
     ) { }
 
     ngOnInit() {
@@ -26,5 +28,4 @@ export class SettingsPage implements OnInit {
             console.log(err);
         })
     }
-
 }

@@ -31,9 +31,9 @@ export class AuthService {
         return this.httpClient.post(this.ROOT + '/login', user).pipe(
             tap(async (res: AuthResponse) => {
                 if (res.user) {
-                    await this.storage.set("TOKEN", res.user.token);
-                    await this.storage.set("EXPIRES_IN", res.user.expires_in);
-                    await this.storage.set("USER_ID", res.user.id);
+                    await this.storage.set('TOKEN', res.user.token);
+                    await this.storage.set('EXPIRES_IN', res.user.expires_in);
+                    await this.storage.set('USER_ID', res.user.id);
                     this.authSubject.next(true);
                 }
             })
@@ -41,8 +41,8 @@ export class AuthService {
     }
 
     async logout() {
-        await this.storage.remove("TOKEN");
-        await this.storage.remove("EXPIRES_IN");
+        await this.storage.remove('TOKEN');
+        await this.storage.remove('EXPIRES_IN');
         this.authSubject.next(false);
     }
 
@@ -52,7 +52,7 @@ export class AuthService {
         // Maybe we should just assume that an error will be thrown later if the token is invalid to let the user know
         // to log in again?
         // TODO improve this/think it over more
-        return this.storage.get("TOKEN").then(token => {
+        return this.storage.get('TOKEN').then(token => {
             return token != null;
         });
         //return this.authSubject.asObservable();

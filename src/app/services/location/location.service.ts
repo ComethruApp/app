@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Geolocation, GeolocationOptions, Geoposition } from '@ionic-native/geolocation/ngx';
+import { Storage } from '@ionic/storage';
 import { APIService } from '../api/api.service';
 
 @Injectable({
@@ -11,10 +12,20 @@ export class LocationService {
     private debug: boolean = false;
 
     constructor(
+        private storage: Storage,
         private geolocation: Geolocation,
         private alertCtrl: AlertController,
         private api: APIService,
     ) { }
+
+    /* Check enabled status, and launch if location sending is on. */
+    launch() {
+        this.storage.get('USE_LOCATION').then(useLocation => {
+            if (useLocation == null || useLocation) {
+                this.startTracking();
+            }
+        });
+    }
 
     startTracking() {
         this.watch = this.geolocation.watchPosition(/*{
@@ -34,8 +45,11 @@ export class LocationService {
     }
 
     stopTracking() {
-        this.watch.unsubscribe();
-        console.log('Ended tracking.');
+        this.storage.set('USE_LOCATION', false).then(result => {
+            console.log(result);
+            this.watch.unsubscribe();
+            console.log('Ended tracking.');
+        });
     }
 
     async warn(header: string, message: string) {
