@@ -1,34 +1,34 @@
 <ion-content class="ion-padding auth">
-  <div class="center">
-    <ion-img class="logo" src="assets/imgs/logo/logo.png" alt="App logo"></ion-img>
-    <form #form="ngForm" (ngSubmit)="register(form)">
-        <ion-grid>
-            <ion-row color="primary" class="ion-justify-content-center">
-                <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
-                    <div>
-                        <ion-item lines="none">
-                            <ion-input name="name" type="text" placeholder="Name" ngModel required autocomplete="off"></ion-input>
-                        </ion-item>
-                        <ion-item lines="none">
-                            <ion-input name="email" type="email" placeholder="name@yale.edu" ngModel required autocomplete="off"></ion-input>
-                        </ion-item>
-                        <ion-item lines="none">
-                            <ion-input name="password" type="password" placeholder="Password" ngModel required autocomplete="off"></ion-input>
-                        </ion-item>
-                        <ion-item lines="none">
-                            <ion-input name="confirm_password" type="password" placeholder="Password again" ngModel required autocomplete="off"></ion-input>
-                        </ion-item>
+    <div class="vertically-center">
+        <ion-img class="logo" src="assets/imgs/logo/logo.png" alt="App logo"></ion-img>
+        <form #form="ngForm" (ngSubmit)="register(form)">
+            <ion-grid>
+                <ion-row color="primary" class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+                        <div>
+                            <ion-item lines="none">
+                                <ion-input name="name" type="text" placeholder="Name" ngModel required autocomplete="off"></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="email" type="email" placeholder="name@yale.edu" ngModel required autocomplete="off"></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="password" type="password" placeholder="Password" ngModel required autocomplete="off"></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="confirm_password" type="password" placeholder="Password again" ngModel required autocomplete="off"></ion-input>
+                            </ion-item>
+                        </div>
+                        <div>
+                            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+                        </div>
+                    </ion-col>
+                    <div class="ion-text-center">
+                        Already have an account?<br><a routerLink='/login'>Tap here to log in!</a>
                     </div>
-                    <div>
-                        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
-                    </div>
-                </ion-col>
-                <div class="ion-text-center">
-                    Already have an account?<br><a routerLink='/login'>Tap here to log in!</a>
-                </div>
-            </ion-row>
-        </ion-grid>
-    </form>
+                </ion-row>
+            </ion-grid>
+        </form>
 
-  </div>
+    </div>
 </ion-content>
