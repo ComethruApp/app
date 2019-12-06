@@ -33,7 +33,7 @@ export class EventPage implements OnInit {
         this.getData().then(() => loading.dismiss());
     }
 
-    async getData(){
+    async getData() {
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
         });
