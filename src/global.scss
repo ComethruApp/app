@@ -36,14 +36,6 @@ ion-textarea textarea {
     height: 150px;
 }
 
-ion-alert {
-    //--ion-text-color    : white !important;
-    //--ion-color-step-550: white !important;
-}
-.alert-title.sc-ion-alert-md
-{
-}
-
 .dark-toolbar {
     --background: #15202b;
 }
@@ -61,6 +53,31 @@ ion-button {
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
     --box-shadow: none;
+}
+
+ion-toggle .toggle-icon {
+    background: red !important;
+}
+
+.loading-wrapper.sc-ion-loading-ios,
+.alert-wrapper.sc-ion-alert-ios {
+    background: #15202b;
+}
+.alert-title.sc-ion-alert-ios,
+.alert-message.sc-ion-alert-ios {
+    font-size: 1.5em;
+}
+.alert-button.sc-ion-alert-ios {
+    border: none;
+}
+
+.sc-ion-picker-ios.picker-wrapper,
+.sc-ion-picker-ios.picker-toolbar {
+    border: none;
+}
+.sc-ion-picker-ios.picker-columns {
+    background: #15202b;
+    color: white;
 }
 
 h2, h3, ion-title {
