@@ -27,7 +27,7 @@
             <ion-label>Start time</ion-label>
             <ion-datetime
                 formControlName="time"
-                displayFormat="MMM DD, HH:mm"
+                displayFormat="MMM DD, h:mma"
                 monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 
                 required
@@ -39,7 +39,7 @@
             <ion-label>End time (optional)</ion-label>
             <ion-datetime
                 formControlName="end_time"
-                displayFormat="MMM DD, HH:mm"
+                displayFormat="MMM DD, h:mma"
                 monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 
                 [value]="event ? event.end_time : ''">
