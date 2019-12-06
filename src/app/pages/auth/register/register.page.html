@@ -1,4 +1,5 @@
 <ion-content class="ion-padding auth">
+  <div class="center">
     <ion-img class="logo" src="assets/imgs/logo/logo.png" alt="App logo"></ion-img>
     <form #form="ngForm" (ngSubmit)="register(form)">
         <ion-grid>
@@ -23,10 +24,11 @@
                     </div>
                 </ion-col>
                 <div class="ion-text-center">
-                    Already have an account? <a routerLink='/login'>Tap here to log in!</a>
+                    Already have an account?<br><a routerLink='/login'>Tap here to log in!</a>
                 </div>
             </ion-row>
         </ion-grid>
     </form>
 
+  </div>
 </ion-content>
