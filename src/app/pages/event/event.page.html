@@ -18,10 +18,6 @@
             <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
         </p>
 
-        <div class="votes">
-            <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
-        </div>
-
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
                 <ion-col class="ion-no-padding" size="6">
@@ -32,8 +28,6 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-
-        <ion-button *ngIf="event.happening_now && !event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
 
         <h3 *ngIf="event.happening_now && friendsHere && friendsHere.length > 0">Friends here</h3>
         <ion-grid *ngIf="event.happening_now && friendsHere && friendsHere.length > 0">
@@ -46,6 +40,12 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
+
+        <ion-button *ngIf="event.happening_now && !event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
+
+        <div class="votes">
+            <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
+        </div>
 
         <div>
             <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
