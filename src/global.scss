@@ -16,6 +16,11 @@
 body {
     font-size: 18px;
 }
+ion-app {
+    margin-top: env(safe-area-inset-top);
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
 // Remove shadow under header
 .header-md::after { display: none; }
 // Remove shadow above tabs
