@@ -8,16 +8,19 @@
 }
 .moon .darkness {
     position: relative;
-    background: var(--ion-background-color);
+    top: 0;
+    background-color: #15202b;
     height: 150px;
     width: 150px;
     border-radius: 100%;
-    text-align: center;
-    transform: translateX(0px);
     transition: 1s;
 }
 .moon .status-label {
-    width: 50%;
+    top: -110px;
+    position: relative;
+    color: white;
+    mix-blend-mode: difference;
+    filter: saturate(0);
 }
 .moon.small,
 .moon.small .darkness {
@@ -27,7 +30,4 @@
 .moon.small {
     margin-left: 0;
     overflow: visible;
-}
-.moon.small .darkness {
-    background-color: #15202b;
 }
