@@ -19,11 +19,12 @@ export class VotesComponent implements OnInit {
     }
 
     sendVote(positive: boolean, negative: boolean) {
-        this.api.vote(this.eventId, positive, negative, '').subscribe(response => {
+        let review: string = this.vote ? this.vote.review : '';
+        this.api.vote(this.eventId, positive, negative, review).subscribe(response => {
             this.vote = new Vote({
                 positive: positive,
                 negative: negative,
-                review: '',
+                review: review,
             });
             console.log(this.vote);
         });
@@ -41,5 +42,11 @@ export class VotesComponent implements OnInit {
         } else {
             this.sendVote(positive, negative);
         }
+    }
+
+    submitReview(review) {
+        this.api.vote(this.eventId, this.vote.positive, this.vote.negative, review).subscribe(response => {
+            this.vote.review = review;
+        });
     }
 }

@@ -60,6 +60,7 @@ ion-button {
     --border-radius: 0 !important;
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
+    --box-shadow: none;
 }
 
 h2, h3, ion-title {

@@ -1,13 +1,18 @@
 <ion-grid class="ion-no-padding">
     <ion-row class="ion-no-padding">
         <ion-col size="4" class="ion-no-padding">
-            <ion-button size="large" expand="block" [color]="(vote == null || (vote.positive && !vote.negative)) ? 'success' : 'medium'" (click)="updateVote(true, false)" ><ion-icon name="thumbs-up"></ion-icon></ion-button>
+            <ion-button size="large" expand="block" [color]="(vote == null || (vote.positive && !vote.negative)) ? 'success' : 'dark'" (click)="updateVote(true, false)" ><ion-icon name="thumbs-up"></ion-icon></ion-button>
         </ion-col>
         <ion-col size="4" class="ion-no-padding">
-            <ion-button size="large" expand="block" [color]="(vote == null || !(vote.positive || vote.negative)) ? 'warning' : 'medium'" (click)="updateVote(false, false)" ><ion-icon name="star-half"></ion-icon></ion-button>
+            <ion-button size="large" expand="block" [color]="(vote == null || !(vote.positive || vote.negative)) ? 'warning' : 'dark'" (click)="updateVote(false, false)" ><ion-icon name="star-half"></ion-icon></ion-button>
         </ion-col>
         <ion-col size="4" class="ion-no-padding">
-            <ion-button size="large" expand="block" [color]="(vote == null || (!vote.positive && vote.negative)) ? 'danger' : 'medium'" (click)="updateVote(false, true)"><ion-icon name="thumbs-down"></ion-icon></ion-button>
+            <ion-button size="large" expand="block" [color]="(vote == null || (!vote.positive && vote.negative)) ? 'danger' : 'dark'" (click)="updateVote(false, true)"><ion-icon name="thumbs-down"></ion-icon></ion-button>
         </ion-col>
     </ion-row>
 </ion-grid>
+
+<ion-item lines="none">
+    <ion-textarea placeholder="Feedback for host..." autocomplete="off" autocorrect="on"
+                  [value]="vote ? vote.review : ''" (change)="submitReview($event.target)"></ion-textarea>
+</ion-item>
