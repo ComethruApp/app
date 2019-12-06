@@ -1,3 +1,8 @@
+// Remove padding for iPhone X etc., because flowing into the top is quite cool with the map
+ion-app {
+    margin-top: 0 !important;
+}
+
 #map_canvas {
   width: 90%;
   height: 100%;
