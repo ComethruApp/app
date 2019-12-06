@@ -18,7 +18,9 @@
             <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
         </p>
 
-        <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
+        <div class="votes">
+            <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
+        </div>
 
         <div class="status" *ngIf="event.happening_now">
             <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>

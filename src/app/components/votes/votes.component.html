@@ -12,7 +12,7 @@
     </ion-row>
 </ion-grid>
 
-<ion-item lines="none">
+<ion-item *ngIf="vote" lines="none">
     <ion-textarea placeholder="Feedback for host..." autocomplete="off" autocorrect="on"
-                  [value]="vote ? vote.review : ''" (change)="submitReview($event.target)"></ion-textarea>
+                  [value]="vote ? vote.review : ''" (change)="submitReview($event.target.value)"></ion-textarea>
 </ion-item>
