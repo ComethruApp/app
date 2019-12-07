@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/facebook": "^5.17.1",
     "@ionic-native/geolocation": "^5.17.1",
     "@ionic-native/native-geocoder": "^5.17.1",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -31,6 +32,7 @@
     "cordova-ios": "5.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-dialogs": "^2.0.2",
+    "cordova-plugin-facebook4": "^6.2.0",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-nativegeocoder": "^3.2.2",
     "cordova-plugin-navigationbar-color": "0.0.9",
@@ -90,7 +92,13 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-navigationbar-color": {}
+      "cordova-plugin-navigationbar-color": {},
+      "cordova-plugin-facebook4": {
+        "APP_ID": "567699137099186",
+        "APP_NAME": "Comethru",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ANDROID_SDK_VERSION": "5.5.2"
+      }
     },
     "platforms": [
       "android",

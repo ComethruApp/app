@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Facebook } from '@ionic-native/facebook/ngx';
+
 import { AuthService } from '../../services/auth/auth.service';
 import { LocationService } from '../../services/location/location.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-settings',
@@ -12,6 +14,7 @@ export class SettingsPage implements OnInit {
 
     constructor(
         private router: Router,
+		private fb: Facebook,
         private authService: AuthService,
         private locationService: LocationService,
     ) { }
