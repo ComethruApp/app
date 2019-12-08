@@ -31,18 +31,14 @@ export class SearchUsersPage implements OnInit {
     }
 
     async search(query) {
-        console.log(query);
         if (query) {
-            console.log('It do');
             this.api.searchUsers(query).subscribe(users => {
                 this.searchResults = users;
                 this.searched = true;
             });
         } else {
-            console.log('It don\'t');
             this.searchResults = [];
             this.searched = false;
         }
-        console.log(this.searched);
     }
 }
