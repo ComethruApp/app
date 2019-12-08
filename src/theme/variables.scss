@@ -115,6 +115,13 @@
   --ion-background-color-shade: #121c26;
   --ion-background-color-tint: #2c3640;
 
+  --ion-color-facebook: #4267B2;
+  --ion-color-facebook-rgb: 66,103,178;
+  --ion-color-facebook-contrast: #ffffff;
+  --ion-color-facebook-contrast-rgb: 255, 255, 255;
+  --ion-color-facebook-shade: #3b5ca0;
+  --ion-color-facebook-tint: #5476b9;
+
   --ion-text-color: #fff;
   --ion-text-color-rgb: 255, 255, 255;
   --ion-tab-bar-background: #15202b;
@@ -128,4 +135,13 @@
   --ion-padding-start: 0;
 
   --ion-font-family: 'Josefin Sans', sans-serif;
+}
+
+.ion-color-facebook {
+  --ion-color-base: var(--ion-color-facebook);
+  --ion-color-base-rgb: var(--ion-color-facebook-rgb);
+  --ion-color-contrast: var(--ion-color-facebook-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-facebook-contrast-rgb);
+  --ion-color-shade: var(--ion-color-facebook-shade);
+  --ion-color-tint: var(--ion-color-facebook-tint);
 }
