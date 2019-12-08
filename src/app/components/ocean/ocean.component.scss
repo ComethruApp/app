@@ -5,16 +5,14 @@
     overflow: hidden;
     border-radius: 100%;
     display: inline-block;
-    &.small {
-        width: 120px;
-        height: 120px;
-    }
     .water span {
         display: block;
         width: 100%;
     }
     .water {
-        z-index: -1;
+        z-index: 1;
+        position: relative;
+        top: -75px;
     }
     .wave {
         background: url('/assets/imgs/wave.png');
