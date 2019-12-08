@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
+import { Facebook } from '@ionic-native/facebook/ngx';
+
 import { ComponentsModule } from './components/components.module';
 
 @NgModule({
@@ -43,6 +45,8 @@ import { ComponentsModule } from './components/components.module';
 
     Geolocation,
     NativeGeocoder,
+
+    Facebook,
 
     APIService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

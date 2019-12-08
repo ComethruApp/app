@@ -22,6 +22,27 @@ export class SettingsPage implements OnInit {
     ngOnInit() {
     }
 
+    facebookLogin() {
+        const permissions = ["public_profile", "email", "user_friends"];
+        this.fb.login(permissions)
+		.then(response =>{
+			let userId = response.authResponse.userID;
+
+			// Getting name and gender properties
+			this.fb.api("/me?fields=name,email", permissions)
+			.then(user =>{
+				user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
+                console.log({
+					name: user.name,
+					email: user.email,
+					picture: user.picture
+				});
+			})
+		}, error =>{
+			console.log(error);
+		});
+    }
+
     logout(){
         this.authService.logout()
         .then(res => {
