@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 
@@ -13,6 +14,7 @@ export class FriendButtonsComponent implements OnInit {
     buttonSize: string;
 
     constructor(
+        private alertCtrl: AlertController,
         private api: APIService,
     ) { }
 
@@ -44,9 +46,27 @@ export class FriendButtonsComponent implements OnInit {
         });
     }
 
-    unfriend() {
-        this.api.unfriend(this.user.id).subscribe(response => {
-            this.user.is_friend = false;
+    async unfriend() {
+        const alert = await this.alertCtrl.create({
+            header: 'Confirm',
+            message: 'Are you sure you want to unfriend ' + this.user.name + '? You\'ll have to request to friend them again.',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {}
+                },
+                {
+                    text: 'Yes',
+                    handler: () => {
+                        this.api.unfriend(this.user.id).subscribe(response => {
+                            this.user.is_friend = false;
+                        });
+                    }
+                }
+            ]
         });
+        await alert.present();
     }
 }
