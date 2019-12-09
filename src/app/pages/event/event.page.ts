@@ -60,6 +60,9 @@ export class EventPage implements OnInit {
     edit() {
         this.router.navigate(['/form-event/' + this.id]);
     }
+    hosts() {
+        this.router.navigate(['/hosts/' + this.id]);
+    }
     async presentLoading(loading) {
         return await loading.present();
     }
