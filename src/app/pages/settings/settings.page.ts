@@ -55,6 +55,17 @@ export class SettingsPage implements OnInit {
 		});
     }
 
+    facebookDisconnect() {
+        this.fb.logout()
+		.then(response => {
+            this.api.facebookDisconnect().subscribe(response => {
+                this.getData();
+            });
+		}, error =>{
+			console.log(error);
+		});
+    }
+
     logout(){
         this.authService.logout()
         .then(res => {
