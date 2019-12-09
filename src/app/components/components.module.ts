@@ -12,6 +12,7 @@ import { MoonComponent } from './moon/moon.component';
 import { RefresherComponent } from './refresher/refresher.component';
 import { HeaderComponent } from './header/header.component';
 import { InviteButtonsComponent } from './invite-buttons/invite-buttons.component';
+import { HostButtonsComponent } from './host-buttons/host-buttons.component';
 import { VotesComponent } from './votes/votes.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { VotesComponent } from './votes/votes.component';
         RefresherComponent,
         HeaderComponent,
         InviteButtonsComponent,
+        HostButtonsComponent,
         VotesComponent,
     ],
     imports: [
@@ -42,6 +44,7 @@ import { VotesComponent } from './votes/votes.component';
         RefresherComponent,
         HeaderComponent,
         InviteButtonsComponent,
+        HostButtonsComponent,
         VotesComponent,
     ],
 })

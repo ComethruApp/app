@@ -1,0 +1,2 @@
+<ion-button *ngIf="!user.hosting" expand="block" color="success" (click)="add()">Add host</ion-button>
+<ion-button *ngIf="user.hosting" expand="block" color="warning" (click)="remove()">Remove</ion-button>
