@@ -14,8 +14,10 @@ export class UserListComponent implements OnInit {
     // Types of buttons to show next to users
     @Input() friend: boolean = false;
     @Input() invite: boolean = false;
+    @Input() host: boolean = false;
     // Are the users in this list already invited or not?
     @Input() invited: boolean;
+    @Input() hosting: boolean;
     @Input() eventId: number = null;
 
     constructor(

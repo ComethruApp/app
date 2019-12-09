@@ -310,6 +310,36 @@ export class APIService {
         });
     }
 
+    public getEventHosts(eventId: number): Observable<User[]> {
+        return this.get('/events/' + eventId + '/hosts')
+        .map(response => {
+            return response.map((user) => new User(user));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public addHost(eventId: number, userId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/hosts/' + userId, {})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public removeHost(eventId: number, userId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/hosts/' + userId)
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public vote(eventId: number, positive: boolean, negative: boolean, review: string): Observable<Object> {
         return this.post('/events/' + eventId + '/vote', {positive: positive, negative: negative, review: review})
         .map(response => {

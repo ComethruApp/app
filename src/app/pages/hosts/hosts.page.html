@@ -13,6 +13,6 @@
         <h3>Search results</h3>
         <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [eventId]="id"></app-user-list>
     </div>
-    <h3>People invited</h3>
-    <app-user-list [users]="invitees" [invite]="true" [invited]="true" [eventId]="id" emptyMessage="Nobody invited yet."></app-user-list>
+    <h3>Hosts</h3>
+    <app-user-list [users]="hosts" [host]="true" [hosting]="true" [eventId]="id" emptyMessage="No hosts."></app-user-list>
 </ion-content>

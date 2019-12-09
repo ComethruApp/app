@@ -13,7 +13,7 @@ export class HostsPage implements OnInit {
     id: number;
     searchedUsers: User[] = null;
     hasSearched: boolean = false;
-    invitees: User[] = null;
+    hosts: User[] = null;
     event: Event_ = null;
 
     constructor(
@@ -33,9 +33,9 @@ export class HostsPage implements OnInit {
         });
         this.presentLoading(loading);
 
-        this.api.getEventInvitees(this.id).subscribe(invitees => {
+        this.api.getEventHosts(this.id).subscribe(hosts => {
             loading.dismiss();
-            this.invitees = invitees;
+            this.hosts = hosts;
         });
     }
 
@@ -51,14 +51,14 @@ export class HostsPage implements OnInit {
         }
     }
 
-    async sendInvite(userId) {
-        this.api.sendInvite(this.id, userId).subscribe(response => {
+    async addHost(userId) {
+        this.api.addHost(this.id, userId).subscribe(response => {
             console.log(response);
         });
     }
 
-    async rescindInvite(userId) {
-        this.api.rescindInvite(this.id, userId).subscribe(response => {
+    async removeHost(userId) {
+        this.api.removeHost(this.id, userId).subscribe(response => {
             console.log(response);
         });
     }
