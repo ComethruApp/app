@@ -14,8 +14,15 @@
 
         <p class="description">{{ event.description }}</p>
         <p>
-        <em>Hosted by <a [routerLink]="'/profile/' + event.hosts[0].id">{{ event.hosts[0].name }}</a>.</em>
-            <img class="verified" *ngIf="event.hosts[0].verified" src="assets/imgs/verified.png">
+            <em>
+                Hosts:
+                <span *ngFor="let host of event.hosts; let isLast=last">
+                    <span *ngIf="event.hosts.length > 1 && isLast">and </span>
+                    <img class="verified" *ngIf="host.verified" src="assets/imgs/verified.png">
+                    <a [routerLink]="'/profile/' + host.id">{{ host.name }}</a>
+                    <span *ngIf="event.hosts.length > 2 && !isLast">, </span>
+                </span>.
+            </em>
         </p>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
