@@ -58,6 +58,10 @@ ion-button {
     text-transform: uppercase;
     --box-shadow: none;
 }
+ion-button ion-icon {
+    margin-top: 3px;
+    margin-right: 3px;
+}
 
 .loading-wrapper.sc-ion-loading-ios,
 .alert-wrapper.sc-ion-alert-ios {
