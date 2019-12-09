@@ -1,11 +1,22 @@
 <app-header title="Settings" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
-    Connect with Facebook to find friends, set your profile photo, and share events.
-    <ion-button expand="block" size="large" (click)="facebookLogin()" color="facebook">
-        <ion-icon name="logo-facebook"></ion-icon>
-        Connect Facebook
-    </ion-button>
+    <div *ngIf="user">
+        <div *ngIf="user.facebook_id">
+            <ion-button expand="block" size="large" (click)="facebookDisconnect()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Disconnect Facebook
+            </ion-button>
+            You're connected to Facebook as {{ user.facebook_name }}.
+        </div>
+        <div *ngIf="!user.facebook_id">
+            <ion-button expand="block" size="large" (click)="facebookConnect()" color="facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Connect Facebook
+            </ion-button>
+            Connect with Facebook to find friends, set your profile photo, and share events.
+        </div>
+    </div>
     <!--
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
 

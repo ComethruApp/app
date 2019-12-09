@@ -4,6 +4,7 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { APIService } from '../../services/api/api.service';
+import { User } from '../../services/api/models';
 import { LocationService } from '../../services/location/location.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { LocationService } from '../../services/location/location.service';
     styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+    user: User = null;
 
     constructor(
         private router: Router,
@@ -22,33 +24,32 @@ export class SettingsPage implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.getData();
     }
 
-    facebookLogin() {
+    getData() {
+        this.api.getMe().subscribe(user => {
+            this.user = user;
+        });
+    }
+
+    facebookConnect() {
         const permissions = [
             'public_profile',
             'email',
             //'user_friends',
         ];
         this.fb.login(permissions)
-		.then(response =>{
+		.then(response => {
 			let userId = response.authResponse.userID;
-            this.api.facebookConnect(userId).subscribe(response => {
 
-            });
-
-			// Example API request
-            /*
-			this.fb.api('/me?fields=name,email', permissions)
+			// Get name from API
+			this.fb.api('/me?fields=name', permissions)
 			.then(user => {
-				user.picture = 'https://graph.facebook.com/' + userId + '/picture?type=large';
-                console.log({
-					name: user.name,
-					email: user.email,
-					picture: user.picture
-				});
-			})
-            */
+                this.api.facebookConnect(userId, user.name).subscribe(response => {
+                    this.getData();
+                });
+			});
 		}, error =>{
 			console.log(error);
 		});

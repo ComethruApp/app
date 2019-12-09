@@ -140,8 +140,8 @@ export class APIService {
         });
     }
 
-    public facebookConnect(id: string): Observable<Object> {
-        return this.post('/users/me/facebook', {id: id})
+    public facebookConnect(id: string, name: string): Observable<Object> {
+        return this.post('/users/me/facebook', {id: id, name: name})
         .map(response => {
             return response;
         })
