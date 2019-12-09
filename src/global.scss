@@ -49,11 +49,10 @@ ion-title.md {
 }
 
 ion-button {
-    // Josefin font has excessive space underneath, correct for that.
-    --padding-top: 4px;
     --background: #007ef1;
     margin-left: 0;
     margin-right: 0;
+    --padding-bottom: 2px;
     --border-radius: 0 !important;
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
@@ -103,9 +102,8 @@ h1, h2, h3 {
 h1 {
     font-weight: bold;
     font-size: 80px;
-    margin-bottom: 5px;
-    // Correct for padding on left side of font
-    margin-left: -4px;
+    margin-bottom: 25px;
+    margin-top: -10px;
     line-height: 1;
 }
 h2 {
@@ -129,13 +127,13 @@ a {
  * TODO: integrate into those components */
 .status-label {
     position: relative;
-    top: 40px;
+    top: 35px;
     text-align: center;
     z-index: 10;
+    line-height: 1;
 }
 .status-label span {
     font-size: 50px;
-    line-height: 0.9;
 }
 
 .description {
@@ -147,7 +145,7 @@ a {
 .tag {
     display: inline-block;
     background: #007ef1;
-    padding: 5px 5px 3px;
+    padding: 0 5px 5px;
     margin-right: 3px;
     margin-bottom: 3px;
     font-size: 20px;
