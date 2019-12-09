@@ -12,6 +12,7 @@ export class User {
     invited: boolean;
     facebook_id: string;
     facebook_name: string;
+    hosting: boolean;
 
     // TODO don't repeat
     constructor(values: Object = {}) {
