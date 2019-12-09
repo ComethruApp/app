@@ -140,6 +140,26 @@ export class APIService {
         });
     }
 
+    public facebookConnect(id: string): Observable<Object> {
+        return this.post('/users/me/facebook', {id: id})
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public facebookDisconnect(): Observable<Object> {
+        return this.delete('/users/me/facebook')
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public getMyCurrentEvent(): Observable<Event_> {
         return this.get('/users/me/events/current')
         .map(response => {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Facebook } from '@ionic-native/facebook/ngx';
 
 import { AuthService } from '../../services/auth/auth.service';
+import { APIService } from '../../services/api/api.service';
 import { LocationService } from '../../services/location/location.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class SettingsPage implements OnInit {
         private router: Router,
 		private fb: Facebook,
         private authService: AuthService,
+        private api: APIService,
         private locationService: LocationService,
     ) { }
 
@@ -23,21 +25,30 @@ export class SettingsPage implements OnInit {
     }
 
     facebookLogin() {
-        const permissions = ["public_profile", "email", "user_friends"];
+        const permissions = [
+            'public_profile',
+            'email',
+            //'user_friends',
+        ];
         this.fb.login(permissions)
 		.then(response =>{
 			let userId = response.authResponse.userID;
+            this.api.facebookConnect(userId).subscribe(response => {
 
-			// Getting name and gender properties
-			this.fb.api("/me?fields=name,email", permissions)
-			.then(user =>{
-				user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
+            });
+
+			// Example API request
+            /*
+			this.fb.api('/me?fields=name,email', permissions)
+			.then(user => {
+				user.picture = 'https://graph.facebook.com/' + userId + '/picture?type=large';
                 console.log({
 					name: user.name,
 					email: user.email,
 					picture: user.picture
 				});
 			})
+            */
 		}, error =>{
 			console.log(error);
 		});
@@ -47,7 +58,7 @@ export class SettingsPage implements OnInit {
         this.authService.logout()
         .then(res => {
             // TODO: redirect to splash page instead
-            this.router.navigate(["/login"]);
+            this.router.navigate(['/login']);
         }, err => {
             console.log(err);
         })

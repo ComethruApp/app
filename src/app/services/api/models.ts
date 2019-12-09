@@ -10,6 +10,7 @@ export class User {
     is_friend: boolean;
     // Usually null
     invited: boolean;
+    facebook_id: string;
 
     // TODO don't repeat
     constructor(values: Object = {}) {
