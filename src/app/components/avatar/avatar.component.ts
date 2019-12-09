@@ -14,10 +14,5 @@ export class AvatarComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        if (this.user.facebook_id) {
-            this.avatar = 'https://graph.facebook.com/' + this.user.facebook_id + '/picture?type=large'
-        } else {
-            this.avatar = '/assets/imgs/unknown.png';
-        }
     }
 }
