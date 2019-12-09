@@ -17,7 +17,8 @@
             <em>
                 Hosts:
                 <span *ngFor="let host of event.hosts; let isLast=last">
-                    <span *ngIf="event.hosts.length > 1 && isLast">and </span>
+                    <span *ngIf="event.hosts.length == 2 && isLast"> and </span>
+                    <span *ngIf="event.hosts.length > 2 && isLast">and </span>
                     <img class="verified" *ngIf="host.verified" src="assets/imgs/verified.png">
                     <a [routerLink]="'/profile/' + host.id">{{ host.name }}</a>
                     <span *ngIf="event.hosts.length > 2 && !isLast">, </span>
