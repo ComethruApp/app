@@ -15,7 +15,7 @@
         <p class="description">{{ event.description }}</p>
         <p>
             <em>
-                Hosts:
+                Hosted by
                 <span *ngFor="let host of event.hosts; let isLast=last">
                     <span *ngIf="event.hosts.length == 2 && isLast"> and </span>
                     <span *ngIf="event.hosts.length > 2 && isLast">and </span>
