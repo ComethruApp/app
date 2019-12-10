@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-loader',
@@ -6,9 +6,22 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent implements OnInit {
+    message: string;
+    showMessage: boolean = true;
 
-    constructor() { }
+    constructor(
+    ) { }
 
     ngOnInit() {
+        let choices: string[] = [
+            'Pregaming',
+            'Getting ready',
+            'Loading',
+            'Tailgating',
+        ]
+        console.log(choices);
+        let index: number = Math.floor(Math.random() * choices.length);
+        this.message = choices[index];
+        console.log(this.message);
     }
 }
