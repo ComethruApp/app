@@ -157,7 +157,7 @@ export class MapPage implements OnInit {
                 id: 0,
                 //animation: google.maps.Animation.BOUNCE,
                 icon: {
-                    url: '/assets/imgs/me_marker.png',
+                    url: '/assets/imgs/markers/me.png',
                     scaledSize: new google.maps.Size(27, 43),
                 },
             });
@@ -196,7 +196,7 @@ export class MapPage implements OnInit {
                     id: event.id,
                     //animation: google.maps.Animation.DROP,
                     icon: {
-                        url: '/assets/imgs/marker.png',
+                        url: '/assets/imgs/markers/event_' + Math.floor(event.rating) + '.png',
                         scaledSize: new google.maps.Size(27, 43),
                     },
                 });
