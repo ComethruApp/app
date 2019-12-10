@@ -1,9 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>help</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header title="Help" [back]="true"></app-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+    <ion-grid>
+        <ion-row *ngFor="let key of objectKeys(numbers)" class="ion-no-padding">
+            <ion-col class="ion-no-padding"><a href="tel:{{ key }}">{{ key }}</a></ion-col>
+            <ion-col class="ion-no-padding">{{ numbers[key] }}</ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
