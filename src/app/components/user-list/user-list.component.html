@@ -1,3 +1,4 @@
+<app-loader *ngIf="!users"></app-loader>
 <div *ngIf="users && users.length > 0" class="list">
     <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
