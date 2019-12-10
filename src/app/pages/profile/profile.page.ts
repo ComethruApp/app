@@ -13,10 +13,10 @@ import { User, Event_ } from '../../services/api/models';
 })
 export class ProfilePage implements OnInit {
     id: number;
-    user: User;
+    user: User = null;
     isMe: boolean;
     currentEvent: Event_ = null;
-    events: Event_[];
+    events: Event_[] = null;
 
     constructor(
         private loadingCtrl: LoadingController,
