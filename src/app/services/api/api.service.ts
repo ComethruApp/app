@@ -74,6 +74,16 @@ export class APIService {
         });
     }
 
+    public getStatus(): Observable<Object> {
+        return this.get('/status')
+        .map(response => {
+            return response;
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
     public sendLocation(lat: number, lng: number): Observable<Object> {
         return this.post('/location', {lat: lat, lng: lng})
         .map(response => {

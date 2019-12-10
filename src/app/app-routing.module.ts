@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'help', loadChildren: './pages/help/help.module#HelpPageModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
 ];
 
 @NgModule({

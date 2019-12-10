@@ -72,6 +72,10 @@ export class ProfilePage implements OnInit {
         this.router.navigate(['/help']);
     }
 
+    about() {
+        this.router.navigate(['/about']);
+    }
+
     async block() {
         const alert = await this.alertCtrl.create({
             header: 'Confirm',
