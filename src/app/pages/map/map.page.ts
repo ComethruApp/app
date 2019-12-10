@@ -22,7 +22,7 @@ export class MapPage implements OnInit {
     address: string;
     loading: any; // TODO: what type?
     events: Event_[];
-    markers: google.maps.Marker[] = [];
+    markers: any[] = [];
 
     constructor(
         private router: Router,

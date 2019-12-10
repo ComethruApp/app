@@ -9,10 +9,10 @@
                    placeholder="Search for users..."
                    (input)="searchUsers($event.target.value)"></ion-input>
     </ion-item>
-    <div *ngIf="hasSearched">
+    <div *ngIf="searchedUsers">
         <h3>Search results</h3>
         <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [eventId]="id"></app-user-list>
     </div>
     <h3>People invited</h3>
-    <app-user-list [users]="invitees" [invite]="true" [invited]="true" [eventId]="id" emptyMessage="Nobody invited yet."></app-user-list>
+    <app-user-list [users]="invites" [invite]="true" [invited]="true" [eventId]="id" emptyMessage="Nobody invited yet."></app-user-list>
 </ion-content>

@@ -12,8 +12,7 @@ import { User, Event_ } from '../../services/api/models';
 export class InvitesPage implements OnInit {
     id: number;
     searchedUsers: User[] = null;
-    hasSearched: boolean = false;
-    invitees: User[] = null;
+    invites: User[] = null;
     event: Event_ = null;
 
     constructor(
@@ -33,34 +32,20 @@ export class InvitesPage implements OnInit {
         });
         this.presentLoading(loading);
 
-        this.api.getEventInvitees(this.id).subscribe(invitees => {
+        this.api.getEventInvites(this.id).subscribe(invites => {
             loading.dismiss();
-            this.invitees = invitees;
+            this.invites = invites;
         });
     }
 
     async searchUsers(query) {
         if (query) {
             this.api.searchUsersForEvent(this.id, query).subscribe(searchedUsers => {
-                this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });
         } else {
-            this.hasSearched = false;
-            this.searchedUsers = [];
+            this.searchedUsers = null;
         }
-    }
-
-    async sendInvite(userId) {
-        this.api.sendInvite(this.id, userId).subscribe(response => {
-            console.log(response);
-        });
-    }
-
-    async rescindInvite(userId) {
-        this.api.rescindInvite(this.id, userId).subscribe(response => {
-            console.log(response);
-        });
     }
 
     async presentLoading(loading) {

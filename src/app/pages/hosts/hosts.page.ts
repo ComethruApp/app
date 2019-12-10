@@ -12,7 +12,6 @@ import { User, Event_ } from '../../services/api/models';
 export class HostsPage implements OnInit {
     id: number;
     searchedUsers: User[] = null;
-    hasSearched: boolean = false;
     hosts: User[] = null;
     event: Event_ = null;
 
@@ -42,25 +41,11 @@ export class HostsPage implements OnInit {
     async searchUsers(query) {
         if (query) {
             this.api.searchUsersForEvent(this.id, query).subscribe(searchedUsers => {
-                this.hasSearched = true;
                 this.searchedUsers = searchedUsers;
             });
         } else {
-            this.hasSearched = false;
-            this.searchedUsers = [];
+            this.searchedUsers = null;
         }
-    }
-
-    async addHost(userId) {
-        this.api.addHost(this.id, userId).subscribe(response => {
-            console.log(response);
-        });
-    }
-
-    async removeHost(userId) {
-        this.api.removeHost(this.id, userId).subscribe(response => {
-            console.log(response);
-        });
     }
 
     async presentLoading(loading) {

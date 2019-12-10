@@ -18,14 +18,14 @@ export class InviteButtonsComponent implements OnInit {
     ngOnInit() {
     }
 
-    invite() {
+    sendInvite() {
         this.api.sendInvite(this.eventId, this.user.id).subscribe(response => {
             this.user.invited = true;
         });
     }
 
-    disinvite() {
-        this.api.rescindInvite(this.eventId, this.user.id).subscribe(response => {
+    cancelInvite() {
+        this.api.cancelInvite(this.eventId, this.user.id).subscribe(response => {
             this.user.invited = false;
         });
     }
