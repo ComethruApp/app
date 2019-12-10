@@ -2,7 +2,7 @@
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <app-refresher></app-refresher>
+        <app-loader></app-loader>
     </ion-refresher>
     <div *ngIf="event">
         <h1><strong><em>{{ event.name }}</em></strong></h1>

@@ -199,13 +199,10 @@ ion-refresher {
     padding-bottom: 200px;
     background: var(--ion-color-primary-shade, #035CDD);
 }
-ion-refresher .loader {
+.loader {
     width: 50px;
     margin: 35px auto 0;
     transform: rotate(0);
-}
-ion-refresher.refresher-pulling .loader,
-ion-refresher.refresher-ready .loader {
     animation: 0.5s load infinite ease-out;
     transition: 0.4s;
 }
