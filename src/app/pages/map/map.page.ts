@@ -22,7 +22,8 @@ export class MapPage implements OnInit {
     address: string;
     loading: any; // TODO: what type?
     events: Event_[];
-    markers: any[] = [];
+    meMarker: any = null;
+    markers: any = [];
 
     constructor(
         private router: Router,
@@ -147,6 +148,21 @@ export class MapPage implements OnInit {
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+            this.meMarker = new google.maps.Marker({
+                position: {
+                    lat: resp.coords.latitude,
+                    lng: resp.coords.longitude,
+                },
+                title: 'You',
+                id: 0,
+                //animation: google.maps.Animation.BOUNCE,
+                icon: {
+                    url: '/assets/imgs/me_marker.png',
+                    scaledSize: new google.maps.Size(27, 43),
+                },
+            });
+            this.meMarker.setMap(this.map);
+
             this.map.addListener('tilesloaded', () => {
                 console.log('Map loaded!');
                 this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
@@ -178,6 +194,11 @@ export class MapPage implements OnInit {
                     },
                     title: event.name,
                     id: event.id,
+                    //animation: google.maps.Animation.DROP,
+                    icon: {
+                        url: '/assets/imgs/marker.png',
+                        scaledSize: new google.maps.Size(27, 43),
+                    },
                 });
                 google.maps.event.addListener(marker, 'click', () => {
                     this.router.navigate(['/event/' + event.id]);
