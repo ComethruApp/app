@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
@@ -19,7 +19,6 @@ export class ProfilePage implements OnInit {
     events: Event_[] = null;
 
     constructor(
-        private loadingCtrl: LoadingController,
         private alertCtrl: AlertController,
         private router: Router,
         private route: ActivatedRoute,
@@ -30,11 +29,7 @@ export class ProfilePage implements OnInit {
     async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         this.isMe = (!this.id);
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(loading);
-        this.getData().then(() => loading.dismiss());
+        this.getData();
     }
 
     async getData() {
@@ -58,10 +53,6 @@ export class ProfilePage implements OnInit {
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 
     openSettings() {
