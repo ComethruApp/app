@@ -199,12 +199,12 @@ export class MapPage implements OnInit {
                 newMarkers.push(marker);
             }
             // Wait to remove markers until the new ones are visible, to avoid flash
-            setTimeout(200, () => {
+            setTimeout(() => {
                 for (let marker of this.markers) {
                     marker.setMap(null);
                 }
                 this.markers = newMarkers;
-            });
+            }, 200);
         });
     }
 
