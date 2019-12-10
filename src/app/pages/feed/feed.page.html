@@ -2,7 +2,7 @@
 
 <ion-content class="list-mini-content" class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <app-loader></app-loader>
+        <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
     <app-event-list [events]="events"></app-event-list>
     <div *ngIf="events && events.length == 0" class="empty-list vertically-center">

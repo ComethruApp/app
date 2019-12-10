@@ -3,7 +3,7 @@
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <app-loader></app-loader>
+        <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
     <app-loader *ngIf="!user"></app-loader>
     <div *ngIf="user">
