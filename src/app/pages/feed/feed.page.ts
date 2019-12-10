@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
@@ -14,18 +13,13 @@ export class FeedPage implements OnInit {
     events: Event_[] = null;
 
     constructor(
-        private loadingCtrl: LoadingController,
-        private api: APIService,
         private router: Router,
         private route: ActivatedRoute,
+        private api: APIService,
     ) { }
 
     async ngOnInit() {
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(loading);
-        this.getData().then(() => loading.dismiss());
+        this.getData();
     }
 
     async getData() {
@@ -36,9 +30,5 @@ export class FeedPage implements OnInit {
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }
