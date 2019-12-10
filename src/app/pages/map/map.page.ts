@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
@@ -28,7 +27,6 @@ export class MapPage implements OnInit {
     constructor(
         private router: Router,
         private geolocation: Geolocation,
-        private nativeGeocoder: NativeGeocoder,
         private loadingCtrl: LoadingController,
         private api: APIService,
     ) { }
@@ -144,8 +142,6 @@ export class MapPage implements OnInit {
                 ]
             }
 
-            this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude);
-
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
             this.meMarker = new google.maps.Marker({
@@ -165,7 +161,6 @@ export class MapPage implements OnInit {
 
             this.map.addListener('tilesloaded', () => {
                 console.log('Map loaded!');
-                this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
             });
             this.getData();
 
@@ -211,35 +206,5 @@ export class MapPage implements OnInit {
 
     async presentLoading(loading) {
         return await loading.present();
-    }
-
-    getAddressFromCoords(latitude, longitude) {
-        console.log("getAddressFromCoords "+latitude+" "+longitude);
-        let options: NativeGeocoderOptions = {
-            useLocale: true,
-            maxResults: 5
-        };
-
-        this.nativeGeocoder.reverseGeocode(latitude, longitude, options)
-        .then((result: NativeGeocoderResult[]) => {
-            this.address = "";
-            let responseAddress = [];
-            for (let [key, value] of Object.entries(result[0])) {
-                // TODO: this was breaking after an update, so look into this!
-                if (value)
-                //if(value.length>0)
-                    responseAddress.push(value);
-
-            }
-            responseAddress.reverse();
-            for (let value of responseAddress) {
-                this.address += value+", ";
-            }
-            this.address = this.address.slice(0, -2);
-        })
-        .catch((error: any) =>{
-            this.address = "Address Not Available!";
-        });
-
     }
 }
