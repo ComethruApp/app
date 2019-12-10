@@ -13,6 +13,10 @@
                 <ion-icon name="settings"></ion-icon>
                 Settings
             </ion-button>
+            <ion-button expand="block" size="large" (click)="help()">
+                <ion-icon name="help-buoy"></ion-icon>
+                Help
+            </ion-button>
         </div>
 
         <app-friend-buttons *ngIf="!(isMe || user.is_me)" [user]="user" [large]="true"></app-friend-buttons>
