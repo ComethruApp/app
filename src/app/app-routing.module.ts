@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'ticket/:id', loadChildren: './pages/ticket/ticket.module#TicketPageModule' },
   { path: 'search-users', loadChildren: './pages/search-users/search-users.module#SearchUsersPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
+  { path: 'help', loadChildren: './pages/help/help.module#HelpPageModule' },
 ];
 
 @NgModule({
