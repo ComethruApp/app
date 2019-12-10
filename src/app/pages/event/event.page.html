@@ -56,9 +56,18 @@
         </div>
 
         <div>
-            <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">Invite</ion-button>
-            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">Edit</ion-button>
-            <ion-button *ngIf="event.mine" class="button" color="tertiary" expand="block" size="large" (click)="hosts()">Manage hosts</ion-button>
+            <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">
+                <ion-icon name="person-add"></ion-icon>
+                Invite
+            </ion-button>
+            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
+                <ion-icon name="create"></ion-icon>
+                Edit
+            </ion-button>
+            <ion-button *ngIf="event.mine" class="button" color="tertiary" expand="block" size="large" (click)="hosts()">
+                <ion-icon name="people"></ion-icon>
+                Manage hosts
+            </ion-button>
         </div>
     </div>
 </ion-content>
