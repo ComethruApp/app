@@ -22,6 +22,7 @@ export class MapPage implements OnInit {
     address: string;
     loading: any; // TODO: what type?
     events: Event_[];
+    markers: google.maps.Marker[] = [];
 
     constructor(
         private router: Router,
@@ -157,10 +158,18 @@ export class MapPage implements OnInit {
         });
     }
 
+    ionViewWillEnter() {
+        this.getData();
+    }
+
     async getData(){
         this.api.getEvents().subscribe(events => {
             this.loading.dismiss();
             this.events = events;
+            for (let marker of this.markers) {
+                marker.setMap(null);
+            }
+            this.markers = [];
             for (let event of this.events) {
                 let marker = new google.maps.Marker({
                     position: {
@@ -174,6 +183,7 @@ export class MapPage implements OnInit {
                     this.router.navigate(['/event/' + event.id]);
                 });
                 marker.setMap(this.map);
+                this.markers.push(marker);
             }
         });
     }
