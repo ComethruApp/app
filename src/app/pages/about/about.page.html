@@ -1,10 +1,14 @@
 <app-header title="About" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
+    <ion-img class="logo" src="assets/imgs/logo/logo.png" alt="App logo"></ion-img>
     <p>Comethru is developed by <a href="https://erikboesen.com">Erik Boesen</a>. Please contact <a href="mailto:hello@comethru.io">hello@comethru.io</a> with questions or suggestions.</p>
-    <ul *ngIf="status">
-        <li>Users: {{ status.users }}</li>
-        <li>Events: {{ status.events }}</li>
-        <li>Schools: {{ status.schools }}</li>
-    </ul>
+    <div *ngIf="status">
+        <h3>Statistics</h3>
+        <br>
+        <strong>Registered users:</strong> {{ status.users }}<br>
+        <strong>Events posted:</strong> {{ status.events }}<br>
+        <strong>Schools:</strong> {{ status.schools }}<br>
+    </div>
+    <ion-img class="loader large" src="assets/imgs/logo/icon_round.png"></ion-img>
 </ion-content>
