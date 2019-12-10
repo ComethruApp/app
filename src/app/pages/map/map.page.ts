@@ -177,10 +177,7 @@ export class MapPage implements OnInit {
         this.api.getEvents().subscribe(events => {
             this.loading.dismiss();
             this.events = events;
-            for (let marker of this.markers) {
-                marker.setMap(null);
-            }
-            this.markers = [];
+            let newMarkers = [];
             for (let event of this.events) {
                 let marker = new google.maps.Marker({
                     position: {
@@ -199,8 +196,15 @@ export class MapPage implements OnInit {
                     this.router.navigate(['/event/' + event.id]);
                 });
                 marker.setMap(this.map);
-                this.markers.push(marker);
+                newMarkers.push(marker);
             }
+            // Wait to remove markers until the new ones are visible, to avoid flash
+            setTimeout(200, () => {
+                for (let marker of this.markers) {
+                    marker.setMap(null);
+                }
+                this.markers = newMarkers;
+            });
         });
     }
 
