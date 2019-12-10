@@ -47,6 +47,9 @@ ion-textarea textarea {
 ion-title.md {
     padding-left: 0;
 }
+ion-title.ios {
+    font-size: 24px;
+}
 
 ion-button {
     --background: #007ef1;
@@ -86,6 +89,16 @@ ion-button ion-icon {
 .loading-wrapper.sc-ion-loading-md {
     background: #15202b;
     color: white;
+}
+
+// Make back arrow white on iOS
+.sc-ion-back-button-ios {
+    color: white;
+    margin-left: 5px;
+}
+// Hide "Back" text
+.button-text.sc-ion-back-button-ios {
+    display: none;
 }
 
 .vertically-center {
