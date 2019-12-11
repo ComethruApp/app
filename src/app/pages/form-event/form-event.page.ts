@@ -112,7 +112,7 @@ export class FormEventPage implements OnInit {
 
     async submit(form) {
         const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
+            message: (this.editing ? 'Updating' : 'Posting') + '...'
         });
         this.presentLoading(loading);
         let data = form.value;
