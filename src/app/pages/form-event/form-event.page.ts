@@ -129,10 +129,14 @@ export class FormEventPage implements OnInit {
             data.lng = resp.coords.longitude;
             (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
                 loading.dismiss();
-                this.resetFields();
                 this.router.navigate(['event/' + newEvent.id]);
+                this.resetFields();
             });
         });
+    }
+
+    hosts() {
+        this.router.navigate(['/hosts/' + this.id]);
     }
 
     async presentLoading(loading) {
