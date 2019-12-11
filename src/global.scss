@@ -101,7 +101,7 @@ ion-button ion-icon {
     display: none;
 }
 
-.vertically-center {
+.vertically-center, ion-content > app-loader {
     height: 100%;
     display: flex;
     flex-direction: column;

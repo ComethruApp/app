@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
@@ -19,24 +18,25 @@ export class MapPage implements OnInit {
     @ViewChild('map', {static: false}) mapElement: ElementRef;
     map: any;
     address: string;
-    loading: any; // TODO: what type?
-    events: Event_[];
+    events: Event_[] = null;
     meMarker: any = null;
     markers: any = [];
+    mapLoaded: boolean = false;
+    markersLoaded: boolean = false;
+    // Keep track of whether we've loaded the map once, so that we don't fetch twice the first
+    // time we load.
+    loadedOnce: boolean = false;
 
     constructor(
         private router: Router,
         private geolocation: Geolocation,
-        private loadingCtrl: LoadingController,
         private api: APIService,
     ) { }
 
     async ngOnInit() {
-        this.loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(this.loading);
+
         this.loadMap();
+
     }
 
     loadMap() {
@@ -160,6 +160,7 @@ export class MapPage implements OnInit {
             this.meMarker.setMap(this.map);
 
             this.map.addListener('tilesloaded', () => {
+                this.mapLoaded = true;
                 console.log('Map loaded!');
             });
             this.getData();
@@ -169,13 +170,18 @@ export class MapPage implements OnInit {
         });
     }
 
+    ionViewWillExit() {
+        this.loadedOnce = true;
+    }
+
     ionViewWillEnter() {
-        this.getData();
+        if (this.loadedOnce) {
+            this.getData();
+        }
     }
 
     async getData(){
         this.api.getEvents().subscribe(events => {
-            this.loading.dismiss();
             this.events = events;
             let newMarkers = [];
             for (let event of this.events) {
@@ -198,6 +204,8 @@ export class MapPage implements OnInit {
                 marker.setMap(this.map);
                 newMarkers.push(marker);
             }
+            this.markersLoaded = true;
+            console.log('Markers have been loaded!');
             // Wait to remove markers until the new ones are visible, to avoid flash
             setTimeout(() => {
                 for (let marker of this.markers) {
@@ -206,9 +214,5 @@ export class MapPage implements OnInit {
                 this.markers = newMarkers;
             }, 200);
         });
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }

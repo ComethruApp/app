@@ -1,5 +1,6 @@
 <ion-content>
-    <div class="map-wrapper">
+    <app-loader *ngIf="!(mapLoaded && markersLoaded)"></app-loader>
+    <div class="map-wrapper {{ !(mapLoaded && markersLoaded) ? 'hidden' : '' }}">
         <div #map id="map"></div>
     </div>
 </ion-content>
