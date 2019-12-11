@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 
@@ -13,11 +12,10 @@ import { User, Event_ } from '../../services/api/models';
 })
 export class EventPage implements OnInit {
     id: number;
-    event: Event_;
+    event: Event_ = null;
     friendsHere: User[] = null;
 
     constructor(
-        public loadingCtrl: LoadingController,
         private route: ActivatedRoute,
         private router: Router,
 
@@ -26,11 +24,7 @@ export class EventPage implements OnInit {
 
     async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(loading);
-        this.getData().then(() => loading.dismiss());
+        this.getData();
     }
 
     async getData() {
@@ -62,8 +56,5 @@ export class EventPage implements OnInit {
     }
     hosts() {
         this.router.navigate(['/hosts/' + this.id]);
-    }
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }

@@ -4,6 +4,7 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
+    <app-loader *ngIf="!event"></app-loader>
     <div *ngIf="event">
         <h1><strong><em>{{ event.name }}</em></strong></h1>
         <div class="tags">
