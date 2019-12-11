@@ -143,6 +143,7 @@ export class MapPage implements OnInit {
             }
 
             this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+            console.log('Initialized map.');
 
             this.meMarker = new google.maps.Marker({
                 position: {
@@ -158,9 +159,10 @@ export class MapPage implements OnInit {
                 },
             });
             this.meMarker.setMap(this.map);
+            console.log('Added self marker.');
 
+            this.mapLoaded = true;
             this.map.addListener('tilesloaded', () => {
-                this.mapLoaded = true;
                 console.log('Map loaded!');
             });
             this.getData();
