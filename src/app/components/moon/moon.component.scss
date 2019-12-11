@@ -16,10 +16,11 @@
     transition: 1s;
 }
 .moon .status-label {
-    top: -114px;
+    top: -110px;
     position: relative;
     color: white;
     mix-blend-mode: difference;
+    filter: saturate(0);
 }
 .moon.small,
 .moon.small .darkness {
