@@ -59,8 +59,20 @@
                        [value]="event ? event.transitive_invites : false"></ion-toggle>
         </ion-item>
 
-        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Full send</ion-button>
-        <ion-button *ngIf="event && editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">End</ion-button>
-        <!--<ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>-->
+        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
+            <ion-icon name="send"></ion-icon>
+            Full send
+        </ion-button>
     </form>
+    <!--
+    <ion-button *ngIf="event && editing" class="button" color="secondary" expand="block" size="large" (click)="hosts()">
+        <ion-icon name="people"></ion-icon>
+        Manage hosts
+    </ion-button>
+    <ion-button *ngIf="event && editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">
+        <ion-icon name="close-circle"></ion-icon>
+        End
+    </ion-button>
+    -->
+        <!--<ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>-->
 </ion-content>
