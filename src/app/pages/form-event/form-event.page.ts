@@ -72,7 +72,6 @@ export class FormEventPage implements OnInit {
                 {
                     text: 'No',
                     role: 'cancel',
-                    cssClass: 'secondary',
                     handler: () => {}
                 },
                 {
@@ -96,7 +95,6 @@ export class FormEventPage implements OnInit {
                 {
                     text: 'No',
                     role: 'cancel',
-                    cssClass: 'secondary',
                     handler: () => {}
                 },
                 {
