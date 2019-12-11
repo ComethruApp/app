@@ -46,13 +46,7 @@ export class FormEventPage implements OnInit {
     }
 
     async getData(){
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(loading);
-
         this.api.getEvent(this.id).subscribe(event => {
-            loading.dismiss();
             this.event = event;
         });
     }
