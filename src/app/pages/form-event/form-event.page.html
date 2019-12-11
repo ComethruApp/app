@@ -3,74 +3,76 @@
 
 <ion-content class="ion-padding">
     <app-loader *ngIf="editing && !event"></app-loader>
-    <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
-        <ion-item lines="none">
-            <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
-                       [value]="event ? event.name : ''"></ion-input>
-        </ion-item>
+    <div class="{{ (editing && !event) ? 'hidden' : '' }}">
+        <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
+            <ion-item lines="none">
+                <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
+                           [value]="event ? event.name : ''"></ion-input>
+            </ion-item>
 
-        <ion-item lines="none">
-            <ion-textarea placeholder="Description" formControlName="description" autocomplete="on" autocorrect="on"
-                       [value]="event ? event.description : ''"></ion-textarea>
-        </ion-item>
+            <ion-item lines="none">
+                <ion-textarea placeholder="Description" formControlName="description" autocomplete="on" autocorrect="on"
+                           [value]="event ? event.description : ''"></ion-textarea>
+            </ion-item>
 
-        <ion-item lines="none">
-            <ion-input placeholder="Location" type="text" formControlName="location" autocomplete="on" autocorrect="on"
-                       [value]="event ? event.location : ''"></ion-input>
-        </ion-item>
+            <ion-item lines="none">
+                <ion-input placeholder="Location" type="text" formControlName="location" autocomplete="on" autocorrect="on"
+                           [value]="event ? event.location : ''"></ion-input>
+            </ion-item>
 
-        <ion-item lines="none">
-            <ion-input placeholder="Capacity" type="number" formControlName="capacity"
-                       [value]="event ? event.capacity : null"></ion-input>
-        </ion-item>
+            <ion-item lines="none">
+                <ion-input placeholder="Capacity" type="number" formControlName="capacity"
+                           [value]="event ? event.capacity : null"></ion-input>
+            </ion-item>
 
-        <ion-item lines="none">
-            <ion-label>Start time</ion-label>
-            <ion-datetime
-                formControlName="time"
-                displayFormat="MMM DD, h:mma"
-                monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+            <ion-item lines="none">
+                <ion-label>Start time</ion-label>
+                <ion-datetime
+                    formControlName="time"
+                    displayFormat="MMM DD, h:mma"
+                    monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 
-                required
-                [value]="event ? event.time : ''">
-            </ion-datetime>
-        </ion-item>
+                    required
+                    [value]="event ? event.time : ''">
+                </ion-datetime>
+            </ion-item>
 
-        <ion-item lines="none">
-            <ion-label>End time (optional)</ion-label>
-            <ion-datetime
-                formControlName="end_time"
-                displayFormat="MMM DD, h:mma"
-                monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+            <ion-item lines="none">
+                <ion-label>End time (optional)</ion-label>
+                <ion-datetime
+                    formControlName="end_time"
+                    displayFormat="MMM DD, h:mma"
+                    monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
 
-                [value]="event ? event.end_time : ''">
-            </ion-datetime>
-        </ion-item>
+                    [value]="event ? event.end_time : ''">
+                </ion-datetime>
+            </ion-item>
 
-        <ion-item lines="none" class="toggle-container">
-            <ion-label>Open event?</ion-label>
-            <ion-toggle checked name="open" formControlName="open"
-                       [value]="event ? event.open : true"></ion-toggle>
-        </ion-item>
+            <ion-item lines="none" class="toggle-container">
+                <ion-label>Open event?</ion-label>
+                <ion-toggle checked name="open" formControlName="open"
+                           [value]="event ? event.open : true"></ion-toggle>
+            </ion-item>
 
-        <!-- TODO only show this if event is private -->
-        <ion-item lines="none" class="toggle-container">
-            <ion-label>Allow invitees to invite others?</ion-label>
-            <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
-                       [value]="event ? event.transitive_invites : false"></ion-toggle>
-        </ion-item>
+            <!-- TODO only show this if event is private -->
+            <ion-item lines="none" class="toggle-container">
+                <ion-label>Allow invitees to invite others?</ion-label>
+                <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
+                           [value]="event ? event.transitive_invites : false"></ion-toggle>
+            </ion-item>
 
-        <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
-            <ion-icon name="send"></ion-icon>
-            Full send
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
+                <ion-icon name="send"></ion-icon>
+                Full send
+            </ion-button>
+        </form>
+        <ion-button *ngIf="event && editing" class="button" color="secondary" expand="block" size="large" (click)="hosts()">
+            <ion-icon name="people"></ion-icon>
+            Manage hosts
         </ion-button>
-    </form>
-    <ion-button *ngIf="event && editing" class="button" color="secondary" expand="block" size="large" (click)="hosts()">
-        <ion-icon name="people"></ion-icon>
-        Manage hosts
-    </ion-button>
-    <ion-button *ngIf="event && editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">
-        <ion-icon name="close-circle"></ion-icon>
-        End
-    </ion-button>
+        <ion-button *ngIf="event && editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">
+            <ion-icon name="close-circle"></ion-icon>
+            End
+        </ion-button>
+    </div>
 </ion-content>
