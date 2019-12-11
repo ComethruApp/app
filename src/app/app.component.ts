@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { APIService } from './services/api/api.service';
 import { LocationService } from './services/location/location.service';
 
+import * as Constants from './constants';
+
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html'
@@ -28,6 +30,19 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.platform.ready().then(() => {
                 this.statusBar.backgroundColorByHexString('#15202B');
+
+                // OneSignal Code start:
+                // Enable to debug issues:
+                // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+
+                var notificationOpenedCallback = function(jsonData) {
+                    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+                };
+
+                window['plugins'].OneSignal
+                    .startInit(Constants.ONESIGNAL_APPID, Constants.GOOGLE_PROJECT_NUMBER)
+                    .handleNotificationOpened(notificationOpenedCallback)
+                    .endInit();
             });
         });
         this.api.heartbeat().subscribe(beat => {
