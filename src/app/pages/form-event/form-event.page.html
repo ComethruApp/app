@@ -2,6 +2,7 @@
 <app-header *ngIf="editing" title="Edit Event" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
+    <app-loader *ngIf="editing && !event"></app-loader>
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
         <ion-item lines="none">
             <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
@@ -64,7 +65,6 @@
             Full send
         </ion-button>
     </form>
-    <!--
     <ion-button *ngIf="event && editing" class="button" color="secondary" expand="block" size="large" (click)="hosts()">
         <ion-icon name="people"></ion-icon>
         Manage hosts
@@ -73,6 +73,4 @@
         <ion-icon name="close-circle"></ion-icon>
         End
     </ion-button>
-    -->
-        <!--<ion-button *ngIf="editing" class="delete-button" expand="block" size="large" color="danger" (click)="delete()">Delete</ion-button>-->
 </ion-content>
