@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
@@ -16,9 +15,8 @@ export class HostsPage implements OnInit {
     event: Event_ = null;
 
     constructor(
-        public loadingCtrl: LoadingController,
-        private api: APIService,
         private route: ActivatedRoute,
+        private api: APIService,
     ) { }
 
     ngOnInit() {
@@ -27,13 +25,7 @@ export class HostsPage implements OnInit {
     }
 
     async getData() {
-        const loading = await this.loadingCtrl.create({
-            message: 'Loading...'
-        });
-        this.presentLoading(loading);
-
         this.api.getEventHosts(this.id).subscribe(hosts => {
-            loading.dismiss();
             this.hosts = hosts;
         });
     }
@@ -46,9 +38,5 @@ export class HostsPage implements OnInit {
         } else {
             this.searchedUsers = null;
         }
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }
