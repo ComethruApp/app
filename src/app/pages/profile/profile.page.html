@@ -10,17 +10,17 @@
         <app-avatar [user]="user" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
         <div *ngIf="isMe || user.is_me">
-            <ion-button expand="block" size="large" (click)="openSettings()" color="secondary">
+            <ion-button expand="block" size="large" (click)="openSettings()">
                 <ion-icon name="settings"></ion-icon>
                 Settings
             </ion-button>
-            <ion-button expand="block" size="large" (click)="help()">
-                <ion-icon name="help-buoy"></ion-icon>
-                Help
-            </ion-button>
-            <ion-button expand="block" size="large" (click)="about()">
+            <ion-button expand="block" size="large" (click)="about()" color="secondary">
                 <ion-icon name="information-circle"></ion-icon>
                 About
+            </ion-button>
+            <ion-button expand="block" size="large" (click)="help()" color="danger">
+                <ion-icon name="help-buoy"></ion-icon>
+                Safety
             </ion-button>
         </div>
 
