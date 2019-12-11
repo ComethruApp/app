@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent implements OnInit {
-    message: string;
     @Input() showMessage: boolean = true;
+    message: string;
 
     constructor(
     ) { }
@@ -19,9 +19,7 @@ export class LoaderComponent implements OnInit {
             'Loading',
             'Tailgating',
         ]
-        console.log(choices);
         let index: number = Math.floor(Math.random() * choices.length);
         this.message = choices[index];
-        console.log(this.message);
     }
 }
