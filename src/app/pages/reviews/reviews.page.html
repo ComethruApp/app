@@ -1,18 +1,23 @@
-<app-header [title]="event ? ('Invitations for ' + event.name) : ''" [back]="true"></app-header>
+<app-header title="Reviews" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
-    <ion-item lines="none">
-        <ion-input type="text"
-                   autocomplete="off"
-                   autocorrect="off"
-                   autofocus="true"
-                   placeholder="Search for users..."
-                   (input)="searchUsers($event.target.value)"></ion-input>
-    </ion-item>
-    <div *ngIf="searchedUsers">
-        <h3>Search results</h3>
-        <app-user-list [users]="searchedUsers" [host]="true" [hosting]="false" [eventId]="id"></app-user-list>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <app-loader [showMessage]="false"></app-loader>
+    </ion-refresher>
+    <app-loader *ngIf="!votes"></app-loader>
+    <div *ngIf="votes && votes.length == 0" class="empty-list">
+        No reviews yet.
     </div>
-    <h3>Reviews</h3>
-    <app-user-list [users]="reviews" [host]="true" [hosting]="true" [eventId]="id" emptyMessage="No reviews."></app-user-list>
+    <ion-grid *ngIf="votes" class="ion-no-padding">
+        <ion-row *ngFor="let vote of votes">
+            <ion-col size="2" class="ion-no-padding">
+                <ion-icon *ngIf="vote.positive && !vote.negative" class="positive" name="thumbs-up"></ion-icon>
+                <ion-icon *ngIf="!vote.positive && !vote.negative" class="neutral" name="star-half"></ion-icon>
+                <ion-icon *ngIf="!vote.positive && vote.negative" class="negative" name="thumbs-down"></ion-icon>
+            </ion-col>
+            <ion-col size="10" class="ion-no-padding">
+                {{ vote.review }}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

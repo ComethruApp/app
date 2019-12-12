@@ -17,7 +17,7 @@ export class ReviewsPage implements OnInit {
         private api: APIService,
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id'));
         this.getData();
     }
@@ -26,5 +26,9 @@ export class ReviewsPage implements OnInit {
         this.api.getEventVotes(this.id).subscribe(votes => {
             this.votes = votes;
         });
+    }
+
+    doRefresh(event) {
+        this.getData().then(() => event.target.complete());
     }
 }
