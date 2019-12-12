@@ -4,14 +4,14 @@ import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
 
 @Component({
-    selector: 'app-feedback',
-    templateUrl: './feedback.page.html',
-    styleUrls: ['./feedback.page.scss'],
+    selector: 'app-reviews',
+    templateUrl: './reviews.page.html',
+    styleUrls: ['./reviews.page.scss'],
 })
-export class FeedbackPage implements OnInit {
+export class ReviewsPage implements OnInit {
     id: number;
     searchedUsers: User[] = null;
-    feedback: User[] = null;
+    reviews: User[] = null;
     event: Event_ = null;
 
     constructor(
