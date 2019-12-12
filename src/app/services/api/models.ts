@@ -1,4 +1,10 @@
-export class User {
+export class _Base {
+    constructor(values: Object = {}) {
+        Object.assign(this, values);
+    }
+}
+
+export class User extends _Base {
     id: number;
     name: string;
     email: string;
@@ -13,24 +19,15 @@ export class User {
     facebook_id: string;
     facebook_name: string;
     hosting: boolean;
-
-    // TODO don't repeat
-    constructor(values: Object = {}) {
-        Object.assign(this, values);
-    }
 }
 
-export class Vote {
+export class Vote extends _Base {
     positive: boolean;
     negative: boolean;
     review: string;
-
-    constructor(values: Object = {}) {
-        Object.assign(this, values);
-    }
 }
 
-export class Event_ {
+export class Event_ extends _Base {
     id: number;
     name: string;
     description: string;
@@ -50,8 +47,4 @@ export class Event_ {
     people: number;
     capacity: number;
     rating: number;
-
-    constructor(values: Object = {}) {
-        Object.assign(this, values);
-    }
 }
