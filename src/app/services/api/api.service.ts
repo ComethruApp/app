@@ -370,7 +370,17 @@ export class APIService {
         });
     }
 
-    public updateLocation(loc) {
+    public getEventVotes(eventId: number): Observable<Vote[]> {
+        return this.get('/events/' + eventId + '/votes')
+        .map(response => {
+            return response.map((vote) => new Vote(vote));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
+        });
+    }
+
+    public updateLocation(loc: Object) {
         this.post('/location', loc)
         .map(response => {
             return response;

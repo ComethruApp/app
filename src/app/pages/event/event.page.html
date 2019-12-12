@@ -61,6 +61,10 @@
                 <ion-icon name="person-add"></ion-icon>
                 Invite
             </ion-button>
+            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="openReviews()" color="warning">
+                <ion-icon name="star"></ion-icon>
+                Reviews
+            </ion-button>
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
                 <ion-icon name="create"></ion-icon>
                 Edit

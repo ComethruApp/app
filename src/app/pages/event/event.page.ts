@@ -51,6 +51,10 @@ export class EventPage implements OnInit {
         this.router.navigate(['/invites/' + this.id]);
     }
 
+    openReviews() {
+        this.router.navigate(['/reviews/' + this.id]);
+    }
+
     edit() {
         this.router.navigate(['/form-event/' + this.id]);
     }

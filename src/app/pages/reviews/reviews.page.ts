@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
-import { User, Event_ } from '../../services/api/models';
+import { Vote } from '../../services/api/models';
 
 @Component({
     selector: 'app-reviews',
@@ -10,9 +10,7 @@ import { User, Event_ } from '../../services/api/models';
 })
 export class ReviewsPage implements OnInit {
     id: number;
-    searchedUsers: User[] = null;
-    reviews: User[] = null;
-    event: Event_ = null;
+    votes: Vote[] = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -25,8 +23,8 @@ export class ReviewsPage implements OnInit {
     }
 
     async getData() {
-        this.api.getEventReviews(this.id).subscribe(reviews => {
-            this.reviews = reviews;
+        this.api.getEventVotes(this.id).subscribe(votes => {
+            this.votes = votes;
         });
     }
 }
