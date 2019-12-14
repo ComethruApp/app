@@ -6,6 +6,11 @@
     margin-left: 10px;
     border-radius: 100%;
 }
+@keyframes slide {
+    30% {
+        transform: translateX(1px);
+    }
+}
 .moon .darkness {
     position: relative;
     top: 0;
@@ -13,7 +18,6 @@
     height: 150px;
     width: 150px;
     border-radius: 100%;
-    transition: 1s;
 }
 .moon .status-label {
     top: -110px;
@@ -30,4 +34,8 @@
 .moon.small {
     margin-left: 0;
     overflow: visible;
+}
+.moon.small .darkness {
+    animation: 1s slide;
+    transition: 1s transform;
 }
