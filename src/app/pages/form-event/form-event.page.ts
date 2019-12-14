@@ -3,7 +3,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { Router, RouterOutlet, ActivationStart, ActivatedRoute } from '@angular/router';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { APIService } from '../../services/api/api.service';
@@ -119,11 +119,40 @@ export class FormEventPage implements OnInit {
         this.geolocation.getCurrentPosition().then((resp) => {
             data.lat = resp.coords.latitude;
             data.lng = resp.coords.longitude;
-            (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
-                loading.dismiss();
-                this.router.navigate(['event/' + newEvent.id]);
-                this.resetFields();
-            });
+
+            let options: NativeGeocoderOptions = {
+                useLocale: true,
+                maxResults: 5
+            };
+
+            this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+            .then(async (result: NativeGeocoderResult[]) => {
+                console.log(JSON.stringify(result[0]));
+                return;
+                const alert = await this.alertCtrl.create({
+                    header: 'Does this address look right?',
+                    message: '',
+                    buttons: [
+                        {
+                            text: 'No',
+                            role: 'cancel',
+                            handler: () => {}
+                        },
+                        {
+                            text: 'Full send',
+                            handler: () => {
+                                (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
+                                    loading.dismiss();
+                                    this.router.navigate(['event/' + newEvent.id]);
+                                    this.resetFields();
+                                });
+                            }
+                        }
+                    ]
+                });
+                await alert.present();
+            })
+            .catch((error: any) => console.log(error));
         });
     }
 
