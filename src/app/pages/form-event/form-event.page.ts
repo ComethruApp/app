@@ -54,7 +54,7 @@ export class FormEventPage implements OnInit {
             this.lng = resp.coords.longitude;
             let options: NativeGeocoderOptions = {
                 useLocale: true,
-                maxResults: 5
+                maxResults: 5,
             };
 
             this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)

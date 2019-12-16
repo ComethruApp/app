@@ -21,11 +21,7 @@
                            [value]="event ? event.location : ''"></ion-input>
             </ion-item>
 
-            <ion-item lines="none">
-                <ion-input placeholder="Full Address" type="text" formControlName="address"
-                           autocomplete="on" autocorrect="on"
-                           [value]="event ? event.address : (address)"></ion-input>
-            </ion-item>
+            <p>Full address: {{ event ? event.address : address }}
 
             <ion-item lines="none">
                 <ion-input placeholder="Capacity" type="number" formControlName="capacity"
