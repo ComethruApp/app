@@ -31,6 +31,7 @@
     "cordova-android": "8.1.0",
     "cordova-ios": "5.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
+    "cordova-plugin-app-preferences": "git+https://github.com/vash15/me.apla.cordova.app-preferences.git",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-facebook4": "^6.2.0",
@@ -103,7 +104,8 @@
       "cordova-plugin-facebook4": {
         "APP_ID": "567699137099186",
         "APP_NAME": "Comethru"
-      }
+      },
+      "cordova-plugin-app-preferences": {}
     },
     "platforms": [
       "android",

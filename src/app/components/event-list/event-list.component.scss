@@ -13,9 +13,20 @@
 .event-list {
     margin-bottom: 20px;
 }
+
+@keyframes item-swoop {
+    from {
+        padding-top: 20px;
+        opacity: 0;
+    }
+    to {
+    }
+}
 .event-list ion-row {
+    animation: item-swoop .5s;
     margin: 0 0 20px;
 }
 .event-list ion-icon {
     vertical-align: top;
 }
+
