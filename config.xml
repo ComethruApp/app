@@ -43,6 +43,7 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
         <resource-file src="resources/android/icon/drawable-xxxhdpi-icon.png" target="app/src/main/res/mipmap/icon.png" />
+        <hook type="after_prepare" src="hooks/copy_android_notification_icons.js" />
     </platform>
     <platform name="ios">
         <preference name="WKWebViewOnly" value="true" />
