@@ -101,6 +101,9 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
             <string>We use your location, with your consent, to detect which events you are attending.</string>
         </edit-config>
+        <framework spec="5.2.3" src="FBSDKCoreKit" type="podspec" />
+        <framework spec="5.2.3" src="FBSDKLoginKit" type="podspec" />
+        <framework spec="5.2.3" src="FBSDKShareKit" type="podspec" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
@@ -108,7 +111,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-app-preferences" spec="https://github.com/vash15/me.apla.cordova.app-preferences" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <engine name="android" spec="8.1.0" />
     <engine name="ios" spec="5.1.0" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
 </widget>
