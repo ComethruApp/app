@@ -37,6 +37,18 @@ ion-item.toggle-container {
     --background: #15202b;
     //--padding-start: 0;
 }
+// Remove white background when autocomplete is used on Android
+// Yes you really do have to do all this nonsense
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus,
+:-internal-autofill-selected {
+    font-size: 18px !important;
+    -webkit-box-shadow: 0 0 0px 1000px #2c3640 inset;
+    -webkit-text-fill-color: white !important;
+    caret-color: white;
+}
+
 ion-textarea textarea {
     height: 150px;
 }
