@@ -3,8 +3,9 @@
 <ion-content class="ion-padding">
     <ion-grid>
         <ion-row *ngFor="let key of objectKeys(numbers)" class="ion-no-padding">
-            <ion-col class="ion-no-padding">{{ key }}</ion-col>
-            <ion-col class="ion-no-padding"><a href="tel:{{ numbers[key] }}">{{ numbers[key] }}</a></ion-col>
+            <ion-col size="7" class="ion-no-padding">{{ key }}</ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col size="4" class="ion-no-padding"><a href="tel:{{ numbers[key] }}">{{ numbers[key] }}</a></ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
