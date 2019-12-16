@@ -21,7 +21,9 @@ export class FormEventPage implements OnInit {
     editing: boolean = false;
     id: number;
     event: Event_ = null;
-
+    lat: number;
+    lng: number;
+    address: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -36,13 +38,31 @@ export class FormEventPage implements OnInit {
         private api: APIService,
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         if (this.id) {
             this.editing = true;
             this.getData();
         }
         this.resetFields();
+        this.getAddress();
+    }
+
+    async getAddress() {
+        this.geolocation.getCurrentPosition().then((resp) => {
+            this.lat = resp.coords.latitude;
+            this.lng = resp.coords.longitude;
+            let options: NativeGeocoderOptions = {
+                useLocale: true,
+                maxResults: 5
+            };
+
+            this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+            .then(async (result: NativeGeocoderResult[]) => {
+                this.address = JSON.stringify(result);
+            })
+            .catch((error: any) => console.log(error));
+        });
     }
 
     async getData(){
@@ -56,6 +76,7 @@ export class FormEventPage implements OnInit {
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
+            address: new FormControl('', Validators.required),
             time: new FormControl('', Validators.required),
             end_time: new FormControl(''),
             open: new FormControl(true),
@@ -111,49 +132,35 @@ export class FormEventPage implements OnInit {
     }
 
     async submit(form) {
-        const loading = await this.loadingCtrl.create({
-            message: (this.editing ? 'Updating' : 'Posting') + '...'
+        const alert = await this.alertCtrl.create({
+            header: 'Does this look right?',
+            message: '',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    handler: () => {}
+                },
+                {
+                    text: 'Full send',
+                    handler: async () => {
+                        let data = form.value;
+                        data.lat = this.lat;
+                        data.lng = this.lng;
+                        const loading = await this.loadingCtrl.create({
+                            message: (this.editing ? 'Updating' : 'Posting') + '...'
+                        });
+                        this.presentLoading(loading);
+                        (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
+                            loading.dismiss();
+                            this.router.navigate(['event/' + newEvent.id]);
+                            this.resetFields();
+                        });
+                    }
+                }
+            ]
         });
-        this.presentLoading(loading);
-        let data = form.value;
-        this.geolocation.getCurrentPosition().then((resp) => {
-            data.lat = resp.coords.latitude;
-            data.lng = resp.coords.longitude;
-
-            let options: NativeGeocoderOptions = {
-                useLocale: true,
-                maxResults: 5
-            };
-
-            this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
-            .then(async (result: NativeGeocoderResult[]) => {
-                console.log(JSON.stringify(result[0]));
-                return;
-                const alert = await this.alertCtrl.create({
-                    header: 'Does this address look right?',
-                    message: '',
-                    buttons: [
-                        {
-                            text: 'No',
-                            role: 'cancel',
-                            handler: () => {}
-                        },
-                        {
-                            text: 'Full send',
-                            handler: () => {
-                                (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
-                                    loading.dismiss();
-                                    this.router.navigate(['event/' + newEvent.id]);
-                                    this.resetFields();
-                                });
-                            }
-                        }
-                    ]
-                });
-                await alert.present();
-            })
-            .catch((error: any) => console.log(error));
-        });
+        await alert.present();
     }
 
     hosts() {
