@@ -4,6 +4,9 @@ ion-tab-bar {
 ion-tabs ion-tab-bar {
     --ion-color-primary: white;
 }
+ion-tab-button {
+    --ripple-color: transparent;
+}
 ion-tab-button ion-icon {
     transform: scale(1.2);
     transition: 0.3s;
