@@ -31,6 +31,7 @@ export class RegisterPage implements OnInit {
         this.validations_form = this.formBuilder.group({
             name: new FormControl('', Validators.required),
             email: new FormControl('', Validators.email),
+            year: new FormControl(),
             password: new FormControl('', Validators.compose([
                 Validators.required,
                 Validators.minLength(5),
