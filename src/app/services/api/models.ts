@@ -9,7 +9,6 @@ export class User extends _Base {
     name: string;
     email: string;
     verified: boolean;
-    avatar: string;
     is_me: boolean;
     has_sent_friend_request: boolean;
     has_received_friend_request: boolean;
