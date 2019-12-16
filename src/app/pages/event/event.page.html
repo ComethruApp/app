@@ -57,17 +57,17 @@
         </div>
 
         <div>
-            <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">
-                <ion-icon name="person-add"></ion-icon>
-                Invite
+            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
+                <ion-icon name="create"></ion-icon>
+                Edit
             </ion-button>
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="openReviews()" color="warning">
                 <ion-icon name="star"></ion-icon>
                 Reviews
             </ion-button>
-            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
-                <ion-icon name="create"></ion-icon>
-                Edit
+            <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="secondary" (click)="openInvites()">
+                <ion-icon name="person-add"></ion-icon>
+                Invite
             </ion-button>
         </div>
     </div>

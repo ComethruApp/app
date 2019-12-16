@@ -43,7 +43,6 @@ ion-item.toggle-container {
 :-webkit-autofill:hover,
 :-webkit-autofill:focus,
 :-internal-autofill-selected {
-    font-size: 18px !important;
     -webkit-box-shadow: 0 0 0px 1000px #2c3640 inset;
     -webkit-text-fill-color: white !important;
     caret-color: white;
@@ -64,11 +63,10 @@ ion-title.ios {
 }
 
 ion-button {
+    margin: 0;
     // Josefin font has excessive space underneath, correct for that.
     --padding-top: 4px;
     --background: #007ef1;
-    margin-left: 0;
-    margin-right: 0;
     --border-radius: 0 !important;
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
@@ -231,4 +229,17 @@ ion-refresher.refresher-completing .loader {
     margin: 0 auto 20px;
     width: 70vw;
     animation: 20s load infinite linear;
+}
+
+@keyframes swoop {
+    from {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+ion-content {
+    animation: swoop .5s;
 }

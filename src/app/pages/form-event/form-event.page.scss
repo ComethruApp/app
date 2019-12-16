@@ -1,3 +1,12 @@
 div.hidden {
     display: none;
 }
+@keyframes swoop {
+    from {
+        margin-top: 40px;
+        opacity: 0;
+    }
+}
+form {
+    animation: swoop .5s;
+}
