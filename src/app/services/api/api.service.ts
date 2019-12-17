@@ -90,32 +90,24 @@ export class APIService {
 
     getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
-        .map(response => {
-            return new User(response);
-        });
+        .map(response => new User(response));
     }
 
     // TODO: consider combining with getUser and using the /users/me endpoint when userId is null
     getMe(): Observable<User> {
         return this.get('/users/me')
-        .map(response => {
-            return new User(response);
-        });
+        .map(response => new User(response));
     }
 
     searchUsers(query: string): Observable<User[]> {
         return this.get('/users/search/' + query)
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 
     // TODO this function should be merged with something else if possible... feels like a hack
     searchUsersForEvent(eventId: number, query: string): Observable<User[]> {
         return this.get('/events/' + eventId + '/invites/search/' + query)
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 
     updateUser(user: User){
@@ -136,72 +128,52 @@ export class APIService {
 
     getMyCurrentEvent(): Observable<Event_> {
         return this.get('/users/me/events/current')
-        .map(response => {
-            return new Event_(response);
-        });
+        .map(response => new Event_(response));
     }
 
     getUserCurrentEvent(userId: number): Observable<Event_> {
         return this.get('/users/' + userId + '/events/current')
-        .map(response => {
-            return new Event_(response);
-        });
+        .map(response => new Event_(response));
     }
 
     getMyEvents(): Observable<Event_[]> {
         return this.get('/users/me/events')
-        .map(response => {
-            return response.map((event) => new Event_(event));
-        });
+        .map(response => response.map((event) => new Event_(event)));
     }
 
     getUserEvents(userId: number): Observable<Event_[]> {
         return this.get('/users/' + userId + '/events')
-        .map(response => {
-            return response.map((event) => new Event_(event));
-        });
+        .map(response => response.map((event) => new Event_(event)));
     }
 
     getFriendsAtEvent(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/friends')
-        .map(response => {
-            return response.map((event) => new User(event));
-        });
+        .map(response => response.map((event) => new User(event)));
     }
 
     getEvents(): Observable<Event_[]> {
         return this.get('/events')
-        .map(response => {
-            return response.map((event) => new Event_(event));
-        });
+        .map(response => response.map((event) => new Event_(event)));
     }
 
     getInvites(): Observable<Event_[]> {
         return this.get('/users/me/invites')
-        .map(response => {
-            return response.map((event) => new Event_(event));
-        });
+        .map(response => response.map((event) => new Event_(event)));
     }
 
     getEvent(eventId: number): Observable<Event_> {
         return this.get('/events/' + eventId)
-        .map(response => {
-            return new Event_(response);
-        });
+        .map(response => new Event_(response));
     }
 
     createEvent(event: Event_): Observable<Event_> {
         return this.post('/events', event)
-        .map(response => {
-            return new Event_(response);
-        });
+        .map(response => new Event_(response));
     }
 
     updateEvent(eventId: number, event: Event_): Observable<Event_> {
         return this.put('/events/' + eventId, event)
-        .map(response => {
-            return new Event_(response);
-        });
+        .map(response => new Event_(response));
     }
 
     deleteEvent(eventId: number): Observable<Object> {
@@ -214,9 +186,7 @@ export class APIService {
 
     getEventInvites(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/invites')
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 
     sendInvite(eventId: number, userId: number): Observable<Object> {
@@ -229,9 +199,7 @@ export class APIService {
 
     getEventHosts(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/hosts')
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 
     addHost(eventId: number, userId: number): Observable<Object> {
@@ -252,9 +220,7 @@ export class APIService {
 
     getEventVotes(eventId: number): Observable<Vote[]> {
         return this.get('/events/' + eventId + '/votes')
-        .map(response => {
-            return response.map((vote) => new Vote(vote));
-        });
+        .map(response => response.map((vote) => new Vote(vote)));
     }
 
     updateLocation(loc: Object) {
@@ -283,15 +249,11 @@ export class APIService {
 
     getFriendRequests(): Observable<User[]> {
         return this.get('/friends/requests')
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 
     getFriends(): Observable<User[]> {
         return this.get('/friends')
-        .map(response => {
-            return response.map((user) => new User(user));
-        });
+        .map(response => response.map((user) => new User(user)));
     }
 }
