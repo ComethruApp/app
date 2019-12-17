@@ -76,7 +76,7 @@ export class FormEventPage implements OnInit {
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
-            address: new FormControl('', Validators.required),
+            //address: new FormControl('', Validators.required),
             time: new FormControl('', Validators.required),
             end_time: new FormControl(''),
             open: new FormControl(true),
@@ -147,6 +147,7 @@ export class FormEventPage implements OnInit {
                         let data = form.value;
                         data.lat = this.lat;
                         data.lng = this.lng;
+                        data.address = this.address;
                         const loading = await this.loadingCtrl.create({
                             message: (this.editing ? 'Updating' : 'Posting') + '...'
                         });
