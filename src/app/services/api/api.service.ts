@@ -37,6 +37,9 @@ export class APIService {
 
         return storageObservable.mergeMap(token => {
             return this.httpClient.get(this.ROOT + path, this.ops(token));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
         });
     }
 
