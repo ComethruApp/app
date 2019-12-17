@@ -7,7 +7,10 @@
             </ion-col>
             <ion-col size="7" (click)="openProfile(user.id)">
                 <div>
-                    <h2>{{ user.name }}</h2>
+                    <h2>
+                        {{ user.name }}
+                        <img class="verified" *ngIf="user.verified" src="assets/imgs/verified.png">
+                    </h2>
                     {{ user.email }}
                 </div>
             </ion-col>
