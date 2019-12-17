@@ -45,6 +45,9 @@ export class APIService {
 
         return storageObservable.mergeMap(token => {
             return this.httpClient.post(this.ROOT + path, data, this.ops(token));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
         });
     }
 
@@ -53,6 +56,9 @@ export class APIService {
 
         return storageObservable.mergeMap(token => {
             return this.httpClient.delete(this.ROOT + path, this.ops(token));
+        })
+        .catch((err) => {
+            return Observable.throw(err.statusText);
         });
     }
 
@@ -61,402 +67,228 @@ export class APIService {
 
         return storageObservable.mergeMap(token => {
             return this.httpClient.put(this.ROOT + path, data, this.ops(token));
-        });
-    }
-
-    public heartbeat(): Observable<Object> {
-        return this.get('/heartbeat')
-        .map(response => {
-            return response;
         })
         .catch((err) => {
             return Observable.throw(err.statusText);
         });
     }
 
-    public getStatus(): Observable<Object> {
-        return this.get('/status')
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    heartbeat(): Observable<Object> {
+        return this.get('/heartbeat');
     }
 
-    public sendLocation(lat: number, lng: number): Observable<Object> {
-        return this.post('/location', {lat: lat, lng: lng})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    getStatus(): Observable<Object> {
+        return this.get('/status');
     }
 
-    public getUser(userId: number): Observable<User> {
+    sendLocation(lat: number, lng: number): Observable<Object> {
+        return this.post('/location', {lat: lat, lng: lng});
+    }
+
+    getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => {
             return new User(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
     // TODO: consider combining with getUser and using the /users/me endpoint when userId is null
-    public getMe(): Observable<User> {
+    getMe(): Observable<User> {
         return this.get('/users/me')
         .map(response => {
             return new User(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public searchUsers(query: string): Observable<User[]> {
+    searchUsers(query: string): Observable<User[]> {
         return this.get('/users/search/' + query)
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
     // TODO this function should be merged with something else if possible... feels like a hack
-    public searchUsersForEvent(eventId: number, query: string): Observable<User[]> {
+    searchUsersForEvent(eventId: number, query: string): Observable<User[]> {
         return this.get('/events/' + eventId + '/invites/search/' + query)
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public updateUser(user: User){
+    updateUser(user: User){
 
     }
 
-    public blockUser(userId: number): Observable<Object> {
-        return this.post('/users/' + userId + '/block', {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    blockUser(userId: number): Observable<Object> {
+        return this.post('/users/' + userId + '/block', {});
     }
 
-    public facebookConnect(id: string, name: string): Observable<Object> {
-        return this.post('/users/me/facebook', {id: id, name: name})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    facebookConnect(id: string, name: string): Observable<Object> {
+        return this.post('/users/me/facebook', {id: id, name: name});
     }
 
-    public facebookDisconnect(): Observable<Object> {
-        return this.delete('/users/me/facebook')
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    facebookDisconnect(): Observable<Object> {
+        return this.delete('/users/me/facebook');
     }
 
-    public getMyCurrentEvent(): Observable<Event_> {
+    getMyCurrentEvent(): Observable<Event_> {
         return this.get('/users/me/events/current')
         .map(response => {
             return new Event_(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getUserCurrentEvent(userId: number): Observable<Event_> {
+    getUserCurrentEvent(userId: number): Observable<Event_> {
         return this.get('/users/' + userId + '/events/current')
         .map(response => {
             return new Event_(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getMyEvents(): Observable<Event_[]> {
+    getMyEvents(): Observable<Event_[]> {
         return this.get('/users/me/events')
         .map(response => {
             return response.map((event) => new Event_(event));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getUserEvents(userId: number): Observable<Event_[]> {
+    getUserEvents(userId: number): Observable<Event_[]> {
         return this.get('/users/' + userId + '/events')
         .map(response => {
             return response.map((event) => new Event_(event));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getFriendsAtEvent(eventId: number): Observable<User[]> {
+    getFriendsAtEvent(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/friends')
         .map(response => {
             return response.map((event) => new User(event));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getEvents(): Observable<Event_[]> {
+    getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => {
             return response.map((event) => new Event_(event));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getInvites(): Observable<Event_[]> {
+    getInvites(): Observable<Event_[]> {
         return this.get('/users/me/invites')
         .map(response => {
             return response.map((event) => new Event_(event));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getEvent(eventId: number): Observable<Event_> {
+    getEvent(eventId: number): Observable<Event_> {
         return this.get('/events/' + eventId)
         .map(response => {
             return new Event_(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public createEvent(event: Event_): Observable<Event_> {
+    createEvent(event: Event_): Observable<Event_> {
         return this.post('/events', event)
         .map(response => {
             return new Event_(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public updateEvent(eventId: number, event: Event_): Observable<Event_> {
+    updateEvent(eventId: number, event: Event_): Observable<Event_> {
         return this.put('/events/' + eventId, event)
         .map(response => {
             return new Event_(response);
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public deleteEvent(eventId: number): Observable<Object> {
-        return this.delete('/events/' + eventId)
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    deleteEvent(eventId: number): Observable<Object> {
+        return this.delete('/events/' + eventId);
     }
 
-    public endEvent(eventId: number): Observable<Object> {
-        return this.post('/events/' + eventId + '/end', {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    endEvent(eventId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/end', {});
     }
 
-    public getEventInvites(eventId: number): Observable<User[]> {
+    getEventInvites(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/invites')
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public sendInvite(eventId: number, userId: number): Observable<Object> {
-        return this.post('/events/' + eventId + '/invites/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    sendInvite(eventId: number, userId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/invites/' + userId, {});
     }
 
-    public cancelInvite(eventId: number, userId: number): Observable<Object> {
-        return this.delete('/events/' + eventId + '/invites/' + userId)
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    cancelInvite(eventId: number, userId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/invites/' + userId);
     }
 
-    public getEventHosts(eventId: number): Observable<User[]> {
+    getEventHosts(eventId: number): Observable<User[]> {
         return this.get('/events/' + eventId + '/hosts')
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public addHost(eventId: number, userId: number): Observable<Object> {
-        return this.post('/events/' + eventId + '/hosts/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    addHost(eventId: number, userId: number): Observable<Object> {
+        return this.post('/events/' + eventId + '/hosts/' + userId, {});
     }
 
-    public removeHost(eventId: number, userId: number): Observable<Object> {
-        return this.delete('/events/' + eventId + '/hosts/' + userId)
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    removeHost(eventId: number, userId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/hosts/' + userId);
     }
 
-    public vote(eventId: number, positive: boolean, negative: boolean, review: string): Observable<Object> {
-        return this.post('/events/' + eventId + '/vote', {positive: positive, negative: negative, review: review})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    vote(eventId: number, positive: boolean, negative: boolean, review: string): Observable<Object> {
+        return this.post('/events/' + eventId + '/vote', {positive: positive, negative: negative, review: review});
     }
 
-    public unvote(eventId: number): Observable<Object> {
-        return this.delete('/events/' + eventId + '/vote')
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    unvote(eventId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/vote');
     }
 
-    public getEventVotes(eventId: number): Observable<Vote[]> {
+    getEventVotes(eventId: number): Observable<Vote[]> {
         return this.get('/events/' + eventId + '/votes')
         .map(response => {
             return response.map((vote) => new Vote(vote));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public updateLocation(loc: Object) {
-        this.post('/location', loc)
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    updateLocation(loc: Object) {
+        this.post('/location', loc);
     }
 
-    public requestFriend(userId: number): Observable<Object> {
-        return this.post('/friends/request/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    requestFriend(userId: number): Observable<Object> {
+        return this.post('/friends/request/' + userId, {});
     }
 
-    public cancelRequest(userId: number): Observable<Object> {
-        return this.post('/friends/cancel/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    cancelRequest(userId: number): Observable<Object> {
+        return this.post('/friends/cancel/' + userId, {});
     }
 
-    public acceptRequest(userId: number): Observable<Object> {
-        return this.post('/friends/accept/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    acceptRequest(userId: number): Observable<Object> {
+        return this.post('/friends/accept/' + userId, {});
     }
 
-    public rejectRequest(userId: number): Observable<Object> {
-        return this.post('/friends/reject/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    rejectRequest(userId: number): Observable<Object> {
+        return this.post('/friends/reject/' + userId, {});
     }
 
-    public unfriend(userId: number): Observable<Object> {
-        return this.post('/friends/remove/' + userId, {})
-        .map(response => {
-            return response;
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+    unfriend(userId: number): Observable<Object> {
+        return this.post('/friends/remove/' + userId, {});
     }
 
-    public getFriendRequests(): Observable<User[]> {
+    getFriendRequests(): Observable<User[]> {
         return this.get('/friends/requests')
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 
-    public getFriends(): Observable<User[]> {
+    getFriends(): Observable<User[]> {
         return this.get('/friends')
         .map(response => {
             return response.map((user) => new User(user));
-        })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
         });
     }
 }
