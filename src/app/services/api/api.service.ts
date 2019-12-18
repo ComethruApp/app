@@ -27,36 +27,26 @@ export class APIService {
         };
     }
 
-    private get(path: string): Observable<any> {
+    private req(f): Observable<any> {
         let storageObservable = from(this.storage.get('TOKEN'));
 
-        return storageObservable.mergeMap(token => {
-            return this.httpClient.get(this.ROOT + path, this.ops(token));
-        });
+        return storageObservable.mergeMap(f);
+    }
+
+    private get(path: string): Observable<any> {
+        return this.req(token => this.httpClient.get(this.ROOT + path, this.ops(token)));
     }
 
     private post(path: string, data: any): Observable<any> {
-        let storageObservable = from(this.storage.get('TOKEN'));
-
-        return storageObservable.mergeMap(token => {
-            return this.httpClient.post(this.ROOT + path, data, this.ops(token));
-        });
+        return this.req(token => this.httpClient.post(this.ROOT + path, data, this.ops(token)));
     }
 
     private delete(path: string): Observable<any> {
-        let storageObservable = from(this.storage.get('TOKEN'));
-
-        return storageObservable.mergeMap(token => {
-            return this.httpClient.delete(this.ROOT + path, this.ops(token));
-        });
+        return this.req(token => this.httpClient.delete(this.ROOT + path, this.ops(token)));
     }
 
     private put(path: string, data: any): Observable<any> {
-        let storageObservable = from(this.storage.get('TOKEN'));
-
-        return storageObservable.mergeMap(token => {
-            return this.httpClient.put(this.ROOT + path, data, this.ops(token));
-        });
+        return this.req(token => this.httpClient.put(this.ROOT + path, data, this.ops(token)));
     }
 
     heartbeat(): Observable<Object> {
