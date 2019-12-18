@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -15,6 +16,7 @@ export class AuthService {
     ROOT: string = Constants.HOST + '/auth';
 
     constructor(
+        private router: Router,
         private httpClient: HttpClient,
         private storage: Storage,
     ) { }
@@ -35,6 +37,9 @@ export class AuthService {
 
     async logout() {
         await this.storage.remove('TOKEN');
+        // Remove navigation stack so next user to log in won't see this user's views
+        this.router.initialNavigation();
+        this.router.navigate(['/login']);
     }
 
     isLoggedIn() {
