@@ -15,7 +15,7 @@ export class ProfilePage implements OnInit {
     id: number;
     user: User = null;
     isMe: boolean;
-    currentEvent: Event_ = null;
+    currentEvents: Event_[] = null;
     events: Event_[] = null;
 
     constructor(
@@ -36,12 +36,8 @@ export class ProfilePage implements OnInit {
         (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
             this.user = user;
             if (this.isMe || user.is_friend) {
-                (this.isMe ? this.api.getMyCurrentEvent() : this.api.getUserCurrentEvent(this.id)).subscribe((currentEvent: Event_) => {
-                    // TODO: Fix this!!! We should get it as null in the first place!
-                    if (currentEvent === null || currentEvent.id === undefined) {
-                        currentEvent = null;
-                    }
-                    this.currentEvent = currentEvent;
+                (this.isMe ? this.api.getMyCurrentEvents() : this.api.getUserCurrentEvents(this.id)).subscribe((currentEvents: Event_[]) => {
+                    this.currentEvents = currentEvents;
                 });
             }
         });
