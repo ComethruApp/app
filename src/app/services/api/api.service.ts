@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 import { from } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
+import 'rxjs/add/operator/catch'
 
+import { AuthService } from '../auth/auth.service';
 import * as Constants from '../../constants';
 import { User, Event_, Vote } from './models';
 
@@ -19,6 +23,8 @@ export class APIService {
     constructor(
         private httpClient: HttpClient,
         private storage: Storage,
+        private router: Router,
+        private authService: AuthService,
     ) { }
 
     private ops(token: string): Object {
@@ -30,21 +36,29 @@ export class APIService {
     private req(f): Observable<any> {
         let storageObservable = from(this.storage.get('TOKEN'));
 
-        return storageObservable.mergeMap(f);
+        return storageObservable.mergeMap(f)
+        .catch(error => {
+            if (error.status == 401) {
+                // We were denied due to lack of authentication, so log out.
+                this.authService.logout()
+                .then(res => {
+                    this.router.navigate(['/login']);
+                }, error => {
+                    console.log(error);
+                });
+            }
+            return Observable.throw(error);
+        });
     }
-
     private get(path: string): Observable<any> {
         return this.req(token => this.httpClient.get(this.ROOT + path, this.ops(token)));
     }
-
     private post(path: string, data: any): Observable<any> {
         return this.req(token => this.httpClient.post(this.ROOT + path, data, this.ops(token)));
     }
-
     private delete(path: string): Observable<any> {
         return this.req(token => this.httpClient.delete(this.ROOT + path, this.ops(token)));
     }
-
     private put(path: string, data: any): Observable<any> {
         return this.req(token => this.httpClient.put(this.ROOT + path, data, this.ops(token)));
     }

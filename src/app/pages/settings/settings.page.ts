@@ -69,7 +69,6 @@ export class SettingsPage implements OnInit {
     logout(){
         this.authService.logout()
         .then(res => {
-            // TODO: redirect to splash page instead
             this.router.navigate(['/login']);
         }, err => {
             console.log(err);
