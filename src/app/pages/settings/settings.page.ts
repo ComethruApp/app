@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Facebook } from '@ionic-native/facebook/ngx';
 
 import { AuthService } from '../../services/auth/auth.service';
@@ -13,10 +15,13 @@ import { LocationService } from '../../services/location/location.service';
     styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+    validations_form: FormGroup;
     user: User = null;
 
     constructor(
         private router: Router,
+        private formBuilder: FormBuilder,
+        private loadingCtrl: LoadingController,
 		private fb: Facebook,
         private authService: AuthService,
         private api: APIService,
@@ -31,6 +36,7 @@ export class SettingsPage implements OnInit {
         this.api.getMe().subscribe(user => {
             this.user = user;
         });
+        this.resetUserFormFields();
     }
 
     facebookConnect() {
@@ -64,6 +70,23 @@ export class SettingsPage implements OnInit {
 		}, error =>{
 			console.log(error);
 		});
+    }
+
+    resetUserFormFields() {
+        this.validations_form = this.formBuilder.group({
+            name: new FormControl('', Validators.required),
+        });
+    }
+    async submitUserForm(form) {
+        let data = form.value;
+        const loading = await this.loadingCtrl.create({
+            message: 'Saving...'
+        });
+        await loading.present();
+        this.api.updateMe(data).subscribe(user => {
+            loading.dismiss();
+            this.router.navigate(['/profile']);
+        });
     }
 
     logout(){

@@ -80,8 +80,9 @@ export class APIService {
         .map(response => new User(response));
     }
 
-    updateUser(user: User){
-
+    updateMe(user: User){
+        return this.put('/users/me', user)
+        .map(response => new User(response));
     }
 
     searchUsers(query: string): Observable<User[]> {
