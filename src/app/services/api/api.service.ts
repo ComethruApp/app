@@ -38,9 +38,7 @@ export class APIService {
         return storageObservable.mergeMap(token => {
             return this.httpClient.get(this.ROOT + path, this.ops(token));
         })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+        .catch(err => Observable.throw(err.statusText));
     }
 
     private post(path: string, data: any): Observable<any> {
@@ -49,9 +47,7 @@ export class APIService {
         return storageObservable.mergeMap(token => {
             return this.httpClient.post(this.ROOT + path, data, this.ops(token));
         })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+        .catch(err => Observable.throw(err.statusText));
     }
 
     private delete(path: string): Observable<any> {
@@ -60,9 +56,7 @@ export class APIService {
         return storageObservable.mergeMap(token => {
             return this.httpClient.delete(this.ROOT + path, this.ops(token));
         })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+        .catch(err => Observable.throw(err.statusText));
     }
 
     private put(path: string, data: any): Observable<any> {
@@ -71,9 +65,7 @@ export class APIService {
         return storageObservable.mergeMap(token => {
             return this.httpClient.put(this.ROOT + path, data, this.ops(token));
         })
-        .catch((err) => {
-            return Observable.throw(err.statusText);
-        });
+        .catch(err => Observable.throw(err.statusText));
     }
 
     heartbeat(): Observable<Object> {
@@ -153,11 +145,6 @@ export class APIService {
 
     getEvents(): Observable<Event_[]> {
         return this.get('/events')
-        .map(response => response.map((event) => new Event_(event)));
-    }
-
-    getInvites(): Observable<Event_[]> {
-        return this.get('/users/me/invites')
         .map(response => response.map((event) => new Event_(event)));
     }
 
