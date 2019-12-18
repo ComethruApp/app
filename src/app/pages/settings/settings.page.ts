@@ -70,8 +70,8 @@ export class SettingsPage implements OnInit {
     }
 
     async changePassword() {
-        let alert = this.alertCtrl.create({
-            title: 'Change Password',
+        this.alertCtrl.create({
+            header: 'Change Password',
             inputs: [
                 {
                     name: 'oldPassword',
@@ -98,8 +98,9 @@ export class SettingsPage implements OnInit {
                     }
                 }
             ]
+        }).then(alert => {
+            alert.present();
         });
-        alert.present();
     }
 
     resetUserFormFields() {
