@@ -25,11 +25,9 @@ export class AuthService {
 
     login(user: Object): Observable<AuthResponse> {
         return this.httpClient.post(this.ROOT + '/login', user).pipe(
-            tap(async (res: AuthResponse) => {
-                if (res.user) {
-                    await this.storage.set('TOKEN', res.user.token);
-                    await this.storage.set('EXPIRES_IN', res.user.expires_in);
-                    await this.storage.set('USER_ID', res.user.id);
+            tap(async (response: AuthResponse) => {
+                if (response.user) {
+                    await this.storage.set('TOKEN', response.user.token);
                 }
             })
         );
@@ -37,8 +35,6 @@ export class AuthService {
 
     async logout() {
         await this.storage.remove('TOKEN');
-        await this.storage.remove('EXPIRES_IN');
-
     }
 
     isLoggedIn() {
