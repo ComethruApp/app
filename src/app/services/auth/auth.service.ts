@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 
 import * as Constants from '../../constants';
-import { AuthUser } from './auth-user';
 import { AuthResponse, RegisterResponse } from './auth-response';
 
 @Injectable({
@@ -20,11 +19,11 @@ export class AuthService {
         private storage: Storage,
     ) { }
 
-    register(user: AuthUser): Observable<RegisterResponse> {
+    register(user: Object): Observable<RegisterResponse> {
         return this.httpClient.post<RegisterResponse>(this.ROOT + '/register', user);
     }
 
-    login(user: AuthUser): Observable<AuthResponse> {
+    login(user: Object): Observable<AuthResponse> {
         return this.httpClient.post(this.ROOT + '/login', user).pipe(
             tap(async (res: AuthResponse) => {
                 if (res.user) {
