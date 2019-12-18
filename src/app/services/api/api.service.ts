@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch'
 
 import { AuthService } from '../auth/auth.service';
 import * as Constants from '../../constants';
-import { User, Event_, Vote } from './models';
+import { User, Event_, Review } from './models';
 
 @Injectable({
     providedIn: 'root'
@@ -211,16 +211,16 @@ export class APIService {
         return this.delete('/events/' + eventId + '/hosts/' + userId);
     }
 
-    vote(eventId: number, positive: boolean, negative: boolean, review: string): Observable<Object> {
-        return this.post('/events/' + eventId + '/vote', {positive: positive, negative: negative, review: review});
+    createReview(eventId: number, positive: boolean, negative: boolean, body: string): Observable<Object> {
+        return this.post('/events/' + eventId + '/reviews', {positive: positive, negative: negative, body: body});
     }
 
-    unvote(eventId: number): Observable<Object> {
-        return this.delete('/events/' + eventId + '/vote');
+    deleteReview(eventId: number): Observable<Object> {
+        return this.delete('/events/' + eventId + '/reviews');
     }
 
-    getEventVotes(eventId: number): Observable<Vote[]> {
-        return this.get('/events/' + eventId + '/votes')
-        .map(response => response.map(vote => new Vote(vote)));
+    getEventReviews(eventId: number): Observable<Review[]> {
+        return this.get('/events/' + eventId + '/reviews')
+        .map(response => response.map(review => new Review(review)));
     }
 }

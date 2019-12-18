@@ -20,10 +20,10 @@ export class User extends _Base {
     hosting: boolean;
 }
 
-export class Vote extends _Base {
+export class Review extends _Base {
     positive: boolean;
     negative: boolean;
-    review: string;
+    body: string;
 }
 
 export class Event_ extends _Base {
@@ -37,7 +37,7 @@ export class Event_ extends _Base {
     end_time: number;
     ended: boolean;
     hosts: User[];
-    vote: Vote;
+    review: Review;
     happening_now: boolean;
     mine: boolean;
     open: boolean;

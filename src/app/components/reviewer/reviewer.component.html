@@ -1,0 +1,18 @@
+<ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+        <ion-col size="4" class="ion-no-padding">
+            <ion-button size="large" expand="block" [color]="(review == null || (review.positive && !review.negative)) ? 'success' : 'dark'" (click)="updateReview(true, false)" ><ion-icon name="thumbs-up"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="4" class="ion-no-padding">
+            <ion-button size="large" expand="block" [color]="(review == null || !(review.positive || review.negative)) ? 'warning' : 'dark'" (click)="updateReview(false, false)" ><ion-icon name="star-half"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="4" class="ion-no-padding">
+            <ion-button size="large" expand="block" [color]="(review == null || (!review.positive && review.negative)) ? 'danger' : 'dark'" (click)="updateReview(false, true)"><ion-icon name="thumbs-down"></ion-icon></ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+<ion-item *ngIf="review" lines="none">
+    <ion-textarea placeholder="Feedback for host..." autocomplete="off" autocorrect="on"
+                  [value]="review ? review.review : ''" (change)="submitReview($event.target.value)"></ion-textarea>
+</ion-item>

@@ -52,8 +52,8 @@
 
         <ion-button *ngIf="event.happening_now && !event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
 
-        <div class="votes">
-            <app-votes *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [vote]="event.vote"></app-votes>
+        <div class="reviewer">
+            <app-reviewer *ngIf="event.happening_now && !event.mine" [eventId]="event.id" [review]="event.review"></app-reviewer>
         </div>
 
         <div>

@@ -13,7 +13,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { HeaderComponent } from './header/header.component';
 import { InviteButtonsComponent } from './invite-buttons/invite-buttons.component';
 import { HostButtonsComponent } from './host-buttons/host-buttons.component';
-import { VotesComponent } from './votes/votes.component';
+import { ReviewerComponent } from './reviewer/reviewer.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +27,7 @@ import { VotesComponent } from './votes/votes.component';
         HeaderComponent,
         InviteButtonsComponent,
         HostButtonsComponent,
-        VotesComponent,
+        ReviewerComponent,
     ],
     imports: [
         IonicModule,
@@ -45,7 +45,7 @@ import { VotesComponent } from './votes/votes.component';
         HeaderComponent,
         InviteButtonsComponent,
         HostButtonsComponent,
-        VotesComponent,
+        ReviewerComponent,
     ],
 })
 export class ComponentsModule {}
