@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Storage } from '@ionic/storage';
 import { User } from './user';
@@ -15,7 +15,6 @@ import * as Constants from '../../constants';
 })
 export class AuthService {
     ROOT: string = Constants.HOST + '/auth';
-    authSubject = new BehaviorSubject(false);
 
     constructor(
         private httpClient: HttpClient,
@@ -34,7 +33,6 @@ export class AuthService {
                     await this.storage.set('TOKEN', res.user.token);
                     await this.storage.set('EXPIRES_IN', res.user.expires_in);
                     await this.storage.set('USER_ID', res.user.id);
-                    this.authSubject.next(true);
                 }
             })
         );
@@ -43,18 +41,13 @@ export class AuthService {
     async logout() {
         await this.storage.remove('TOKEN');
         await this.storage.remove('EXPIRES_IN');
-        this.authSubject.next(false);
     }
 
     isLoggedIn() {
-        // We could probably be checking something more useful than whether the token is null.
-        // The main issue I can see with this is that even if the token is invalid it'll still evaluate to true.
-        // Maybe we should just assume that an error will be thrown later if the token is invalid to let the user know
-        // to log in again?
-        // TODO improve this/think it over more
+        // Check if user has logged in.
+        // Note that this does not check if the token we have is actually valid.
         return this.storage.get('TOKEN').then(token => {
             return token != null;
         });
-        //return this.authSubject.asObservable();
     }
 }
