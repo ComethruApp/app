@@ -36,7 +36,7 @@ export class ProfilePage implements OnInit {
         (this.isMe ? this.api.getMe() : this.api.getUser(this.id)).subscribe((user: User) => {
             this.user = user;
             if (this.isMe || user.is_friend) {
-                (this.isMe ? this.api.getMyCurrentEvents() : this.api.getUserCurrentEvents(this.id)).subscribe((currentEvents: Event_[]) => {
+                (this.isMe ? this.api.getMyCurrentEvents() : this.api.getUserCurrentEvents(this.id)).subscribe(currentEvents => {
                     this.currentEvents = currentEvents;
                 });
             }

@@ -24,7 +24,7 @@
 
         <div *ngIf="user && (user.is_me || user.is_friend) && currentEvents && currentEvents.length > 0 && currentEvents[0].happening_now">
             <h3>Current event</h3>
-            <app-event-list [events]="currentEvent" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
+            <app-event-list [events]="currentEvents" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
         </div>
 
         <h3>Events hosted</h3>
