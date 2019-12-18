@@ -4,19 +4,19 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
-    <app-loader *ngIf="!votes"></app-loader>
-    <div *ngIf="votes && votes.length == 0" class="empty-list">
+    <app-loader *ngIf="!reviews"></app-loader>
+    <div *ngIf="reviews && reviews.length == 0" class="empty-list">
         No reviews yet.
     </div>
-    <ion-grid *ngIf="votes" class="ion-no-padding">
-        <ion-row *ngFor="let vote of votes">
+    <ion-grid *ngIf="reviews" class="ion-no-padding">
+        <ion-row *ngFor="let review of reviews">
             <ion-col size="2" class="ion-no-padding">
-                <ion-icon *ngIf="vote.positive && !vote.negative" class="positive" name="thumbs-up"></ion-icon>
-                <ion-icon *ngIf="!vote.positive && !vote.negative" class="neutral" name="star-half"></ion-icon>
-                <ion-icon *ngIf="!vote.positive && vote.negative" class="negative" name="thumbs-down"></ion-icon>
+                <ion-icon *ngIf="review.positive && !review.negative" class="positive" name="thumbs-up"></ion-icon>
+                <ion-icon *ngIf="!review.positive && !review.negative" class="neutral" name="star-half"></ion-icon>
+                <ion-icon *ngIf="!review.positive && review.negative" class="negative" name="thumbs-down"></ion-icon>
             </ion-col>
             <ion-col size="10" class="ion-no-padding">
-                {{ vote.review }}
+                {{ review.body }}
             </ion-col>
         </ion-row>
     </ion-grid>
