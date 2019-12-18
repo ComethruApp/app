@@ -18,6 +18,10 @@
         </div>
     </div>
     <div *ngIf="user">
+        <ion-button expand="block" size="large" color="warning" (click)="changePassword()">
+            <ion-icon name="key"></ion-icon>
+            Change Password
+        </ion-button>
         <h2>Update Profile</h2>
         <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submitUserForm(form)">
             <ion-item lines="none">

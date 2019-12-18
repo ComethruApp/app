@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Facebook } from '@ionic-native/facebook/ngx';
 
@@ -22,7 +22,8 @@ export class SettingsPage implements OnInit {
         private router: Router,
         private formBuilder: FormBuilder,
         private loadingCtrl: LoadingController,
-		private fb: Facebook,
+        private alertCtrl: AlertController,
+        private fb: Facebook,
         private authService: AuthService,
         private api: APIService,
         private locationService: LocationService,
@@ -46,30 +47,59 @@ export class SettingsPage implements OnInit {
             //'user_friends',
         ];
         this.fb.login(permissions)
-		.then(response => {
-			let userId = response.authResponse.userID;
+        .then(response => {
+            let userId = response.authResponse.userID;
 
-			// Get name from API
-			this.fb.api('/me?fields=name', permissions)
-			.then(user => {
+            // Get name from API
+            this.fb.api('/me?fields=name', permissions)
+            .then(user => {
                 this.api.facebookConnect(userId, user.name).subscribe(response => {
                     this.getData();
                 });
-			});
-		}, error =>{
-			console.log(error);
-		});
+            });
+        });
     }
 
     facebookDisconnect() {
         this.fb.logout()
-		.then(response => {
+        .then(response => {
             this.api.facebookDisconnect().subscribe(response => {
                 this.getData();
             });
-		}, error =>{
-			console.log(error);
-		});
+        });
+    }
+
+    async changePassword() {
+        let alert = this.alertCtrl.create({
+            title: 'Change Password',
+            inputs: [
+                {
+                    name: 'oldPassword',
+                    placeholder: 'Old Password',
+                    type: 'password',
+                },
+                {
+                    name: 'newPassword',
+                    placeholder: 'New Password',
+                    type: 'password',
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                },
+                {
+                    text: 'Change',
+                    handler: data => {
+                        this.api.updatePassword(data.oldPassword, data.newPassword).subscribe(response => {
+                            console.log(response);
+                        });
+                    }
+                }
+            ]
+        });
+        alert.present();
     }
 
     resetUserFormFields() {

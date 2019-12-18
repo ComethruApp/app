@@ -31,7 +31,7 @@ export class TicketPage implements OnInit {
         const loading = await this.loadingCtrl.create({
             message: 'Loading...'
         });
-        this.presentLoading(loading);
+        await loading.present();
         this.getData().then(() => {
             // TODO: this is a trashy hashing algorithm and not remotely secure
             // Need to think about better options for this.
@@ -62,9 +62,5 @@ export class TicketPage implements OnInit {
 
     back() {
         this.location.back();
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }

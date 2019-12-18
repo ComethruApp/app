@@ -85,6 +85,10 @@ export class APIService {
         .map(response => new User(response));
     }
 
+    updatePassword(oldPassword: string, newPassword: string) {
+        return this.put('/users/me/password', {oldPassword: oldPassword, newPassword: newPassword});
+    }
+
     searchUsers(query: string): Observable<User[]> {
         return this.get('/users/search/' + query)
         .map(response => response.map((user) => new User(user)));

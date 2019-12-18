@@ -151,7 +151,7 @@ export class FormEventPage implements OnInit {
                         const loading = await this.loadingCtrl.create({
                             message: (this.editing ? 'Updating' : 'Posting') + '...'
                         });
-                        this.presentLoading(loading);
+                        await loading.present();
                         (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
                             loading.dismiss();
                             this.router.navigate(['event/' + newEvent.id]);
@@ -166,9 +166,5 @@ export class FormEventPage implements OnInit {
 
     hosts() {
         this.router.navigate(['/hosts/' + this.id]);
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }

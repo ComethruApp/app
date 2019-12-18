@@ -46,7 +46,7 @@ export class RegisterPage implements OnInit {
         const loading = await this.loadingCtrl.create({
             message: 'Registering...'
         });
-        this.presentLoading(loading);
+        await loading.present();
         this.authService.register(form.value).subscribe(response => {
             this.resetFields();
             loading.dismiss();
@@ -69,9 +69,5 @@ export class RegisterPage implements OnInit {
                 alert.present();
             });
         });
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }

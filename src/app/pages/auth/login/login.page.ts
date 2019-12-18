@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
         const loading = await this.loadingCtrl.create({
             message: 'Logging in...'
         });
-        this.presentLoading(loading);
+        await loading.present();
         let data = form.value;
         this.authService.login(data).subscribe(response =>{
             this.resetFields();
@@ -53,9 +53,5 @@ export class LoginPage implements OnInit {
                 alert.present();
             });
         });
-    }
-
-    async presentLoading(loading) {
-        return await loading.present();
     }
 }
