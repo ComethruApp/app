@@ -176,13 +176,13 @@ export class APIService {
         .map(response => response.map((event) => new User(event)));
     }
 
-    getUserCurrentEvent(userId: number): Observable<Event_> {
+    getUserCurrentEvents(userId: number): Observable<Event_[]> {
         return this.get('/users/' + userId + '/events/current')
-        .map(response => new Event_(response));
+        .map(response => response.map(event => new Event_(event)));
     }
-    getMyCurrentEvent(): Observable<Event_> {
+    getMyCurrentEvents(): Observable<Event_[]> {
         return this.get('/users/me/events/current')
-        .map(response => new Event_(response));
+        .map(response => response.map(event => new Event_(event)));
     }
 
     getEventInvites(eventId: number): Observable<User[]> {
