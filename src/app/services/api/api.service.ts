@@ -86,7 +86,7 @@ export class APIService {
     }
 
     updatePassword(oldPassword: string, newPassword: string) {
-        return this.put('/users/me/password', {oldPassword: oldPassword, newPassword: newPassword});
+        return this.put('/users/me/password', {old_password: oldPassword, new_password: newPassword});
     }
 
     searchUsers(query: string): Observable<User[]> {
