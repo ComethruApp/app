@@ -39,14 +39,8 @@ export class APIService {
         return storageObservable.mergeMap(f)
         .catch(error => {
             if (error.status == 401) {
-                // We were denied due to lack of authentication,
-                // so clear the current token and go to login page.
-                this.authService.logout()
-                .then(res => {
-                    this.router.navigate(['/login']);
-                }, error => {
-                    console.log(error);
-                });
+                // We were denied due to lack of authentication, so let the user log in again.
+                this.authService.logout();
             }
             return Observable.throw(error);
         });

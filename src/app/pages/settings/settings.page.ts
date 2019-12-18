@@ -67,11 +67,6 @@ export class SettingsPage implements OnInit {
     }
 
     logout(){
-        this.authService.logout()
-        .then(res => {
-            this.router.navigate(['/login']);
-        }, err => {
-            console.log(err);
-        })
+        this.authService.logout();
     }
 }
