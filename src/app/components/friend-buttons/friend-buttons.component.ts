@@ -22,31 +22,31 @@ export class FriendButtonsComponent implements OnInit {
         this.buttonSize = this.large ? 'large' : 'default';
     }
 
-    requestFriend() {
-        this.api.requestFriend(this.user.id).subscribe(response => {
+    createFriendRequest() {
+        this.api.createFriendRequest(this.user.id).subscribe(response => {
             this.user.has_received_friend_request = true;
         });
     }
 
-    cancelRequest() {
-        this.api.cancelRequest(this.user.id).subscribe(response => {
+    cancelFriendRequest() {
+        this.api.cancelFriendRequest(this.user.id).subscribe(response => {
             this.user.has_received_friend_request = false;
         });
     }
 
-    acceptRequest() {
-        this.api.acceptRequest(this.user.id).subscribe(response => {
+    acceptFriendRequest() {
+        this.api.acceptFriendRequest(this.user.id).subscribe(response => {
             this.user.has_sent_friend_request = false;
             this.user.is_friend = true;
         });
     }
-    rejectRequest() {
-        this.api.rejectRequest(this.user.id).subscribe(response => {
+    rejectFriendRequest() {
+        this.api.rejectFriendRequest(this.user.id).subscribe(response => {
             this.user.has_sent_friend_request = false;
         });
     }
 
-    async unfriend() {
+    async deleteFriend() {
         const alert = await this.alertCtrl.create({
             header: 'Confirm',
             message: 'Are you sure you want to unfriend ' + this.user.name + '? You\'ll have to request to friend them again.',
@@ -60,7 +60,7 @@ export class FriendButtonsComponent implements OnInit {
                 {
                     text: 'Yes',
                     handler: () => {
-                        this.api.unfriend(this.user.id).subscribe(response => {
+                        this.api.deleteFriend(this.user.id).subscribe(response => {
                             this.user.is_friend = false;
                         });
                     }

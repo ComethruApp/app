@@ -205,33 +205,24 @@ export class APIService {
         this.post('/location', loc);
     }
 
-    requestFriend(userId: number): Observable<Object> {
-        return this.post('/friends/request/' + userId, {});
-    }
-
-    cancelRequest(userId: number): Observable<Object> {
-        return this.post('/friends/cancel/' + userId, {});
-    }
-
-    acceptRequest(userId: number): Observable<Object> {
-        return this.post('/friends/accept/' + userId, {});
-    }
-
-    rejectRequest(userId: number): Observable<Object> {
-        return this.post('/friends/reject/' + userId, {});
-    }
-
-    unfriend(userId: number): Observable<Object> {
-        return this.post('/friends/remove/' + userId, {});
-    }
-
     getFriendRequests(): Observable<User[]> {
         return this.get('/friends/requests')
         .map(response => response.map((user) => new User(user)));
     }
 
+    // Used by request's sender
+    createFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/request', {}); }
+    cancelFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/cancel', {}); }
+    // Used by request's receiver
+    acceptFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/accept', {}); }
+    rejectFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/reject', {}); }
+
     getFriends(): Observable<User[]> {
         return this.get('/friends')
         .map(response => response.map((user) => new User(user)));
+    }
+
+    deleteFriend(userId: number): Observable<Object> {
+        return this.post('/friends/remove/' + userId, {});
     }
 }
