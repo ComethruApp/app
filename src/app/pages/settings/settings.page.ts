@@ -93,7 +93,28 @@ export class SettingsPage implements OnInit {
                     text: 'Change',
                     handler: data => {
                         this.api.updatePassword(data.oldPassword, data.newPassword).subscribe(response => {
-                            console.log(response);
+                            this.alertCtrl.create({
+                                header: 'Success',
+                                message: response.message,
+                                buttons: ['OK'],
+                            }).then(alert => alert.present());
+                        }, response => {
+                            this.alertCtrl.create({
+                                header: 'Changing password failed',
+                                message: response.error.message,
+                                buttons: [
+                                    {
+                                        text: 'Cancel',
+                                        role: 'cancel',
+                                    },
+                                    {
+                                        text: 'Try again',
+                                        handler: data => {
+                                            this.changePassword();
+                                        }
+                                    },
+                                ],
+                            }).then(alert => alert.present());
                         });
                     }
                 }
