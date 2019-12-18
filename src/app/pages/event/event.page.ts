@@ -13,7 +13,7 @@ import { User, Event_ } from '../../services/api/models';
 export class EventPage implements OnInit {
     id: number;
     event: Event_ = null;
-    friendsHere: User[] = null;
+    friends: User[] = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -31,8 +31,8 @@ export class EventPage implements OnInit {
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
         });
-        this.api.getFriendsAtEvent(this.id).subscribe(friendsHere => {
-            this.friendsHere = friendsHere;
+        this.api.getEventFriends(this.id).subscribe(friends => {
+            this.friends = friends;
         });
     }
 
