@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import * as Constants from '../../constants';
-import 'rxjs/add/observable/throw';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-
 import { Storage } from '@ionic/storage';
 
-import { User, Event_, Vote } from './models';
-
-import { AuthService } from '../auth/auth.service';
 import { from } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap'
+
+import * as Constants from '../../constants';
+import { User, Event_, Vote } from './models';
 
 @Injectable({
     providedIn: 'root'
