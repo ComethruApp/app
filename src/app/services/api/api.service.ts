@@ -49,27 +49,30 @@ export class APIService {
         return this.req(token => this.httpClient.put(this.ROOT + path, data, this.ops(token)));
     }
 
+
+    // Miscellaneous
     heartbeat(): Observable<Object> {
         return this.get('/heartbeat');
-    }
-
-    getStatus(): Observable<Object> {
-        return this.get('/status');
     }
 
     sendLocation(lat: number, lng: number): Observable<Object> {
         return this.post('/location', {lat: lat, lng: lng});
     }
 
+
+    // Users
     getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
         .map(response => new User(response));
     }
 
-    // TODO: consider combining with getUser and using the /users/me endpoint when userId is null
     getMe(): Observable<User> {
         return this.get('/users/me')
         .map(response => new User(response));
+    }
+
+    updateUser(user: User){
+
     }
 
     searchUsers(query: string): Observable<User[]> {
@@ -83,10 +86,6 @@ export class APIService {
         .map(response => response.map((user) => new User(user)));
     }
 
-    updateUser(user: User){
-
-    }
-
     blockUser(userId: number): Observable<Object> {
         return this.post('/users/' + userId + '/block', {});
     }
@@ -94,36 +93,33 @@ export class APIService {
     facebookConnect(id: string, name: string): Observable<Object> {
         return this.post('/users/me/facebook', {id: id, name: name});
     }
-
     facebookDisconnect(): Observable<Object> {
         return this.delete('/users/me/facebook');
     }
 
-    getMyCurrentEvent(): Observable<Event_> {
-        return this.get('/users/me/events/current')
-        .map(response => new Event_(response));
+    getFriendRequests(): Observable<User[]> {
+        return this.get('/friends/requests')
+        .map(response => response.map((user) => new User(user)));
     }
 
-    getUserCurrentEvent(userId: number): Observable<Event_> {
-        return this.get('/users/' + userId + '/events/current')
-        .map(response => new Event_(response));
+    // Used by request's sender
+    createFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/request', {}); }
+    cancelFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/cancel', {}); }
+    // Used by request's receiver
+    acceptFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/accept', {}); }
+    rejectFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/reject', {}); }
+
+    getFriends(): Observable<User[]> {
+        return this.get('/friends')
+        .map(response => response.map((user) => new User(user)));
     }
 
-    getMyEvents(): Observable<Event_[]> {
-        return this.get('/users/me/events')
-        .map(response => response.map((event) => new Event_(event)));
+    deleteFriend(userId: number): Observable<Object> {
+        return this.post('/friends/remove/' + userId, {});
     }
 
-    getUserEvents(userId: number): Observable<Event_[]> {
-        return this.get('/users/' + userId + '/events')
-        .map(response => response.map((event) => new Event_(event)));
-    }
 
-    getFriendsAtEvent(eventId: number): Observable<User[]> {
-        return this.get('/events/' + eventId + '/friends')
-        .map(response => response.map((event) => new User(event)));
-    }
-
+    // Events
     getEvents(): Observable<Event_[]> {
         return this.get('/events')
         .map(response => response.map((event) => new Event_(event)));
@@ -150,6 +146,29 @@ export class APIService {
 
     endEvent(eventId: number): Observable<Object> {
         return this.post('/events/' + eventId + '/end', {});
+    }
+
+    getUserEvents(userId: number): Observable<Event_[]> {
+        return this.get('/users/' + userId + '/events')
+        .map(response => response.map((event) => new Event_(event)));
+    }
+    getMyEvents(): Observable<Event_[]> {
+        return this.get('/users/me/events')
+        .map(response => response.map((event) => new Event_(event)));
+    }
+
+    getEventFriends(eventId: number): Observable<User[]> {
+        return this.get('/events/' + eventId + '/friends')
+        .map(response => response.map((event) => new User(event)));
+    }
+
+    getUserCurrentEvent(userId: number): Observable<Event_> {
+        return this.get('/users/' + userId + '/events/current')
+        .map(response => new Event_(response));
+    }
+    getMyCurrentEvent(): Observable<Event_> {
+        return this.get('/users/me/events/current')
+        .map(response => new Event_(response));
     }
 
     getEventInvites(eventId: number): Observable<User[]> {
@@ -189,30 +208,5 @@ export class APIService {
     getEventVotes(eventId: number): Observable<Vote[]> {
         return this.get('/events/' + eventId + '/votes')
         .map(response => response.map((vote) => new Vote(vote)));
-    }
-
-    updateLocation(loc: Object) {
-        this.post('/location', loc);
-    }
-
-    getFriendRequests(): Observable<User[]> {
-        return this.get('/friends/requests')
-        .map(response => response.map((user) => new User(user)));
-    }
-
-    // Used by request's sender
-    createFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/request', {}); }
-    cancelFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/cancel', {}); }
-    // Used by request's receiver
-    acceptFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/accept', {}); }
-    rejectFriendRequest(userId: number): Observable<Object> { return this.post('/friends/' + userId + '/reject', {}); }
-
-    getFriends(): Observable<User[]> {
-        return this.get('/friends')
-        .map(response => response.map((user) => new User(user)));
-    }
-
-    deleteFriend(userId: number): Observable<Object> {
-        return this.post('/friends/remove/' + userId, {});
     }
 }
