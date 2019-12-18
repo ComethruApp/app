@@ -4,11 +4,10 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Storage } from '@ionic/storage';
-import { User } from './user';
-import { AuthResponse, RegisterResponse } from './auth-response';
 
-import { AlertController } from '@ionic/angular';
 import * as Constants from '../../constants';
+import { AuthUser } from './auth-user';
+import { AuthResponse, RegisterResponse } from './auth-response';
 
 @Injectable({
     providedIn: 'root'
@@ -19,14 +18,13 @@ export class AuthService {
     constructor(
         private httpClient: HttpClient,
         private storage: Storage,
-        public alertController: AlertController,
     ) { }
 
-    register(user: User): Observable<RegisterResponse> {
+    register(user: AuthUser): Observable<RegisterResponse> {
         return this.httpClient.post<RegisterResponse>(this.ROOT + '/register', user);
     }
 
-    login(user: User): Observable<AuthResponse> {
+    login(user: AuthUser): Observable<AuthResponse> {
         return this.httpClient.post(this.ROOT + '/login', user).pipe(
             tap(async (res: AuthResponse) => {
                 if (res.user) {
@@ -41,6 +39,7 @@ export class AuthService {
     async logout() {
         await this.storage.remove('TOKEN');
         await this.storage.remove('EXPIRES_IN');
+
     }
 
     isLoggedIn() {
