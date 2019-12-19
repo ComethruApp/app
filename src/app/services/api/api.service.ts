@@ -104,6 +104,10 @@ export class APIService {
         return this.post('/users/' + userId + '/block', {});
     }
 
+    unblockUser(userId: number): Observable<Object> {
+        return this.delete('/users/' + userId + '/block');
+    }
+
     facebookConnect(id: string, name: string): Observable<Object> {
         return this.post('/users/me/facebook', {id: id, name: name});
     }
