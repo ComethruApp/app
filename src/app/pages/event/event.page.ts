@@ -47,6 +47,10 @@ export class EventPage implements OnInit {
         return moment(date).format('dddd, M/D');
     }
 
+    openUser(userId: number) {
+        this.router.navigate(['/user/' + userId]);
+    }
+
     openInvites() {
         this.router.navigate(['/invites/' + this.id]);
     }
