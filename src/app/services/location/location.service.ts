@@ -28,10 +28,11 @@ export class LocationService {
     }
 
     startTracking() {
-        this.watch = this.geolocation.watchPosition(/*{
-            frequency: 15000,
+        let options: GeolocationOptions = {
+            timeout: 30 * 1000,
             enableHighAccuracy: true,
-        }*/);
+        };
+        this.watch = this.geolocation.watchPosition(options);
         this.watch.subscribe((position: Geoposition) => {
             if (position != undefined) {
                 console.log('Got new position!', position);
