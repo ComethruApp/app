@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
 
     ngOnInit() { }
 
-    openProfile(userId) {
-        this.router.navigate(['/profile/' + userId]);
+    openUser(userId) {
+        this.router.navigate(['/user/' + userId]);
     }
 }

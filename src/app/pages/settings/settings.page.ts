@@ -137,7 +137,7 @@ export class SettingsPage implements OnInit {
         await loading.present();
         this.api.updateMe(data).subscribe(user => {
             loading.dismiss();
-            this.router.navigate(['/tabs/profile']);
+            this.router.navigate(['/tabs/user']);
         });
     }
 
