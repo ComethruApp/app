@@ -47,4 +47,5 @@ export class Event_ extends _Base {
     people: number;
     capacity: number;
     rating: number;
+    tags: string[];
 }
