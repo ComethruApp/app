@@ -7,18 +7,18 @@
         <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
             <ion-item lines="none">
                 <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
-                           [value]="event ? event.name : ''"></ion-input>
+                           maxlength="64" [value]="event ? event.name : ''"></ion-input>
             </ion-item>
 
             <ion-item lines="none">
                 <ion-textarea placeholder="Description" formControlName="description" autocomplete="on" autocorrect="on"
-                           [value]="event ? event.description : ''"></ion-textarea>
+                           maxlength="1024" [value]="event ? event.description : ''"></ion-textarea>
             </ion-item>
 
             <ion-item lines="none">
                 <ion-input placeholder="Location, eg. 'Bingham A41' or 'SigEp'" type="text"
                            formControlName="location" autocomplete="on" autocorrect="on"
-                           [value]="event ? event.location : ''"></ion-input>
+                           maxlength="100" [value]="event ? event.location : ''"></ion-input>
             </ion-item>
 
             <p>Full address: {{ event ? event.address : address }}
