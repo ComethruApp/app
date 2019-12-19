@@ -20,7 +20,7 @@ const routes: Routes = [
         { path: 'feed', loadChildren: '../feed/feed.module#FeedPageModule' },
         { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
-        { path: 'search-users', loadChildren: '../search-users/search-users.module#SearchUsersPageModule' },
+        { path: 'users', loadChildren: '../users/users.module#UsersPageModule' },
         { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
   },

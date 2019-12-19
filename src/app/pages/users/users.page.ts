@@ -3,11 +3,11 @@ import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 
 @Component({
-    selector: 'app-search-users',
-    templateUrl: './search-users.page.html',
-    styleUrls: ['./search-users.page.scss'],
+    selector: 'app-users',
+    templateUrl: './users.page.html',
+    styleUrls: ['./users.page.scss'],
 })
-export class SearchUsersPage implements OnInit {
+export class UsersPage implements OnInit {
     searched: boolean = false;
     searchResults: User[] = null;
     requests: User[] = null;
