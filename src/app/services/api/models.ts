@@ -31,6 +31,7 @@ export class Event_ extends _Base {
     name: string;
     description: string;
     location: string;
+    address: string;
     lat: number;
     lng: number;
     time: number;
