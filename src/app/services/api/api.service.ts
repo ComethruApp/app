@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import { Router } from '@angular/router';
 
 import { from } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
@@ -23,7 +22,6 @@ export class APIService {
     constructor(
         private httpClient: HttpClient,
         private storage: Storage,
-        private router: Router,
         private authService: AuthService,
     ) { }
 
