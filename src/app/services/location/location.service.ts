@@ -29,18 +29,20 @@ export class LocationService {
 
     startTracking() {
         let options: GeolocationOptions = {
-            timeout: 30 * 1000,
+            timeout: 5 * 1000,
             enableHighAccuracy: true,
         };
         this.watch = this.geolocation.watchPosition(options);
         this.watch.subscribe((position: Geoposition) => {
-            if (position != undefined) {
+            if (position && position.coords) {
                 console.log('Got new position!', position);
                 this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
                     if (this.debug) {
                         this.warn('Location response', JSON.stringify(response));
                     }
                 });
+            } else {
+                console.log('Got empty position.');
             }
         });
     }
