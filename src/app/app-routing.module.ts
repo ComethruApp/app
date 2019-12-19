@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'hosts/:id', loadChildren: './pages/hosts/hosts.module#HostsPageModule' },
   { path: 'reviews/:id', loadChildren: './pages/reviews/reviews.module#ReviewsPageModule' },
-  { path: 'profile/:id', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+  { path: 'user/:id', loadChildren: './pages/user/user.module#UserPageModule' },
   { path: 'ticket/:id', loadChildren: './pages/ticket/ticket.module#TicketPageModule' },
   { path: 'users', loadChildren: './pages/users/users.module#UsersPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },

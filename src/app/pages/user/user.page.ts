@@ -7,11 +7,11 @@ import { User, Event_ } from '../../services/api/models';
 
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.page.html',
-    styleUrls: ['./profile.page.scss'],
+    selector: 'app-user',
+    templateUrl: './user.page.html',
+    styleUrls: ['./user.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class UserPage implements OnInit {
     id: number;
     user: User = null;
     isMe: boolean;

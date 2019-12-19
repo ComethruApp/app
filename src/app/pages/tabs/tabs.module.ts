@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 import { FeedPageModule } from '../feed/feed.module';
 import { FormEventPageModule } from '../form-event/form-event.module';
-import { ProfilePageModule } from '../profile/profile.module';
+import { UserPageModule } from '../user/user.module';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
         { path: 'map', loadChildren: '../map/map.module#MapPageModule' },
         { path: 'form-event', loadChildren: '../form-event/form-event.module#FormEventPageModule' },
         { path: 'users', loadChildren: '../users/users.module#UsersPageModule' },
-        { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
+        { path: 'user', loadChildren: '../user/user.module#UserPageModule' },
     ]
   },
   {
