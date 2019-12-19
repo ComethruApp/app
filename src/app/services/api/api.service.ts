@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 
@@ -29,7 +29,7 @@ export class APIService {
 
     private ops(token: string): Object {
         return {
-            params: new HttpParams().set('token', token),
+            headers: new HttpHeaders().set('Authorization', token),
         };
     }
 
