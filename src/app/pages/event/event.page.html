@@ -39,7 +39,7 @@
         </ion-grid>
 
         <h3 *ngIf="event.happening_now && friends && friends.length > 0">Friends here</h3>
-        <ion-grid *ngIf="event.happening_now && friends && friends.length > 0">
+        <ion-grid *ngIf="event.happening_now && friends && friends.length > 0" class="friends">
             <ion-row *ngFor="let friend of friends" (click)="openUser(friend.id)">
                 <ion-col size="2" class="ion-no-padding">
                     <app-avatar [user]="friend"></app-avatar>
