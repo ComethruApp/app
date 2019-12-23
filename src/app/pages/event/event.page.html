@@ -27,7 +27,7 @@
             </em>
         </p>
 
-        <p *ngIf="event.address">Full Address: {{ event.address }}</p>
+        <p *ngIf="event.address">Full Address: <em>{{ event.address }}</em></p>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
