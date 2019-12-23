@@ -4,7 +4,7 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
-    <app-event-list [events]="events"></app-event-list>
+    <app-event-list [class]="!events ? 'vertically-center' : ''" [events]="events"></app-event-list>
     <div *ngIf="events && events.length == 0" class="empty-list vertically-center">
         <ion-img class="loader large" src="assets/imgs/logo/icon_grey.png"></ion-img>
         Nothing's happening right now.<br>
