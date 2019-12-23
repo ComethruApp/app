@@ -20,6 +20,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 import { Facebook } from '@ionic-native/facebook/ngx';
 
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
 import { ComponentsModule } from './components/components.module';
 
 @NgModule({
@@ -47,6 +49,8 @@ import { ComponentsModule } from './components/components.module';
     NativeGeocoder,
 
     Facebook,
+
+    OneSignal,
 
     APIService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
