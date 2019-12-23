@@ -54,12 +54,15 @@ export class FormEventPage implements OnInit {
             this.lng = resp.coords.longitude;
             let options: NativeGeocoderOptions = {
                 useLocale: true,
-                maxResults: 5,
+                maxResults: 1,
             };
 
             this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
-            .then(async (result: NativeGeocoderResult[]) => {
-                this.address = JSON.stringify(result);
+            .then(async (results: NativeGeocoderResult[]) => {
+                if (results && results.length != 0) {
+                    let result = results[0];
+                    this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.locality + ', ' + result.subAdministrativeArea + ', ' + result.administrativeArea + ' ' + result.postalCode + ', ' + result.countryName;
+                }
             })
             .catch((error: any) => console.log(error));
         });
