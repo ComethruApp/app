@@ -61,7 +61,7 @@ export class FormEventPage implements OnInit {
             .then(async (results: NativeGeocoderResult[]) => {
                 if (results && results.length != 0) {
                     let result = results[0];
-                    this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.locality + ', ' + result.subAdministrativeArea + ', ' + result.administrativeArea + ' ' + result.postalCode + ', ' + result.countryName;
+                    this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.locality + ', ' + result.subAdministrativeArea + ', ' + result.administrativeArea + ' ' + result.postalCode;
                 }
             })
             .catch((error: any) => console.log(error));
