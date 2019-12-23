@@ -27,7 +27,9 @@
             </em>
         </p>
 
-        <p *ngIf="event.address">Full Address: <em>{{ event.address }}</em></p>
+        <p *ngIf="event.address">
+            Full Address: <em>{{ event.address }}</em>. <a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}">Navigate there</a>
+        </p>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
