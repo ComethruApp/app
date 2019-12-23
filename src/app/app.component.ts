@@ -8,6 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { APIService } from './services/api/api.service';
 import { LocationService } from './services/location/location.service';
 
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
 import * as Constants from './constants';
 
 @Component({
@@ -22,12 +24,48 @@ export class AppComponent {
         private alertCtrl: AlertController,
         private api: APIService,
         private locationService: LocationService,
+        private oneSignal: OneSignal,
     ) {
         this.initializeApp();
     }
 
+    setupPush() {
+        this.oneSignal.startInit(Constants.ONESIGNAL_APPID, Constants.GOOGLE_PROJECT_NUMBER);
+        // TODO also try .InAppAlert
+        this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
+        this.oneSignal.handleNotificationReceived().subscribe(data => {
+            let title = data.payload.title;
+            let msg = data.payload.body;
+            let additionalData = data.payload.additionalData;
+            this.showAlert(title, msg, additionalData.task);
+        });
+        this.oneSignal.handleNotificationOpened().subscribe(data => {
+            let additionalData = data.notification.payload.additionalData;
+            this.showAlert('Notification opened', 'You already read this', additionalData.task);
+        });
+        this.oneSignal.endInit();
+    }
+
+    async showAlert(title, msg, task) {
+        const alert = await this.alertCtrl.create({
+            header: title,
+            subHeader: msg,
+            buttons: [
+                {
+                    text: 'Action: ' + task,
+                    handler: () => {
+
+                    },
+                },
+            ],
+        });
+    }
+
     initializeApp() {
         this.platform.ready().then(() => {
+            if (this.platform.is('cordova')) {
+                this.setupPush();
+            }
             this.platform.ready().then(() => {
                 this.statusBar.backgroundColorByHexString('#15202B');
 
@@ -39,10 +77,6 @@ export class AppComponent {
                     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
                 };
 
-                window['plugins'].OneSignal
-                    .startInit(Constants.ONESIGNAL_APPID, Constants.GOOGLE_PROJECT_NUMBER)
-                    .handleNotificationOpened(notificationOpenedCallback)
-                    .endInit();
             });
         });
         this.api.heartbeat().subscribe(beat => {
