@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { Storage } from '@ionic/storage';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { APIService } from '../../services/api/api.service';
@@ -24,6 +25,7 @@ export class SettingsPage implements OnInit {
         private loadingCtrl: LoadingController,
         private alertCtrl: AlertController,
         private fb: Facebook,
+        private storage: Storage,
         private authService: AuthService,
         private api: APIService,
         private locationService: LocationService,
@@ -44,11 +46,13 @@ export class SettingsPage implements OnInit {
         const permissions = [
             'public_profile',
             'email',
-            //'user_friends',
+            'user_friends',
+            'user_events',
         ];
         this.fb.login(permissions)
         .then(response => {
             let userId = response.authResponse.userID;
+            this.storage.set('FACEBOOK_ID', userId);
 
             // Get name from API
             this.fb.api('/me?fields=name', permissions)
