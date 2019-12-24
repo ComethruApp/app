@@ -32,7 +32,7 @@ export class AuthService {
             tap(async (response: AuthResponse) => {
                 if (response.user) {
                     await this.storage.set('TOKEN', response.user.token);
-                    this.oneSignal.setExternalUserId(user.id);
+                    this.oneSignal.setExternalUserId(response.user.id.toString());
                 }
             })
         );
