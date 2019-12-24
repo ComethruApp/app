@@ -18,6 +18,7 @@
     <preference name="NavigationBarBackgroundColor" value="#15202b" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="29" />
+    <meta-data android:name="com.onesignal.NotificationAccentColor.DEFAULT" android:value="FF15202B" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
