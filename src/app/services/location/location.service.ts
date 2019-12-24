@@ -10,6 +10,8 @@ import { APIService } from '../api/api.service';
 export class LocationService {
     watch: any;
     private debug: boolean = false;
+    lastLat: number;
+    lastLng: number;
 
     constructor(
         private storage: Storage,
@@ -35,12 +37,18 @@ export class LocationService {
         this.watch = this.geolocation.watchPosition(options);
         this.watch.subscribe((position: Geoposition) => {
             if (position && position.coords) {
-                console.log('Got new position!', position);
-                this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
-                    if (this.debug) {
-                        this.warn('Location response', JSON.stringify(response));
-                    }
-                });
+                if (position.coords.latitude == this.lastLat && position.coords.longitude == this.lastLng) {
+                    console.log('Got new position, but it has not changed.')
+                } else {
+                    console.log('Got new position!', position);
+                    this.api.sendLocation(position.coords.latitude, position.coords.longitude).subscribe(response => {
+                        this.lastLat = position.coords.latitude;
+                        this.lastLng = position.coords.longitude;
+                        if (this.debug) {
+                            this.warn('Location response', JSON.stringify(response));
+                        }
+                    });
+                }
             } else {
                 console.log('Got empty position.');
             }
