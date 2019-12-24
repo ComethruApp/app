@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 
 import * as Constants from '../../constants';
 import { AuthResponse, RegisterResponse } from './auth-response';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +20,7 @@ export class AuthService {
         private router: Router,
         private httpClient: HttpClient,
         private storage: Storage,
+        private oneSignal: OneSignal,
     ) { }
 
     register(user: Object): Observable<RegisterResponse> {
@@ -30,6 +32,7 @@ export class AuthService {
             tap(async (response: AuthResponse) => {
                 if (response.user) {
                     await this.storage.set('TOKEN', response.user.token);
+                    this.oneSignal.setExternalUserId(user.id);
                 }
             })
         );
