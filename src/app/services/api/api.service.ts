@@ -131,7 +131,7 @@ export class APIService {
     }
 
     deleteFriend(userId: number): Observable<Object> {
-        return this.post('/friends/remove/' + userId, {});
+        return this.post('/friends/' + userId + '/remove', {});
     }
 
 
