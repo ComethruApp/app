@@ -14,5 +14,5 @@
 
 <ion-item *ngIf="review" lines="none">
     <ion-textarea placeholder="Feedback for host..." autocomplete="off" autocorrect="on"
-                  [value]="review ? review.review : ''" (change)="submitReview($event.target.value)"></ion-textarea>
+                  [value]="review ? review.body : ''" (change)="submitReview($event.target.value)"></ion-textarea>
 </ion-item>
