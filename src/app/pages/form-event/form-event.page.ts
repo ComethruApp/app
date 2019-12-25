@@ -143,19 +143,19 @@ export class FormEventPage implements OnInit {
     }
 
     async submit(form) {
+        let data = form.value;
         const alert = await this.alertCtrl.create({
             header: 'Are you sure?',
-            message: 'This event will appear on the map at your current location.',
+            message: data.name + ' will go live at your location.',
             buttons: [
                 {
-                    text: 'No',
+                    text: 'Lemme check again',
                     role: 'cancel',
                     handler: () => {}
                 },
                 {
                     text: 'Full send',
                     handler: async () => {
-                        let data = form.value;
                         data.lat = this.lat;
                         data.lng = this.lng;
                         data.address = this.address;
