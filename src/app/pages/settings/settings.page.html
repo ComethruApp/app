@@ -1,39 +1,43 @@
 <app-header title="Settings" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
-    <div *ngIf="user" class="settings-section">
-        <div *ngIf="user.facebook_id">
-            <ion-button expand="block" size="large" (click)="facebookDisconnect()">
-                <ion-icon name="logo-facebook"></ion-icon>
-                Disconnect Facebook
-            </ion-button>
-            You're connected to Facebook as {{ user.facebook_name }}.
-        </div>
-        <div *ngIf="!user.facebook_id">
-            <ion-button expand="block" size="large" (click)="facebookConnect()">
-                <ion-icon name="logo-facebook"></ion-icon>
-                Connect Facebook
-            </ion-button>
-            Connect with Facebook to find friends, set your profile photo, and share events.
-        </div>
-    </div>
     <div *ngIf="user">
-        <ion-button expand="block" size="large" color="warning" (click)="changePassword()">
-            <ion-icon name="key"></ion-icon>
-            Change Password
-        </ion-button>
-        <h2>Update Profile</h2>
-        <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submitUserForm(form)">
-            <ion-item lines="none">
-                <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
-                           [value]="user.name"></ion-input>
-            </ion-item>
+        <div class="settings-section">
+            <div *ngIf="user.facebook_id">
+                <ion-button expand="block" size="large" (click)="facebookDisconnect()">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    Disconnect Facebook
+                </ion-button>
+                <p>You're connected to Facebook as {{ user.facebook_name }}.</p>
+            </div>
+            <div *ngIf="!user.facebook_id">
+                <ion-button expand="block" size="large" (click)="facebookConnect()">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    Connect Facebook
+                </ion-button>
+                Connect with Facebook to find friends, set your profile photo, and share events.
+            </div>
+        </div>
+        <div class="settings-section">
+            <h2>Update Profile</h2>
+            <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submitUserForm(form)">
+                <ion-item lines="none">
+                    <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
+                               [value]="user.name"></ion-input>
+                </ion-item>
 
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
-                <ion-icon name="save"></ion-icon>
-                Save
+                <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
+                    <ion-icon name="save"></ion-icon>
+                    Save
+                </ion-button>
+            </form>
+        </div>
+        <div class="settings-section">
+            <ion-button expand="block" size="large" color="warning" (click)="changePassword()">
+                <ion-icon name="key"></ion-icon>
+                Change Password
             </ion-button>
-        </form>
+        </div>
     </div>
     <!--
     <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
