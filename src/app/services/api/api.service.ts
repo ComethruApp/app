@@ -169,6 +169,10 @@ export class APIService {
         return this.post('/events/' + eventId + '/end', {});
     }
 
+    getFacebookEvents(): Observable<Object[]> {
+        return this.get('/evennts/facebook');
+    }
+
     getUserEvents(userId: number): Observable<Event_[]> {
         return this.get('/users/' + userId + '/events')
         .map(response => response.map(event => new Event_(event)));
