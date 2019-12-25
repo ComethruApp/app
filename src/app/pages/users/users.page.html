@@ -13,7 +13,7 @@
         <h3>Friends</h3>
         <app-user-list [users]="friends" [friend]="true" emptyMessage="None yet! Make some?"></app-user-list>
         <div *ngIf="facebookFriends && facebookFriends.length > 0">
-            <h3>Friends from FB</h3>
+            <h3><ion-icon name="logo-facebook"></ion-icon> FB Friends</h3>
             <app-user-list [users]="facebookFriends" [friend]="true" emptyMessage="Couldn't find any friends from Facebook!"></app-user-list>
         </div>
     </div>

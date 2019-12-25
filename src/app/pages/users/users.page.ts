@@ -29,8 +29,8 @@ export class UsersPage implements OnInit {
         this.api.getFriends().subscribe(friends => {
             this.friends = friends;
         });
-        this.api.getFacebookFriends().subscribe(friends => {
-            this.friends = friends;
+        this.api.getFacebookFriends().subscribe(facebookFriends => {
+            this.facebookFriends = facebookFriends;
         });
     }
 
