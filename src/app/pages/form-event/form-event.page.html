@@ -5,6 +5,12 @@
     <app-loader *ngIf="editing && !event"></app-loader>
     <div class="{{ (editing && !event) ? 'hidden' : '' }}">
         <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
+            <!--
+            <ion-button size="large" expand="block" *ngIf="!editing" (click)="useFacebook()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Import event
+            </ion-button>
+            -->
             <ion-item lines="none">
                 <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
                            maxlength="64" [value]="event ? event.name : ''"></ion-input>

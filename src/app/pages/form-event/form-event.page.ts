@@ -24,6 +24,7 @@ export class FormEventPage implements OnInit {
     lat: number;
     lng: number;
     address: string;
+    facebookEvents: Object[] = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -85,6 +86,13 @@ export class FormEventPage implements OnInit {
             open: new FormControl(true),
             transitive_invites: new FormControl(false),
             capacity: new FormControl(0, Validators.required),
+        });
+    }
+
+    useFacebook() {
+        this.api.getFacebookEvents().subscribe(facebookEvents => {
+            this.facebookEvents = facebookEvents;
+            console.log(this.facebookEvents);
         });
     }
 

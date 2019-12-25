@@ -170,7 +170,7 @@ export class APIService {
     }
 
     getFacebookEvents(): Observable<Object[]> {
-        return this.get('/evennts/facebook');
+        return this.get('/events/facebook');
     }
 
     getUserEvents(userId: number): Observable<Event_[]> {
