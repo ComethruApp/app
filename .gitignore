@@ -32,5 +32,6 @@ npm-debug.log*
 
 # Build
 *.apk
+sbf.zip
 # Hide secure constants
 src/app/constants.ts
