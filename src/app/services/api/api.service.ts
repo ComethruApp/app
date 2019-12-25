@@ -134,6 +134,11 @@ export class APIService {
         return this.post('/friends/' + userId + '/remove', {});
     }
 
+    getFacebookFriends(): Observable<User[]> {
+        return this.get('/friends/facebook')
+        .map(response => response.map(user => new User(user)));
+    }
+
 
     // Events
     getEvents(): Observable<Event_[]> {

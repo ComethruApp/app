@@ -12,6 +12,7 @@ export class UsersPage implements OnInit {
     searchResults: User[] = null;
     requests: User[] = null;
     friends: User[] = null;
+    facebookFriends: User[] = null;
 
     constructor(
         private api: APIService,
@@ -26,6 +27,9 @@ export class UsersPage implements OnInit {
             this.requests = requests;
         });
         this.api.getFriends().subscribe(friends => {
+            this.friends = friends;
+        });
+        this.api.getFacebookFriends().subscribe(friends => {
             this.friends = friends;
         });
     }
