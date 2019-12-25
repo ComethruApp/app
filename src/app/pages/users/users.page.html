@@ -7,10 +7,10 @@
     <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" emptyMessage="No results found."></app-user-list>
     <div *ngIf="!searched">
         <div *ngIf="requests && requests.length > 0" class="list">
-            <h3>Friend requests</h3>
+            <h3><ion-icon name="person-add"></ion-icon> Friend requests</h3>
             <app-user-list [users]="requests" [friend]="true" emptyMessage="You have no incoming requests."></app-user-list>
         </div>
-        <h3>Friends</h3>
+        <h3><ion-icon name="people"></ion-icon> Friends</h3>
         <app-user-list [users]="friends" [friend]="true" emptyMessage="None yet! Make some?"></app-user-list>
         <div *ngIf="facebookFriends && facebookFriends.length > 0">
             <h3><ion-icon name="logo-facebook"></ion-icon> FB Friends</h3>
