@@ -1,7 +1,8 @@
 <!--<app-header title="Search" [back]="true"></app-header>-->
 
 <ion-content class="ion-padding">
-    <ion-item lines="none">
+    <ion-item lines="none" class="search">
+        <ion-icon name="search"></ion-icon>
         <ion-input type="text" autocomplete="off" autocorrect="off" placeholder="Search for someone..." (input)="search($event.target.value)"></ion-input>
     </ion-item>
     <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" emptyMessage="No results found."></app-user-list>

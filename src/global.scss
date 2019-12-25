@@ -77,6 +77,15 @@ ion-button ion-icon {
     margin-right: 3px;
 }
 
+ion-item.search {
+    --padding-start: 8px;
+}
+ion-item.search ion-icon {
+    height: 30px;
+    width: 30px;
+    margin-right: 4px;
+}
+
 .loading-wrapper.sc-ion-loading-ios,
 .alert-wrapper.sc-ion-alert-ios {
     background: #15202b;
