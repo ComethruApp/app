@@ -80,7 +80,7 @@ export class FormEventPage implements OnInit {
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
             location: new FormControl('', Validators.required),
-            address: new FormControl('', Validators.required),
+            address: new FormControl(''),
             time: new FormControl('', Validators.required),
             end_time: new FormControl(''),
             open: new FormControl(true),
@@ -144,8 +144,8 @@ export class FormEventPage implements OnInit {
 
     async submit(form) {
         const alert = await this.alertCtrl.create({
-            header: 'Does this look right?',
-            message: '',
+            header: 'Are you sure?',
+            message: 'This event will appear on the map at your current location.',
             buttons: [
                 {
                     text: 'No',
