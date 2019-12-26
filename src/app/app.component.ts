@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 
 import { Platform } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 import { APIService } from './services/api/api.service';
 import { LocationService } from './services/location/location.service';
@@ -20,6 +21,7 @@ export class AppComponent {
     constructor(
         private platform: Platform,
         private statusBar: StatusBar,
+        private splashScreen: SplashScreen,
         private router: Router,
         private alertCtrl: AlertController,
         private api: APIService,
@@ -78,6 +80,7 @@ export class AppComponent {
                 };
 
             });
+            this.splashScreen.hide();
         });
         this.api.heartbeat().subscribe(beat => {
             if (beat['maintenance']) {
