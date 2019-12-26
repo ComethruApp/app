@@ -64,11 +64,10 @@ export class SettingsPage implements OnInit {
     }
 
     facebookDisconnect() {
-        this.fb.logout()
-        .then(response => {
-            this.api.facebookDisconnect().subscribe(response => {
-                this.getData();
-            });
+        // Do our best to logout officially.
+        this.fb.logout();
+        this.api.facebookDisconnect().subscribe(response => {
+            this.getData();
         });
     }
 
