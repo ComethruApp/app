@@ -15,6 +15,7 @@
     <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false"/>
     <plugin name="cordova-plugin-navigationbar-color" spec="0.0.8" />
     <preference name="NavigationBarBackgroundColor" value="#15202b" />
     <preference name="android-minSdkVersion" value="19" />
