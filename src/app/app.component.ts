@@ -70,15 +70,6 @@ export class AppComponent {
             }
             this.platform.ready().then(() => {
                 this.statusBar.backgroundColorByHexString('#15202B');
-
-                // OneSignal Code start:
-                // Enable to debug issues:
-                // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-
-                var notificationOpenedCallback = function(jsonData) {
-                    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-                };
-
             });
             this.splashScreen.hide();
         });
