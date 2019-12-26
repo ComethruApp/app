@@ -47,7 +47,6 @@ export class SettingsPage implements OnInit {
             'public_profile',
             'email',
             'user_friends',
-            'user_events',
         ];
         this.fb.login(permissions)
         .then(response => {
