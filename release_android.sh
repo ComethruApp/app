@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 signed_apk="Comethru.apk"
 rm -f $signed_apk
