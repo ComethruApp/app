@@ -50,7 +50,6 @@
         <resource-file src="resources/android/notification/drawable-xxhdpi/ic_stat_onesignal_default.png" target="app/src/main/res/drawable-xxhdpi/ic_stat_onesignal_default.png" />
         <resource-file src="resources/android/notification/drawable-xxxhdpi/ic_stat_onesignal_default.png" target="app/src/main/res/drawable-xxxhdpi/ic_stat_onesignal_default.png" />
         <resource-file src="resources/android/icon/drawable-xxxhdpi-icon.png" target="app/src/main/res/mipmap/icon.png" />
-        <hook src="hooks/copy_android_notification_icons.js" type="after_prepare" />
     </platform>
     <platform name="ios">
         <preference name="WKWebViewOnly" value="true" />
