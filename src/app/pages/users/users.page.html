@@ -1,6 +1,9 @@
 <!--<app-header title="Search" [back]="true"></app-header>-->
 
 <ion-content class="ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <app-loader [showMessage]="false"></app-loader>
+    </ion-refresher>
     <ion-item lines="none" class="search">
         <ion-icon name="search"></ion-icon>
         <ion-input type="text" autocomplete="off" autocorrect="off" placeholder="Search for someone..." (input)="search($event.target.value)"></ion-input>

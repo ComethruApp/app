@@ -22,6 +22,10 @@ export class UsersPage implements OnInit {
         this.getData();
     }
 
+    doRefresh(event) {
+        this.getData().then(() => event.target.complete());
+    }
+
     async getData() {
         this.api.getFriendRequests().subscribe(requests => {
             this.requests = requests;
