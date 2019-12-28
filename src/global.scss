@@ -18,8 +18,8 @@ body {
     line-height: 1.3;
 }
 ion-app {
-    margin-top: constant(safe-area-inset-top);
-    //margin-bottom: env(safe-area-inset-bottom);
+    margin-top: constant(safe-area-inset-top); // for iOS 11.2
+    margin-top: env(safe-area-inset-top); // for iOS 11.1
 }
 
 // Remove shadow under header
