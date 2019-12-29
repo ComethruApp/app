@@ -49,6 +49,14 @@ export class FormEventPage implements OnInit {
         this.getAddress();
     }
 
+    cleanAddress(value: string, punctuation: string) {
+        if (value) {
+            return value + punctuation;
+        } else {
+            return '';
+        }
+    }
+
     async getAddress() {
         this.geolocation.getCurrentPosition().then((resp) => {
             this.lat = resp.coords.latitude;
@@ -62,7 +70,11 @@ export class FormEventPage implements OnInit {
             .then(async (results: NativeGeocoderResult[]) => {
                 if (results && results.length != 0) {
                     let result = results[0];
-                    this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.locality + ', ' + result.subAdministrativeArea + ', ' + result.administrativeArea + ' ' + result.postalCode;
+                    this.address = this.cleanAddress(result.subThoroughfare, ' ') +
+                                   this.cleanAddress(result.thoroughfare, ', ') +
+                                   this.cleanAddress(result.locality, ', ') +
+                                   this.cleanAddress(result.subAdministrativeArea, ', ') +
+                                   this.cleanAddress(result.administrativeArea, ' ') + result.postalCode;
                 }
             })
             .catch((error: any) => console.log(error));
