@@ -12,6 +12,9 @@
             <div class="tag">{{ formatTime(event.time) }}</div>
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
+        <div *ngIf="event.tags.length > 0" class="tags">
+            <div *ngFor="let tag of tags" class="tag">{{ tag }}</div>
+        </div>
 
         <p class="description">{{ event.description }}</p>
         <p>
