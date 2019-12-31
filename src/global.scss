@@ -21,6 +21,11 @@ ion-app {
     margin-top: constant(safe-area-inset-top); // for iOS 11.2
     margin-top: env(safe-area-inset-top); // for iOS 11.1
 }
+ion-header ion-toolbar:first-child {
+    // On iPhone X/other devices with a bump, the toolbar has its own padding to prevent overlap with the bump.
+    // We do this for the entire app contents, so remove the padding in the toolbar.
+    padding-top: 0;
+}
 
 // Remove shadow under header
 .header-md::after { display: none; }
