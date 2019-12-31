@@ -25,8 +25,6 @@ export class FormEventPage implements OnInit {
     lng: number;
     address: string;
     facebookEvents: Object[] = null;
-    // For holding form data during submission
-    data: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -156,14 +154,14 @@ export class FormEventPage implements OnInit {
         await alert.present();
     }
 
-    async upload() {
-        this.data.lat = this.lat;
-        this.data.lng = this.lng;
+    async upload(data) {
+        data.lat = this.lat;
+        data.lng = this.lng;
         const loading = await this.loadingCtrl.create({
             message: (this.editing ? 'Updating' : 'Posting') + '...'
         });
         await loading.present();
-        (this.editing ? this.api.updateEvent(this.id, this.data) : this.api.createEvent(this.data)).subscribe((newEvent)=>{
+        (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
             loading.dismiss();
             this.router.navigate(['event/' + newEvent.id]);
             this.resetFields();
@@ -172,23 +170,25 @@ export class FormEventPage implements OnInit {
 
 
     async submit(form) {
-        this.data = form.value;
+        let data = form.value;
         // Only give warning if the event is being created now
         if (this.editing) {
-            this.upload();
+            this.upload(data);
         } else {
             const alert = await this.alertCtrl.create({
                 header: 'Are you sure?',
-                message: this.data.name + ' will go live at your location.',
+                message: data.name + ' will go live at your location.',
                 buttons: [
                     {
                         text: 'Lemme check again',
                         role: 'cancel',
-                        handler: () => {}
+                        handler: () => {},
                     },
                     {
                         text: 'Full send',
-                        handler: this.upload,
+                        handler: () => {
+                            this.upload(data);
+                        },
                     }
                 ]
             });
