@@ -170,7 +170,6 @@ export class FormEventPage implements OnInit {
                     handler: async () => {
                         data.lat = this.lat;
                         data.lng = this.lng;
-                        data.address = this.address;
                         const loading = await this.loadingCtrl.create({
                             message: (this.editing ? 'Updating' : 'Posting') + '...'
                         });
