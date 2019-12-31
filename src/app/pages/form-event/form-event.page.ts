@@ -25,6 +25,8 @@ export class FormEventPage implements OnInit {
     lng: number;
     address: string;
     facebookEvents: Object[] = null;
+    // For holding form data during submission
+    data: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -154,36 +156,44 @@ export class FormEventPage implements OnInit {
         await alert.present();
     }
 
-    async submit(form) {
-        let data = form.value;
-        const alert = await this.alertCtrl.create({
-            header: 'Are you sure?',
-            message: data.name + ' will go live at your location.',
-            buttons: [
-                {
-                    text: 'Lemme check again',
-                    role: 'cancel',
-                    handler: () => {}
-                },
-                {
-                    text: 'Full send',
-                    handler: async () => {
-                        data.lat = this.lat;
-                        data.lng = this.lng;
-                        const loading = await this.loadingCtrl.create({
-                            message: (this.editing ? 'Updating' : 'Posting') + '...'
-                        });
-                        await loading.present();
-                        (this.editing ? this.api.updateEvent(this.id, data) : this.api.createEvent(data)).subscribe((newEvent)=>{
-                            loading.dismiss();
-                            this.router.navigate(['event/' + newEvent.id]);
-                            this.resetFields();
-                        });
-                    }
-                }
-            ]
+    async upload() {
+        this.data.lat = this.lat;
+        this.data.lng = this.lng;
+        const loading = await this.loadingCtrl.create({
+            message: (this.editing ? 'Updating' : 'Posting') + '...'
         });
-        await alert.present();
+        await loading.present();
+        (this.editing ? this.api.updateEvent(this.id, this.data) : this.api.createEvent(this.data)).subscribe((newEvent)=>{
+            loading.dismiss();
+            this.router.navigate(['event/' + newEvent.id]);
+            this.resetFields();
+        });
+    }
+
+
+    async submit(form) {
+        this.data = form.value;
+        // Only give warning if the event is being created now
+        if (this.editing) {
+            this.upload();
+        } else {
+            const alert = await this.alertCtrl.create({
+                header: 'Are you sure?',
+                message: this.data.name + ' will go live at your location.',
+                buttons: [
+                    {
+                        text: 'Lemme check again',
+                        role: 'cancel',
+                        handler: () => {}
+                    },
+                    {
+                        text: 'Full send',
+                        handler: this.upload,
+                    }
+                ]
+            });
+            await alert.present();
+        }
     }
 
     hosts() {
