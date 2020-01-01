@@ -12,7 +12,6 @@ export class TagsPage implements OnInit {
     id: number;
     searchedTags: string[] = null;
     tags: string[] = null;
-    event: Event_ = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -25,8 +24,8 @@ export class TagsPage implements OnInit {
     }
 
     async getData() {
-        this.api.getTags(this.id).subscribe(tags => {
-            this.tags = tags;
+        this.api.getEvent(this.id).subscribe(event => {
+            this.tags = event.tags;
         });
     }
 
