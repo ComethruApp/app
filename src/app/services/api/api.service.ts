@@ -173,7 +173,7 @@ export class APIService {
         return this.post('/events/' + eventId + '/tags/' + tagName, {});
     }
 
-    deleteTag(eventId: number, tagName: string): Observable<Object> {
+    removeTag(eventId: number, tagName: string): Observable<Object> {
         return this.delete('/events/' + eventId + '/tags/' + tagName);
     }
 
