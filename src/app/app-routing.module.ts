@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'hosts/:id', loadChildren: './pages/hosts/hosts.module#HostsPageModule' },
+  { path: 'tags/:id', loadChildren: './pages/tags/tags.module#TagsPageModule' },
   { path: 'reviews/:id', loadChildren: './pages/reviews/reviews.module#ReviewsPageModule' },
   { path: 'user/:id', loadChildren: './pages/user/user.module#UserPageModule' },
   { path: 'ticket/:id', loadChildren: './pages/ticket/ticket.module#TicketPageModule' },

@@ -1,0 +1,19 @@
+<app-header [title]="event ? ('Invitations for ' + event.name) : ''" [back]="true"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-item lines="none" class="search">
+        <ion-icon name="search"></ion-icon>
+        <ion-input type="text"
+                   autocomplete="off"
+                   autocorrect="off"
+                   autofocus="true"
+                   placeholder="Search for users..."
+                   (input)="searchUsers($event.target.value)"></ion-input>
+    </ion-item>
+    <div *ngIf="searchedUsers">
+        <h3>Search results</h3>
+        <app-user-list [users]="searchedUsers" [tag]="true" [taging]="false" [eventId]="id"></app-user-list>
+    </div>
+    <h3>Tags</h3>
+    <app-user-list [users]="tags" [tag]="true" [taging]="true" [eventId]="id" emptyMessage="No tags."></app-user-list>
+</ion-content>
