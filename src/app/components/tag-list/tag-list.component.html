@@ -12,7 +12,7 @@
                 </div>
             </ion-col>
             <ion-col size="3" class="ion-no-padding" *ngIf="!tag.is_me">
-                <app-tag-buttons [tag]="tag" [added]="isCurrent || current.indexOf(tag) !== -1"></app-tag-buttons>
+                <app-tag-buttons [eventId]="eventId" [tag]="tag" [added]="isCurrent || current.indexOf(tag) !== -1"></app-tag-buttons>
             </ion-col>
         </ion-row>
     </ion-grid>

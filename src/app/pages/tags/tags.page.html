@@ -11,8 +11,8 @@
                    (input)="searchTags($event.target.value)"></ion-input>
     </ion-item>
     <div *ngIf="searchedTags">
-        <app-tag-list [tags]="searchedTags" [current]="tags"></app-tag-list>
+        <app-tag-list [eventId]="id" [tags]="searchedTags" [current]="tags"></app-tag-list>
     </div>
     <h3>Tags</h3>
-    <app-tag-list [tags]="tags" [isCurrent]="true" emptyMessage="No tags."></app-tag-list>
+    <app-tag-list [eventId]="id" [tags]="tags" [isCurrent]="true" emptyMessage="No tags."></app-tag-list>
 </ion-content>

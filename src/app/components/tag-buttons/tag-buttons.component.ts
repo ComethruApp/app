@@ -7,6 +7,7 @@ import { APIService } from '../../services/api/api.service';
     styleUrls: ['./tag-buttons.component.scss'],
 })
 export class TagButtonsComponent implements OnInit {
+    @Input() eventId: number;
     @Input() tag: string;
     @Input() added: boolean;
 
@@ -17,13 +18,13 @@ export class TagButtonsComponent implements OnInit {
     ngOnInit() {}
 
     addTag() {
-        this.api.addTag(this.tag).subscribe(response => {
+        this.api.addTag(this.eventId, this.tag).subscribe(response => {
             this.added = true;
         });
     }
 
     removeTag() {
-        this.api.removeTag(this.tag).subscribe(response => {
+        this.api.removeTag(this.eventId, this.tag).subscribe(response => {
             this.added = false;
         });
     }

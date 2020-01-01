@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./tag-list.component.scss'],
 })
 export class TagListComponent implements OnInit {
+    @Input() eventId: number;
     @Input() tags: string[];
     @Input() current: string[];
     // Should we assume all tags in this list are current?
