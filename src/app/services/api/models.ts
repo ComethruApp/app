@@ -26,6 +26,12 @@ export class Review extends _Base {
     body: string;
 }
 
+export class Update extends _Base {
+    body: string;
+    user: User;
+    event: Event_;
+}
+
 export class Event_ extends _Base {
     id: number;
     name: string;
