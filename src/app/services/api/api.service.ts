@@ -169,6 +169,14 @@ export class APIService {
         return this.post('/events/' + eventId + '/end', {});
     }
 
+    addTag(eventId: number, tagName: string) {
+        return this.post('/events/' + eventId + '/tags/' + tagName, {});
+    }
+
+    deleteTag(eventId: number, tagName: string) {
+        return this.delete('/events/' + eventId + '/tags/' + tagName);
+    }
+
     getFacebookEvents(): Observable<Object[]> {
         return this.get('/events/facebook');
     }
