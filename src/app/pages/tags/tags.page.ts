@@ -10,8 +10,8 @@ import { User, Event_ } from '../../services/api/models';
 })
 export class TagsPage implements OnInit {
     id: number;
-    searchedUsers: User[] = null;
-    tags: User[] = null;
+    searchedTags: string[] = null;
+    tags: string[] = null;
     event: Event_ = null;
 
     constructor(
@@ -25,18 +25,18 @@ export class TagsPage implements OnInit {
     }
 
     async getData() {
-        this.api.getEventTags(this.id).subscribe(tags => {
+        this.api.getTags(this.id).subscribe(tags => {
             this.tags = tags;
         });
     }
 
-    async searchUsers(query) {
+    async searchTags(query) {
         if (query) {
-            this.api.searchUsersForEvent(this.id, query).subscribe(searchedUsers => {
-                this.searchedUsers = searchedUsers;
+            this.api.searchTags(this.id, query).subscribe(searchedTags => {
+                this.searchedTags = searchedTags;
             });
         } else {
-            this.searchedUsers = null;
+            this.searchedTags = null;
         }
     }
 }
