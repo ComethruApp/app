@@ -7,7 +7,7 @@ import { APIService } from '../../services/api/api.service';
     styleUrls: ['./tag-buttons.component.scss'],
 })
 export class TagButtonsComponent implements OnInit {
-    @Input() tag: boolean;
+    @Input() tag: string;
     @Input() added: boolean;
 
     constructor(
