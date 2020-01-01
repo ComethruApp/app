@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
+import { TagButtonsComponet } from './tag-buttons/tag-buttons.component';
 import { FriendButtonsComponent } from './friend-buttons/friend-buttons.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { EventListComponent } from './event-list/event-list.component';
@@ -20,6 +21,7 @@ import { ReviewerComponent } from './reviewer/reviewer.component';
     declarations: [
         UserListComponent,
         TagListComponent,
+        TagButtonsComponent,
         FriendButtonsComponent,
         AvatarComponent,
         EventListComponent,
@@ -39,6 +41,7 @@ import { ReviewerComponent } from './reviewer/reviewer.component';
     exports: [
         UserListComponent,
         TagListComponent,
+        TagButtonsComponent,
         FriendButtonsComponent,
         AvatarComponent,
         EventListComponent,
