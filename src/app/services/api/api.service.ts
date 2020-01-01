@@ -177,8 +177,8 @@ export class APIService {
         return this.delete('/events/' + eventId + '/tags/' + tagName);
     }
 
-    searchTags(tagName: string): Observable<string[]> {
-        return this.get('/tags/search/' + tagName)
+    searchTags(query: string): Observable<string[]> {
+        return this.get('/tags/search/' + query)
         .map(response => response.map(event => new Event_(event)));
     }
 
