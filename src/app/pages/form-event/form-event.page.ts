@@ -199,4 +199,8 @@ export class FormEventPage implements OnInit {
     hosts() {
         this.router.navigate(['/hosts/' + this.id]);
     }
+
+    tags() {
+        this.router.navigate(['/tags/' + this.id]);
+    }
 }

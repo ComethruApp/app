@@ -83,6 +83,10 @@
             <ion-icon name="people"></ion-icon>
             Manage hosts
         </ion-button>
+        <ion-button *ngIf="event && editing" class="button" color="warning" expand="block" size="large" (click)="tags()">
+            <ion-icon name="pricetags"></ion-icon>
+            Manage tags
+        </ion-button>
         <ion-button *ngIf="event && editing && !event.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">
             <ion-icon name="close-circle"></ion-icon>
             End
