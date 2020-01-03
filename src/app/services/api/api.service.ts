@@ -178,8 +178,7 @@ export class APIService {
     }
 
     searchTags(query: string): Observable<string[]> {
-        return this.get('/tags/search/' + query)
-        .map(response => response.map(event => new Event_(event)));
+        return this.get('/tags/search/' + query);
     }
 
     getFacebookEvents(): Observable<Object[]> {
