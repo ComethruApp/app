@@ -32,6 +32,9 @@ export class TagsPage implements OnInit {
     async searchTags(query) {
         if (query) {
             this.api.searchTags(this.id, query).subscribe(searchedTags => {
+                if (searchedTags.indexOf(query) === -1) {
+                    searchedTags.unshift(query);
+                }
                 this.searchedTags = searchedTags;
             });
         } else {
