@@ -1,14 +1,12 @@
 <app-loader *ngIf="!tags"></app-loader>
 <div *ngIf="tags && tags.length > 0" class="list">
     <ion-grid class="ion-no-padding">
-        <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let tag of tags">
-            <ion-col size="7">
+        <ion-row class="ion-align-items-center" *ngFor="let tag of tags">
+            <ion-col size="9">
                 <div>
                     <h2>
-                        {{ tag.name }}
-                        <img class="verified" *ngIf="tag.verified" src="assets/imgs/verified.png">
+                        {{ tag }}
                     </h2>
-                    {{ tag.email }}
                 </div>
             </ion-col>
             <ion-col size="3" class="ion-no-padding" *ngIf="!tag.is_me">
