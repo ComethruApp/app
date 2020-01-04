@@ -74,7 +74,7 @@ export class FormEventPage implements OnInit {
                                    this.cleanAddress(result.thoroughfare, ', ') +
                                    this.cleanAddress(result.locality, ', ') +
                                    this.cleanAddress(result.subAdministrativeArea, ', ') +
-                                   this.cleanAddress(result.administrativeArea, ' ') + result.postalCode;
+                                   this.cleanAddress(result.administrativeArea, '');
                 }
             })
             .catch((error: any) => console.log(error));
