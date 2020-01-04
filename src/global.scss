@@ -34,12 +34,12 @@ ion-header ion-toolbar:first-child {
 ion-tab-bar { --border: none; }
 
 ion-item {
-    --background: #2c3640;
-    --color: #fff;
+    --background: var(--ion-color-dark);
+    --color: var(--ion-text-color);
     margin-bottom: 5px;
 }
 ion-item.toggle-container {
-    --background: #15202b;
+    --background: var(--ion-background-color);
     //--padding-start: 0;
 }
 // Remove white background when autocomplete is used on Android
@@ -48,9 +48,9 @@ ion-item.toggle-container {
 :-webkit-autofill:hover,
 :-webkit-autofill:focus,
 :-internal-autofill-selected {
-    -webkit-box-shadow: 0 0 0px 1000px #2c3640 inset;
-    -webkit-text-fill-color: white !important;
-    caret-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px var(--ion-color-dark) inset;
+    -webkit-text-fill-color: var(--ion-text-color) !important;
+    caret-color: var(--ion-text-color);
 }
 
 ion-textarea textarea {
@@ -58,7 +58,7 @@ ion-textarea textarea {
 }
 
 .dark-toolbar {
-    --background: #15202b;
+    --background: var(--ion-background-color);
 }
 ion-title.md {
     padding-left: 0;
@@ -71,7 +71,7 @@ ion-button {
     margin: 0;
     // Josefin font has excessive space underneath, correct for that.
     --padding-top: 4px;
-    --background: #007ef1;
+    --background: var(--ion-color-primary);
     --border-radius: 0 !important;
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
@@ -93,7 +93,7 @@ ion-item.search ion-icon {
 
 .loading-wrapper.sc-ion-loading-ios,
 .alert-wrapper.sc-ion-alert-ios {
-    background: #15202b;
+    background: var(--ion-background-color);
 }
 .alert-title.sc-ion-alert-ios,
 .alert-message.sc-ion-alert-ios {
@@ -108,11 +108,11 @@ ion-item.search ion-icon {
     border: none;
 }
 .sc-ion-picker-ios.picker-columns {
-    background: #15202b;
+    background: var(--ion-background-color);
     color: white;
 }
 .loading-wrapper.sc-ion-loading-md {
-    background: #15202b;
+    background: var(--ion-background-color);
     color: white;
 }
 
@@ -159,7 +159,7 @@ h2 {
 h3 {
     font-size: 35px;
     display: inline-block;
-    border-bottom: solid 1px white;
+    border-bottom: solid 1px var(--ion-text-color);
     margin-bottom: 10px;
     margin-top: 20px;
 }
@@ -194,7 +194,7 @@ a {
 }
 .tag {
     display: inline-block;
-    background: #007ef1;
+    background: var(--ion-color-primary);
     padding: 5px 5px 3px;
     margin-right: 3px;
     margin-bottom: 3px;
@@ -203,16 +203,16 @@ a {
 .tags .tag {
     background: var(--ion-background-color-tint);
     &:nth-child(3n+1) {
-        color: #10dc60;
+        color: var(--ion-color-success);
     }
     &:nth-child(3n+2) {
-        color: #ffce00;
+        color: var(--ion-color-warning);
     }
     &:nth-child(3n+3) {
-        color: #f04141;
+        color: var(--ion-color-danger);
     }
     &:nth-child(3n+4) {
-        color: #007ef1;
+        color: var(--ion-color-primary);
     }
 }
 
@@ -251,7 +251,7 @@ a {
 ion-refresher {
     // Fix uncolored content on bottom of spinner
     padding-bottom: 200px;
-    background: var(--ion-color-primary-shade, #035CDD);
+    background: var(--ion-color-primary-shade);
 }
 .loader {
     width: 50px;
