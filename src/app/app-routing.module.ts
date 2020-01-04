@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'form-event/:id', loadChildren: './pages/form-event/form-event.module#FormEventPageModule' },
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'form-update', loadChildren: './pages/form-update/form-update.module#FormUpdateModule' },
+  { path: 'form-update/:id', loadChildren: './pages/form-update/form-update.module#FormUpdateModule' },
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'hosts/:id', loadChildren: './pages/hosts/hosts.module#HostsPageModule' },
   { path: 'tags/:id', loadChildren: './pages/tags/tags.module#TagsPageModule' },

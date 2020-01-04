@@ -1,0 +1,95 @@
+<!-- Don't show from update creation tab -->
+<app-header *ngIf="editing" title="Edit Update" [back]="true"></app-header>
+
+<ion-content class="ion-padding">
+    <app-loader *ngIf="editing && !update"></app-loader>
+    <div class="{{ (editing && !update) ? 'hidden' : '' }}">
+        <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
+            <!--
+            <ion-button size="large" expand="block" *ngIf="!editing" (click)="useFacebook()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Import update
+            </ion-button>
+            -->
+            <ion-item lines="none">
+                <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
+                           maxlength="64" [value]="update ? update.name : ''"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-textarea placeholder="Description" formControlName="description" autocomplete="on" autocorrect="on"
+                           maxlength="1024" [value]="update ? update.description : ''"></ion-textarea>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-input placeholder="Location, eg. 'Bingham A41' or 'SigEp'" type="text"
+                           formControlName="location" autocomplete="on" autocorrect="on"
+                           maxlength="100" [value]="update ? update.location : ''"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" *ngIf="update || address">
+                <ion-input placeholder="Full Address" type="text"
+                           formControlName="address" autocomplete="on" autocorrect="on"
+                           maxlength="256" [value]="update ? update.address : address"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-input placeholder="Capacity" type="number" formControlName="capacity"
+                           [value]="update ? update.capacity : null"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label>Start time</ion-label>
+                <ion-datetime
+                    formControlName="time"
+                    displayFormat="MMM DD, h:mma"
+                    monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+
+                    required
+                    [value]="update ? update.time : ''">
+                </ion-datetime>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label>End time (optional)</ion-label>
+                <ion-datetime
+                    formControlName="end_time"
+                    displayFormat="MMM DD, h:mma"
+                    monthShortNames="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+
+                    [value]="update ? update.end_time : ''">
+                </ion-datetime>
+            </ion-item>
+
+            <ion-item lines="none" class="toggle-container">
+                <ion-label>Open update?</ion-label>
+                <ion-toggle checked name="open" formControlName="open"
+                           [value]="update ? update.open : true"></ion-toggle>
+            </ion-item>
+
+            <!-- TODO only show this if update is private -->
+            <ion-item lines="none" class="toggle-container">
+                <ion-label>Allow invitees to invite others?</ion-label>
+                <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
+                           [value]="update ? update.transitive_invites : false"></ion-toggle>
+            </ion-item>
+
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
+                <ion-icon name="send"></ion-icon>
+                {{ editing ? 'Update' : 'Post' }}
+            </ion-button>
+        </form>
+        <ion-button *ngIf="update && editing" class="button" color="secondary" expand="block" size="large" (click)="hosts()">
+            <ion-icon name="people"></ion-icon>
+            Manage hosts
+        </ion-button>
+        <ion-button *ngIf="update && editing" class="button" color="warning" expand="block" size="large" (click)="tags()">
+            <ion-icon name="pricetags"></ion-icon>
+            Manage tags
+        </ion-button>
+        <ion-button *ngIf="update && editing && !update.ended" class="end-button" expand="block" size="large" color="danger" (click)="end()">
+            <ion-icon name="close-circle"></ion-icon>
+            End
+        </ion-button>
+    </div>
+</ion-content>
