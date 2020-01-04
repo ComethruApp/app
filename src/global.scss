@@ -201,17 +201,18 @@ a {
     font-size: 20px;
 }
 .tags .tag {
+    background: var(--ion-background-color-tint);
     &:nth-child(3n+1) {
-        background: #10dc60;
+        color: #10dc60;
     }
     &:nth-child(3n+2) {
-        background: #ffce00;
+        color: #ffce00;
     }
     &:nth-child(3n+3) {
-        background: #f04141;
+        color: #f04141;
     }
     &:nth-child(3n+4) {
-        background: #007ef1;
+        color: #007ef1;
     }
 }
 
