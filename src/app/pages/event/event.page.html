@@ -6,7 +6,9 @@
     </ion-refresher>
     <app-loader *ngIf="!event"></app-loader>
     <div *ngIf="event">
-        <h1><strong><em>{{ event.name }}</em></strong></h1>
+        <h1>
+            <strong><em>{{ event.name }}</em></strong>
+        </h1>
         <div>
             <div class="tag">{{ event.location }}</div>
             <div class="tag">{{ formatTime(event.time) }}</div>
@@ -15,6 +17,7 @@
         <div *ngIf="event.tags.length > 0" class="tags">
             Tags: <div *ngFor="let tag of event.tags" class="tag">{{ tag }}</div>
         </div>
+
 
         <p class="description">{{ event.description }}</p>
         <p>
@@ -33,6 +36,9 @@
         <p *ngIf="event.address">
             Full Address: <em>{{ event.address }}</em>. <a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}">Navigate there</a>
         </p>
+        <div class="badges" *ngIf="hasYCC">
+            <ion-img class="badge" src="assets/imgs/ycc.png"></ion-img>
+        </div>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">

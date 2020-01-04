@@ -14,6 +14,7 @@ export class EventPage implements OnInit {
     id: number;
     event: Event_ = null;
     friends: User[] = null;
+    hasYCC: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -30,6 +31,9 @@ export class EventPage implements OnInit {
     async getData() {
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
+            if (event.tags.indexOf('ycc') !== -1) {
+                this.hasYCC = true;
+            }
         });
         this.api.getEventFriends(this.id).subscribe(friends => {
             this.friends = friends;
