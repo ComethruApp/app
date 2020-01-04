@@ -8,6 +8,7 @@
     <div *ngIf="event">
         <h1>
             <strong><em>{{ event.name }}</em></strong>
+            <img class="badge" src="assets/imgs/ycc.png">
         </h1>
         <div>
             <div class="tag">{{ event.location }}</div>
@@ -36,9 +37,6 @@
         <p *ngIf="event.address">
             Full Address: <em>{{ event.address }}</em>. <a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}">Navigate there</a>
         </p>
-        <div class="badges" *ngIf="hasYCC">
-            <ion-img class="badge" src="assets/imgs/ycc.png"></ion-img>
-        </div>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
