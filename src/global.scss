@@ -202,6 +202,7 @@ a {
 }
 .tags .tag {
     background: var(--ion-background-color-tint);
+    color: var(--ion-color-primary);
     &:nth-child(4n+1) {
         color: var(--ion-color-success);
     }

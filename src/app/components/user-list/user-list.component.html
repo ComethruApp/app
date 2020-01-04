@@ -11,7 +11,7 @@
                         {{ user.name }}
                         <img class="verified" *ngIf="user.verified" src="assets/imgs/verified.png">
                     </h2>
-                    {{ user.email }}
+                    <div class="email">{{ user.email }}</div>
                 </div>
             </ion-col>
             <ion-col size="3" class="ion-no-padding" *ngIf="!user.is_me">
