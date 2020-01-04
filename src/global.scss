@@ -216,9 +216,12 @@ a {
         color: var(--ion-color-primary);
     }
 }
-.tags ion-icon {
+.tag ion-icon {
     height: 25px;
     width: 25px;
+    margin-bottom: -6px;
+}
+.tags .tag ion-icon {
     margin-bottom: -7px;
 }
 

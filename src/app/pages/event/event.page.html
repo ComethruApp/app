@@ -11,9 +11,9 @@
             <strong><em>{{ event.name }}</em></strong>
         </h1>
         <div>
-            <div class="tag">{{ event.location }}</div>
-            <div class="tag">{{ formatTime(event.time) }}</div>
-            <div class="tag">{{ formatDate(event.time) }}</div>
+            <div class="tag"><ion-icon name="pin"></ion-icon> {{ event.location }}</div>
+            <div class="tag"><ion-icon name="clock"></ion-icon> {{ formatTime(event.time) }}</div>
+            <div class="tag"><ion-icon name="calendar"></ion-icon> {{ formatDate(event.time) }}</div>
         </div>
         <div *ngIf="event.tags.length > 0" class="tags">
 
