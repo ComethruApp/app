@@ -6,9 +6,9 @@
     </ion-refresher>
     <app-loader *ngIf="!event"></app-loader>
     <div *ngIf="event">
+        <img class="badge" src="assets/imgs/ycc.png">
         <h1>
             <strong><em>{{ event.name }}</em></strong>
-            <img class="badge" src="assets/imgs/ycc.png">
         </h1>
         <div>
             <div class="tag">{{ event.location }}</div>
