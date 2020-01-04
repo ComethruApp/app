@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch'
 
 import { AuthService } from '../auth/auth.service';
 import * as Constants from '../../constants';
-import { User, Event_, Review } from './models';
+import { User, Event_, Review, Update } from './models';
 
 @Injectable({
     providedIn: 'root'
@@ -245,5 +245,19 @@ export class APIService {
     getEventReviews(eventId: number): Observable<Review[]> {
         return this.get('/events/' + eventId + '/reviews')
         .map(response => response.map(review => new Review(review)));
+    }
+
+    createUpdate(eventId: number, update: Update): Observable<Update> {
+        return this.post('/events/' + eventId + '/updates', update)
+        .map(response => new Update(response));
+    }
+
+    updateUpdate(eventId: number, updateId: number, update: Update): Observable<Update> {
+        return this.put('/events/' + eventId + '/updates/' + updateId, update)
+        .map(response => new Update(response));
+    }
+
+    deleteUpdate(eventId: number, updateId: number): Observable<Update> {
+        return this.delete('/events/' + eventId + '/updates/' + updateId);
     }
 }
