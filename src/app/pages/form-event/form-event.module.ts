@@ -20,8 +20,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
         IonicModule,
+        ReactiveFormsModule,
         ComponentsModule,
         RouterModule.forChild(routes)
     ],
