@@ -16,7 +16,8 @@
             <div class="tag">{{ formatDate(event.time) }}</div>
         </div>
         <div *ngIf="event.tags.length > 0" class="tags">
-            Tags: <div *ngFor="let tag of event.tags" class="tag">{{ tag }}</div>
+
+            <div *ngFor="let tag of event.tags" class="tag"><ion-icon name="pricetag"></ion-icon> {{ tag }}</div>
         </div>
 
 

@@ -216,6 +216,11 @@ a {
         color: var(--ion-color-primary);
     }
 }
+.tags ion-icon {
+    height: 25px;
+    width: 25px;
+    margin-bottom: -7px;
+}
 
 .badges {
     margin-bottom: 10px;
