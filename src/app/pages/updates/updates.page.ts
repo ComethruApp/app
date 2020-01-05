@@ -10,7 +10,7 @@ import { Update, Event_ } from '../../services/api/models';
 })
 export class UpdatesPage implements OnInit {
     eventId: number;
-    event: Event = null;
+    event: Event_ = null;
     updates: Update[] = null;
 
     constructor(

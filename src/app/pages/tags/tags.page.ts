@@ -11,6 +11,7 @@ import { User, Event_ } from '../../services/api/models';
 export class TagsPage implements OnInit {
     id: number;
     searchedTags: string[] = null;
+    event: Event_ = null;
     tags: string[] = null;
 
     constructor(
@@ -25,6 +26,7 @@ export class TagsPage implements OnInit {
 
     async getData() {
         this.api.getEvent(this.id).subscribe(event => {
+            this.event = event;
             this.tags = event.tags;
         });
     }
