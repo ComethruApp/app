@@ -202,17 +202,16 @@ a {
 }
 .tags .tag {
     background: var(--ion-background-color-tint);
-    color: var(--ion-color-primary);
-    &:nth-child(4n+1) {
+    &:nth-child(4n+2) {
         color: var(--ion-color-success);
     }
-    &:nth-child(4n+2) {
+    &:nth-child(4n+3) {
         color: var(--ion-color-warning);
     }
-    &:nth-child(4n+3) {
+    &:nth-child(4n+4) {
         color: var(--ion-color-danger);
     }
-    &:nth-child(4n+4) {
+    &:nth-child(4n+5) {
         color: var(--ion-color-primary);
     }
 }
@@ -220,9 +219,6 @@ a {
     height: 25px;
     width: 25px;
     margin-bottom: -6px;
-}
-.tags .tag ion-icon {
-    margin-bottom: -7px;
 }
 
 .badges {
