@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 
 import { APIService } from '../../services/api/api.service';
-import { User, Event_ } from '../../services/api/models';
+import { Event_, User, Update } from '../../services/api/models';
 
 @Component({
     selector: 'app-event',
@@ -14,6 +14,7 @@ export class EventPage implements OnInit {
     id: number;
     event: Event_ = null;
     friends: User[] = null;
+    updates: Update[] = null;
     hasYCC: boolean = false;
 
     constructor(
@@ -37,6 +38,9 @@ export class EventPage implements OnInit {
         });
         this.api.getEventFriends(this.id).subscribe(friends => {
             this.friends = friends;
+        });
+        this.api.getUpdates(this.id).subscribe(updates => {
+            this.updates = updates;
         });
     }
 
