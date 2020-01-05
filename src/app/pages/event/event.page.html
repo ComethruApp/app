@@ -6,7 +6,7 @@
     </ion-refresher>
     <app-loader *ngIf="!event"></app-loader>
     <div *ngIf="event">
-        <img class="badge" src="assets/imgs/ycc.png">
+        <img class="badge" *ngIf="hasYCC" src="assets/imgs/ycc.png">
         <h1>
             <strong><em>{{ event.name }}</em></strong>
         </h1>
