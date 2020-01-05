@@ -63,16 +63,15 @@
         </ion-grid>
 
         <h3 *ngIf="updates && updates.length > 0">Updates</h3>
-        <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
+        <ion-grid class="ion-no-padding updates">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates">
                 <ion-col size="2" class="ion-no-padding">
-                    <app-avatar [user]="user"></app-avatar>
+                    <app-avatar [user]="update.user"></app-avatar>
                 </ion-col>
-                <ion-col size="10" (click)="openUser(user.id)">
+                <ion-col size="10" (click)="openUser(update.user.id)">
                     <div>
-                        <h2>
-                            {{ user.name }}
-                        </h2>
+                        <h2>{{ update.user.name }}</h2>
+                        {{ update.body }}
                     </div>
                 </ion-col>
             </ion-row>

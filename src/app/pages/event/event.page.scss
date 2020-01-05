@@ -1,11 +1,13 @@
 .status {
     height: 150px;
-    margin-bottom: 20px;
-}
-.friends {
     margin-bottom: 10px;
 }
-// In friends list
-h2 {
+.friends, .update {
+    margin-bottom: 10px;
+}
+.friends h2 {
     margin-top: 8px;
+}
+.update {
+
 }
