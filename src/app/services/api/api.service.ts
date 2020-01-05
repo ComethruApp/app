@@ -247,7 +247,7 @@ export class APIService {
         .map(response => response.map(review => new Review(review)));
     }
 
-    getUpdates(eventId: number): Observable<Update> {
+    getUpdates(eventId: number): Observable<Update[]> {
         return this.get('/events/' + eventId + '/updates')
         .map(response => response.map(update => new Update(update)));
     }

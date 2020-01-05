@@ -38,11 +38,10 @@ export class FormUpdatePage implements OnInit {
             this.getData();
         }
         this.resetFields();
-        this.getAddress();
     }
 
     async getData(){
-        this.api.getUpdate(this.id).subscribe(update => {
+        this.api.getUpdate(this.eventId, this.id).subscribe(update => {
             this.update = update;
         });
     }
