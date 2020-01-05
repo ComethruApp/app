@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
-import { Review } from '../../services/api/models';
+import { Update } from '../../services/api/models';
 
 @Component({
-    selector: 'app-reviews',
-    templateUrl: './reviews.page.html',
-    styleUrls: ['./reviews.page.scss'],
+    selector: 'app-updates',
+    templateUrl: './updates.page.html',
+    styleUrls: ['./updates.page.scss'],
 })
-export class ReviewsPage implements OnInit {
+export class UpdatesPage implements OnInit {
     id: number;
-    reviews: Review[] = null;
+    updates: Update[] = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -23,8 +23,8 @@ export class ReviewsPage implements OnInit {
     }
 
     async getData() {
-        this.api.getEventReviews(this.id).subscribe(reviews => {
-            this.reviews = reviews;
+        this.api.getEventUpdates(this.id).subscribe(updates => {
+            this.updates = updates;
         });
     }
 
