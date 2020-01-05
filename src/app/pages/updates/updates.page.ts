@@ -23,7 +23,7 @@ export class UpdatesPage implements OnInit {
     }
 
     async getData() {
-        this.api.getEventUpdates(this.id).subscribe(updates => {
+        this.api.getUpdates(this.id).subscribe(updates => {
             this.updates = updates;
         });
     }

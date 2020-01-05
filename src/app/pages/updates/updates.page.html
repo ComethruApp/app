@@ -11,9 +11,6 @@
     <ion-grid *ngIf="updates" class="ion-no-padding">
         <ion-row *ngFor="let update of updates">
             <ion-col size="2" class="ion-no-padding">
-                <ion-icon *ngIf="update.positive && !update.negative" class="positive" name="thumbs-up"></ion-icon>
-                <ion-icon *ngIf="!update.positive && !update.negative" class="neutral" name="star-half"></ion-icon>
-                <ion-icon *ngIf="!update.positive && update.negative" class="negative" name="thumbs-down"></ion-icon>
             </ion-col>
             <ion-col size="10" class="ion-no-padding">
                 {{ update.body }}
