@@ -18,5 +18,9 @@
             </ion-row>
         </ion-grid>
         {{ update.body }}
+        <ion-button *ngIf="event && event.mine" size="large" expand="block" (click)="openFormUpdate()">
+            <ion-icon name="create"></ion-icon>
+            Edit update
+        </ion-button>
     </div>
 </ion-content>

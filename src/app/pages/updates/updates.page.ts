@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
-import { Update } from '../../services/api/models';
+import { Update, Event_ } from '../../services/api/models';
 
 @Component({
     selector: 'app-updates',
@@ -27,7 +27,6 @@ export class UpdatesPage implements OnInit {
     async getData() {
         this.api.getEvent(this.eventId).subscribe(event => {
             this.event = event;
-            console.log(this.event);
         });
         this.api.getUpdates(this.eventId).subscribe(updates => {
             this.updates = updates;

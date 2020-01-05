@@ -8,9 +8,11 @@
     <div *ngIf="updates && updates.length == 0" class="empty-list">
         No updates yet.
     </div>
-    <ion-button *ngIf="event && event.mine" size="large" expand="block" (click)="openFormUpdate()">
-        <ion-icon name="create"></ion-icon>
-        Write update
-    </ion-button>
+    <div *ngIf="event && event.mine">
+        <ion-button size="large" expand="block" (click)="openFormUpdate()">
+            <ion-icon name="create"></ion-icon>
+            Write update
+        </ion-button>
+    </div>
     <app-update-list [updates]="updates"></app-update-list>
 </ion-content>

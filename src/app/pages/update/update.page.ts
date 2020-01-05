@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
-import { Update } from '../../services/api/models';
+import { Update, Event_ } from '../../services/api/models';
 
 @Component({
     selector: 'app-update',
@@ -10,6 +10,7 @@ import { Update } from '../../services/api/models';
 })
 export class UpdatePage implements OnInit {
     eventId: number;
+    event: Event_ = null;
     id: number;
     update: Update = null;
 
@@ -26,6 +27,9 @@ export class UpdatePage implements OnInit {
     }
 
     async getData() {
+        this.api.getEvent(this.eventId).subscribe(event => {
+            this.event = event;
+        });
         this.api.getUpdate(this.eventId, this.id).subscribe(update => {
             this.update = update;
         });
@@ -37,5 +41,9 @@ export class UpdatePage implements OnInit {
 
     openUser(userId: number) {
         this.router.navigate(['/user/' + userId]);
+    }
+
+    openFormUpdate() {
+        this.router.navigate(['/event/' + this.eventId + '/form-update/' + this.id]);
     }
 }
