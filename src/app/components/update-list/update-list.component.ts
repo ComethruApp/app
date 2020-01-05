@@ -18,6 +18,7 @@ export class UpdateListComponent implements OnInit {
     ngOnInit() {}
 
     openUser(userId: number) {
+        console.log(this.updates);
         this.router.navigate(['/user/' + userId]);
     }
 

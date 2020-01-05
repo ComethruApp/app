@@ -62,7 +62,7 @@
             </ion-row>
         </ion-grid>
 
-        <h3 *ngIf="updates && updates.length > 0">Updates</h3>
+        <h3 *ngIf="updates && updates.length > 0" (click)="openUpdates()">Updates</h3>
         <ion-grid class="ion-no-padding updates">
             <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates" (click)="openUpdate(update.id)">
                 <ion-col size="2" class="ion-no-padding">

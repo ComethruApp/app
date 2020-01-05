@@ -1,4 +1,4 @@
-<app-header [title]="update ? 'Update on ' + update.event.name : ''" [back]="true"></app-header>
+<app-header title="Update" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

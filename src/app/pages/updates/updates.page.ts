@@ -9,7 +9,7 @@ import { Update } from '../../services/api/models';
     styleUrls: ['./updates.page.scss'],
 })
 export class UpdatesPage implements OnInit {
-    id: number;
+    eventId: number;
     updates: Update[] = null;
 
     constructor(
@@ -18,12 +18,12 @@ export class UpdatesPage implements OnInit {
     ) { }
 
     async ngOnInit() {
-        this.id = parseInt(this.route.snapshot.paramMap.get('id'));
+        this.eventId = parseInt(this.route.snapshot.paramMap.get('eventId'));
         this.getData();
     }
 
     async getData() {
-        this.api.getUpdates(this.id).subscribe(updates => {
+        this.api.getUpdates(this.eventId).subscribe(updates => {
             this.updates = updates;
         });
     }
