@@ -8,7 +8,7 @@ import { Review } from '../../services/api/models';
     templateUrl: './update.page.html',
     styleUrls: ['./update.page.scss'],
 })
-export class ReviewsPage implements OnInit {
+export class UpdatePage implements OnInit {
     id: number;
     update: Review[] = null;
 

@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UpdatePage } from './reviews.page';
+import { UpdatePage } from './update.page';
 
 import { ComponentsModule } from '../../components/components.module';
 
