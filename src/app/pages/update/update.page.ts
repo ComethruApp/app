@@ -36,5 +36,4 @@ export class ReviewsPage implements OnInit {
     openUser(userId: number) {
         this.router.navigate(['/user/' + userId]);
     }
-
 }
