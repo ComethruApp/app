@@ -43,9 +43,11 @@ export class EventPage implements OnInit {
         this.api.getEventFriends(this.id).subscribe(friends => {
             this.friends = friends;
         });
+        /*
         this.api.getUpdates(this.id).subscribe(updates => {
             this.updates = updates;
         });
+        */
     }
 
     doRefresh(event) {
