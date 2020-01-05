@@ -64,6 +64,10 @@ ion-title.md {
     padding-left: 0;
 }
 ion-title.ios {
+    text-align: left;
+    padding-left: 45px;
+    // Correct for font offset
+    padding-top: 5px;
     font-size: 24px;
 }
 
