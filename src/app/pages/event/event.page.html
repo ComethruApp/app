@@ -20,7 +20,6 @@
             <div *ngFor="let tag of event.tags" class="tag">{{ tag }}</div>
         </div>
 
-
         <p class="description">{{ event.description }}</p>
         <p *ngIf="hasAlcohol">You must be over 21 years of age to consume alcohol in the state of Connecticut.</p>
         <p>
@@ -65,11 +64,11 @@
 
         <h3 *ngIf="updates && updates.length > 0">Updates</h3>
         <ion-grid class="ion-no-padding updates">
-            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates" (click)="openUpdate(update.id)">
                 <ion-col size="2" class="ion-no-padding">
-                    <app-avatar [user]="update.user"></app-avatar>
+                    <app-avatar [user]="update.user" (click)="openUser(update.user.id)"></app-avatar>
                 </ion-col>
-                <ion-col size="10" (click)="openUser(update.user.id)">
+                <ion-col size="10">
                     <div>
                         <h2>{{ update.user.name }}</h2>
                         {{ update.body }}

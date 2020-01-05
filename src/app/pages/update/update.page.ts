@@ -4,13 +4,13 @@ import { APIService } from '../../services/api/api.service';
 import { Review } from '../../services/api/models';
 
 @Component({
-    selector: 'app-reviews',
-    templateUrl: './reviews.page.html',
-    styleUrls: ['./reviews.page.scss'],
+    selector: 'app-update',
+    templateUrl: './update.page.html',
+    styleUrls: ['./update.page.scss'],
 })
 export class ReviewsPage implements OnInit {
     id: number;
-    reviews: Review[] = null;
+    update: Review[] = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -24,12 +24,17 @@ export class ReviewsPage implements OnInit {
     }
 
     async getData() {
-        this.api.getUpdate(this.eventId, this.id).subscribe(reviews => {
-            this.reviews = reviews;
+        this.api.getUpdate(this.eventId, this.id).subscribe(update => {
+            this.update = update;
         });
     }
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
     }
+
+    openUser(userId: number) {
+        this.router.navigate(['/user/' + userId]);
+    }
+
 }
