@@ -62,6 +62,22 @@
             </ion-row>
         </ion-grid>
 
+        <h3 *ngIf="updates && updates.length > 0">Updates</h3>
+        <ion-grid class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
+                <ion-col size="2" class="ion-no-padding">
+                    <app-avatar [user]="user"></app-avatar>
+                </ion-col>
+                <ion-col size="10" (click)="openUser(user.id)">
+                    <div>
+                        <h2>
+                            {{ user.name }}
+                        </h2>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
         <ion-button *ngIf="event.happening_now && !event.open && event.invited_me" expand="block" size="large" color="success" routerLink="/ticket/{{ id }}">View ticket</ion-button>
 
         <div class="reviewer">
