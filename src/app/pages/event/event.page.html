@@ -11,7 +11,7 @@
             <strong><em>{{ event.name }}</em></strong>
         </h1>
         <div>
-            <div class="tag"><ion-icon name="pin"></ion-icon> {{ event.location }}</div>
+            <div class="tag"><a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
             <div class="tag"><ion-icon name="clock"></ion-icon> {{ formatTime(event.time) }}</div>
             <div class="tag"><ion-icon name="calendar"></ion-icon> {{ formatDate(event.time) }}</div>
         </div>
