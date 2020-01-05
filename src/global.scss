@@ -22,8 +22,8 @@ ion-app {
     margin-top: env(safe-area-inset-top); // for iOS 11.1
 }
 app-map {
-    top: calc(-1 * constant(safe-area-inset-top)); // for iOS 11.2
-    top: calc(-1 * env(safe-area-inset-top)); // for iOS 11.1
+    top: calc(-1 * constant(safe-area-inset-top)) !important; // for iOS 11.2
+    top: calc(-1 * env(safe-area-inset-top)) !important; // for iOS 11.1
 }
 app-map, app-map ion-content, app-map ion-content > * {
     height: calc(100vh + constant(safe-area-inset-top));
