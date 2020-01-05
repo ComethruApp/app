@@ -31,7 +31,7 @@ export class FormUpdatePage implements OnInit {
     ) { }
 
     async ngOnInit() {
-        this.eventId = parseInt(this.route.snapshot.paramMap.get('id'));
+        this.eventId = parseInt(this.route.snapshot.paramMap.get('eventId'));
         this.id = parseInt(this.route.snapshot.paramMap.get('id')) || null;
         if (this.id) {
             this.editing = true;
