@@ -62,13 +62,15 @@ export class SettingsPage implements OnInit {
             })
         })
         .catch(error => {
-            this.alertCtrl.create({
-                header: 'Facebook login failed.',
-                message: error,
-                buttons: [
-                    'OK',
-                ]
-            }).then(alert => alert.present());
+            if (error !== 'User cancelled.') {
+                this.alertCtrl.create({
+                    header: 'Facebook login failed.',
+                    message: error,
+                    buttons: [
+                        'OK',
+                    ]
+                }).then(alert => alert.present());
+            }
         });
     }
 
