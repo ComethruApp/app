@@ -63,6 +63,7 @@ export class AppComponent {
                 },
             ],
         });
+        await alert.present();
     }
 
     initializeApp() {

@@ -59,7 +59,16 @@ export class SettingsPage implements OnInit {
                 this.api.facebookConnect(userId, user.name).subscribe(response => {
                     this.getData();
                 });
-            });
+            })
+        })
+        .catch(error => {
+            this.alertCtrl.create({
+                header: 'Facebook login failed.',
+                message: error,
+                buttons: [
+                    'OK',
+                ]
+            }).then(alert => alert.present());
         });
     }
 
