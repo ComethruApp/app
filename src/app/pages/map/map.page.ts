@@ -34,9 +34,7 @@ export class MapPage implements OnInit {
     ) { }
 
     async ngOnInit() {
-
         this.loadMap();
-
     }
 
     loadMap() {

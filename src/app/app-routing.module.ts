@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'event/:eventId/form-update', loadChildren: './pages/form-update/form-update.module#FormUpdateModule' },
   { path: 'event/:eventId/form-update/:id', loadChildren: './pages/form-update/form-update.module#FormUpdateModule' },
+  { path: 'event/:eventId/updates', loadChildren: './pages/updates/updates.module#UpdatesModule' },
+  { path: 'event/:eventId/updates/:id', loadChildren: './pages/update/update.module#UpdateModule' },
   { path: 'invites/:id', loadChildren: './pages/invites/invites.module#InvitesPageModule' },
   { path: 'hosts/:id', loadChildren: './pages/hosts/hosts.module#HostsPageModule' },
   { path: 'tags/:id', loadChildren: './pages/tags/tags.module#TagsPageModule' },

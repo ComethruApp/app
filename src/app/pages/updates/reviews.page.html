@@ -1,0 +1,23 @@
+<app-header title="Reviews" [back]="true"></app-header>
+
+<ion-content class="ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <app-loader [showMessage]="false"></app-loader>
+    </ion-refresher>
+    <app-loader *ngIf="!reviews"></app-loader>
+    <div *ngIf="reviews && reviews.length == 0" class="empty-list">
+        No reviews yet.
+    </div>
+    <ion-grid *ngIf="reviews" class="ion-no-padding">
+        <ion-row *ngFor="let review of reviews">
+            <ion-col size="2" class="ion-no-padding">
+                <ion-icon *ngIf="review.positive && !review.negative" class="positive" name="thumbs-up"></ion-icon>
+                <ion-icon *ngIf="!review.positive && !review.negative" class="neutral" name="star-half"></ion-icon>
+                <ion-icon *ngIf="!review.positive && review.negative" class="negative" name="thumbs-down"></ion-icon>
+            </ion-col>
+            <ion-col size="10" class="ion-no-padding">
+                {{ review.body }}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
