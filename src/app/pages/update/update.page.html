@@ -8,7 +8,7 @@
 
     <div *ngIf="update">
         <ion-grid class="ion-no-padding">
-            <ion-row (click)="updateUser(update.user.id)">
+            <ion-row (click)="openUser(update.user.id)">
                 <ion-col size="2" class="ion-no-padding">
                     <app-avatar [user]="update.user"></app-avatar>
                 </ion-col>
