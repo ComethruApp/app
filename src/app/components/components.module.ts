@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { UserListComponent } from './user-list/user-list.component';
+import { UpdateListComponent } from './update-list/update-list.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { TagButtonsComponent } from './tag-buttons/tag-buttons.component';
 import { FriendButtonsComponent } from './friend-buttons/friend-buttons.component';
@@ -20,6 +21,7 @@ import { ReviewerComponent } from './reviewer/reviewer.component';
 @NgModule({
     declarations: [
         UserListComponent,
+        UpdateListComponent,
         TagListComponent,
         TagButtonsComponent,
         FriendButtonsComponent,
@@ -40,6 +42,7 @@ import { ReviewerComponent } from './reviewer/reviewer.component';
     ],
     exports: [
         UserListComponent,
+        UpdateListComponent,
         TagListComponent,
         TagButtonsComponent,
         FriendButtonsComponent,
