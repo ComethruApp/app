@@ -42,8 +42,8 @@ export class AppComponent {
             this.showAlert(title, msg, additionalData.task);
         });
         this.oneSignal.handleNotificationOpened().subscribe(data => {
-            let additionalData = data.notification.payload.additionalData;
-            this.showAlert('Notification opened', 'You already read this', additionalData.task);
+            let task = data.notification.payload.additionalData.task;
+            this.router.navigate(['/' + task.join('/')]);
         });
         this.oneSignal.endInit();
     }
