@@ -1,4 +1,4 @@
-<app-header title="Updates" [back]="true"></app-header>
+<app-header [title]="event ? 'Updates for ' + event.name : ''" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -8,5 +8,9 @@
     <div *ngIf="updates && updates.length == 0" class="empty-list">
         No updates yet.
     </div>
+    <ion-button *ngIf="event && event.mine" size="large" expand="block" (click)="openFormUpdate()">
+        <ion-icon name="create"></ion-icon>
+        Write update
+    </ion-button>
     <app-update-list [updates]="updates"></app-update-list>
 </ion-content>

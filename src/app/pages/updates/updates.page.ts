@@ -10,10 +10,12 @@ import { Update } from '../../services/api/models';
 })
 export class UpdatesPage implements OnInit {
     eventId: number;
+    event: Event = null;
     updates: Update[] = null;
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private api: APIService,
     ) { }
 
@@ -23,6 +25,10 @@ export class UpdatesPage implements OnInit {
     }
 
     async getData() {
+        this.api.getEvent(this.eventId).subscribe(event => {
+            this.event = event;
+            console.log(this.event);
+        });
         this.api.getUpdates(this.eventId).subscribe(updates => {
             this.updates = updates;
         });
@@ -30,5 +36,9 @@ export class UpdatesPage implements OnInit {
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
+    }
+
+    openFormUpdate() {
+        this.router.navigate(['/event/' + this.eventId + '/form-update']);
     }
 }
