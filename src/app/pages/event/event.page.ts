@@ -64,10 +64,10 @@ export class EventPage implements OnInit {
     }
 
     openUpdates() {
-        this.router.navigate(['/event/' + this.eventId + '/updates']);
+        this.router.navigate(['/event/' + this.id + '/updates']);
     }
     openUpdate(updateId: number) {
-        this.router.navigate(['/event/' + this.eventId + '/updates/' + updateId]);
+        this.router.navigate(['/event/' + this.id + '/updates/' + updateId]);
     }
 
     openInvites() {

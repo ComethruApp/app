@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Update } from '../../services/api/models';
@@ -9,7 +9,7 @@ import { Update } from '../../services/api/models';
     styleUrls: ['./update-list.component.scss'],
 })
 export class UpdateListComponent implements OnInit {
-    @Input() users: User[];
+    @Input() updates: Update[];
 
     constructor(
         private router: Router,
@@ -21,7 +21,7 @@ export class UpdateListComponent implements OnInit {
         this.router.navigate(['/user/' + userId]);
     }
 
-    openUpdate(updateId: number) {
-        this.router.navigate(['/event/' + this.eventId + '/updates/' + updateId]);
+    openUpdate(eventId: number, updateId: number) {
+        this.router.navigate(['/event/' + eventId + '/updates/' + updateId]);
     }
 }

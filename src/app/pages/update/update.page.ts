@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
-import { Review } from '../../services/api/models';
+import { Update } from '../../services/api/models';
 
 @Component({
     selector: 'app-update',
@@ -9,11 +9,13 @@ import { Review } from '../../services/api/models';
     styleUrls: ['./update.page.scss'],
 })
 export class UpdatePage implements OnInit {
+    eventId: number;
     id: number;
-    update: Review[] = null;
+    update: Update = null;
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private api: APIService,
     ) { }
 

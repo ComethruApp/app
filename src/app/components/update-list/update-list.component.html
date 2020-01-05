@@ -1,5 +1,5 @@
 <ion-grid class="ion-no-padding updates">
-    <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates" (click)="openUpdate(update.id)">
+    <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let update of updates" (click)="openUpdate(update.event.id, update.id)">
         <ion-col size="2" class="ion-no-padding">
             <app-avatar [user]="update.user" (click)="openUser(update.user.id)"></app-avatar>
         </ion-col>
