@@ -8,13 +8,5 @@
     <div *ngIf="updates && updates.length == 0" class="empty-list">
         No updates yet.
     </div>
-    <ion-grid *ngIf="updates" class="ion-no-padding">
-        <ion-row *ngFor="let update of updates">
-            <ion-col size="2" class="ion-no-padding">
-            </ion-col>
-            <ion-col size="10" class="ion-no-padding">
-                {{ update.body }}
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <app-update-list [updates]="updates"></app-update-list>
 </ion-content>
