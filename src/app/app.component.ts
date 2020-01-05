@@ -43,7 +43,9 @@ export class AppComponent {
         });
         this.oneSignal.handleNotificationOpened().subscribe(data => {
             let task = data.notification.payload.additionalData.task;
-            this.router.navigate(['/' + task.join('/')]);
+            if (task) {
+                this.router.navigate(['/' + task.join('/')]);
+            }
         });
         this.oneSignal.endInit();
     }
