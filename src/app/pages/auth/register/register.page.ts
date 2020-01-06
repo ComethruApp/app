@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../../../services/auth/auth.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { PasswordValidator } from '../../../validators/password.validator';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
@@ -36,9 +35,6 @@ export class RegisterPage implements OnInit {
                 Validators.required,
                 Validators.minLength(5),
             ])),
-            confirm_password: new FormControl('', Validators.required),
-        }, (formGroup: FormGroup) => {
-             return PasswordValidator.areEqual(formGroup);
         });
     }
 
