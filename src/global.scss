@@ -120,7 +120,7 @@ ion-item.search ion-icon {
     border: none;
 }
 // Non-selected datetime picker options
-.picker-opt {
+.md .picker-opt:not(.picker-opt-selected) {
     color: var(--ion-color-medium);
 }
 .sc-ion-picker-ios.picker-wrapper,
