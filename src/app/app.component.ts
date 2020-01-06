@@ -31,34 +31,37 @@ export class AppComponent {
         this.initializeApp();
     }
 
+    completeNotificationTask(task) {
+        if (task) {
+            this.router.navigate(['/' + task.join('/')]);
+        }
+    }
+
     setupPush() {
         this.oneSignal.startInit(Constants.ONESIGNAL_APPID, Constants.GOOGLE_PROJECT_NUMBER);
         // TODO also try .InAppAlert
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
         this.oneSignal.handleNotificationReceived().subscribe(data => {
-            let title = data.payload.title;
-            let msg = data.payload.body;
-            let additionalData = data.payload.additionalData;
-            this.showAlert(title, msg, additionalData.task);
+            this.showAlert(data.payload.title,
+                           data.payload.body,
+                           data.payload.additionalData.task);
         });
         this.oneSignal.handleNotificationOpened().subscribe(data => {
             let task = data.notification.payload.additionalData.task;
-            if (task) {
-                this.router.navigate(['/' + task.join('/')]);
-            }
+            this.completeNotificationTask(task);
         });
         this.oneSignal.endInit();
     }
 
-    async showAlert(title, msg, task) {
+    async showAlert(title, message, task) {
         const alert = await this.alertCtrl.create({
             header: title,
-            subHeader: msg,
+            subHeader: message,
             buttons: [
                 {
-                    text: 'Action: ' + task,
+                    text: 'OK',
                     handler: () => {
-
+                        this.completeNotificationTask(task);
                     },
                 },
             ],
