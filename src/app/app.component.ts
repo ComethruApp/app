@@ -60,6 +60,9 @@ export class AppComponent {
             buttons: [
                 {
                     text: 'OK',
+                },
+                {
+                    text: 'View',
                     handler: () => {
                         this.completeNotificationTask(task);
                     },
