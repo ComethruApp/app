@@ -5,6 +5,7 @@
     <app-loader *ngIf="editing && !event"></app-loader>
     <div class="{{ (editing && !event) ? 'hidden' : '' }}">
         <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
+            <h1 *ngIf="!editing">HOST</h1>
             <!--
             <ion-button size="large" expand="block" *ngIf="!editing" (click)="useFacebook()">
                 <ion-icon name="logo-facebook"></ion-icon>
@@ -12,7 +13,7 @@
             </ion-button>
             -->
             <ion-item lines="none">
-                <ion-input placeholder="Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
+                <ion-input placeholder="Event Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
                            maxlength="64" [value]="event ? event.name : ''"></ion-input>
             </ion-item>
 
@@ -34,12 +35,12 @@
             </ion-item>
 
             <ion-item lines="none">
-                <ion-input placeholder="Capacity" type="number" formControlName="capacity"
+                <ion-input placeholder="Venue capacity (for calculating crowding)" type="number" formControlName="capacity"
                            [value]="event ? event.capacity : null"></ion-input>
             </ion-item>
 
             <ion-item lines="none">
-                <ion-label>Start time</ion-label>
+                <ion-label>Start time (required)</ion-label>
                 <ion-datetime
                     formControlName="time"
                     displayFormat="MMM DD, h:mma"
