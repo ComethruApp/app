@@ -44,9 +44,10 @@ export class FormEventPage implements OnInit {
         if (this.id) {
             this.editing = true;
             this.getData();
+        } else {
+            this.getAddress();
         }
         this.resetFields();
-        this.getAddress();
     }
 
     cleanAddress(value: string, punctuation: string) {
