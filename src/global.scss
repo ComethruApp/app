@@ -50,6 +50,9 @@ ion-item.toggle-container {
     --background: var(--ion-background-color);
     //--padding-start: 0;
 }
+ion-item .big {
+    font-size: 25px;
+}
 // Remove white background when autocomplete is used on Android
 // Yes you really do have to do all this nonsense
 :-webkit-autofill,

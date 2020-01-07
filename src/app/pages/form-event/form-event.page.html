@@ -14,7 +14,7 @@
             -->
             <ion-item lines="none">
                 <ion-input placeholder="Event Name" type="text" formControlName="name" autocomplete="on" autocorrect="on"
-                           maxlength="64" [value]="event ? event.name : ''"></ion-input>
+                           maxlength="64" [value]="event ? event.name : ''" class="big"></ion-input>
             </ion-item>
 
             <ion-item lines="none">
@@ -35,7 +35,7 @@
             </ion-item>
 
             <ion-item lines="none">
-                <ion-input placeholder="Venue capacity (for calculating crowding)" type="number" formControlName="capacity"
+                <ion-input placeholder="Max capacity" type="number" formControlName="capacity"
                            [value]="event ? event.capacity : null"></ion-input>
             </ion-item>
 
