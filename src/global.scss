@@ -104,7 +104,9 @@ ion-item.search {
 ion-item.search ion-icon {
     height: 30px;
     width: 30px;
-    margin-right: 4px;
+}
+ion-item.search ion-input {
+    margin: 0 4px;
 }
 
 .loading-wrapper.sc-ion-loading-ios,
