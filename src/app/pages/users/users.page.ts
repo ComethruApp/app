@@ -46,11 +46,19 @@ export class UsersPage implements OnInit {
     }
 
     async search(query) {
-        if (query) {
-            this.api.searchUsers(query).subscribe(users => {
-                this.searchResults = users;
+        this.hasTyped = Boolean(query);
+        if (this.hasTyped) {
+            if (query.length >= 3) {
+                this.searchResults = null;
                 this.searched = true;
-            });
+                this.api.searchUsers(query).subscribe(users => {
+                    this.searchResults = users;
+                    this.searched = true;
+                });
+            } else {
+                this.searchResults = [];
+                this.searched = true;
+            }
         } else {
             this.searchResults = [];
             this.searched = false;
