@@ -39,12 +39,14 @@ export class AppComponent {
 
     setupPush() {
         this.oneSignal.startInit(Constants.ONESIGNAL_APPID, Constants.GOOGLE_PROJECT_NUMBER);
-        // TODO also try .InAppAlert
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
         this.oneSignal.handleNotificationReceived().subscribe(data => {
+            // TODO: add toast
+            /*
             this.showAlert(data.payload.title,
                            data.payload.body,
                            data.payload.additionalData.task);
+             */
         });
         this.oneSignal.handleNotificationOpened().subscribe(data => {
             let task = data.notification.payload.additionalData.task;
