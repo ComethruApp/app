@@ -105,6 +105,9 @@ ion-item.search ion-icon {
     height: 30px;
     width: 30px;
 }
+ion-item.search ion-icon:last-of-type {
+    margin-right: -5px;
+}
 ion-item.search ion-input {
     margin: 0 4px;
 }

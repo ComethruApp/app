@@ -7,7 +7,7 @@
     <ion-item lines="none" class="search">
         <ion-icon name="search"></ion-icon>
         <ion-input #searchbar type="text" autocomplete="off" autocorrect="off" placeholder="Search for someone..." (input)="search($event.target.value)"></ion-input>
-        <ion-icon name="close" *ngIf="searched"></ion-icon>
+        <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
     </ion-item>
     <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" emptyMessage="No results found."></app-user-list>
     <div *ngIf="!searched">

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput } from '@ionic/angular';
 import { APIService } from '../../services/api/api.service';
 import { User } from '../../services/api/models';
 
@@ -8,11 +9,17 @@ import { User } from '../../services/api/models';
     styleUrls: ['./users.page.scss'],
 })
 export class UsersPage implements OnInit {
+    @ViewChild(IonInput, {static: false}) searchbar: IonInput;
+
+    // Have they typed anything in search?
+    hasTyped: boolean = false;
+    // Is what they typed long enough to be searched for?
     searched: boolean = false;
     searchResults: User[] = null;
     requests: User[] = null;
     friends: User[] = null;
     facebookFriends: User[] = null;
+
 
     constructor(
         private api: APIService,
@@ -48,5 +55,12 @@ export class UsersPage implements OnInit {
             this.searchResults = [];
             this.searched = false;
         }
+    }
+
+    clearSearch() {
+        this.searchbar.value = '';
+        this.hasTyped = false;
+        this.searched = false;
+        this.searchResults = [];
     }
 }
