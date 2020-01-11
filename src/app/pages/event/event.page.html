@@ -84,8 +84,9 @@
         </div>
 
         <div>
-            <ion-button *ngIf="event.venmo" class="button" expand="block" size="large" (click)="openVenmo(event.venmo)">
-                Donate on Venmo
+            <ion-button *ngIf="event.venmo" class="button" expand="block" size="large" (click)="openVenmo(event.venmo)" color="venmo">
+                <img src="/assets/imgs/venmo.svg">
+                Donate
             </ion-button>
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
                 <ion-icon name="create"></ion-icon>
