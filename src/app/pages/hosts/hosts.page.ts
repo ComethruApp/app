@@ -55,4 +55,11 @@ export class HostsPage implements OnInit {
             this.searched = false;
         }
     }
+
+    clearSearch() {
+        this.searchbar.value = '';
+        this.searchedTags = [];
+        this.hasTyped = false;
+        this.searched = false;
+    }
 }
