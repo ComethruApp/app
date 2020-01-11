@@ -58,7 +58,7 @@ export class InvitesPage implements OnInit {
 
     clearSearch() {
         this.searchbar.value = '';
-        this.searchedTags = [];
+        this.searchResults = [];
         this.hasTyped = false;
         this.searched = false;
     }
