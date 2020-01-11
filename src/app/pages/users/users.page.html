@@ -9,7 +9,7 @@
         <ion-input #searchbar type="text" autocomplete="off" autocorrect="off" placeholder="Search for someone..." (input)="search($event.target.value)"></ion-input>
         <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
     </ion-item>
-    <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" [emptyMessage]="hasTyped ? 'Too many results! Narrow your search.' : 'No results found.'"></app-user-list>
+    <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" emptyMessage="No results found."></app-user-list>
     <div *ngIf="!searched">
         <div *ngIf="requests && requests.length > 0" class="list">
             <h3><ion-icon name="person-add"></ion-icon> Friend requests</h3>
