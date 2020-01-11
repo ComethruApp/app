@@ -12,9 +12,9 @@
                    (input)="searchUsers($event.target.value)"></ion-input>
         <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
     </ion-item>
-    <div *ngIf="searchResults">
+    <div *ngIf="searched">
         <h3>Search results</h3>
-        <app-user-list [users]="searchResults" [host]="true" [hosting]="false" [eventId]="id"></app-user-list>
+        <app-user-list [users]="searchResults" [host]="true" [hosting]="false" [eventId]="id" emptyMessage="No results found."></app-user-list>
     </div>
     <h3>Hosts</h3>
     <app-user-list [users]="hosts" [host]="true" [hosting]="true" [eventId]="id" emptyMessage="No hosts."></app-user-list>
