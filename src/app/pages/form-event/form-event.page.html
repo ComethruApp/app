@@ -77,6 +77,13 @@
                            [value]="event ? event.transitive_invites : false"></ion-toggle>
             </ion-item>
 
+            <ion-item lines="none">
+                @
+                <ion-input placeholder="Venmo for donations" type="text"
+                           formControlName="venmo" autocomplete="on" autocorrect="on"
+                           maxlength="100" [value]="event ? event.venmo : ''"></ion-input>
+            </ion-item>
+
             <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">
                 <ion-icon name="send"></ion-icon>
                 {{ editing ? 'Update' : 'Post' }}

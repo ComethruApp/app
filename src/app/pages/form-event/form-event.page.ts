@@ -99,6 +99,7 @@ export class FormEventPage implements OnInit {
             open: new FormControl(true),
             transitive_invites: new FormControl(false),
             capacity: new FormControl(0, Validators.required),
+            venmo: new FormControl(''),
         });
     }
 
