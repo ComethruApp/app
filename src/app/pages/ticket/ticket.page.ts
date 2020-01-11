@@ -53,13 +53,6 @@ export class TicketPage implements OnInit {
         });
     }
 
-    formatDay(date) {
-        return moment.utc(date).local().format('dddd');
-    }
-    formatDate(date) {
-        return moment.utc(date).local().format('h:mma')
-    }
-
     back() {
         this.location.back();
     }
