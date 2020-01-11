@@ -53,7 +53,6 @@ export class UsersPage implements OnInit {
                 this.searched = true;
                 this.api.searchUsers(query).subscribe(users => {
                     this.searchResults = users;
-                    this.searched = true;
                 });
             } else {
                 this.searchResults = [];
