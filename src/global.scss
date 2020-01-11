@@ -37,6 +37,7 @@ ion-header ion-toolbar:first-child {
 
 // Remove shadow under header
 .header-md::after { display: none; }
+ion-toolbar { --border-style: none; }
 // Remove shadow above tabs
 .footer-md::before { display: none; }
 ion-tab-bar { --border: none; }
