@@ -8,22 +8,27 @@ export class DatesService {
 
     constructor() { }
 
+    /* Convert from raw ISO-formatted UTC date into a date in local time that can be formatted. */
+    private process(date) {
+        return moment.utc(date).local();
+    }
+
     day(date) {
-        return moment.utc(date).local().format('dddd');
+        return this.process(date).format('dddd');
     }
     date(date) {
-        return moment.utc(date).local().format('M/D');
+        return this.process(date).format('M/D');
     }
     fullDate(date) {
-        return moment.utc(date).local().format('dddd, M/D');
+        return this.process(date).format('dddd, M/D');
     }
     time(date) {
-        return moment.utc(date).local().format('h:mm');
+        return this.process(date).format('h:mm');
     }
     fullTime(date) {
-        return moment.utc(date).local().format('h:mma');
+        return this.process(date).format('h:mma');
     }
     meridiem(date) {
-        return moment.utc(date).local().format('a');
+        return this.process(date).format('a');
     }
 }
