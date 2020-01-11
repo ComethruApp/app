@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_, User, Update } from '../../services/api/models';
+import { DatesService } from '../../services/dates/dates.service';
 
 @Component({
     selector: 'app-event',
@@ -23,6 +23,7 @@ export class EventPage implements OnInit {
         private router: Router,
 
         private api: APIService,
+        private dates: DatesService,
     ) { }
 
     async ngOnInit() {
@@ -52,13 +53,6 @@ export class EventPage implements OnInit {
 
     doRefresh(event) {
         this.getData().then(() => event.target.complete());
-    }
-
-    formatTime(date) {
-        return moment.utc(date).local().format('h:mma')
-    }
-    formatDate(date) {
-        return moment.utc(date).local().format('dddd, M/D');
     }
 
     openUser(userId: number) {

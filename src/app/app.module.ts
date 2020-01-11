@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthModule } from './services/auth/auth.module';
 import { APIService } from './services/api/api.service';
+import { DatesService } from './services/dates/dates.service';
 
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -52,6 +53,7 @@ import { ComponentsModule } from './components/components.module';
 
     OneSignal,
 
+    DatesService,
     APIService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
