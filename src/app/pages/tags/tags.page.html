@@ -12,7 +12,7 @@
                    (input)="searchTags($event.target.value)"></ion-input>
         <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
     </ion-item>
-    <div *ngIf="searchResults">
+    <div *ngIf="searched">
         <app-tag-list [eventId]="id" [tags]="searchResults" [current]="tags"></app-tag-list>
     </div>
     <h3>Tags</h3>
