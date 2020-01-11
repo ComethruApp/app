@@ -27,7 +27,7 @@
             <app-event-list [events]="currentEvents" emptyMessage="{{ user.is_me ? 'You have' : user.name + ' has' }} not hosted any events yet."></app-event-list>
         </div>
 
-        <h3>{{ isMe ? 'Hosted' : 'Hosting' }}</h3>
+        <h3 *ngIf="events && events.length > 0">{{ isMe ? 'Hosted' : 'Hosting' }}</h3>
         <app-event-list [events]="events" [emptyMessage]="user.is_me ? 'You have not hosted any events yet.' : user.name + ' is not hosting any events.'"></app-event-list>
 
         <div><a *ngIf="!(isMe || user.is_me)" (click)="block()"><u>Block {{ user.name }}</u></a></div>
