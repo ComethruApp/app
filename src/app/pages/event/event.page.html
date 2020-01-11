@@ -12,8 +12,8 @@
         </h1>
         <div>
             <div class="tag"><a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
-            <div class="tag"><ion-icon name="clock"></ion-icon> {{ dates.hour(event.time) }}</div>
-            <div class="tag"><ion-icon name="calendar"></ion-icon> {{ dates.date(event.time) }}</div>
+            <div class="tag"><ion-icon name="clock"></ion-icon> {{ dates.fullTime(event.time) }}</div>
+            <div class="tag"><ion-icon name="calendar"></ion-icon> {{ dates.fullDate(event.time) }}</div>
         </div>
         <div *ngIf="event.tags.length > 0" class="tags">
             <div class="tag"><ion-icon name="pricetag"></ion-icon></div>

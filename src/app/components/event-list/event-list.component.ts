@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
 
 import { Event_ } from '../../services/api/models';
+import { DatesService } from '../../services/dates/dates.service';
 
 @Component({
     selector: 'app-event-list',
@@ -15,6 +15,8 @@ export class EventListComponent implements OnInit {
 
     constructor(
         private router: Router,
+
+        private dates: DatesService,
     ) { }
 
     ngOnInit() {
@@ -22,18 +24,5 @@ export class EventListComponent implements OnInit {
 
     goToEvent(eventId) {
         this.router.navigate(['/event/' + eventId]);
-    }
-
-    formatDay(date) {
-        return moment.utc(date).local().format('dddd');
-    }
-    formatDate(date) {
-        return moment.utc(date).local().format('M/D')
-    }
-    formatTime(date) {
-        return moment.utc(date).local().format('h:mm')
-    }
-    formatAMPM(date) {
-        return moment.utc(date).local().format('a')
     }
 }
