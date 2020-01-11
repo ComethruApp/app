@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
@@ -9,8 +10,14 @@ import { User, Event_ } from '../../services/api/models';
     styleUrls: ['./hosts.page.scss'],
 })
 export class HostsPage implements OnInit {
+    @ViewChild(IonInput, {static: false}) searchbar: IonInput;
+
     id: number;
-    searchedUsers: User[] = null;
+    // Have they typed anything in search?
+    hasTyped: boolean = false;
+    // Is what they typed long enough to be searched for?
+    searched: boolean = false;
+    searchResults: User[] = null;
     hosts: User[] = null;
     event: Event_ = null;
 
@@ -31,12 +38,21 @@ export class HostsPage implements OnInit {
     }
 
     async searchUsers(query) {
-        if (query) {
-            this.api.searchUsersForEvent(this.id, query).subscribe(searchedUsers => {
-                this.searchedUsers = searchedUsers;
-            });
+        this.hasTyped = Boolean(query);
+        if (this.hasTyped) {
+            if (query.length >= 3) {
+                this.searchResults = null;
+                this.searched = true;
+                this.api.searchUsersForEvent(this.id, query).subscribe(searchResults => {
+                    this.searchResults = searchResults;
+                });
+            } else {
+                this.searchResults = [];
+                this.searched = true;
+            }
         } else {
-            this.searchedUsers = null;
+            this.searchResults = [];
+            this.searched = false;
         }
     }
 }

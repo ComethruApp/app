@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonInput } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
@@ -9,8 +10,11 @@ import { User, Event_ } from '../../services/api/models';
     styleUrls: ['./tags.page.scss'],
 })
 export class TagsPage implements OnInit {
+    @ViewChild(IonInput, {static: false}) searchbar: IonInput;
+
     id: number;
-    searchedTags: string[] = null;
+    searched: boolean = false;
+    searchResults: string[] = null;
     event: Event_ = null;
     tags: string[] = null;
 
@@ -33,14 +37,21 @@ export class TagsPage implements OnInit {
 
     async searchTags(query) {
         if (query) {
-            this.api.searchTags(query).subscribe(searchedTags => {
-                if (searchedTags.indexOf(query) === -1) {
-                    searchedTags.unshift(query);
+            this.api.searchTags(query).subscribe(searchResults => {
+                if (searchResults.indexOf(query) === -1) {
+                    searchResults.unshift(query);
                 }
-                this.searchedTags = searchedTags;
+                this.searchResults = searchResults;
             });
+            this.searched = true;
         } else {
-            this.searchedTags = null;
+            this.searchResults = null;
+            this.searched = false;
         }
+    }
+
+    clearSearch() {
+        this.searchbar.value = '';
+        this.searchResults = [];
     }
 }

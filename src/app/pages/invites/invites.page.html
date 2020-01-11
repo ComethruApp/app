@@ -3,16 +3,18 @@
 <ion-content class="ion-padding">
     <ion-item lines="none" class="search">
         <ion-icon name="search"></ion-icon>
-        <ion-input type="text"
+        <ion-input #searchbar
+                   type="text"
                    autocomplete="off"
                    autocorrect="off"
                    autofocus="true"
                    placeholder="Search for users..."
                    (input)="searchUsers($event.target.value)"></ion-input>
+        <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
     </ion-item>
-    <div *ngIf="searchedUsers">
+    <div *ngIf="searchResults">
         <h3>Search results</h3>
-        <app-user-list [users]="searchedUsers" [invite]="true" [invited]="false" [eventId]="id"></app-user-list>
+        <app-user-list [users]="searchResults" [invite]="true" [invited]="false" [eventId]="id"></app-user-list>
     </div>
     <h3>People invited</h3>
     <app-user-list [users]="invites" [invite]="true" [invited]="true" [eventId]="id" emptyMessage="Nobody invited yet."></app-user-list>
