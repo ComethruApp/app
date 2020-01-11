@@ -55,10 +55,10 @@ export class EventPage implements OnInit {
     }
 
     formatTime(date) {
-        return moment(date).format('h:mma')
+        return moment.utc(date).local().format('h:mma')
     }
     formatDate(date) {
-        return moment(date).format('dddd, M/D');
+        return moment.utc(date).local().format('dddd, M/D');
     }
 
     openUser(userId: number) {

@@ -25,15 +25,15 @@ export class EventListComponent implements OnInit {
     }
 
     formatDay(date) {
-        return moment(date).format('dddd');
+        return moment.utc(date).local().format('dddd');
     }
     formatDate(date) {
-        return moment(date).format('M/D')
+        return moment.utc(date).local().format('M/D')
     }
     formatTime(date) {
-        return moment(date).format('h:mm')
+        return moment.utc(date).local().format('h:mm')
     }
     formatAMPM(date) {
-        return moment(date).format('a')
+        return moment.utc(date).local().format('a')
     }
 }
