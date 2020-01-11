@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { APIService } from '../../services/api/api.service';
 import { Event_, User, Update } from '../../services/api/models';
@@ -21,6 +22,7 @@ export class EventPage implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
+        private iab: InAppBrowser,
 
         private api: APIService,
         private dates: DatesService,
@@ -72,6 +74,10 @@ export class EventPage implements OnInit {
 
     openReviews() {
         this.router.navigate(['/reviews/' + this.id]);
+    }
+
+    openVenmo(name) {
+        const browser = this.iab.create('https://venmo.com/' + name);
     }
 
     edit() {
