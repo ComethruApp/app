@@ -158,8 +158,7 @@ export class FormEventPage implements OnInit {
     }
 
     async upload(data) {
-        data.lat = this.lat;
-        data.lng = this.lng;
+        console.log(
         const loading = await this.loadingCtrl.create({
             message: (this.editing ? 'Updating' : 'Posting') + '...'
         });
@@ -178,6 +177,8 @@ export class FormEventPage implements OnInit {
         if (this.editing) {
             this.upload(data);
         } else {
+            data.lat = this.lat;
+            data.lng = this.lng;
             const alert = await this.alertCtrl.create({
                 header: 'Are you sure?',
                 message: data.name + ' will go live at your location.',
