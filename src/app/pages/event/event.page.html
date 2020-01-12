@@ -21,7 +21,7 @@
         </div>
 
         <p class="description">{{ event.description }}</p>
-        <p *ngIf="hasAlcohol">You must be over 21 years of age to consume alcohol in the state of Connecticut.</p>
+        <p *ngIf="event.alcohol">According to state law, you must be over 21 years of age to consume alcohol.</p>
         <p>
             <em>
                 Hosted by

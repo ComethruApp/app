@@ -17,7 +17,6 @@ export class EventPage implements OnInit {
     friends: User[] = null;
     updates: Update[] = null;
     hasYCC: boolean = false;
-    hasAlcohol: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -38,9 +37,6 @@ export class EventPage implements OnInit {
             this.event = event;
             if (event.tags.indexOf('ycc') !== -1) {
                 this.hasYCC = true;
-            }
-            if (event.tags.indexOf('alcohol') !== -1) {
-                this.hasAlcohol = true;
             }
         });
         this.api.getEventFriends(this.id).subscribe(friends => {
