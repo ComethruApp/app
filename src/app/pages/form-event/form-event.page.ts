@@ -158,7 +158,6 @@ export class FormEventPage implements OnInit {
     }
 
     async upload(data) {
-        console.log(
         const loading = await this.loadingCtrl.create({
             message: (this.editing ? 'Updating' : 'Posting') + '...'
         });
