@@ -92,6 +92,7 @@ export class FormEventPage implements OnInit {
         this.validations_form = this.formBuilder.group({
             name: new FormControl('', Validators.required),
             description: new FormControl('', Validators.required),
+            alcohol: new FormControl(false),
             location: new FormControl('', Validators.required),
             address: new FormControl(''),
             time: new FormControl('', Validators.required),
