@@ -16,7 +16,7 @@ export class EventListComponent implements OnInit {
     constructor(
         private router: Router,
 
-        private dates: DatesService,
+        public dates: DatesService,
     ) { }
 
     ngOnInit() {

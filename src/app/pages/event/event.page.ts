@@ -24,7 +24,7 @@ export class EventPage implements OnInit {
         private iab: InAppBrowser,
 
         private api: APIService,
-        private dates: DatesService,
+        public dates: DatesService,
     ) { }
 
     async ngOnInit() {
