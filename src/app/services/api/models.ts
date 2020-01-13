@@ -54,4 +54,6 @@ export class Event_ extends _Base {
     capacity: number;
     rating: number;
     tags: string[];
+    venmo: string;
+    alcohol: boolean;
 }
