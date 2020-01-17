@@ -66,6 +66,9 @@ export class APIService {
         return this.post('/location', {lat: lat, lng: lng});
     }
 
+    getStatus(): Observable<Object> {
+        return this.get('/status');
+    }
 
     // Users
     getUser(userId: number): Observable<User> {

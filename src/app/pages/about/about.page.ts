@@ -18,5 +18,4 @@ export class AboutPage implements OnInit {
             this.status = status;
         });
     }
-
 }
