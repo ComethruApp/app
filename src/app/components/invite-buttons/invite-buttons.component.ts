@@ -19,14 +19,16 @@ export class InviteButtonsComponent implements OnInit {
     }
 
     sendInvite() {
-        this.api.sendInvite(this.eventId, this.user.id).subscribe(response => {
-            this.user.invited = true;
+        this.user.invited = true;
+        this.api.sendInvite(this.eventId, this.user.id).subscribe(response => {}, error => {
+            this.user.invited = false;
         });
     }
 
     cancelInvite() {
-        this.api.cancelInvite(this.eventId, this.user.id).subscribe(response => {
-            this.user.invited = false;
+        this.user.invited = false;
+        this.api.cancelInvite(this.eventId, this.user.id).subscribe(response => {}, error => {
+            this.user.invited = true;
         });
     }
 }
