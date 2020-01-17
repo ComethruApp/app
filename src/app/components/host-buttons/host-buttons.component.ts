@@ -19,14 +19,16 @@ export class HostButtonsComponent implements OnInit {
     }
 
     add() {
-        this.api.addHost(this.eventId, this.user.id).subscribe(response => {
-            this.user.hosting = true;
+        this.user.hosting = true;
+        this.api.addHost(this.eventId, this.user.id).subscribe(response => {}, error => {
+            this.user.hosting = false;
         });
     }
 
     remove() {
-        this.api.removeHost(this.eventId, this.user.id).subscribe(response => {
-            this.user.hosting = false;
+        this.user.hosting = false;
+        this.api.removeHost(this.eventId, this.user.id).subscribe(response => {}, error => {
+            this.user.hosting = true;
         });
     }
 }
