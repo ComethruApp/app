@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'users', loadChildren: './pages/users/users.module#UsersPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'help', loadChildren: './pages/help/help.module#HelpPageModule' },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
 ];
 
 @NgModule({
