@@ -3,7 +3,7 @@
     <ion-button expand="block" [size]="buttonSize" (click)="rejectFriendRequest()" color="danger">Reject</ion-button>
 </ng-template>
 <ng-template [ngIf]="user.is_friend">
-    <ion-button expand="block" [size]="buttonSize" (click)="deleteFriend()" color="danger">Unfriend</ion-button>
+    <ion-button expand="block" [size]="buttonSize" (click)="deleteFriend()" color="success">Friends</ion-button>
 </ng-template>
 <ng-template [ngIf]="user.has_received_friend_request">
     <ion-button expand="block" [size]="buttonSize" (click)="cancelFriendRequest()" color="warning">{{ large ? 'Cancel request' : 'Cancel' }}</ion-button>
