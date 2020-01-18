@@ -10,7 +10,6 @@ import { BrowserService } from '../../services/browser/browser.service';
 })
 export class HelpPage implements OnInit {
     numbers: Object = null;
-    objectKeys = Object.keys;
 
     constructor(
         private api: APIService,

@@ -3,12 +3,11 @@
 <ion-content class="ion-padding">
     <app-loader *ngIf="!numbers"></app-loader>
     <ion-grid *ngIf="numbers">
-        <ion-row *ngFor="let key of objectKeys(numbers)" class="ion-no-padding">
-            <ion-col *ngIf="!isArray(numbers[key])" size="7" class="ion-no-padding">{{ key }}</ion-col>
-            <ion-col *ngIf="isArray(numbers[key])" size="7" class="ion-no-padding"><a href="#" (click)="browser.open(numbers[key][0])">{{ key }}</a></ion-col>
+        <ion-row *ngFor="let item of numbers" class="ion-no-padding">
+            <ion-col *ngIf="!item.website" size="7" class="ion-no-padding">{{ item.name }}</ion-col>
+            <ion-col *ngIf="item.website" size="7" class="ion-no-padding"><a href="#" (click)="browser.open(item.website)">{{ item.name }}</a></ion-col>
             <ion-col size="1"></ion-col>
-            <ion-col *ngIf="!isArray(numbers[key])" size="4" class="ion-no-padding"><a href="tel:{{ numbers[key] }}">{{ numbers[key] }}</a></ion-col>
-            <ion-col *ngIf="isArray(numbers[key])" size="4" class="ion-no-padding"><a href="tel:{{ numbers[key][1] }}">{{ numbers[key][1] }}</a></ion-col>
+            <ion-col size="4" class="ion-no-padding"><a href="tel:{{ item.number }}">{{ item.number }}</a></ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
