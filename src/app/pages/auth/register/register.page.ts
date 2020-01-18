@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { AuthService } from '../../../services/auth/auth.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
+
+import { AuthService } from '../../../services/auth/auth.service';
+import { BrowserService } from '../../../services/browser/browser.service';
 
 @Component({
     selector: 'app-register',
@@ -15,11 +17,13 @@ export class RegisterPage implements OnInit {
     validations_form: FormGroup;
 
     constructor(
-        private authService: AuthService,
         private router: Router,
         private formBuilder: FormBuilder,
-        public alertController: AlertController,
-        public loadingCtrl: LoadingController,
+        private alertController: AlertController,
+        private loadingCtrl: LoadingController,
+
+        private authService: AuthService,
+        public browser: BrowserService,
     ) { }
 
     ngOnInit() {

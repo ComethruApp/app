@@ -23,7 +23,7 @@
                                            ngModel required autocomplete="off"></ion-input>
                             </ion-item>
                         </div>
-                        <p>By registering, you agree to the <a href="javascript: window.open('https://comethru.io/tos', '_system'); return false;">Terms and Conditions</a> and <a href="javascript: window.open('https://comethru.io/privacypolicy', '_system'); return false;">Privacy Policy</a>.</p>
+                        <p>By registering, you agree to the <a href="#" (click)="browser.open('https://comethru.io/tos')">Terms and Conditions</a> and <a href="#" (click)="browser.open('https://comethru.io/privacypolicy')">Privacy Policy</a>.</p>
                         <div>
                             <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
                         </div>
