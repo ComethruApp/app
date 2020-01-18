@@ -27,37 +27,37 @@ import { BrowserService } from './services/browser/browser.service';
 import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [
-      AppComponent,
-  ],
-  entryComponents: [
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    AuthModule,
+    declarations: [
+        AppComponent,
+    ],
+    entryComponents: [
+    ],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        AuthModule,
 
-    FormsModule,
-    ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
-    ComponentsModule,
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    Geolocation,
-    NativeGeocoder,
-    InAppBrowser,
+        ComponentsModule,
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        Geolocation,
+        NativeGeocoder,
+        InAppBrowser,
 
-    Facebook,
-    OneSignal,
+        Facebook,
+        OneSignal,
 
-    APIService,
-    DatesService,
-    BrowserService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+        APIService,
+        DatesService,
+        BrowserService,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
