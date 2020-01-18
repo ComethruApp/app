@@ -73,7 +73,7 @@ export class EventPage implements OnInit {
     }
 
     openVenmo(name) {
-        const browser = this.iab.create('https://venmo.com/' + name);
+        this.iab.create('https://venmo.com/' + name, '_system').show();
     }
 
     edit() {
