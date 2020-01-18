@@ -22,6 +22,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { AuthModule } from './services/auth/auth.module';
 import { APIService } from './services/api/api.service';
 import { DatesService } from './services/dates/dates.service';
+import { BrowserService } from './services/browser/browser.service';
 
 import { ComponentsModule } from './components/components.module';
 
@@ -52,8 +53,9 @@ import { ComponentsModule } from './components/components.module';
     Facebook,
     OneSignal,
 
-    DatesService,
     APIService,
+    DatesService,
+    BrowserService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
