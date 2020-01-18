@@ -19,20 +19,23 @@ export class ReviewerComponent implements OnInit {
     }
 
     createReview(positive: boolean, negative: boolean) {
+        let previous: Review = this.review;
         let body: string = this.review ? this.review.body : '';
-        this.api.createReview(this.eventId, positive, negative, body).subscribe(response => {
-            this.review = new Review({
-                positive: positive,
-                negative: negative,
-                body: body,
-            });
-            console.log(this.review);
+        this.review = new Review({
+            positive: positive,
+            negative: negative,
+            body: body,
+        });
+        this.api.createReview(this.eventId, positive, negative, body).subscribe(response => {}, error => {
+            this.review = previous;
         });
     }
 
     deleteReview() {
-        this.api.deleteReview(this.eventId).subscribe(response => {
-            this.review = null;
+        let previous: Review = this.review;
+        this.review = null;
+        this.api.deleteReview(this.eventId).subscribe(response => {}, error => {
+            this.review = previous;
         });
     }
 
