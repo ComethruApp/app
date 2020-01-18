@@ -84,7 +84,7 @@
         </div>
 
         <div>
-            <ion-button *ngIf="!event.mine && event.venmo" class="button" expand="block" size="large" (click)="openVenmo(event.venmo)" color="venmo">
+            <ion-button *ngIf="!event.mine && event.venmo" class="button" expand="block" size="large" (click)="browser.open('https://venmo.com/' + event.venmo)" color="venmo">
                 <img src="/assets/imgs/venmo.svg">
                 Donate
             </ion-button>
