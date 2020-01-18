@@ -70,7 +70,7 @@ export class APIService {
         return this.get('/status');
     }
 
-    getSafety(): Observable<Object> {
+    getSafetyNumbers(): Observable<Object> {
         return this.get('/safety');
     }
 
