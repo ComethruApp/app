@@ -70,6 +70,10 @@ export class APIService {
         return this.get('/status');
     }
 
+    getSafety(): Observable<Object> {
+        return this.get('/safety');
+    }
+
     // Users
     getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
