@@ -21,7 +21,6 @@ export class EventPage implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private iab: InAppBrowser,
 
         private api: APIService,
         public dates: DatesService,
