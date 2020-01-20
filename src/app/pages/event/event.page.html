@@ -11,7 +11,7 @@
             <strong><em>{{ event.name }}</em></strong>
         </h1>
         <div>
-            <div class="tag"><a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
+            <div class="tag"><a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
             <div class="tag"><ion-icon name="clock"></ion-icon> {{ dates.fullTime(event.time) }}</div>
             <div class="tag"><ion-icon name="calendar"></ion-icon> {{ dates.fullDate(event.time) }}</div>
         </div>
@@ -36,7 +36,7 @@
         </p>
 
         <p *ngIf="event.address">
-            Full Address: <em>{{ event.address }}</em>. <a href="https://www.google.com/maps/search/?api=1&query={{ event.address }}">Navigate there</a>
+            Full Address: <em>{{ event.address }}</em>. <a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)">Navigate there</a>
         </p>
 
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
