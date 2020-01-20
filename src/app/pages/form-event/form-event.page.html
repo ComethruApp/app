@@ -73,12 +73,12 @@
             <ion-item lines="none" class="toggle-container">
                 <ion-label>Open event?</ion-label>
                 <ion-toggle name="open" formControlName="open"
-                           [checked]="event ? event.open : true"></ion-toggle>
+                           [checked]="event ? event.open : true" (click)="changePrivacy(!$event.target.checked)"></ion-toggle>
             </ion-item>
 
             <!-- TODO only show this if event is private -->
-            <ion-item lines="none" class="toggle-container">
-                <ion-label>Allow invitees to invite others?</ion-label>
+            <ion-item lines="none" class="toggle-container" *ngIf="showTransitiveInvites">
+                <ion-label>Allow guests to invite others?</ion-label>
                 <ion-toggle name="transitive_invites" formControlName="transitive_invites"
                            [checked]="event ? event.transitive_invites : false"></ion-toggle>
             </ion-item>

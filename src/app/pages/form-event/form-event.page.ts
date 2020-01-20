@@ -21,6 +21,7 @@ export class FormEventPage implements OnInit {
     editing: boolean = false;
     id: number;
     event: Event_ = null;
+    showTransitiveInvites: boolean = false;
     lat: number;
     lng: number;
     address: string;
@@ -85,6 +86,7 @@ export class FormEventPage implements OnInit {
     async getData(){
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
+            this.changePrivacy(this.event.open);
         });
     }
 
@@ -109,6 +111,10 @@ export class FormEventPage implements OnInit {
             this.facebookEvents = facebookEvents;
             console.log(this.facebookEvents);
         });
+    }
+
+    changePrivacy(open: boolean) {
+        this.showTransitiveInvites = !open;
     }
 
     async delete() {
