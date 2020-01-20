@@ -24,8 +24,8 @@
 
             <ion-item lines="none" class="toggle-container">
                 <ion-label>Add 21+ alcohol disclaimer?</ion-label>
-                <ion-toggle checked name="alcohol" formControlName="alcohol"
-                           [value]="event ? event.alcohol : false"></ion-toggle>
+                <ion-toggle name="alcohol" formControlName="alcohol"
+                           [checked]="event ? event.alcohol : false"></ion-toggle>
             </ion-item>
 
             <ion-item lines="none">
@@ -72,15 +72,15 @@
 
             <ion-item lines="none" class="toggle-container">
                 <ion-label>Open event?</ion-label>
-                <ion-toggle checked name="open" formControlName="open"
-                           [value]="event ? event.open : true"></ion-toggle>
+                <ion-toggle name="open" formControlName="open"
+                           [checked]="event ? event.open : true"></ion-toggle>
             </ion-item>
 
             <!-- TODO only show this if event is private -->
             <ion-item lines="none" class="toggle-container">
                 <ion-label>Allow invitees to invite others?</ion-label>
-                <ion-toggle checked name="transitive_invites" formControlName="transitive_invites"
-                           [value]="event ? event.transitive_invites : false"></ion-toggle>
+                <ion-toggle name="transitive_invites" formControlName="transitive_invites"
+                           [checked]="event ? event.transitive_invites : false"></ion-toggle>
             </ion-item>
 
             <ion-item lines="none">
