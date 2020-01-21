@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 
 import { APIService } from '../../services/api/api.service';
 import { User, Event_ } from '../../services/api/models';
+import { BrowserService } from '../../services/browser/browser.service';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class UserPage implements OnInit {
         private route: ActivatedRoute,
 
         private api: APIService,
+        public browser: BrowserService,
     ) { }
 
     async ngOnInit() {

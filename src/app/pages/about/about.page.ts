@@ -9,7 +9,7 @@ import { BrowserService } from '../../services/browser/browser.service';
     styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
-    status: Object = null;
+    status: any = null;
 
     constructor(
         private api: APIService,
