@@ -18,17 +18,17 @@ export class AuthService {
 
     constructor(
         private router: Router,
-        private httpClient: HttpClient,
+        private http: HttpClient,
         private storage: Storage,
         private oneSignal: OneSignal,
     ) { }
 
     register(user: Object): Observable<RegisterResponse> {
-        return this.httpClient.post<RegisterResponse>(this.ROOT + '/register', user);
+        return this.http.post<RegisterResponse>(this.ROOT + '/register', user);
     }
 
     login(user: Object): Observable<AuthResponse> {
-        return this.httpClient.post(this.ROOT + '/login', user).pipe(
+        return this.http.post(this.ROOT + '/login', user).pipe(
             tap(async (response: AuthResponse) => {
                 if (response.user) {
                     await this.storage.set('TOKEN', response.user.token);
@@ -54,6 +54,6 @@ export class AuthService {
     }
 
     resetPassword(email: string): Observable<ResetPasswordResponse> {
-        return this.httpClient.post<ResetPasswordResponse>(this.ROOT + '/reset_password_request', {email: email});
+        return this.http.post<ResetPasswordResponse>(this.ROOT + '/reset_password_request', {email: email});
     }
 }
