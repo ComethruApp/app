@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 
 import * as Constants from '../../constants';
-import { AuthResponse, RegisterResponse } from './auth-response';
+import { AuthResponse, RegisterResponse, ResetPasswordResponse } from './auth-response';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @Injectable({
@@ -51,5 +51,9 @@ export class AuthService {
         return this.storage.get('TOKEN').then(token => {
             return token != null;
         });
+    }
+
+    resetPassword(email: string): Observable<ResetPasswordResponse> {
+        return this.httpClient.post<ResetPasswordResponse>(this.ROOT + '/reset_password_request', {email: email});
     }
 }
