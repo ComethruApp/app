@@ -42,7 +42,7 @@ export class ResetPasswordPage implements OnInit {
         this.authService.resetPassword(data).subscribe(response =>{
             this.resetFields();
             loading.dismiss();
-            this.router.navigateByUrl('tabs');
+            this.router.navigateByUrl('/login');
             this.alertController.create({
                 header: 'Error',
                 message: response.message,
