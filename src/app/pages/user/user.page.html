@@ -9,7 +9,7 @@
     <div *ngIf="user">
         <app-avatar [user]="user" [large]="true"></app-avatar>
         <h1>{{ user.name }}</h1>
-        <h2 class="email" (click)="browser.open(user.email)"><ion-icon name="mail"></ion-icon> {{ user.email }}</h2>
+        <h2 class="email" (click)="browser.open('mailto:' + user.email)"><ion-icon name="mail"></ion-icon> {{ user.email }}</h2>
         <div *ngIf="isMe || user.is_me">
             <ion-button expand="block" size="large" (click)="openSettings()">
                 <ion-icon name="settings"></ion-icon>
