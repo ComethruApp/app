@@ -53,7 +53,7 @@ export class AuthService {
         });
     }
 
-    resetPassword(email: string): Observable<ResetPasswordResponse> {
-        return this.http.post<ResetPasswordResponse>(this.ROOT + '/reset_password_request', {email: email});
+    resetPassword(payload: Object): Observable<ResetPasswordResponse> {
+        return this.http.post<ResetPasswordResponse>(this.ROOT + '/reset_password_request', payload);
     }
 }
