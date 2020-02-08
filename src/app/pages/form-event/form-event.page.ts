@@ -8,6 +8,7 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
+import { DatesService } from '../../services/dates/dates.service';
 
 @Component({
     selector: 'app-form-event',
@@ -38,6 +39,7 @@ export class FormEventPage implements OnInit {
         private nativeGeocoder: NativeGeocoder,
 
         private api: APIService,
+        public dates: DatesService,
     ) { }
 
     async ngOnInit() {

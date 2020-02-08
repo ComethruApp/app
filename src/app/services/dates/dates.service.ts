@@ -13,6 +13,9 @@ export class DatesService {
         return moment.utc(date).local();
     }
 
+    iso(date) {
+        return this.process(date).format();
+    }
     day(date) {
         return this.process(date).format('dddd');
     }
@@ -31,4 +34,5 @@ export class DatesService {
     meridiem(date) {
         return this.process(date).format('a');
     }
+
 }
