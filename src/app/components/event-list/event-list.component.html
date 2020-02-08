@@ -13,8 +13,8 @@
                 <app-moon [rating]="event.rating"></app-moon>
             </ion-col>
             <ion-col *ngIf="!event.happening_now" size="4" class="time ion-no-padding ">
-                <div class="hour">{{ dates.time(event.time) }}</div>
-                <div class="ampm">{{ dates.meridiem(event.time) }}, {{ dates.date(event.time) }}</div>
+                <div class="day">{{ dates.day(event.time) }}</div>
+                <h2 class="hour">{{ dates.fullTime(event.time) }}</h2>
             </ion-col>
         </ion-row>
     </ion-grid>
