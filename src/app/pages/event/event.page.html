@@ -12,7 +12,9 @@
         </h1>
         <div>
             <div class="tag"><a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
-            <div class="tag"><ion-icon name="clock"></ion-icon> {{ dates.fullTime(event.time) }}</div>
+            <div class="tag"><ion-icon name="clock"></ion-icon>
+                {{ dates.fullTime(event.time) }}{{ event.end_time ? '-' + dates.fullTime(event.end_time) : '' }}
+            </div>
             <div class="tag"><ion-icon name="calendar"></ion-icon> {{ dates.fullDate(event.time) }}</div>
         </div>
         <div *ngIf="event.tags.length > 0" class="tags">
