@@ -121,10 +121,16 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-app-preferences" spec="https://github.com/vash15/me.apla.cordova.app-preferences" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^4.1.3">
-        <variable name="ANDROID_SUPPORT_ANNOTATIONS_VERSION" value="27.+" />
-    </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/kleeb/cordova-plugin-inappbrowser.git" />
     <engine name="android" spec="8.1.0" />
     <engine name="ios" spec="5.1.1" />
+    <plugin name="cordova-plugin-camera" spec="^4.1.0">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-plugin-file" spec="^6.0.2" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^4.1.3">
+        <variable name="ANDROID_SUPPORT_ANNOTATIONS_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-sqlite-storage" spec="^3.4.1" />
+    <plugin name="cordova-plugin-filepath" spec="^1.5.7" />
 </widget>

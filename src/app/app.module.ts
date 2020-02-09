@@ -24,6 +24,15 @@ import { APIService } from './services/api/api.service';
 import { DatesService } from './services/dates/dates.service';
 import { BrowserService } from './services/browser/browser.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+
+import { IonicStorageModule } from '@ionic/storage';
+
 import { ComponentsModule } from './components/components.module';
 
 @NgModule({
@@ -41,6 +50,9 @@ import { ComponentsModule } from './components/components.module';
         FormsModule,
         ReactiveFormsModule,
 
+        HttpClientModule,
+        IonicStorageModule.forRoot()
+
         ComponentsModule,
     ],
     providers: [
@@ -52,6 +64,10 @@ import { ComponentsModule } from './components/components.module';
 
         Facebook,
         OneSignal,
+
+        Camera,
+        File,
+        WebView,
 
         APIService,
         DatesService,
