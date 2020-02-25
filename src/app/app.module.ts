@@ -51,7 +51,7 @@ import { ComponentsModule } from './components/components.module';
         ReactiveFormsModule,
 
         HttpClientModule,
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
 
         ComponentsModule,
     ],
