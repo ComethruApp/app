@@ -6,8 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./ocean.component.scss']
 })
 export class OceanComponent implements OnInit {
-    @Input() people: number;
-    @Input() capacity: number;
+    @Input() rating: number;
 
     constructor() { }
 

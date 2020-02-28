@@ -1,6 +1,6 @@
 <div class="ocean">
-    <div class="status-label"><span>{{ people }}</span><br>{{ people == 1 ? 'user there' : 'users there' }}</div>
-    <div class="water" [style.transform]="'translateY(' + (150 * (1 - (people / capacity))) + 'px)'">
+    <div class="status-label">Rating:<br><span>{{ rating }}</span></div>
+    <div class="water" [style.transform]="'translateY(' + (150 / 5 * (5 - this.rating)) + 'px)'">
         <span class="wave"></span>
         <span class="deep-water"></span>
     </div>

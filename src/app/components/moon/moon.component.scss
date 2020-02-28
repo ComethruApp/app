@@ -21,6 +21,9 @@
     mix-blend-mode: difference;
     filter: saturate(0);
 }
+.moon.small .status-label {
+    display: none;
+}
 .moon.small,
 .moon.small .darkness {
     width: 75px;

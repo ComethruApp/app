@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./moon.component.scss']
 })
 export class MoonComponent implements OnInit {
-    @Input() rating: number;
+    @Input() people: number;
+    @Input() capacity: number;
     @Input() large: boolean = false;
-    darknessPosition: number;
 
     constructor() { }
 

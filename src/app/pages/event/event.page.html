@@ -44,10 +44,10 @@
         <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
             <ion-row class="ion-no-padding">
                 <ion-col class="ion-no-padding" size="6">
-                    <app-ocean [people]="event.people" [capacity]="event.capacity"></app-ocean>
+                    <app-ocean [rating]="event.rating"></app-ocean>
                 </ion-col>
                 <ion-col class="ion-no-padding" size="6">
-                    <app-moon [rating]="event.rating" [large]="true"></app-moon>
+                    <app-moon [people]="event.people" [capacity]="event.capacity" [large]="true"></app-moon>
                 </ion-col>
             </ion-row>
         </ion-grid>

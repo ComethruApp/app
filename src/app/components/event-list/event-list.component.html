@@ -13,7 +13,7 @@
             <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1.5">
             </ion-col>
             <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="2.5">
-                <app-moon [rating]="event.rating"></app-moon>
+                <app-moon [people]="event.people" [capacity]="event.capacity"></app-moon>
             </ion-col>
             <ion-col *ngIf="!event.happening_now" size="4" class="time ion-no-padding ">
                 <div class="day">{{ dates.day(event.time) }}</div>
