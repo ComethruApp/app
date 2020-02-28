@@ -89,7 +89,7 @@ ion-button {
     // Josefin font has excessive space underneath, correct for that.
     --padding-top: 4px;
     --background: var(--ion-color-primary);
-    --border-radius: 0 !important;
+    --border-radius: 50px;
     // Automatic on Android. On iOS, still is.
     text-transform: uppercase;
     --box-shadow: none;
@@ -236,6 +236,7 @@ a {
     margin-right: 3px;
     margin-bottom: 3px;
     font-size: 20px;
+    border-radius: 50px;
 }
 .tags .tag {
     background: var(--ion-background-color-tint);
