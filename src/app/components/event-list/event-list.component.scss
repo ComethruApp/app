@@ -1,8 +1,10 @@
 .description-preview {
+    margin-bottom: 5px;
+}
+.description-preview, .tag {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 5px;
 }
 .time {
     text-align: right;
