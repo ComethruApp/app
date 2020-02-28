@@ -194,7 +194,7 @@ export class MapPage implements OnInit {
                     id: event.id,
                     //animation: google.maps.Animation.DROP,
                     icon: {
-                        url: '/assets/imgs/markers/event_' + Math.floor(event.rating) + '.png',
+                        url: '/assets/imgs/markers/event_' + Math.floor(event.people / event.capacity * 5) + '.png',
                         scaledSize: new google.maps.Size(27, 43),
                     },
                 });
