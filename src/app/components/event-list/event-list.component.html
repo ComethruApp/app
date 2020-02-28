@@ -5,7 +5,10 @@
             <ion-col size="8" class="ion-no-padding">
                 <h2><ion-icon *ngIf="!event.open" name="lock"></ion-icon> {{ event.name }}</h2>
                 <div class="description-preview">{{ event.description }}</div>
-                <div class="tag">@ {{ event.location }}</div>
+                <div class="tag">
+                    <ion-icon name="pin"></ion-icon>
+                    {{ event.location }}
+                </div>
             </ion-col>
             <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1.5">
             </ion-col>
