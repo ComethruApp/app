@@ -46,6 +46,7 @@ ion-item {
     --background: var(--ion-color-dark);
     --color: var(--ion-text-color);
     margin-bottom: 5px;
+    --border-radius: 25px;
 }
 ion-item.toggle-container {
     --background: var(--ion-background-color);
