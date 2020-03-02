@@ -6,6 +6,12 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+// For image upload
+import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
+import { File, FileEntry } from '@ionic-native/File/ngx';
+import { HttpClient } from '@angular/common/http';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
 import { APIService } from '../../services/api/api.service';
 import { Event_ } from '../../services/api/models';
 import { DatesService } from '../../services/dates/dates.service';
@@ -27,6 +33,7 @@ export class FormEventPage implements OnInit {
     lng: number;
     address: string;
     facebookEvents: Object[] = null;
+    image: string = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -37,6 +44,9 @@ export class FormEventPage implements OnInit {
 
         private geolocation: Geolocation,
         private nativeGeocoder: NativeGeocoder,
+
+        private camera: Camera,
+        private file: File,
 
         private api: APIService,
         public dates: DatesService,
@@ -213,5 +223,23 @@ export class FormEventPage implements OnInit {
 
     tags() {
         this.router.navigate(['/tags/' + this.id]);
+    }
+
+    addImage() {
+        const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.FILE_URI,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+        }
+
+        this.camera.getPicture(options).then((imageData) => {
+            // imageData is either a base64 encoded string or a file URI
+            // If it's base64 (DATA_URL):
+            let base64Image = 'data:image/jpeg;base64,' + imageData;
+            console.log(base64Image);
+        }, (err) => {
+            // Handle error
+        });
     }
 }
