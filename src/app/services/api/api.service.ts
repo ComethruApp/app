@@ -74,6 +74,13 @@ export class APIService {
         return this.get('/safety');
     }
 
+    private uploadImage(path: string, image: any): Observable<any> {
+        let path: string = '/image';
+        let ops = this.ops(token);
+        ops.headers = ops.headers.set('Content-Type', 'image/jpeg');
+        return this.req(token => this.httpClient.post(this.ROOT + path, image, ops));
+    }
+
     // Users
     getUser(userId: number): Observable<User> {
         return this.get('/users/' + userId)
