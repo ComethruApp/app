@@ -27,7 +27,7 @@ export class APIService {
 
     private ops(token: string): Object {
         return {
-            headers: new HttpHeaders().set('Authorization', token),
+            headers: new HttpHeaders().set('Authorization', 'Bearer ' + token),
         };
     }
 
