@@ -111,6 +111,9 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
             <string>We use your location, with your consent, to detect which events you are attending.</string>
         </edit-config>
+        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>For adding header photos.</string>
+        </config-file>
         <framework spec="5.7.0" src="FBSDKCoreKit" type="podspec" />
         <framework spec="5.7.0" src="FBSDKLoginKit" type="podspec" />
         <framework spec="5.7.0" src="FBSDKShareKit" type="podspec" />
