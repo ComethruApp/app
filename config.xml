@@ -127,6 +127,8 @@
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/kleeb/cordova-plugin-inappbrowser.git" />
     <plugin name="cordova-plugin-camera" spec="^4.1.0">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="To choose event headers" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="To choose event headers" />
     </plugin>
     <plugin name="cordova-plugin-file" spec="^6.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.1.3">

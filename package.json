@@ -118,6 +118,8 @@
       },
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-camera": {
+        "CAMERA_USAGE_DESCRIPTION": "Choosing event headers",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": "Choosing event headers",
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-file": {},
