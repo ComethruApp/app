@@ -190,7 +190,7 @@ export class FormEventPage implements OnInit {
         if (this.editing) {
             this.upload(data);
         } else {
-            data.image = this.imageUrl;
+            data.image = this.image;
             data.lat = this.lat;
             data.lng = this.lng;
             const alert = await this.alertCtrl.create({
