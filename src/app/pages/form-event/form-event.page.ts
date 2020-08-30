@@ -119,13 +119,6 @@ export class FormEventPage implements OnInit {
         });
     }
 
-    useFacebook() {
-        this.api.getFacebookEvents().subscribe(facebookEvents => {
-            this.facebookEvents = facebookEvents;
-            console.log(this.facebookEvents);
-        });
-    }
-
     changePrivacy(open: boolean) {
         this.showTransitiveInvites = !open;
     }

@@ -6,12 +6,6 @@
     <div class="{{ (editing && !event) ? 'hidden' : '' }}">
         <form #form="ngForm" [formGroup]="validations_form" (ngSubmit)="submit(form)">
             <h1 *ngIf="!editing && !image">HOST</h1>
-            <!--
-            <ion-button size="large" expand="block" *ngIf="!editing" (click)="useFacebook()">
-                <ion-icon name="logo-facebook"></ion-icon>
-                Import event
-            </ion-button>
-            -->
 
             <div *ngIf="!image">
                 <ion-button class="button" expand="block" size="large" (click)="addImage()">
