@@ -33,6 +33,7 @@ export class FormEventPage implements OnInit {
     lng: number;
     address: string;
     facebookEvents: Object[] = null;
+    hasImage: boolean = false;
     image: string = null;
 
     constructor(
@@ -99,6 +100,8 @@ export class FormEventPage implements OnInit {
         this.api.getEvent(this.id).subscribe(event => {
             this.event = event;
             this.changePrivacy(this.event.open);
+            this.hasImage = true;
+            this.image = event.image;
         });
     }
 
@@ -240,6 +243,5 @@ export class FormEventPage implements OnInit {
 
     removeImage() {
         this.image = null;
-        this.imageUrl = null;
     }
 }
