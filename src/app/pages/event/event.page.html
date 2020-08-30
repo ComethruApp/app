@@ -1,4 +1,4 @@
-<app-header title="Event" [back]="true"></app-header>
+<app-header [title]="(event && event.image) ? event.name : 'Event'" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -7,7 +7,7 @@
     <app-loader *ngIf="!event"></app-loader>
     <div *ngIf="event">
         <img class="badge" *ngIf="hasYCC" src="assets/imgs/ycc.png">
-        <h1>
+        <h1 *ngIf="!event.image">
             <strong><em>{{ event.name }}</em></strong>
         </h1>
         <app-banner [src]="event.image"></app-banner>
