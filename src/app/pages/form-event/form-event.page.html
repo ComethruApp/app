@@ -16,11 +16,11 @@
             <div *ngIf="!image">
                 <ion-button class="button" expand="block" size="large" (click)="addImage()">
                     <ion-icon name="image"></ion-icon>
-                    Choose header
+                    Choose banner
                 </ion-button>
             </div>
             <div *ngIf="image">
-                <ion-img *ngIf="imageUrl" src="data:image/jpeg;base64,{{image}}"></ion-img>
+                <ion-img *ngIf="imageUrl" src="imageUrl"></ion-img>
                 <app-loader *ngIf="!imageUrl"></app-loader>
                 <ion-button class="button" color="success" expand="block" size="large" (click)="addImage()">
                     <ion-icon name="image"></ion-icon>
