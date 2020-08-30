@@ -195,6 +195,7 @@ export class FormEventPage implements OnInit {
         if (this.editing) {
             this.upload(data);
         } else {
+            data.image = this.imageUrl;
             data.lat = this.lat;
             data.lng = this.lng;
             const alert = await this.alertCtrl.create({
@@ -238,8 +239,8 @@ export class FormEventPage implements OnInit {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
             this.image = imageRaw;
-            this.api.uploadImage(this.image).subscribe(imageUrl => {
-                this.imageUrl = imageUrl;
+            this.api.uploadImage(this.image).subscribe(imageData => {
+                this.imageUrl = imageData['url'];
             });
         }, (err) => {
             // Handle error
