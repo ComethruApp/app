@@ -20,7 +20,7 @@
                 </ion-button>
             </div>
             <div *ngIf="image">
-                <ion-img *ngIf="imageUrl" src="imageUrl"></ion-img>
+                <app-banner *ngIf="imageUrl" [src]="imageUrl"></app-banner>
                 <app-loader [showMessage]="false" *ngIf="!imageUrl"></app-loader>
                 <ion-button class="button" color="success" expand="block" size="large" (click)="addImage()">
                     <ion-icon name="image"></ion-icon>
