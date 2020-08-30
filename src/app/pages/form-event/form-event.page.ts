@@ -34,6 +34,7 @@ export class FormEventPage implements OnInit {
     address: string;
     facebookEvents: Object[] = null;
     image: string = null;
+    imageUrl: string = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -233,11 +234,13 @@ export class FormEventPage implements OnInit {
             mediaType: this.camera.MediaType.PICTURE
         }
 
-        this.camera.getPicture(options).then((imageData) => {
+        this.camera.getPicture(options).then(imageRaw => {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
-            this.image = 'data:image/jpeg;base64,' + imageData;
-            this.api.uploadImage(this.image);
+            this.image = 'data:image/jpeg;base64,' + imageRaw;
+            this.api.uploadImage(this.image).subscribe(imageUrl => {
+                this.imageUrl = imageUrl;
+            });
         }, (err) => {
             // Handle error
         });
