@@ -246,4 +246,9 @@ export class FormEventPage implements OnInit {
             // Handle error
         });
     }
+
+    removeImage() {
+        this.image = null;
+        this.imageUrl = null;
+    }
 }
