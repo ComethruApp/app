@@ -237,7 +237,7 @@ export class FormEventPage implements OnInit {
         this.camera.getPicture(options).then(imageRaw => {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
-            this.image = 'data:image/jpeg;base64,' + imageRaw;
+            this.image = imageRaw;
             this.api.uploadImage(this.image).subscribe(imageUrl => {
                 this.imageUrl = imageUrl;
             });
