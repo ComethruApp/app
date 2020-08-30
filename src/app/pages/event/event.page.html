@@ -10,6 +10,7 @@
         <h1>
             <strong><em>{{ event.name }}</em></strong>
         </h1>
+        <app-banner [src]="event.image"></app-banner>
         <div>
             <div class="tag"><a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
             <div class="tag"><ion-icon name="clock"></ion-icon>
